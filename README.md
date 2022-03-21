@@ -1,105 +1,42 @@
-# JupyterLite Demo
+_Cloned from [Jupyter Lite Demo](https://github.com/jupyterlite/demo)_
 
-[![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jupyterlite.github.io/demo)
+# NLP Research into public 10K filings
 
-JupyterLite deployed as a static site to GitHub Pages, for demo purposes.
+In this project, Mary Xu, Peitong Lu, and Richard Ye worked with the `business description` of 1500+ 10K Annual Report Filings from SEC, with support from [Ubineer](https://www.ubineer.com/).
 
-## ✨ Try it in your browser ✨
+## Topics explored
 
-➡️ **https://jupyterlite.github.io/demo**
+1. Word Embedding techniques
+2. Distance metrics on those word embeddings
+3. Topic Modelling/Emebedding
+4. Dynamic Word Embedding comparisons
 
-![github-pages](https://user-images.githubusercontent.com/591645/120649478-18258400-c47d-11eb-80e5-185e52ff2702.gif)
+## Data cleaning/processing
 
-## Requirements
+The data was provided to us by Ubineer, which has been pulled and preprocessed for us. We further cleaned up the `Description` text by removing HTML code, the first couple words which were common among all filings, and filtering for filings with over 250 characters.
 
-JupyterLite is being tested against modern web browsers:
+We then removed _stop words_ from the business descriptions, which are very commong words like "the, they, and, is, are, there" and others. These words don't provide meaning and therefore do not contribute to our goal of extracting meaning.
 
-- Firefox 90+
-- Chromium 89+
+We also lemmatized all possible words, aka Text/Word Normalization which means all instances of "am, are, is" are converted to "be" and "playing, played, plays" are all converted to "play". This reduces the amount of different words we have to process, and also condensing the amount of information we recieve since words that all carry the same meaning are represented together.
 
-## Usage
+## Evaluation and visualization techniques
 
-This repository provides a demonstration of how to:
+In this project we focused on visually examining 2 and 3 dimensional plots of the word embeddings reduced using PCA and Truncated SVD (specifically for LSA). We also had access to extra information for 2018 filings, allowing us to evaluate the word embedding clusters against their actual industry classification. This was done using a simple 1-NN clustering. The results were put into a confusion matrix, allowing us to identify how well the 1-NN clutsering did on our word embedding.
 
-- build a JupyterLite release using prebuilt JupyterLite assets that bundles a collection of pre-existing Jupyter notebooks as part of the distribution;
-- deploy the release to GitHub Pages.
+# 1. Word Embeddings techniques
 
-The process is automated using Github Actions.
+## Term Frequency/Counter Vectorizer/Bag of Words
 
-You can use this repository in two main ways:
+We started off with the basic Term Frequency Matrix, which breaks down each company description into a vector of `n` words/terms (a hyperparameter), where each dimension is a word/term, and the value is the count of that word in the document.
 
-- generate a new repository from this template repository and build and deploy your own site to the corresponding Github Pages site;
-- build a release from a PR made to this repository and download the release from the created GitHub Actions artifact.
+This technique helps us analyze how many of the `n` words eaach filing contains, which provides us with information about the kind of terms or topics each company may discuss. This approach is very easy to implement but is not very powerful, because very common words will have the largest values and therefore carry the most weight. For financial statements like these, you can expect words like "financial" and "report" to have some of the highest values.
 
-### Co-opting This Repository to Build a Distribution
+From these vectors for each company filing, we can think of each term as a dimension and actually project these `n` dimensional vectors into an `n` dimensional space, which is called a **word embedding**. You can think of these as points in a `n`D space.
 
-*Requires Github account.*
+## Term Frequency - Inverse Document Frequency (tf-idf)
 
-To use this repository to build your own release:
+To solve the above issue, we moved on to the tf-idf technique. tf-idf augments the term frequency matrix we created above by multiplying each word in each docuemnt by its "importance" to that document. The details are within the [1_Tf-idf_analysis.ipynb](https://github.com/richardye101/ubineer_nlp_research/blob/main/content/richard/1_Tf-idf_analysis.ipynb) notebook. This technique is meant to adjust the weighting of terms used in the word embedding so that the _points_ used to represent each company filing is more accurate in representing where companies are in this `n` dimensional space in comparison to other companies. For example, ideally we want technology companies close together, and pharmaceutical companies close together.
 
-- create a fork of this repository by clicking on one of the files (such as [`requirements.txt`](https://github.com/jupyterlite/demo/blob/main/requirements.txt) and then click on the *edit* button to create your own fork of the repository;
-- update the `requirements.txt` file as required (or just cancel the edit if you were simply forking the original repository);
-- remove unwanted notebooks from the `contents` directory;
-- upload your own notebooks intended for release to that directory;
-- from the *Pull Requests* tab of your Github repository, make a pull request of the changes you made back to the main `jupyterlite-demo` repository.
-
-![](https://user-images.githubusercontent.com/82988/132512423-ac5609b7-3e8e-4ea9-80ba-ddb08c9ffebb.png)
-
-The PR will trigger a build on the repository. Go to the [Actions tab](https://github.com/jupyterlite/demo/actions) and find the build triggered by your pull request. When the build has completed, the release will be available as a generated asset.
-
-![](https://user-images.githubusercontent.com/82988/132511258-aff31973-d7e2-4e39-89d5-3feb0ced139b.png)
-
-Download the distribution/generated asset and unzip it, for example into a directory of the form `jupyterlite-demo dist 46`. The directory contains your JupyterLite distribution. To run the distribution via a web browser, it needs to be served by a web server.
-
-If you have Python installed, on the command line change directory into the the unzipped distribution folder and run the command: `python -m http.server`. This will launch a web server from the directory, for example on port 8000. View the website in your browser (for example, at the web location `http://localhost:8000`).
-
-### Using Your Own Repository to Build a Release and Deploy it to Github Pages
-
-*Requires Github account.*
-
-Click on "Use this template" to generate a repository of your own from this template:
-
-![template](https://user-images.githubusercontent.com/21197331/125816904-5768008a-77de-4cb3-8013-f3999b135c02.gif)
-
-From the [*Actions*](./actions) tab on your repository, ensure that workflows are enabled. When you make a commit to the `main` branch, a Github Action will run to build your JupoyterLite release and deploy it to the repository's Github Pages site. By default, the Github Pages site will be found at `YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY-NAME`. *You can also check the URL from the Repository `Settings` tab `Pages` menu item.*
-
-__Add any additional requirements as required to the `requirements.txt` file.__
-
-*You can do this via the Github website by selecting the `requirements.txt` file, clicking to edit it, making the required changes then saving ("committing") the result to the `main` branch of your repository.*
-
-__Modify the contents of the `contents` folder to include the notebooks you want to distribute as part of your distribution.__
-
-*You can do this by clicking on the `contents` directory and dragging notebooks from your desktop onto the contents listing. Wait for the files to be uploaded and then save them ("commit" them) to the `main` branch of the repository.*
-
-Check that you have Github Pages enabled for your repository: from your repository [*Settings*](./settings) tab, select the [*Pages*](./settings/pages) menu item and ensure that the source is set to `gh-pages`.
-
-When you commit a file, an updated release will be built and published on the Github Pages site. Note that it may take a few minutes for the Github Pages site to be updated. Do a hard refresh on your Github Pages site in your web browser to see the new release.
+## 
 
 
-
-### Further Information and Updates
-
-For more info, keep an eye on the JupyterLite documentation:
-
-- Configuring: https://jupyterlite.readthedocs.io/en/latest/configuring.html
-- Deploying: https://jupyterlite.readthedocs.io/en/latest/deploying.html
-
-### Deploy a new version of JupyterLite
-
-To change the version of the prebuilt JupyterLite assets, update the `jupyterlite` package version in the [requirements.txt](./blob/main/requirements.txt) file.
-
-The `requirements.txt` file can also be used to add extra prebuilt ("federated") JupyterLab extensions to the deployed JupyterLite website.
-
-Commit and push any changes. The site will be deployed on the next push to the `main` branch.
-
-## Development
-
-Create a new environment:
-
-```bash
-mamba create -n jupyterlite-demo
-conda activate jupyterlite-demo
-pip install -r requirements.txt
-```
-
-Then follow the steps documented in the [Configuring](https://jupyterlite.readthedocs.io/en/latest/configuring.html) section.
