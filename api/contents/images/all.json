@@ -1,0 +1,61 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2022-03-21T16:21:18.749322Z",
+      "format": null,
+      "last_modified": "2022-03-21T16:20:14.100881Z",
+      "mimetype": "image/png",
+      "name": "word2vec.png",
+      "path": "images/word2vec.png",
+      "size": 36527,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-21T16:21:18.749322Z",
+      "format": null,
+      "last_modified": "2022-03-21T16:20:14.100881Z",
+      "mimetype": "image/png",
+      "name": "word2vec2.png",
+      "path": "images/word2vec2.png",
+      "size": 22599,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-21T16:21:18.749322Z",
+      "format": null,
+      "last_modified": "2022-03-21T16:20:14.100881Z",
+      "mimetype": "image/png",
+      "name": "doc2vec.png",
+      "path": "images/doc2vec.png",
+      "size": 23800,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-21T16:21:18.749322Z",
+      "format": null,
+      "last_modified": "2022-03-21T16:20:14.100881Z",
+      "mimetype": "image/jpeg",
+      "name": "lda.jpeg",
+      "path": "images/lda.jpeg",
+      "size": 55743,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2022-03-21T16:21:18.749322Z",
+  "format": "json",
+  "last_modified": "2022-03-21T16:21:18.749322Z",
+  "mimetype": null,
+  "name": "images",
+  "path": "images",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
