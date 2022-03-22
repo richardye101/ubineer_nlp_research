@@ -2,9 +2,9 @@
   "content": [
     {
       "content": null,
-      "created": "2022-03-21T17:19:40.747211Z",
+      "created": "2022-03-22T02:20:16.863848Z",
       "format": null,
-      "last_modified": "2022-03-21T17:18:08.348658Z",
+      "last_modified": "2022-03-22T02:19:00.476948Z",
       "mimetype": "text/plain",
       "name": "data_folder_link.txt",
       "path": "data/data_folder_link.txt",
@@ -13,9 +13,9 @@
       "writable": true
     }
   ],
-  "created": "2022-03-21T17:19:40.747211Z",
+  "created": "2022-03-22T02:20:16.863848Z",
   "format": "json",
-  "last_modified": "2022-03-21T17:19:40.747211Z",
+  "last_modified": "2022-03-22T02:20:16.863848Z",
   "mimetype": null,
   "name": "data",
   "path": "data",
