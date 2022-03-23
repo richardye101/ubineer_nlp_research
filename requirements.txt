@@ -65,7 +65,6 @@ jupyterlab-server==2.10.3
 jupyterlab-widgets==1.0.2
 jupyterlite==0.1.0b3
 kiwisolver==1.4.0
-MacFSEvents==0.8.1
 MarkupSafe==2.0.1
 matplotlib==3.5.1
 matplotlib-inline==0.1.3
