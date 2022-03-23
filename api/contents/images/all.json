@@ -2,9 +2,9 @@
   "content": [
     {
       "content": null,
-      "created": "2022-03-22T02:20:16.867848Z",
+      "created": "2022-03-23T01:06:00.387593Z",
       "format": null,
-      "last_modified": "2022-03-22T02:19:00.476948Z",
+      "last_modified": "2022-03-23T01:03:58.529064Z",
       "mimetype": "image/png",
       "name": "word2vec.png",
       "path": "images/word2vec.png",
@@ -14,9 +14,9 @@
     },
     {
       "content": null,
-      "created": "2022-03-22T02:20:16.867848Z",
+      "created": "2022-03-23T01:06:00.387593Z",
       "format": null,
-      "last_modified": "2022-03-22T02:19:00.480948Z",
+      "last_modified": "2022-03-23T01:03:58.529064Z",
       "mimetype": "image/png",
       "name": "word2vec2.png",
       "path": "images/word2vec2.png",
@@ -26,9 +26,9 @@
     },
     {
       "content": null,
-      "created": "2022-03-22T02:20:16.863848Z",
+      "created": "2022-03-23T01:06:00.387593Z",
       "format": null,
-      "last_modified": "2022-03-22T02:19:00.476948Z",
+      "last_modified": "2022-03-23T01:03:58.529064Z",
       "mimetype": "image/png",
       "name": "doc2vec.png",
       "path": "images/doc2vec.png",
@@ -38,9 +38,9 @@
     },
     {
       "content": null,
-      "created": "2022-03-22T02:20:16.867848Z",
+      "created": "2022-03-23T01:06:00.387593Z",
       "format": null,
-      "last_modified": "2022-03-22T02:19:00.476948Z",
+      "last_modified": "2022-03-23T01:03:58.529064Z",
       "mimetype": "image/jpeg",
       "name": "lda.jpeg",
       "path": "images/lda.jpeg",
@@ -49,9 +49,9 @@
       "writable": true
     }
   ],
-  "created": "2022-03-22T02:20:16.867848Z",
+  "created": "2022-03-23T01:06:00.387593Z",
   "format": "json",
-  "last_modified": "2022-03-22T02:20:16.867848Z",
+  "last_modified": "2022-03-23T01:06:00.387593Z",
   "mimetype": null,
   "name": "images",
   "path": "images",
