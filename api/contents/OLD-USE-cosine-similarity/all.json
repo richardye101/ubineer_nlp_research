@@ -2,9 +2,9 @@
   "content": [
     {
       "content": null,
-      "created": "2022-03-23T01:06:00.367592Z",
+      "created": "2022-03-23T01:15:47.510043Z",
       "format": null,
-      "last_modified": "2022-03-23T01:03:58.521063Z",
+      "last_modified": "2022-03-23T01:14:02.125271Z",
       "mimetype": null,
       "name": "Peitong_Updated.ipynb",
       "path": "OLD-USE-cosine-similarity/Peitong_Updated.ipynb",
@@ -14,9 +14,9 @@
     },
     {
       "content": null,
-      "created": "2022-03-23T01:06:00.363591Z",
+      "created": "2022-03-23T01:15:47.506043Z",
       "format": null,
-      "last_modified": "2022-03-23T01:03:58.489060Z",
+      "last_modified": "2022-03-23T01:14:02.097271Z",
       "mimetype": null,
       "name": "Business description Similarity.ipynb",
       "path": "OLD-USE-cosine-similarity/Business description Similarity.ipynb",
@@ -26,9 +26,9 @@
     },
     {
       "content": null,
-      "created": "2022-03-23T01:06:00.383593Z",
+      "created": "2022-03-23T01:15:47.522043Z",
       "format": null,
-      "last_modified": "2022-03-23T01:03:58.529064Z",
+      "last_modified": "2022-03-23T01:14:02.133271Z",
       "mimetype": null,
       "name": "UniversalSentenceEncoder.ipynb",
       "path": "OLD-USE-cosine-similarity/UniversalSentenceEncoder.ipynb",
@@ -37,9 +37,9 @@
       "writable": true
     }
   ],
-  "created": "2022-03-23T01:06:00.383593Z",
+  "created": "2022-03-23T01:15:47.522043Z",
   "format": "json",
-  "last_modified": "2022-03-23T01:06:00.383593Z",
+  "last_modified": "2022-03-23T01:15:47.522043Z",
   "mimetype": null,
   "name": "OLD-USE-cosine-similarity",
   "path": "OLD-USE-cosine-similarity",
