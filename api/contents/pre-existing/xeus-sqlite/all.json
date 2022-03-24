@@ -2,9 +2,9 @@
   "content": [
     {
       "content": null,
-      "created": "2022-03-24T00:32:51.909515Z",
+      "created": "2022-03-24T00:41:13.515201Z",
       "format": null,
-      "last_modified": "2022-03-24T00:30:49.675953Z",
+      "last_modified": "2022-03-24T00:36:28.922898Z",
       "mimetype": null,
       "name": "simple-operations.ipynb",
       "path": "pre-existing/xeus-sqlite/simple-operations.ipynb",
@@ -13,9 +13,9 @@
       "writable": true
     }
   ],
-  "created": "2022-03-24T00:32:51.909515Z",
+  "created": "2022-03-24T00:41:13.515201Z",
   "format": "json",
-  "last_modified": "2022-03-24T00:32:51.909515Z",
+  "last_modified": "2022-03-24T00:41:13.515201Z",
   "mimetype": null,
   "name": "xeus-sqlite",
   "path": "pre-existing/xeus-sqlite",
