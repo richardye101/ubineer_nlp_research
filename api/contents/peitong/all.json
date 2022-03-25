@@ -1,0 +1,37 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2022-03-25T03:22:49.560054Z",
+      "format": null,
+      "last_modified": "2022-03-25T03:19:09.124597Z",
+      "mimetype": null,
+      "name": "week 6 - Confusion Matrix.ipynb",
+      "path": "peitong/week 6 - Confusion Matrix.ipynb",
+      "size": 4940026,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-25T03:22:49.544054Z",
+      "format": null,
+      "last_modified": "2022-03-25T03:19:09.092597Z",
+      "mimetype": null,
+      "name": "Week 10 - Mean Variance Analysis.ipynb",
+      "path": "peitong/Week 10 - Mean Variance Analysis.ipynb",
+      "size": 135041,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2022-03-25T03:22:49.548054Z",
+  "format": "json",
+  "last_modified": "2022-03-25T03:22:49.548054Z",
+  "mimetype": null,
+  "name": "peitong",
+  "path": "peitong",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
