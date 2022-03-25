@@ -2,9 +2,9 @@
   "content": [
     {
       "content": null,
-      "created": "2022-03-25T10:45:24.624279Z",
+      "created": "2022-03-25T10:53:48.308715Z",
       "format": null,
-      "last_modified": "2022-03-25T10:41:40.078542Z",
+      "last_modified": "2022-03-25T10:49:52.489954Z",
       "mimetype": "text/csv",
       "name": "preprocessed.csv",
       "path": "data/preprocessed.csv",
@@ -14,9 +14,9 @@
     },
     {
       "content": null,
-      "created": "2022-03-25T10:45:24.080275Z",
+      "created": "2022-03-25T10:53:47.928717Z",
       "format": null,
-      "last_modified": "2022-03-25T10:41:39.582539Z",
+      "last_modified": "2022-03-25T10:49:51.997954Z",
       "mimetype": "text/plain",
       "name": "data_folder_link.txt",
       "path": "data/data_folder_link.txt",
@@ -26,9 +26,9 @@
     },
     {
       "content": null,
-      "created": "2022-03-25T10:45:24.092275Z",
+      "created": "2022-03-25T10:53:47.944717Z",
       "format": null,
-      "last_modified": "2022-03-25T10:41:39.602539Z",
+      "last_modified": "2022-03-25T10:49:52.017954Z",
       "mimetype": "text/csv",
       "name": "embeddings.csv",
       "path": "data/embeddings.csv",
@@ -37,9 +37,9 @@
       "writable": true
     }
   ],
-  "created": "2022-03-25T10:45:24.100275Z",
+  "created": "2022-03-25T10:53:47.952717Z",
   "format": "json",
-  "last_modified": "2022-03-25T10:45:24.100275Z",
+  "last_modified": "2022-03-25T10:53:47.952717Z",
   "mimetype": null,
   "name": "data",
   "path": "data",
