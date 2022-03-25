@@ -11,6 +11,7 @@ from nltk.corpus import stopwords
 # nltk.download('stopwords')
 # nltk.download('wordnet')
 from sklearn.decomposition import PCA
+from sklearn.decomposition import TruncatedSVD
 from sklearn.cluster import KMeans
 import plotly.express as px
 
@@ -35,8 +36,22 @@ def pca_visualize_2d(vectors, index):
     
     return [pca, pca_embedding]
 
+def visualize_svd(vectors, index):
+    multi_index = pd.MultiIndex.from_frame(index, names=["name", "industry"])
+    
+    svd = TruncatedSVD(n_components = min(10,vectors.shape[1]))
+    svd_embedding = svd.fit_transform(vectors)
+    svd_embedding = pd.DataFrame(svd_embedding, index = multi_index)
+    
+    fig = px.scatter(svd_embedding, x =0 , y = 1, hover_data={"name": svd_embedding.index.get_level_values(0),
+                                                              "industry": svd_embedding.index.get_level_values(1)},
+                     color = svd_embedding.index.get_level_values(1), width=1200, height=600)
+    fig.show()
+    
+    return [svd, svd_embedding]
+
 def pca_visualize_3d(plot):
-    if(plot[1].index.ndim == 1):
+    if(plot[1].index.nlevels == 1):
         fig = px.scatter_3d(plot[1], x =0 , y = 1, z = 2, hover_data={"name": plot[1].index},
                     color = plot[1].index, width=1200, height=600)
     else:
@@ -110,3 +125,53 @@ def clean(df):
     
     return non_html_data
 
+
+## Accuracy measures
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+def dot_product(embedding_matrix, data):
+    """calculates percentage of correct category predictions based on 1-NN using dot product
+    
+    args: embedding matrix of size nxm (n companies each with an embedding of size m). NOTE: embeddings should be normalized.
+    
+    returns: float representation of percentage of correct category predictions
+    """
+    dot_product = np.matmul(embedding_matrix, embedding_matrix.T)
+    np.fill_diagonal(dot_product.values, 0)
+    dot_product.index = data["SIC_desc"]
+    dot_product.columns = data["SIC_desc"]
+    dot_product_df = pd.DataFrame(dot_product.idxmax(axis=1))
+    dot_product_df.reset_index(level=0, inplace=True)
+    dot_product_df.columns = ["y_true", "y_pred"]
+    return dot_product_df, np.sum(np.where(dot_product_df.iloc[:,1] == dot_product_df.iloc[:,0], 1, 0))/len(embedding_matrix), confusion_matrix(dot_product_df["y_true"], dot_product_df["y_pred"], labels=None, sample_weight=None, normalize='true')
+
+def conf_mat(matrix, data):
+    dot_product_df, accuracy, cm = dot_product(matrix, data)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=data["SIC_desc"].unique())
+    disp.plot(xticks_rotation='vertical')
+    
+    return dot_product_df
+    
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve
+from sklearn.metrics import auc
+
+def show_ROC_curves(df, similarity_matrix):
+    for i in df["SIC_desc"].unique():
+        y_true = similarity_matrix["y_true"] == i
+        y_pred = similarity_matrix["y_pred"] == i
+        fpr,tpr, _ = roc_curve(y_true, y_pred)
+        roc_auc = auc(fpr, tpr)
+
+        plt.plot(
+            fpr,
+            tpr,
+            label="ROC curve of class {0} (area = {1:0.2f})".format(i, roc_auc),
+        )
+    plt.plot([0, 1], [0, 1], "k--")
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
+    plt.title("Some extension of Receiver operating characteristic to multiclass")
+    plt.legend(loc="lower right")
+    plt.show()
