@@ -175,3 +175,18 @@ def show_ROC_curves(df, similarity_matrix):
     plt.title("Some extension of Receiver operating characteristic to multiclass")
     plt.legend(loc="lower right")
     plt.show()
+
+def get_topics(model, vectorizer, num_topics):
+    
+    #the word ids obtained need to be reverse-mapped to the words so we can print the topic names.
+    feat_names = vectorizer.get_feature_names()
+    
+    word_dict = {};
+    for i in range(num_topics):
+        
+        #for each topic, obtain the largest values, and add the words they map to into the dictionary.
+        words_ids = model.components_[i].argsort()[:-20 - 1:-1]
+        words = [feat_names[key] for key in words_ids]
+        word_dict['Topic # ' + '{:02d}'.format(i+1)] = words;
+    
+    return pd.DataFrame(word_dict);
