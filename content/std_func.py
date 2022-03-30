@@ -185,7 +185,7 @@ def get_topics(model, vectorizer, num_topics):
     for i in range(num_topics):
         
         #for each topic, obtain the largest values, and add the words they map to into the dictionary.
-        words_ids = model.components_[i].argsort()[:-20 - 1:-1]
+        words_ids = model.components_[i].argsort()[:-10 - 1:-1]
         words = [feat_names[key] for key in words_ids]
         word_dict['Topic # ' + '{:02d}'.format(i+1)] = words;
     
