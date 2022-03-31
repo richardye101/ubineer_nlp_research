@@ -1,3 +1,6 @@
+# jupyter book
+_build/
+
 *.bundle.*
 lib/
 node_modules/

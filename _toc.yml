@@ -1,0 +1,14 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: content/richard/1_Tf-idf_analysis.ipynb
+- file: content/richard/2_LDA_topic_modelling.ipynb
+- file: content/richard/3_LSA_topic_modelling.ipynb
+- file: content/richard/4_Word2Vec.ipynb
+- file: content/richard/7_idk.ipynb
+- file: content/richard/8_Dynamic_Embedding.ipynb
+
+
