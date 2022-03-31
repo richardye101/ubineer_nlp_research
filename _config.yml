@@ -4,13 +4,15 @@
 title: Unsupervised analysis of Textual data from 10K Financial Reports
 author: Peitong Lu, Mary Xu, Richard Ye
 logo:
+copyright: "2022"
+
+# Ignore files not named in too
+only_build_toc_files: true
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
-# Ignore files not named in too
-only_build_toc_files: true
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -30,6 +32,7 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  favicon: "images/favicon.png"
   use_issues_button: true
   use_repository_button: true
 
