@@ -1,0 +1,133 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.362352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.844141Z",
+      "mimetype": null,
+      "name": "8_Dynamic_Embedding.ipynb",
+      "path": "richard/8_Dynamic_Embedding.ipynb",
+      "size": 816607,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.298352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.784141Z",
+      "mimetype": null,
+      "name": "4_Word2Vec.ipynb",
+      "path": "richard/4_Word2Vec.ipynb",
+      "size": 5511949,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.282352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.752141Z",
+      "mimetype": null,
+      "name": "3_LSA_topic_modelling.ipynb",
+      "path": "richard/3_LSA_topic_modelling.ipynb",
+      "size": 1578761,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.334352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.832141Z",
+      "mimetype": null,
+      "name": "5_Richard_methods.ipynb",
+      "path": "richard/5_Richard_methods.ipynb",
+      "size": 8745612,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.366352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.844141Z",
+      "mimetype": null,
+      "name": "DEPRECATED_Standard functions.ipynb",
+      "path": "richard/DEPRECATED_Standard functions.ipynb",
+      "size": 39919,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.366352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.844141Z",
+      "mimetype": null,
+      "name": "Report_richard.ipynb",
+      "path": "richard/Report_richard.ipynb",
+      "size": 10848,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.254352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.716141Z",
+      "mimetype": null,
+      "name": "1_Tf-idf_analysis.ipynb",
+      "path": "richard/1_Tf-idf_analysis.ipynb",
+      "size": 462948,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.358352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.840141Z",
+      "mimetype": null,
+      "name": "7_idk.ipynb",
+      "path": "richard/7_idk.ipynb",
+      "size": 1120236,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.270352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.744141Z",
+      "mimetype": null,
+      "name": "2_LDA_topic_modelling.ipynb",
+      "path": "richard/2_LDA_topic_modelling.ipynb",
+      "size": 4620403,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2022-03-31T02:39:36.354352Z",
+      "format": null,
+      "last_modified": "2022-03-31T02:35:45.832141Z",
+      "mimetype": null,
+      "name": "6_BERTopic.ipynb",
+      "path": "richard/6_BERTopic.ipynb",
+      "size": 709047,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2022-03-31T02:39:36.366352Z",
+  "format": "json",
+  "last_modified": "2022-03-31T02:39:36.366352Z",
+  "mimetype": null,
+  "name": "richard",
+  "path": "richard",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
