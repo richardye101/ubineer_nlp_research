@@ -1,0 +1,2012 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word embedding using tf-idf matrices &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LDA (Latent Dirichlet Allocation)" href="2_LDA_topic_modelling.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Unsupervised analysis of Textual data from 10K Financial Reports</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Word embedding using tf-idf matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_LDA_topic_modelling.html">
+   LDA (Latent Dirichlet Allocation)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_LSA_topic_modelling.html">
+   Experimenting with lemmatization SVD/LSA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Word2Vec.html">
+   Word2vec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_idk.html">
+   Differences between years for companies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Dynamic_Embedding.html">
+   Embedding methods to augment with dynamic analysis
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/richard/1_Tf-idf_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/richardye101/ubineer_nlp_research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/richardye101/ubineer_nlp_research/issues/new?title=Issue%20on%20page%20%2Fcontent/richard/1_Tf-idf_analysis.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/richardye101/ubineer_nlp_research/master?urlpath=tree/content/content/richard/1_Tf-idf_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minor-data-cleaning">
+   Minor data cleaning
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Word embedding using tf-idf matrices</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minor-data-cleaning">
+   Minor data cleaning
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="word-embedding-using-tf-idf-matrices">
+<h1>Word embedding using tf-idf matrices<a class="headerlink" href="#word-embedding-using-tf-idf-matrices" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook I’ll attempt to use tf-idf matrices to create word embeddings for the first 100 companies.</p>
+<p>Tf-Idf stands for <em>term frequency - inverse document frequency</em>. Each row in this matrix represents one document (in this case, one company) and each column represents a word (or n-gram, a sequence of words like “University of Toronto”). A term frequency matrix has the count of occurences of a given word for each document, while a tf-idf matrix performs a transformation on that term frequency matrix. The computation for each cell uses:</p>
+<p>\begin{align}
+\text{tf-idf}(t,d) &amp;= \text{tf}(t,d) \cdot \text{idf}(t,d)\ \
+\text{Where: } \quad \text{tf}(t,d) &amp;= |t| \text{ in } d\ \
+\text{idf}(t,d) &amp;= \log\frac{N}{\text{df}(t)}\
+\end{align}</p>
+<ul class="simple">
+<li><p>Where <strong>t</strong> is the current term we are process, and <strong>d</strong> is the current document we are looking in</p></li>
+<li><p>Where <strong>N</strong> is the total number of documents in the document set and <strong>df(t)</strong> is the document frequency of t;</p>
+<ul>
+<li><p>The document frequency is the number of documents in the document set that contain the term t<br />
+^ From <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html">sklearn</a></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">bigquery</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="s2">&quot;ubineerpoc&quot;</span><span class="p">)</span>
+
+<span class="c1"># query = &quot;&quot;&quot;</span>
+<span class="c1"># SELECT MAX(reportingDate), financialEntity, coDescription FROM `ubineerpoc.10KData.10KBusinessDesc`</span>
+<span class="c1"># GROUP BY financialEntity, coDescription</span>
+<span class="c1"># LIMIT 500</span>
+<span class="c1"># &quot;&quot;&quot;</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT coDescription FROM `ubineerpoc.10KData.10KBusinessDesc` LIMIT 500</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">query_job</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>  <span class="c1"># API request - starts the query</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">DefaultCredentialsError</span><span class="g g-Whitespace">                   </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="s2">&quot;ubineerpoc&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># query = &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># SELECT MAX(reportingDate), financialEntity, coDescription FROM `ubineerpoc.10KData.10KBusinessDesc`</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># GROUP BY financialEntity, coDescription</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># LIMIT 500</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="s2"> SELECT coDescription FROM `ubineerpoc.10KData.10KBusinessDesc` LIMIT 500</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="s2"> &quot;&quot;&quot;</span>
+
+<span class="nn">File /usr/local/lib/python3.9/site-packages/google/cloud/bigquery/client.py:231,</span> in <span class="ni">Client.__init__</span><span class="nt">(self, project, credentials, _http, location, default_query_job_config, client_info, client_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span>     <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span> <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">231</span>     <span class="nb">super</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>         <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>         <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>         <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="n">_http</span><span class="o">=</span><span class="n">_http</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span>     <span class="n">kw_args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;client_info&quot;</span><span class="p">:</span> <span class="n">client_info</span><span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="k">if</span> <span class="n">client_options</span><span class="p">:</span>
+
+<span class="nn">File /usr/local/lib/python3.9/site-packages/google/cloud/client/__init__.py:319,</span> in <span class="ni">ClientWithProject.__init__</span><span class="nt">(self, project, credentials, client_options, _http)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="n">_ClientProjectMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">319</span>     <span class="n">Client</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="n">_http</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>     <span class="p">)</span>
+
+<span class="nn">File /usr/local/lib/python3.9/site-packages/google/cloud/client/__init__.py:178,</span> in <span class="ni">Client.__init__</span><span class="nt">(self, credentials, _http, client_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="n">credentials</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">load_credentials_from_file</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>             <span class="n">client_options</span><span class="o">.</span><span class="n">credentials_file</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">178</span>         <span class="n">credentials</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span> <span class="bp">self</span><span class="o">.</span><span class="n">_credentials</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">with_scopes_if_required</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="n">credentials</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span> <span class="k">if</span> <span class="n">client_options</span><span class="o">.</span><span class="n">quota_project_id</span><span class="p">:</span>
+
+<span class="nn">File /usr/local/lib/python3.9/site-packages/google/auth/_default.py:575,</span> in <span class="ni">default</span><span class="nt">(scopes, request, quota_project_id, default_scopes)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span>             <span class="n">_LOGGER</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>                 <span class="s2">&quot;No project ID could be determined. Consider running &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>                 <span class="s2">&quot;`gcloud config set project` or setting the </span><span class="si">%s</span><span class="s2"> &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>                 <span class="s2">&quot;environment variable&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span>                 <span class="n">environment_vars</span><span class="o">.</span><span class="n">PROJECT</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span>             <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span>         <span class="k">return</span> <span class="n">credentials</span><span class="p">,</span> <span class="n">effective_project_id</span>
+<span class="ne">--&gt; </span><span class="mi">575</span> <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DefaultCredentialsError</span><span class="p">(</span><span class="n">_HELP_MESSAGE</span><span class="p">)</span>
+
+<span class="ne">DefaultCredentialsError</span>: Could not automatically determine credentials. Please set GOOGLE_APPLICATION_CREDENTIALS or explicitly create credentials and re-run the application. For more information, please see https://cloud.google.com/docs/authentication/getting-started
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#strip any left over html code</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">clean_data_fn</span><span class="p">(</span><span class="n">insrt_data</span><span class="p">):</span>
+    <span class="n">clean_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">insrt_data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;https://www.sec.gov/Archives/edgar/data/&quot;</span> <span class="ow">in</span> <span class="n">ele</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">clean_txt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;&lt;.*?&gt;&#39;</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">clean_txt</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">ele</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;</span><span class="se">\xa0</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">250</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">clean_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+    <span class="k">return</span><span class="p">(</span><span class="n">clean_data</span><span class="p">)</span>
+
+<span class="c1"># non_html_data = clean_data_fn(df)</span>
+<span class="c1"># non_html_data</span>
+<span class="n">non_html_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clean_data_fn</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]))</span>
+<span class="n">non_html_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ITEM 1. BUSINESSBackgroundNocopi Technologies,...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ITEM 1.BUSINESS. Introduction United Refining ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ITEM 1 - BUSINESS This Annual Report on Form 1...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Item 1B. Unresolved Staff Comments.Not Applica...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ITEM 1.BUSINESS  Fastenal Company (“Fastenal” ...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>291</th>
+      <td>Item 1.  BusinessOverviewWe are a leading prov...</td>
+    </tr>
+    <tr>
+      <th>292</th>
+      <td>ITEM 1. BUSINESSGENERALAcadia Realty Trust (th...</td>
+    </tr>
+    <tr>
+      <th>293</th>
+      <td>Item 1.Business We are a diversified gaming an...</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>ITEM 1. BUSINESSThe disclosures set forth in t...</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>ITEM 1. BUSINESS Overview We were formed in th...</td>
+    </tr>
+  </tbody>
+</table>
+<p>296 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="minor-data-cleaning">
+<h2>Minor data cleaning<a class="headerlink" href="#minor-data-cleaning" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># all observed after the first run through</span>
+<span class="c1"># components.abs().sort_values(0, axis = 1, ascending = False)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>(font size,)</th>
+      <th>(style font,)</th>
+      <th>(font style,)</th>
+      <th>(font family,)</th>
+      <th>(new roman,)</th>
+      <th>(times new roman,)</th>
+      <th>(times new,)</th>
+      <th>(font size pt,)</th>
+      <th>(size pt,)</th>
+      <th>(sec gov,)</th>
+      <th>...</th>
+      <th>(analysis financial condition results,)</th>
+      <th>(analysis financial condition,)</th>
+      <th>(method providing,)</th>
+      <th>(item management discussion,)</th>
+      <th>(item management discussion analysis,)</th>
+      <th>(management discussion analysis financial,)</th>
+      <th>(discussion analysis financial,)</th>
+      <th>(discussion analysis financial condition,)</th>
+      <th>(common equity,)</th>
+      <th>(controls procedures,)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.335025</td>
+      <td>0.306278</td>
+      <td>0.262956</td>
+      <td>0.253597</td>
+      <td>0.245409</td>
+      <td>0.245409</td>
+      <td>0.245409</td>
+      <td>0.238038</td>
+      <td>0.238038</td>
+      <td>0.231815</td>
+      <td>...</td>
+      <td>0.001476</td>
+      <td>0.001476</td>
+      <td>0.001474</td>
+      <td>0.001280</td>
+      <td>0.001280</td>
+      <td>0.001199</td>
+      <td>0.001199</td>
+      <td>0.000852</td>
+      <td>0.000790</td>
+      <td>0.000765</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.085236</td>
+      <td>0.115257</td>
+      <td>0.089485</td>
+      <td>0.088612</td>
+      <td>0.088807</td>
+      <td>0.088807</td>
+      <td>0.088807</td>
+      <td>0.080790</td>
+      <td>0.080790</td>
+      <td>0.502185</td>
+      <td>...</td>
+      <td>0.015646</td>
+      <td>0.015646</td>
+      <td>0.002072</td>
+      <td>0.009583</td>
+      <td>0.009583</td>
+      <td>0.014547</td>
+      <td>0.014547</td>
+      <td>0.014622</td>
+      <td>0.013230</td>
+      <td>0.015057</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.806077</td>
+      <td>0.015912</td>
+      <td>0.080478</td>
+      <td>0.100109</td>
+      <td>0.171465</td>
+      <td>0.171465</td>
+      <td>0.171465</td>
+      <td>0.035468</td>
+      <td>0.035468</td>
+      <td>0.017966</td>
+      <td>...</td>
+      <td>0.016976</td>
+      <td>0.016976</td>
+      <td>0.000930</td>
+      <td>0.015291</td>
+      <td>0.015291</td>
+      <td>0.016397</td>
+      <td>0.016397</td>
+      <td>0.016905</td>
+      <td>0.015802</td>
+      <td>0.020781</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.010846</td>
+      <td>0.055740</td>
+      <td>0.025546</td>
+      <td>0.019314</td>
+      <td>0.014817</td>
+      <td>0.014817</td>
+      <td>0.014817</td>
+      <td>0.025157</td>
+      <td>0.025157</td>
+      <td>0.036886</td>
+      <td>...</td>
+      <td>0.006147</td>
+      <td>0.006147</td>
+      <td>0.002354</td>
+      <td>0.011222</td>
+      <td>0.011222</td>
+      <td>0.011849</td>
+      <td>0.011849</td>
+      <td>0.011481</td>
+      <td>0.037080</td>
+      <td>0.003517</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.167648</td>
+      <td>0.060118</td>
+      <td>0.019144</td>
+      <td>0.031778</td>
+      <td>0.027972</td>
+      <td>0.027972</td>
+      <td>0.027972</td>
+      <td>0.065454</td>
+      <td>0.065454</td>
+      <td>0.070642</td>
+      <td>...</td>
+      <td>0.017819</td>
+      <td>0.017819</td>
+      <td>0.006264</td>
+      <td>0.004796</td>
+      <td>0.004796</td>
+      <td>0.016261</td>
+      <td>0.016261</td>
+      <td>0.017315</td>
+      <td>0.004154</td>
+      <td>0.042637</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.345211</td>
+      <td>0.350450</td>
+      <td>0.439137</td>
+      <td>0.163390</td>
+      <td>0.181639</td>
+      <td>0.181639</td>
+      <td>0.181639</td>
+      <td>0.266241</td>
+      <td>0.266241</td>
+      <td>0.017379</td>
+      <td>...</td>
+      <td>0.018822</td>
+      <td>0.018822</td>
+      <td>0.001960</td>
+      <td>0.020464</td>
+      <td>0.020464</td>
+      <td>0.017822</td>
+      <td>0.017822</td>
+      <td>0.018673</td>
+      <td>0.023637</td>
+      <td>0.049777</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.075678</td>
+      <td>0.109432</td>
+      <td>0.078070</td>
+      <td>0.048999</td>
+      <td>0.026448</td>
+      <td>0.026448</td>
+      <td>0.026448</td>
+      <td>0.114533</td>
+      <td>0.114533</td>
+      <td>0.054698</td>
+      <td>...</td>
+      <td>0.070217</td>
+      <td>0.070217</td>
+      <td>0.013292</td>
+      <td>0.061169</td>
+      <td>0.061169</td>
+      <td>0.066239</td>
+      <td>0.066239</td>
+      <td>0.069748</td>
+      <td>0.044356</td>
+      <td>0.157928</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.019745</td>
+      <td>0.049941</td>
+      <td>0.070026</td>
+      <td>0.011863</td>
+      <td>0.056283</td>
+      <td>0.056283</td>
+      <td>0.056283</td>
+      <td>0.007968</td>
+      <td>0.007968</td>
+      <td>0.016519</td>
+      <td>...</td>
+      <td>0.070761</td>
+      <td>0.070761</td>
+      <td>0.000794</td>
+      <td>0.049201</td>
+      <td>0.049201</td>
+      <td>0.067983</td>
+      <td>0.067983</td>
+      <td>0.070003</td>
+      <td>0.042120</td>
+      <td>0.081672</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.024701</td>
+      <td>0.013087</td>
+      <td>0.112221</td>
+      <td>0.035492</td>
+      <td>0.068468</td>
+      <td>0.068468</td>
+      <td>0.068468</td>
+      <td>0.022259</td>
+      <td>0.022259</td>
+      <td>0.019296</td>
+      <td>...</td>
+      <td>0.023022</td>
+      <td>0.023022</td>
+      <td>0.000145</td>
+      <td>0.015098</td>
+      <td>0.015098</td>
+      <td>0.017607</td>
+      <td>0.017607</td>
+      <td>0.018739</td>
+      <td>0.013136</td>
+      <td>0.047117</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.124293</td>
+      <td>0.245725</td>
+      <td>0.549725</td>
+      <td>0.088886</td>
+      <td>0.292968</td>
+      <td>0.292968</td>
+      <td>0.292968</td>
+      <td>0.214176</td>
+      <td>0.214176</td>
+      <td>0.004338</td>
+      <td>...</td>
+      <td>0.017065</td>
+      <td>0.017065</td>
+      <td>0.000168</td>
+      <td>0.015490</td>
+      <td>0.015490</td>
+      <td>0.016329</td>
+      <td>0.016329</td>
+      <td>0.017597</td>
+      <td>0.012599</td>
+      <td>0.002477</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 400 columns</p>
+</div></div></div>
+</div>
+<p>The data still seems to be quite a bit dirty, as the top influencial n tuple terms are formatting related, probably within the HTML of the descriptions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I&#39;m going to remove the first seven characters, since in almost all cases they just contain some variation of &quot;item 1.&quot;.</span>
+<span class="c1"># This also removes any html code leftover at the end of each string, such as font specifications</span>
+
+<span class="k">def</span> <span class="nf">remove_beg_txt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;BUSINESS&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Business.&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">6</span> <span class="p">:</span> <span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span> <span class="p">)])</span>
+           
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># found &quot;Business.&quot;, remove everything after it</span>
+            <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">[(</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Business.&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">9</span> <span class="p">)</span> <span class="p">:</span> <span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span> <span class="p">)</span> <span class="p">])</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">[(</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;BUSINESS&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">8</span> <span class="p">)</span> <span class="p">:</span> <span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span> <span class="p">)</span> <span class="p">])</span>
+<span class="c1"># find end function</span>
+
+<span class="n">df_1</span> <span class="o">=</span> <span class="n">non_html_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">remove_beg_txt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">df_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      .In General  NVE Corporation, referred to as N...
+1        Information Regarding Forward Looking Statem...
+2        General  Chiquita Brands International, Inc....
+3        We are an innovative designer, marketer and ...
+4      . Our CompanyWe were originally incorporated o...
+                             ...                        
+275     Introduction We are a blank check company inc...
+276     Loews Corporation was incorporated in 1969 an...
+277     GENERAL ClearOne (the Company) was formed as ...
+278    Corporate HistoryRosehill Resources Inc. (the ...
+279    . Business  OVERVIEW We are an independent exp...
+Name: 0, Length: 280, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="c1"># remove all numbers so they don&#39;t show up as dimensions</span>
+<span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span><span class="o">=</span><span class="n">preprocess_text</span><span class="p">,</span>
+                                           <span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+                                           <span class="n">stop_words</span> <span class="o">=</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)),</span>
+                  <span class="p">(</span><span class="s1">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">())])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The 400 n-tuples selected as our features based on how many documents theyve appeared in</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pipe</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())</span>
+<span class="n">feature_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>accounting principles</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>accounts receivable</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>act amended</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>additional information</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>adverse effect</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>395</th>
+      <td>year end</td>
+    </tr>
+    <tr>
+      <th>396</th>
+      <td>year ended</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>year ended december</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>years ended</td>
+    </tr>
+    <tr>
+      <th>399</th>
+      <td>years ended december</td>
+    </tr>
+  </tbody>
+</table>
+<p>400 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The tf-idf matrix</span>
+<span class="n">tfidf</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_1</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="n">tfidf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>390</th>
+      <th>391</th>
+      <th>392</th>
+      <th>393</th>
+      <th>394</th>
+      <th>395</th>
+      <th>396</th>
+      <th>397</th>
+      <th>398</th>
+      <th>399</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.088257</td>
+      <td>0.065122</td>
+      <td>0.066035</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.031680</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.033352</td>
+      <td>0.033577</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.062709</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.046271</td>
+      <td>0.046920</td>
+      <td>0.141121</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.054886</td>
+      <td>0.063132</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.061095</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.068745</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.009619</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.015219</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>276</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.042983</td>
+      <td>0.000000</td>
+      <td>0.012902</td>
+      <td>0.018675</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.017002</td>
+      <td>0.017116</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.075270</td>
+      <td>0.085066</td>
+      <td>0.074404</td>
+      <td>0.085582</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.004762</td>
+      <td>0.000000</td>
+      <td>0.038594</td>
+      <td>0.000000</td>
+      <td>0.057974</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.005651</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.004170</td>
+      <td>0.004228</td>
+      <td>0.000000</td>
+      <td>0.004170</td>
+      <td>0.004712</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>279</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.013824</td>
+      <td>0.005194</td>
+      <td>0.012448</td>
+      <td>0.000000</td>
+      <td>0.030598</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.011010</td>
+      <td>0.000000</td>
+      <td>0.004035</td>
+      <td>0.004091</td>
+      <td>0.018458</td>
+      <td>0.004035</td>
+      <td>0.004560</td>
+      <td>0.009572</td>
+      <td>0.011010</td>
+    </tr>
+  </tbody>
+</table>
+<p>280 rows × 400 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip3 install plotly</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="c1"># Referenced from my CSCD25 course</span>
+<span class="k">def</span> <span class="nf">visualize</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">pca_embedding</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vectors</span><span class="p">)</span>
+    <span class="n">pca_embedding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca_embedding</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span>
+    
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">vectors</span><span class="p">)</span>
+    <span class="n">pca_embedding</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+    <span class="n">pca_embedding</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pca_embedding</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_embedding</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">pca_embedding</span><span class="o">.</span><span class="n">index</span><span class="p">},</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;cluster&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">750</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="p">[</span><span class="n">pca</span><span class="p">,</span> <span class="n">pca_embedding</span><span class="p">]</span>
+
+<span class="n">plot</span> <span class="o">=</span> <span class="n">visualize</span><span class="p">(</span><span class="n">tfidf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">tfidf</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>                            <div id="a770d49d-70fe-45d1-a70a-abd0c94cec44" class="plotly-graph-div" style="height:750px; width:1200px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("a770d49d-70fe-45d1-a70a-abd0c94cec44")) {                    Plotly.newPlot(                        "a770d49d-70fe-45d1-a70a-abd0c94cec44",                        [{"customdata":[[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[12],[13],[16],[17],[18],[19],[22],[25],[26],[27],[28],[29],[31],[33],[36],[37],[39],[40],[42],[43],[44],[45],[46],[47],[48],[49],[50],[53],[54],[55],[56],[57],[58],[59],[60],[61],[62],[66],[69],[71],[72],[73],[74],[76],[78],[79],[80],[81],[83],[84],[85],[86],[87],[89],[91],[93],[94],[95],[97],[100],[102],[104],[106],[107],[108],[109],[110],[112],[113],[114],[118],[122],[123],[125],[127],[128],[129],[130],[131],[132],[133],[134],[136],[137],[138],[141],[142],[149],[150],[151],[152],[153],[154],[156],[157],[159],[161],[162],[163],[164],[165],[166],[168],[171],[173],[175],[176],[178],[179],[181],[182],[184],[186],[188],[190],[191],[194],[196],[197],[198],[199],[200],[202],[203],[204],[206],[207],[208],[210],[211],[212],[216],[217],[218],[219],[220],[221],[222],[223],[225],[227],[228],[229],[230],[231],[232],[234],[235],[236],[239],[240],[241],[242],[244],[245],[247],[248],[249],[250],[251],[252],[253],[255],[256],[257],[258],[259],[260],[263],[264],[265],[266],[268],[269],[270],[271],[272],[273],[274],[275],[277]],"hovertemplate":"cluster=1<br>0=%{x}<br>1=%{y}<br>name=%{customdata[0]}<extra></extra>","legendgroup":"1","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"1","orientation":"v","showlegend":true,"x":[-0.19628974700394552,0.01923664316434333,-0.0708630681980444,-0.17026949368089006,-0.006140616552332746,0.04550503515248303,0.061760237554070944,0.01920891150340618,0.024389546145304395,-0.06160856021760168,-0.28736028441344286,-0.16271795769540695,0.019316756581483487,-0.16938864732764475,-0.1576100756787115,-0.16710748749923046,0.08656700167749808,0.05202890915584625,-0.11909640889974846,0.03864474277854821,-0.20291619650650322,-0.03537961676653926,0.10162227597784666,-0.20755594435045743,0.010254295071865293,-0.20194934158350822,0.05997084397921401,0.02566307860495217,-0.0511010619657089,0.032471494255331815,0.017588105144070876,-0.09463188257172135,-0.14913714309683648,0.03687583738244994,-0.07143875273251145,0.07412410937634831,-0.020966249904069797,-0.03085228204489182,0.04860614436773461,0.09894799456581213,0.12058992346735342,-0.00501303262726042,0.009925126203577285,0.0330754126846208,-0.029008635571305105,-0.06564924223301524,0.07431213341449036,0.060991129323592644,-0.06329828129137781,-0.03172223197505578,-0.042393516216065345,-0.13713855491682347,-0.12110585649991042,0.09367966336150435,0.04009682994932728,0.08136086746426874,-0.129709628048108,-0.21413423993907013,-0.16308307398864638,-0.19356274992820025,0.04958948853036348,-0.15292128840418795,-0.1312266997908166,-0.0006698388423028224,0.021397103011188138,0.03384565592181155,0.03824977611283484,-0.06739300878450231,-0.17723678290830394,-0.07877604261169809,-0.05359329269681542,-0.1957115569861865,0.010624640416729416,0.003969702529995102,-0.12899494511700424,-0.004349588353487561,-0.056880126596715125,-0.10122425035093542,-0.1786299457249937,0.14764311299403501,-0.01764838063753109,0.0648621061412049,-0.13342091775659737,-0.12052716561896214,-0.09199157040044577,0.0370784568702618,-0.09789609765329613,0.08911122164175864,-0.1750540746178369,-0.11905319621122917,0.06082915493453758,-0.18004402141702816,-0.09576973239868604,-0.03645550096664104,0.0789037549719243,-0.22085790238949948,0.08493463381255616,0.11021852891575912,-0.06602402971217121,-0.21624344201645798,-0.03614432802536793,0.0035418347127473136,0.1030981011643989,0.05719390025767745,-0.031603949420257786,-0.003381812698162631,-0.05089234038677482,-0.20420840135701868,-0.1886154760317546,-0.11786485995140447,0.05829168028913188,-0.01656622342664702,0.06275044339185619,-0.14892126999192917,0.12685665044091846,0.01526209434234856,-0.0198104005204327,-0.19495173224881637,-0.06979271049228913,-0.08883917813553845,-0.04083826949713517,0.019625954057242004,0.08292642591097471,-0.040144398938036695,0.046684989904908734,-0.1778080267033825,-0.2007690738728071,-0.14946973902614707,-0.00915264819372819,0.06423240879295819,-0.005054186407599813,0.04592111258353366,-0.09453458358831508,-0.06250548590521114,-0.062329839398451214,0.02026753281939622,0.03965988434475232,0.1003198970649073,0.03733137604871702,0.022470040720450904,0.04596220943561633,0.049375388066495565,-0.04520288569826447,0.12607306702025162,-0.16296977385569597,0.085234851088944,-0.07987297801156548,-0.02074791163876616,-0.12114767875961009,-0.007067174589696242,0.062181679233770416,-0.031723720955781756,-0.14939298830015021,0.06875429292632115,0.05275613890931192,0.05540242668442824,-0.008292189619543781,0.03284137904857268,0.058143657512219754,-0.08669143933839013,0.08580221067912887,0.04637675306070532,-0.17112959122423052,-0.023975925569830994,0.036754982522478045,0.0631886903590273,0.02674171577598818,-0.1444804272011433,-0.20091350901093366,-0.08492616118957036,-0.1770325084501121,0.05366089554532936,-0.14236329608358628,0.16103370713781606,0.017701381651689295,-0.04968527786344249,-0.060589149378784186,-0.03354027610317111,-0.04727659559820728,-0.04684516377214108,-0.057619176596973035,-0.0457438367868014,-0.09551901844236978,-0.17318477600588858,0.09894799456581213,0.04996910384987264,0.0750767435363567,0.11696576717423034,-0.3194332132381661,-0.14907162269255209,0.07746702045077061,-0.053266184989515235],"xaxis":"x","y":[-0.1378468905206335,-0.2734308425564299,0.020765904505098257,-0.05688301441217404,-0.12490540800860982,-0.005752230377907508,-0.2010298525136955,-0.11641202963758698,-0.05379475183389318,-0.04139449565649268,0.1674045807529118,-0.1357395911444007,-0.000825707312801419,-0.020989175930292533,-0.1350297607947209,-0.26463178756676464,0.012658474135767074,-0.2975892993270936,-0.19890116419457365,-0.011194169719258245,-0.14718255172147324,-0.0030234118402751005,0.09686781009853589,-0.14448588414898766,-0.14336358476203256,-0.0327031821386924,-0.3009471001314305,0.0006681647496413611,-0.05190100482989606,-0.01572649568946674,-0.01769066873033706,-0.15286447380573057,0.008991549659338252,-0.0075739896919126215,-0.12452896321043497,-0.17298000138598862,-0.027451245259848402,-0.17148725369647577,-0.10410624244628533,-0.11850822017351764,0.0324576748643643,-0.07891628422533795,-0.10234583750802025,-0.020458717601779367,-0.0574883512823559,0.04410146663415249,-0.08654422368224941,0.0011378235302098333,-0.05701027914653259,-0.1756832247195002,-0.08258168257954362,-0.06458289075999371,-0.040161426543488705,-0.22059037294000533,-0.03589143931237583,-0.24301745967507435,-0.053088023894864285,-0.07294867115040218,-0.20413565486603785,-0.20348951453630426,-0.015148965766772052,-0.06187314604482081,-0.12353347978265733,-0.2521817142733266,-0.19799961691469048,-0.27979832344958405,-0.021268044135974967,-0.36521732587431294,-0.21890019717890638,-0.24074170758762023,-0.11709983130688559,-0.24230753870530927,-0.1343363345151769,-0.23478122869113618,0.0061252066968430765,-0.20094552506922428,-0.1065033632763074,0.0024096335939259262,-0.13472797466930014,-0.06956727960175405,-0.0719757302729145,-0.24734392275969397,-0.012959408302597062,-0.19544691096703873,-0.09207177226070892,0.035617152606212836,-0.2616147016151605,-0.045773043455187845,-0.049116452687864645,-0.1258918340337179,-0.23862503449821715,0.0352839558709354,-0.08381178205579345,-0.07529705766364266,-0.2979341879275241,-0.1266071594309722,-0.10446891661159081,0.03830146850330165,0.05453867438173471,-0.07144129072115495,-0.16127619734494203,-0.022154479451605917,-0.007838912331084347,0.0086440535949038,-0.07603388565949241,-0.2458960694959197,-0.08676792291969795,-0.08345897046781393,-0.02148152354037759,-0.03708280194088549,-0.1494465346798266,-0.13599084552693666,-0.013818539977905008,-0.285913676373057,0.029087844654903546,-0.17216503535329947,0.0026776345345256745,-0.2123286332995092,-0.13353346101479122,-0.03751734726360501,0.028204199233021175,-0.012473285516596825,-0.16370755466081754,-0.2999613511341985,-0.13932037988915824,-0.13713990894311315,0.09431903703328184,-0.1624287191487362,-0.2535859120342645,-0.009194175241465924,0.032680908971312574,-0.015455360441569095,-0.026712705336558278,-0.18894256549484478,-0.014853054985256763,0.0049183351171145865,-0.025546766494200172,-0.15886630582735245,-0.008964387587621353,-0.2434051692787619,-0.1580934738836982,-0.30727357664246924,-0.11880763749442723,0.024627196260767467,-0.3029574346164207,-0.34963682189877104,-0.06760570353045993,-0.0483287696028355,0.05916950759149508,-0.039271388502724255,-0.18543004162872181,-0.0891397243589987,-0.07161760431120229,-0.11555961994675155,-0.015264983447805438,-0.012961602799466673,-0.06344241508830221,0.04225492632920675,0.017585111986461323,-0.06774470563385337,-0.11351385732659786,-0.17109606609176375,-0.22020418721732485,-0.08647416418297617,-0.23433619740128406,-0.025406740565254028,-0.358578877781132,-0.08885582370737079,-0.04545779306628856,-0.21007610847486632,-0.05765288653372703,-0.2586247844089094,-0.018117316040607654,0.03092088369075793,0.022785058760194463,-0.018793201573612178,-0.08565024789669312,-0.20586658939231495,-0.21556042867032865,0.03332596495256873,-0.09945965702818098,-0.11965932884174112,-0.17273281102993293,-0.02243477750571256,-0.11850822017351764,-0.3151707064663741,-0.013933769758119786,0.041682116916308375,0.21461496526098667,-0.15027632198133228,-0.08315595647355509,-0.02776720628713691],"yaxis":"y","type":"scatter"},{"customdata":[[11],[14],[20],[21],[23],[24],[34],[52],[63],[67],[75],[88],[92],[98],[101],[103],[105],[111],[121],[135],[139],[140],[143],[144],[146],[147],[148],[155],[158],[160],[170],[177],[180],[185],[187],[189],[192],[193],[201],[226],[238],[243],[261],[262],[267]],"hovertemplate":"cluster=2<br>0=%{x}<br>1=%{y}<br>name=%{customdata[0]}<extra></extra>","legendgroup":"2","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"2","orientation":"v","showlegend":true,"x":[0.2551727174478569,0.20396612102102882,0.5478177819672777,0.5605248200561087,0.490611232443277,0.25813056691603276,0.15487874824877235,0.2591505876581933,0.1694220803983718,0.32982287471736327,0.2691731528486865,0.5883186514840372,0.11345395362445299,0.5242972774120106,0.5955792626504929,-0.03733110942510209,0.34376842581531564,0.6241463970267359,0.389710104196242,0.17441322341403348,0.3927151296714323,0.3432254145341478,0.5195611152534068,0.24780714271050452,0.40835949682478795,0.3821843335225186,0.4708158864936431,0.4965912600700051,0.49835657627957564,0.09981381114046511,0.47829458501111993,0.4052222160993119,0.14397430122410956,0.49017690809576125,0.13612485819641915,0.5035025646270777,0.31894444141122663,0.5238052165822854,0.37841831633412565,0.11344297712043039,0.33607806952889485,0.4803370758342937,0.380550456191069,0.3825603551859616,0.20828489111511292],"xaxis":"x","y":[0.16930854438371332,0.08523807485423694,0.2647261435252383,0.2701466931507076,0.26381484514799736,0.24645907182413726,0.09783006492107055,0.1351261740776799,0.13238068653436522,0.0954158641113458,0.10940513574352217,0.27034379943329334,0.0514422989073744,0.31803522949874774,0.30409344332780475,0.6163612961979626,0.10603477136249762,0.3215955476597223,0.19355861627400633,0.05438807419747185,0.12592445737637872,0.16742196784051797,0.24862094874557045,0.11566312303114226,0.2033387891716015,0.22404683767991213,0.2338052242803416,0.21569461319690808,0.2404624804837096,0.16812704215220842,0.239008273129788,0.1726719476620582,0.10043142766055942,0.25959015319991463,0.07534719082762881,0.1722832680410952,0.24919544158596058,0.2621543333803827,0.1761158599717412,0.17580268621198308,0.1302797029523262,0.23411174806259424,0.21383260519152594,0.22685751908213267,0.053627555649595655],"yaxis":"y","type":"scatter"},{"customdata":[[15],[30],[32],[35],[38],[41],[51],[64],[65],[68],[70],[77],[82],[90],[96],[99],[115],[116],[117],[119],[120],[124],[126],[145],[167],[169],[172],[174],[183],[195],[205],[209],[213],[214],[215],[224],[233],[237],[246],[254],[276],[278],[279]],"hovertemplate":"cluster=0<br>0=%{x}<br>1=%{y}<br>name=%{customdata[0]}<extra></extra>","legendgroup":"0","marker":{"color":"#00cc96","symbol":"circle"},"mode":"markers","name":"0","orientation":"v","showlegend":true,"x":[-0.46490691253734645,-0.058367283164132595,-0.05479802288173501,-0.4490365169005196,-0.04756377794255857,-0.1674139636309754,-0.2243907433208973,-0.4541090454587952,-0.015814652581539825,-0.020459308735421563,-0.07209973225431802,-0.0207494624743927,-0.03939196062175905,-0.045011494299767925,-0.4404716676413587,-0.013138494904842068,-0.019965248386913045,-0.007866561658321286,-0.4072917342125499,-0.4238174119141724,-0.42822852738365763,-0.4728855132687364,-0.040377469584600555,-0.44054278210057884,-0.4772801742824236,-0.1715362421648816,-0.4966985065531233,-0.41004364828517353,-0.04714784543419542,0.000030891857854995406,-0.45619427619702424,-0.07944705544192493,-0.19954831474100823,-0.4310695460575802,-0.30372641374303216,-0.054027449073295424,-0.05511532892776285,-0.41950490033263454,-0.2792166570645959,-0.050929882156986614,-0.12430855823235946,-0.049764251739619195,-0.15816794467256723],"xaxis":"x","y":[0.48229351293700884,-0.0861656748687163,0.10225632711170185,0.5492066669318854,-0.12425118991250095,0.1818272073526117,0.2843752761197863,0.47141087223657013,0.07841964843416861,0.14869182978299417,-0.0784036952236478,0.07458566043392638,0.07907973498762033,-0.13456846610449216,0.6549148443544429,0.05392882515915255,0.09390523755087599,-0.04725980604267141,0.38766261691248605,0.3785423694912033,0.5791501687298451,0.5943088171615888,0.07686510043076802,0.32658580255814795,0.6054726087982868,0.2558103845793886,0.4895653591186178,0.5286937853799353,-0.05974831717720188,0.012701860632236694,0.6338954912729555,-0.06852689723571892,0.2432584610777019,0.5142319013652905,0.3301234394387388,-0.19962308346730265,0.10844329136698033,0.6069084283582014,0.5517229025057782,-0.10640970246973437,0.15398827011195285,0.08344002054107055,0.1766245217271519],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"0"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"1"}},"legend":{"title":{"text":"cluster"},"tracegroupgap":0},"margin":{"t":60},"height":750,"width":1200},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('a770d49d-70fe-45d1-a70a-abd0c94cec44');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">plot</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span> <span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">plot</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">},</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;cluster&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>                            <div id="4063dc78-bf9a-427b-9af4-7e5c1e0c1309" class="plotly-graph-div" style="height:700px; width:1200px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("4063dc78-bf9a-427b-9af4-7e5c1e0c1309")) {                    Plotly.newPlot(                        "4063dc78-bf9a-427b-9af4-7e5c1e0c1309",                        [{"customdata":[[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[12],[13],[16],[17],[18],[19],[22],[25],[26],[27],[28],[29],[31],[33],[36],[37],[39],[40],[42],[43],[44],[45],[46],[47],[48],[49],[50],[53],[54],[55],[56],[57],[58],[59],[60],[61],[62],[66],[69],[71],[72],[73],[74],[76],[78],[79],[80],[81],[83],[84],[85],[86],[87],[89],[91],[93],[94],[95],[97],[100],[102],[104],[106],[107],[108],[109],[110],[112],[113],[114],[118],[122],[123],[125],[127],[128],[129],[130],[131],[132],[133],[134],[136],[137],[138],[141],[142],[149],[150],[151],[152],[153],[154],[156],[157],[159],[161],[162],[163],[164],[165],[166],[168],[171],[173],[175],[176],[178],[179],[181],[182],[184],[186],[188],[190],[191],[194],[196],[197],[198],[199],[200],[202],[203],[204],[206],[207],[208],[210],[211],[212],[216],[217],[218],[219],[220],[221],[222],[223],[225],[227],[228],[229],[230],[231],[232],[234],[235],[236],[239],[240],[241],[242],[244],[245],[247],[248],[249],[250],[251],[252],[253],[255],[256],[257],[258],[259],[260],[263],[264],[265],[266],[268],[269],[270],[271],[272],[273],[274],[275],[277]],"hovertemplate":"cluster=1<br>0=%{x}<br>1=%{y}<br>2=%{z}<br>name=%{customdata[0]}<extra></extra>","legendgroup":"1","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"1","scene":"scene","showlegend":true,"x":[-0.19628974700394552,0.01923664316434333,-0.0708630681980444,-0.17026949368089006,-0.006140616552332746,0.04550503515248303,0.061760237554070944,0.01920891150340618,0.024389546145304395,-0.06160856021760168,-0.28736028441344286,-0.16271795769540695,0.019316756581483487,-0.16938864732764475,-0.1576100756787115,-0.16710748749923046,0.08656700167749808,0.05202890915584625,-0.11909640889974846,0.03864474277854821,-0.20291619650650322,-0.03537961676653926,0.10162227597784666,-0.20755594435045743,0.010254295071865293,-0.20194934158350822,0.05997084397921401,0.02566307860495217,-0.0511010619657089,0.032471494255331815,0.017588105144070876,-0.09463188257172135,-0.14913714309683648,0.03687583738244994,-0.07143875273251145,0.07412410937634831,-0.020966249904069797,-0.03085228204489182,0.04860614436773461,0.09894799456581213,0.12058992346735342,-0.00501303262726042,0.009925126203577285,0.0330754126846208,-0.029008635571305105,-0.06564924223301524,0.07431213341449036,0.060991129323592644,-0.06329828129137781,-0.03172223197505578,-0.042393516216065345,-0.13713855491682347,-0.12110585649991042,0.09367966336150435,0.04009682994932728,0.08136086746426874,-0.129709628048108,-0.21413423993907013,-0.16308307398864638,-0.19356274992820025,0.04958948853036348,-0.15292128840418795,-0.1312266997908166,-0.0006698388423028224,0.021397103011188138,0.03384565592181155,0.03824977611283484,-0.06739300878450231,-0.17723678290830394,-0.07877604261169809,-0.05359329269681542,-0.1957115569861865,0.010624640416729416,0.003969702529995102,-0.12899494511700424,-0.004349588353487561,-0.056880126596715125,-0.10122425035093542,-0.1786299457249937,0.14764311299403501,-0.01764838063753109,0.0648621061412049,-0.13342091775659737,-0.12052716561896214,-0.09199157040044577,0.0370784568702618,-0.09789609765329613,0.08911122164175864,-0.1750540746178369,-0.11905319621122917,0.06082915493453758,-0.18004402141702816,-0.09576973239868604,-0.03645550096664104,0.0789037549719243,-0.22085790238949948,0.08493463381255616,0.11021852891575912,-0.06602402971217121,-0.21624344201645798,-0.03614432802536793,0.0035418347127473136,0.1030981011643989,0.05719390025767745,-0.031603949420257786,-0.003381812698162631,-0.05089234038677482,-0.20420840135701868,-0.1886154760317546,-0.11786485995140447,0.05829168028913188,-0.01656622342664702,0.06275044339185619,-0.14892126999192917,0.12685665044091846,0.01526209434234856,-0.0198104005204327,-0.19495173224881637,-0.06979271049228913,-0.08883917813553845,-0.04083826949713517,0.019625954057242004,0.08292642591097471,-0.040144398938036695,0.046684989904908734,-0.1778080267033825,-0.2007690738728071,-0.14946973902614707,-0.00915264819372819,0.06423240879295819,-0.005054186407599813,0.04592111258353366,-0.09453458358831508,-0.06250548590521114,-0.062329839398451214,0.02026753281939622,0.03965988434475232,0.1003198970649073,0.03733137604871702,0.022470040720450904,0.04596220943561633,0.049375388066495565,-0.04520288569826447,0.12607306702025162,-0.16296977385569597,0.085234851088944,-0.07987297801156548,-0.02074791163876616,-0.12114767875961009,-0.007067174589696242,0.062181679233770416,-0.031723720955781756,-0.14939298830015021,0.06875429292632115,0.05275613890931192,0.05540242668442824,-0.008292189619543781,0.03284137904857268,0.058143657512219754,-0.08669143933839013,0.08580221067912887,0.04637675306070532,-0.17112959122423052,-0.023975925569830994,0.036754982522478045,0.0631886903590273,0.02674171577598818,-0.1444804272011433,-0.20091350901093366,-0.08492616118957036,-0.1770325084501121,0.05366089554532936,-0.14236329608358628,0.16103370713781606,0.017701381651689295,-0.04968527786344249,-0.060589149378784186,-0.03354027610317111,-0.04727659559820728,-0.04684516377214108,-0.057619176596973035,-0.0457438367868014,-0.09551901844236978,-0.17318477600588858,0.09894799456581213,0.04996910384987264,0.0750767435363567,0.11696576717423034,-0.3194332132381661,-0.14907162269255209,0.07746702045077061,-0.053266184989515235],"y":[-0.1378468905206335,-0.2734308425564299,0.020765904505098257,-0.05688301441217404,-0.12490540800860982,-0.005752230377907508,-0.2010298525136955,-0.11641202963758698,-0.05379475183389318,-0.04139449565649268,0.1674045807529118,-0.1357395911444007,-0.000825707312801419,-0.020989175930292533,-0.1350297607947209,-0.26463178756676464,0.012658474135767074,-0.2975892993270936,-0.19890116419457365,-0.011194169719258245,-0.14718255172147324,-0.0030234118402751005,0.09686781009853589,-0.14448588414898766,-0.14336358476203256,-0.0327031821386924,-0.3009471001314305,0.0006681647496413611,-0.05190100482989606,-0.01572649568946674,-0.01769066873033706,-0.15286447380573057,0.008991549659338252,-0.0075739896919126215,-0.12452896321043497,-0.17298000138598862,-0.027451245259848402,-0.17148725369647577,-0.10410624244628533,-0.11850822017351764,0.0324576748643643,-0.07891628422533795,-0.10234583750802025,-0.020458717601779367,-0.0574883512823559,0.04410146663415249,-0.08654422368224941,0.0011378235302098333,-0.05701027914653259,-0.1756832247195002,-0.08258168257954362,-0.06458289075999371,-0.040161426543488705,-0.22059037294000533,-0.03589143931237583,-0.24301745967507435,-0.053088023894864285,-0.07294867115040218,-0.20413565486603785,-0.20348951453630426,-0.015148965766772052,-0.06187314604482081,-0.12353347978265733,-0.2521817142733266,-0.19799961691469048,-0.27979832344958405,-0.021268044135974967,-0.36521732587431294,-0.21890019717890638,-0.24074170758762023,-0.11709983130688559,-0.24230753870530927,-0.1343363345151769,-0.23478122869113618,0.0061252066968430765,-0.20094552506922428,-0.1065033632763074,0.0024096335939259262,-0.13472797466930014,-0.06956727960175405,-0.0719757302729145,-0.24734392275969397,-0.012959408302597062,-0.19544691096703873,-0.09207177226070892,0.035617152606212836,-0.2616147016151605,-0.045773043455187845,-0.049116452687864645,-0.1258918340337179,-0.23862503449821715,0.0352839558709354,-0.08381178205579345,-0.07529705766364266,-0.2979341879275241,-0.1266071594309722,-0.10446891661159081,0.03830146850330165,0.05453867438173471,-0.07144129072115495,-0.16127619734494203,-0.022154479451605917,-0.007838912331084347,0.0086440535949038,-0.07603388565949241,-0.2458960694959197,-0.08676792291969795,-0.08345897046781393,-0.02148152354037759,-0.03708280194088549,-0.1494465346798266,-0.13599084552693666,-0.013818539977905008,-0.285913676373057,0.029087844654903546,-0.17216503535329947,0.0026776345345256745,-0.2123286332995092,-0.13353346101479122,-0.03751734726360501,0.028204199233021175,-0.012473285516596825,-0.16370755466081754,-0.2999613511341985,-0.13932037988915824,-0.13713990894311315,0.09431903703328184,-0.1624287191487362,-0.2535859120342645,-0.009194175241465924,0.032680908971312574,-0.015455360441569095,-0.026712705336558278,-0.18894256549484478,-0.014853054985256763,0.0049183351171145865,-0.025546766494200172,-0.15886630582735245,-0.008964387587621353,-0.2434051692787619,-0.1580934738836982,-0.30727357664246924,-0.11880763749442723,0.024627196260767467,-0.3029574346164207,-0.34963682189877104,-0.06760570353045993,-0.0483287696028355,0.05916950759149508,-0.039271388502724255,-0.18543004162872181,-0.0891397243589987,-0.07161760431120229,-0.11555961994675155,-0.015264983447805438,-0.012961602799466673,-0.06344241508830221,0.04225492632920675,0.017585111986461323,-0.06774470563385337,-0.11351385732659786,-0.17109606609176375,-0.22020418721732485,-0.08647416418297617,-0.23433619740128406,-0.025406740565254028,-0.358578877781132,-0.08885582370737079,-0.04545779306628856,-0.21007610847486632,-0.05765288653372703,-0.2586247844089094,-0.018117316040607654,0.03092088369075793,0.022785058760194463,-0.018793201573612178,-0.08565024789669312,-0.20586658939231495,-0.21556042867032865,0.03332596495256873,-0.09945965702818098,-0.11965932884174112,-0.17273281102993293,-0.02243477750571256,-0.11850822017351764,-0.3151707064663741,-0.013933769758119786,0.041682116916308375,0.21461496526098667,-0.15027632198133228,-0.08315595647355509,-0.02776720628713691],"z":[-0.21944534925397696,0.07968451871859535,-0.08876308485842217,-0.19121323502977,0.00048125927694131493,-0.007538669333805405,0.05621652895752176,0.021439063528184935,0.038101202402251795,-0.09134043056282486,-0.1301175502331792,-0.18967157549669922,-0.0707505113302764,-0.10345451800535578,-0.18030137585203065,-0.22745129052170798,-0.0033252189130207922,0.08270318560049514,-0.17835201027792869,0.051444657118941355,-0.20082490680690665,-0.08964621503161888,-0.10992993179714906,-0.24746362997184307,0.04662184616503028,-0.2230655018466617,0.15113863497206662,0.052817683617172664,-0.08369089339540076,0.003236557847593374,0.03847644995626836,-0.10554396275360778,-0.09797895240131174,0.09280581190192774,-0.05820940844209512,0.11645751014560266,-0.06428259240498027,-0.02877986637480901,-0.16731935703997136,0.14065645836214524,0.03863529205446343,-0.007020305953956168,-0.06864186226062306,0.03829928226460295,-0.0013849529608522698,-0.14288619652641052,0.12921960806998734,-0.04462774225291834,-0.08392647743801028,-0.06762691679848379,-0.09117368655537442,-0.16948531382673562,-0.16493282741436494,0.15103452424294167,0.04323795691035188,0.1382906449472715,-0.17871820884908549,-0.20749830636650443,-0.21448658483930222,-0.2513472719813474,0.06722008680069912,-0.21536938178979737,-0.14389424227814612,0.30778959794184424,0.04768323529437813,0.07123087598450963,0.06466362414859879,-0.01714672793042337,-0.22360756457691286,-0.09996050947264983,0.008925779369636719,-0.25635178697751027,-0.017063104932807806,0.01780516793041037,0.011509534082789511,-0.06894018214059378,0.007730807133853606,-0.057966194587150244,-0.21060365329279104,0.06393995480660918,-0.06718738578183252,0.1064109592014965,-0.11451015068179168,-0.1737362759237599,-0.1350670502409136,0.15093031257672201,-0.0782450661623635,0.014056454135728392,-0.23831488968382888,-0.11919675168855362,0.07038265244565181,-0.173568739754466,-0.11044594556412207,-0.0606369052380138,0.1240690809224418,-0.2671884946008314,0.14025335881697323,0.039170116752244764,-0.08452264475435523,-0.20754897415443765,-0.02050454132447429,-0.014900938357209506,0.05623347700387107,0.026884846543106255,-0.08324828275740645,0.049589319815238245,-0.059871608923474144,-0.27767681329170896,-0.1809113847679975,-0.2246423366778786,0.19628457125534515,-0.06695770930065331,0.05484563882616175,-0.18275516622109342,0.039978264787107504,0.08712650508729482,-0.11612641225100838,-0.24993395598676843,-0.02967405022846516,-0.10168243137223039,-0.09798755883143136,0.04957590909972285,0.1541779768261557,0.0789932419078848,0.0925965168101994,-0.19317342562344664,-0.13416286043568207,-0.20371232320880261,-0.02639938590530465,-0.06024201184278962,-0.1972681339665744,0.07362259264771676,-0.08564386632599166,-0.01793009770238759,-0.16292679460019927,0.10597469826938484,-0.033468428312992515,0.15372990215215726,0.06007916165251396,0.02639409102483955,0.07177993800212672,0.05773755216941769,-0.0294761568181937,0.05046863330723886,-0.017589640867669055,0.11308164161117092,-0.12031802996287093,-0.005995432407199519,-0.1374594898437175,-0.047855141406360796,0.07547358136873795,0.06607424615333587,-0.15000104269373757,0.11156606123149373,0.0786118290596986,0.07788946393573803,0.006766776484479161,0.03438921005425405,0.05219110068510139,-0.05415966345589865,0.017614475872706734,0.095850741942133,-0.22234658111586383,-0.06302607814158712,0.10848428023018697,0.10242290866221242,0.12113709605015369,-0.21197965201776553,-0.22977274953283391,-0.025953347429024075,-0.13799019849464006,0.08682987614367785,-0.07624427211492374,0.025759636462247874,-0.07175993287460945,-0.016098969806325004,-0.12085190879688464,-0.021969818755625804,-0.04733976240966703,-0.2028089232052067,-0.061139150424523316,0.010936820163342227,-0.17967162594547645,-0.20898025972155335,0.14065645836214524,0.1411807852307207,0.024191982894908474,0.040750295367446704,-0.16128751977371947,-0.21555004222574212,0.12066466527959165,-0.0367362926834184],"type":"scatter3d"},{"customdata":[[11],[14],[20],[21],[23],[24],[34],[52],[63],[67],[75],[88],[92],[98],[101],[103],[105],[111],[121],[135],[139],[140],[143],[144],[146],[147],[148],[155],[158],[160],[170],[177],[180],[185],[187],[189],[192],[193],[201],[226],[238],[243],[261],[262],[267]],"hovertemplate":"cluster=2<br>0=%{x}<br>1=%{y}<br>2=%{z}<br>name=%{customdata[0]}<extra></extra>","legendgroup":"2","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"2","scene":"scene","showlegend":true,"x":[0.2551727174478569,0.20396612102102882,0.5478177819672777,0.5605248200561087,0.490611232443277,0.25813056691603276,0.15487874824877235,0.2591505876581933,0.1694220803983718,0.32982287471736327,0.2691731528486865,0.5883186514840372,0.11345395362445299,0.5242972774120106,0.5955792626504929,-0.03733110942510209,0.34376842581531564,0.6241463970267359,0.389710104196242,0.17441322341403348,0.3927151296714323,0.3432254145341478,0.5195611152534068,0.24780714271050452,0.40835949682478795,0.3821843335225186,0.4708158864936431,0.4965912600700051,0.49835657627957564,0.09981381114046511,0.47829458501111993,0.4052222160993119,0.14397430122410956,0.49017690809576125,0.13612485819641915,0.5035025646270777,0.31894444141122663,0.5238052165822854,0.37841831633412565,0.11344297712043039,0.33607806952889485,0.4803370758342937,0.380550456191069,0.3825603551859616,0.20828489111511292],"y":[0.16930854438371332,0.08523807485423694,0.2647261435252383,0.2701466931507076,0.26381484514799736,0.24645907182413726,0.09783006492107055,0.1351261740776799,0.13238068653436522,0.0954158641113458,0.10940513574352217,0.27034379943329334,0.0514422989073744,0.31803522949874774,0.30409344332780475,0.6163612961979626,0.10603477136249762,0.3215955476597223,0.19355861627400633,0.05438807419747185,0.12592445737637872,0.16742196784051797,0.24862094874557045,0.11566312303114226,0.2033387891716015,0.22404683767991213,0.2338052242803416,0.21569461319690808,0.2404624804837096,0.16812704215220842,0.239008273129788,0.1726719476620582,0.10043142766055942,0.25959015319991463,0.07534719082762881,0.1722832680410952,0.24919544158596058,0.2621543333803827,0.1761158599717412,0.17580268621198308,0.1302797029523262,0.23411174806259424,0.21383260519152594,0.22685751908213267,0.053627555649595655],"z":[-0.12573507642596765,-0.0325758569145942,-0.07738727732277796,-0.09784245088133631,-0.08457681428525606,-0.13148421003577992,0.04136110290916776,-0.0059924122413448485,-0.02154141653219524,-0.09307824889468332,-0.05451325209555483,-0.08610130777952449,-0.12061632396364419,-0.09874935789028384,-0.13043700257927848,-0.09240983916781925,-0.036452353434542714,-0.09818807063671943,-0.07890223984352433,-0.09474074173226472,-0.10334189308353339,-0.14087406060887306,-0.06275505371579186,-0.09386605119125013,-0.16497886343453835,-0.06574121744179107,-0.0808097509315218,-0.071789669002744,-0.07872354998930088,-0.13616075190179916,-0.06311181898923819,-0.1564815343109948,-0.15452604824726798,-0.13867383242940948,-0.14133734483972812,-0.10616555700884119,-0.14155240553625703,-0.05863372106146167,-0.09978173616764197,-0.09704513492927175,-0.11293018645915237,-0.07246496699021078,-0.09363521707266013,-0.1209038461092049,-0.11664686258724095],"type":"scatter3d"},{"customdata":[[15],[30],[32],[35],[38],[41],[51],[64],[65],[68],[70],[77],[82],[90],[96],[99],[115],[116],[117],[119],[120],[124],[126],[145],[167],[169],[172],[174],[183],[195],[205],[209],[213],[214],[215],[224],[233],[237],[246],[254],[276],[278],[279]],"hovertemplate":"cluster=0<br>0=%{x}<br>1=%{y}<br>2=%{z}<br>name=%{customdata[0]}<extra></extra>","legendgroup":"0","marker":{"color":"#00cc96","symbol":"circle"},"mode":"markers","name":"0","scene":"scene","showlegend":true,"x":[-0.46490691253734645,-0.058367283164132595,-0.05479802288173501,-0.4490365169005196,-0.04756377794255857,-0.1674139636309754,-0.2243907433208973,-0.4541090454587952,-0.015814652581539825,-0.020459308735421563,-0.07209973225431802,-0.0207494624743927,-0.03939196062175905,-0.045011494299767925,-0.4404716676413587,-0.013138494904842068,-0.019965248386913045,-0.007866561658321286,-0.4072917342125499,-0.4238174119141724,-0.42822852738365763,-0.4728855132687364,-0.040377469584600555,-0.44054278210057884,-0.4772801742824236,-0.1715362421648816,-0.4966985065531233,-0.41004364828517353,-0.04714784543419542,0.000030891857854995406,-0.45619427619702424,-0.07944705544192493,-0.19954831474100823,-0.4310695460575802,-0.30372641374303216,-0.054027449073295424,-0.05511532892776285,-0.41950490033263454,-0.2792166570645959,-0.050929882156986614,-0.12430855823235946,-0.049764251739619195,-0.15816794467256723],"y":[0.48229351293700884,-0.0861656748687163,0.10225632711170185,0.5492066669318854,-0.12425118991250095,0.1818272073526117,0.2843752761197863,0.47141087223657013,0.07841964843416861,0.14869182978299417,-0.0784036952236478,0.07458566043392638,0.07907973498762033,-0.13456846610449216,0.6549148443544429,0.05392882515915255,0.09390523755087599,-0.04725980604267141,0.38766261691248605,0.3785423694912033,0.5791501687298451,0.5943088171615888,0.07686510043076802,0.32658580255814795,0.6054726087982868,0.2558103845793886,0.4895653591186178,0.5286937853799353,-0.05974831717720188,0.012701860632236694,0.6338954912729555,-0.06852689723571892,0.2432584610777019,0.5142319013652905,0.3301234394387388,-0.19962308346730265,0.10844329136698033,0.6069084283582014,0.5517229025057782,-0.10640970246973437,0.15398827011195285,0.08344002054107055,0.1766245217271519],"z":[0.030820473155301207,0.6794468395447235,0.6403934561841786,-0.05141131543174506,0.5213550486378538,0.04424194529318447,0.11676230122356225,-0.1132471885093079,0.5918275228729265,0.6848084649903067,0.5097619227770809,0.179169827161575,0.6648394947231656,0.3499649357680124,0.053096673276619544,0.45994756752860727,0.49253296688411907,0.3811662994401532,0.03519611413122663,-0.12536880429670794,-0.036806217768219775,-0.016989211754256585,0.5702311050952811,-0.10801840692309062,0.10927965317037903,0.7073949098787978,-0.10888628962796051,-0.055730928495512824,0.3837377586829501,0.2581808761354679,0.00226607412766221,0.36658520012523693,0.4940873484505297,-0.03978931915359925,-0.13190202336311896,0.4738505641853159,0.7663107928955838,0.13343719584642372,-0.03518191154370572,0.3476814172539179,0.4956500837079583,0.7047761909841918,0.4935092859930472],"type":"scatter3d"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"scene":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"xaxis":{"title":{"text":"0"}},"yaxis":{"title":{"text":"1"}},"zaxis":{"title":{"text":"2"}}},"legend":{"title":{"text":"cluster"},"tracegroupgap":0},"margin":{"t":60},"height":700,"width":1200},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('4063dc78-bf9a-427b-9af4-7e5c1e0c1309');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div></div>
+</div>
+<p>It’s hard to tell whether this did a good job at clustering/visualizing groupings of companies since we don’t have information on what company names are or sectors they operate in.</p>
+<p>From this plot it does seem as though companies are spread along one major axis, with a large grouping in the bottom left. We don’t see any distinct groupings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># From the explained variance ratio, we see that the top three dimensions don&#39;t actually explain that much of the variation that exists within our data/companies.</span>
+<span class="n">plot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.04833637, 0.04409771, 0.04064634, 0.03407688, 0.03167105,
+       0.02941252, 0.02650908, 0.02466904, 0.02359351, 0.02018053])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.13308042157022962
+</pre></div>
+</div>
+</div>
+</div>
+<p>Based on the above, the top three principle components only explain 13% of the total variance that exists within the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">components</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">plot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">components_</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
+<span class="n">components</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">components</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1"># components[0:2]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>(accounting principles,)</th>
+      <th>(accounts receivable,)</th>
+      <th>(act amended,)</th>
+      <th>(additional information,)</th>
+      <th>(adverse effect,)</th>
+      <th>(adverse effect business,)</th>
+      <th>(adversely affect,)</th>
+      <th>(advisory agreement,)</th>
+      <th>(allowance loan,)</th>
+      <th>(allowance loan losses,)</th>
+      <th>...</th>
+      <th>(wide range,)</th>
+      <th>(wide variety,)</th>
+      <th>(working capital,)</th>
+      <th>(www sec,)</th>
+      <th>(www sec gov,)</th>
+      <th>(year end,)</th>
+      <th>(year ended,)</th>
+      <th>(year ended december,)</th>
+      <th>(years ended,)</th>
+      <th>(years ended december,)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.006470</td>
+      <td>-0.006772</td>
+      <td>0.008198</td>
+      <td>-0.002318</td>
+      <td>-0.012431</td>
+      <td>-0.010977</td>
+      <td>-0.008419</td>
+      <td>0.018740</td>
+      <td>0.068304</td>
+      <td>0.055180</td>
+      <td>...</td>
+      <td>-0.032378</td>
+      <td>-0.023376</td>
+      <td>0.001783</td>
+      <td>-0.019092</td>
+      <td>-0.017355</td>
+      <td>-0.002897</td>
+      <td>-0.037650</td>
+      <td>-0.030932</td>
+      <td>-0.025046</td>
+      <td>-0.024312</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.013198</td>
+      <td>-0.010992</td>
+      <td>-0.014688</td>
+      <td>0.015369</td>
+      <td>-0.011379</td>
+      <td>-0.019277</td>
+      <td>-0.000488</td>
+      <td>0.004078</td>
+      <td>0.036409</td>
+      <td>0.030242</td>
+      <td>...</td>
+      <td>0.006160</td>
+      <td>0.004592</td>
+      <td>-0.012428</td>
+      <td>-0.003802</td>
+      <td>-0.005438</td>
+      <td>-0.016211</td>
+      <td>-0.046579</td>
+      <td>-0.032681</td>
+      <td>-0.001621</td>
+      <td>-0.001050</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.002832</td>
+      <td>-0.009313</td>
+      <td>-0.003083</td>
+      <td>-0.016985</td>
+      <td>-0.021801</td>
+      <td>-0.017821</td>
+      <td>-0.011402</td>
+      <td>-0.003371</td>
+      <td>-0.012740</td>
+      <td>-0.009591</td>
+      <td>...</td>
+      <td>-0.032162</td>
+      <td>-0.029349</td>
+      <td>-0.008157</td>
+      <td>-0.034743</td>
+      <td>-0.034268</td>
+      <td>-0.009347</td>
+      <td>0.027141</td>
+      <td>0.030491</td>
+      <td>-0.015484</td>
+      <td>-0.014777</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.034044</td>
+      <td>0.022810</td>
+      <td>0.015171</td>
+      <td>-0.009822</td>
+      <td>-0.019405</td>
+      <td>-0.006942</td>
+      <td>-0.010666</td>
+      <td>0.005052</td>
+      <td>-0.006870</td>
+      <td>-0.006814</td>
+      <td>...</td>
+      <td>-0.014301</td>
+      <td>-0.019350</td>
+      <td>0.029730</td>
+      <td>-0.019190</td>
+      <td>-0.021488</td>
+      <td>-0.006213</td>
+      <td>0.033414</td>
+      <td>0.042206</td>
+      <td>-0.001243</td>
+      <td>-0.006204</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.005283</td>
+      <td>-0.018782</td>
+      <td>-0.000247</td>
+      <td>0.005930</td>
+      <td>0.033777</td>
+      <td>0.005538</td>
+      <td>0.019218</td>
+      <td>0.039887</td>
+      <td>-0.043444</td>
+      <td>-0.033267</td>
+      <td>...</td>
+      <td>-0.011943</td>
+      <td>-0.006310</td>
+      <td>0.017376</td>
+      <td>0.019066</td>
+      <td>0.019789</td>
+      <td>0.007221</td>
+      <td>0.039906</td>
+      <td>0.042394</td>
+      <td>0.018498</td>
+      <td>0.001014</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-0.020731</td>
+      <td>-0.041014</td>
+      <td>-0.005040</td>
+      <td>-0.002967</td>
+      <td>-0.026685</td>
+      <td>-0.013933</td>
+      <td>-0.019212</td>
+      <td>0.002748</td>
+      <td>0.004622</td>
+      <td>0.005203</td>
+      <td>...</td>
+      <td>-0.014753</td>
+      <td>-0.004562</td>
+      <td>-0.033241</td>
+      <td>-0.016935</td>
+      <td>-0.015132</td>
+      <td>0.007231</td>
+      <td>-0.099232</td>
+      <td>-0.119681</td>
+      <td>-0.046064</td>
+      <td>-0.046958</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-0.012003</td>
+      <td>-0.012581</td>
+      <td>-0.002198</td>
+      <td>-0.007489</td>
+      <td>-0.005895</td>
+      <td>-0.005114</td>
+      <td>-0.010907</td>
+      <td>0.001852</td>
+      <td>-0.040011</td>
+      <td>-0.031680</td>
+      <td>...</td>
+      <td>-0.009879</td>
+      <td>-0.001172</td>
+      <td>-0.019481</td>
+      <td>-0.018046</td>
+      <td>-0.016508</td>
+      <td>0.006102</td>
+      <td>-0.098120</td>
+      <td>-0.085637</td>
+      <td>-0.032188</td>
+      <td>-0.022966</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-0.017772</td>
+      <td>0.003045</td>
+      <td>0.017263</td>
+      <td>0.003591</td>
+      <td>-0.016653</td>
+      <td>-0.017887</td>
+      <td>-0.024880</td>
+      <td>0.010059</td>
+      <td>-0.012015</td>
+      <td>-0.012577</td>
+      <td>...</td>
+      <td>0.007623</td>
+      <td>0.014244</td>
+      <td>-0.019350</td>
+      <td>0.033271</td>
+      <td>0.030338</td>
+      <td>0.013648</td>
+      <td>-0.149633</td>
+      <td>-0.138112</td>
+      <td>-0.049106</td>
+      <td>-0.047638</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>-0.003852</td>
+      <td>-0.016592</td>
+      <td>-0.004916</td>
+      <td>0.009228</td>
+      <td>0.008393</td>
+      <td>0.012574</td>
+      <td>0.016136</td>
+      <td>0.009808</td>
+      <td>-0.000142</td>
+      <td>-0.000307</td>
+      <td>...</td>
+      <td>-0.029222</td>
+      <td>-0.037860</td>
+      <td>-0.032379</td>
+      <td>-0.071382</td>
+      <td>-0.068058</td>
+      <td>-0.038491</td>
+      <td>-0.108597</td>
+      <td>-0.115725</td>
+      <td>-0.040948</td>
+      <td>-0.043073</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-0.019550</td>
+      <td>0.005222</td>
+      <td>-0.017324</td>
+      <td>0.012494</td>
+      <td>-0.059338</td>
+      <td>-0.027942</td>
+      <td>-0.039279</td>
+      <td>0.001269</td>
+      <td>0.008673</td>
+      <td>0.009139</td>
+      <td>...</td>
+      <td>-0.004599</td>
+      <td>-0.014275</td>
+      <td>-0.011259</td>
+      <td>-0.014470</td>
+      <td>-0.013365</td>
+      <td>-0.017744</td>
+      <td>0.153852</td>
+      <td>0.173077</td>
+      <td>0.035003</td>
+      <td>0.041711</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 400 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">components</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>(vice president,)</th>
+      <th>(real estate,)</th>
+      <th>(senior vice,)</th>
+      <th>(senior vice president,)</th>
+      <th>(common stock,)</th>
+      <th>(forward looking,)</th>
+      <th>(looking statements,)</th>
+      <th>(forward looking statements,)</th>
+      <th>(executive vice president,)</th>
+      <th>(president chief,)</th>
+      <th>...</th>
+      <th>(life insurance,)</th>
+      <th>(benchmark oil futures,)</th>
+      <th>(oil futures contract,)</th>
+      <th>(benchmark oil futures contract,)</th>
+      <th>(benchmark oil,)</th>
+      <th>(economic conditions,)</th>
+      <th>(income tax,)</th>
+      <th>(oil futures,)</th>
+      <th>(policies procedures,)</th>
+      <th>(sales marketing,)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.389083</td>
+      <td>0.396763</td>
+      <td>0.149741</td>
+      <td>0.149678</td>
+      <td>0.047284</td>
+      <td>0.010499</td>
+      <td>0.013816</td>
+      <td>0.013003</td>
+      <td>0.090119</td>
+      <td>0.095461</td>
+      <td>...</td>
+      <td>0.017143</td>
+      <td>0.001164</td>
+      <td>0.001138</td>
+      <td>0.001072</td>
+      <td>0.000852</td>
+      <td>0.017656</td>
+      <td>0.023193</td>
+      <td>0.001399</td>
+      <td>0.015948</td>
+      <td>0.063999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.542043</td>
+      <td>0.257762</td>
+      <td>0.218096</td>
+      <td>0.216948</td>
+      <td>0.183773</td>
+      <td>0.171128</td>
+      <td>0.162269</td>
+      <td>0.151321</td>
+      <td>0.127885</td>
+      <td>0.127290</td>
+      <td>...</td>
+      <td>0.000411</td>
+      <td>0.000262</td>
+      <td>0.000256</td>
+      <td>0.000241</td>
+      <td>0.000162</td>
+      <td>0.000150</td>
+      <td>0.000125</td>
+      <td>0.000075</td>
+      <td>0.000073</td>
+      <td>0.000027</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.002793</td>
+      <td>0.163965</td>
+      <td>0.002932</td>
+      <td>0.003118</td>
+      <td>0.055169</td>
+      <td>0.052592</td>
+      <td>0.055335</td>
+      <td>0.051993</td>
+      <td>0.007160</td>
+      <td>0.004746</td>
+      <td>...</td>
+      <td>0.004871</td>
+      <td>0.003484</td>
+      <td>0.003405</td>
+      <td>0.003207</td>
+      <td>0.004694</td>
+      <td>0.002582</td>
+      <td>0.009106</td>
+      <td>0.008652</td>
+      <td>0.006371</td>
+      <td>0.057766</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.263409</td>
+      <td>0.004356</td>
+      <td>0.108215</td>
+      <td>0.107731</td>
+      <td>0.148378</td>
+      <td>0.301782</td>
+      <td>0.300431</td>
+      <td>0.280328</td>
+      <td>0.054089</td>
+      <td>0.080741</td>
+      <td>...</td>
+      <td>0.012122</td>
+      <td>0.001535</td>
+      <td>0.001500</td>
+      <td>0.001413</td>
+      <td>0.002057</td>
+      <td>0.014165</td>
+      <td>0.019575</td>
+      <td>0.004794</td>
+      <td>0.004188</td>
+      <td>0.015499</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.018013</td>
+      <td>0.587940</td>
+      <td>0.002738</td>
+      <td>0.003591</td>
+      <td>0.198363</td>
+      <td>0.133313</td>
+      <td>0.137924</td>
+      <td>0.128921</td>
+      <td>0.000207</td>
+      <td>0.008085</td>
+      <td>...</td>
+      <td>0.025129</td>
+      <td>0.003209</td>
+      <td>0.003136</td>
+      <td>0.002953</td>
+      <td>0.003153</td>
+      <td>0.003821</td>
+      <td>0.048252</td>
+      <td>0.004245</td>
+      <td>0.007591</td>
+      <td>0.023662</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.110155</td>
+      <td>0.110822</td>
+      <td>0.042549</td>
+      <td>0.042375</td>
+      <td>0.165646</td>
+      <td>0.218538</td>
+      <td>0.229664</td>
+      <td>0.211395</td>
+      <td>0.024397</td>
+      <td>0.049369</td>
+      <td>...</td>
+      <td>0.010306</td>
+      <td>0.002906</td>
+      <td>0.002840</td>
+      <td>0.002675</td>
+      <td>0.002694</td>
+      <td>0.020493</td>
+      <td>0.030576</td>
+      <td>0.003431</td>
+      <td>0.006890</td>
+      <td>0.007525</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.119927</td>
+      <td>0.047336</td>
+      <td>0.041591</td>
+      <td>0.041379</td>
+      <td>0.230996</td>
+      <td>0.113208</td>
+      <td>0.113291</td>
+      <td>0.104039</td>
+      <td>0.029052</td>
+      <td>0.049834</td>
+      <td>...</td>
+      <td>0.039789</td>
+      <td>0.006613</td>
+      <td>0.006463</td>
+      <td>0.006087</td>
+      <td>0.006252</td>
+      <td>0.001428</td>
+      <td>0.009403</td>
+      <td>0.009752</td>
+      <td>0.007574</td>
+      <td>0.007465</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.028995</td>
+      <td>0.201303</td>
+      <td>0.013885</td>
+      <td>0.014323</td>
+      <td>0.179070</td>
+      <td>0.277584</td>
+      <td>0.281651</td>
+      <td>0.259860</td>
+      <td>0.007340</td>
+      <td>0.033020</td>
+      <td>...</td>
+      <td>0.004860</td>
+      <td>0.004085</td>
+      <td>0.003992</td>
+      <td>0.003760</td>
+      <td>0.004180</td>
+      <td>0.003334</td>
+      <td>0.002666</td>
+      <td>0.007255</td>
+      <td>0.017348</td>
+      <td>0.003521</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.156233</td>
+      <td>0.169083</td>
+      <td>0.066866</td>
+      <td>0.065955</td>
+      <td>0.075628</td>
+      <td>0.123427</td>
+      <td>0.139021</td>
+      <td>0.134931</td>
+      <td>0.035336</td>
+      <td>0.033666</td>
+      <td>...</td>
+      <td>0.012411</td>
+      <td>0.002240</td>
+      <td>0.002189</td>
+      <td>0.002061</td>
+      <td>0.002288</td>
+      <td>0.000170</td>
+      <td>0.002463</td>
+      <td>0.003526</td>
+      <td>0.003252</td>
+      <td>0.033170</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.042947</td>
+      <td>0.132741</td>
+      <td>0.017220</td>
+      <td>0.016750</td>
+      <td>0.137332</td>
+      <td>0.011665</td>
+      <td>0.024301</td>
+      <td>0.023797</td>
+      <td>0.017066</td>
+      <td>0.004885</td>
+      <td>...</td>
+      <td>0.012571</td>
+      <td>0.001893</td>
+      <td>0.001850</td>
+      <td>0.001742</td>
+      <td>0.001950</td>
+      <td>0.003818</td>
+      <td>0.023271</td>
+      <td>0.000152</td>
+      <td>0.010212</td>
+      <td>0.024119</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 400 columns</p>
+</div></div></div>
+</div>
+<p>need to find a way to remove common words from the representation</p>
+<p>perhaps remove words that exist in more than half the documents?</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/richard"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../../intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2_LDA_topic_modelling.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LDA (Latent Dirichlet Allocation)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Peitong Lu, Mary Xu, Richard Ye<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
