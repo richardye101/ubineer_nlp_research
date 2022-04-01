@@ -8,8 +8,9 @@ from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer 
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-# nltk.download('stopwords')
-# nltk.download('wordnet')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('punkt')
 from sklearn.decomposition import PCA
 from sklearn.decomposition import TruncatedSVD
 from sklearn.cluster import KMeans
