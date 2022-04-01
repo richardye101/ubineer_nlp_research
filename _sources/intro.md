@@ -38,6 +38,31 @@ Lastly, the relationship between companies based on the document embeddings and 
 
 __ADD MORE DETAILS ABOUT CREATING THE PORTFOLIOS?__
 
+#### Data Preprocessing
+The data was provided to us by Ubineer, which has been pulled and preprocessed for us. One of the main datasets we used is the `bq_2018_top5SIC.json` file prepared by Professor Sotiros Damouras, by selecting companies who have filed in 2018 and belong to the top 5 industries within the dataset. This file has 1127 filings (one per company).
+
+The file schema contains the columns:
+- `accessionNumber`
+- `filingDate`
+- `reportingDate`
+- `financialEntity`
+- `htmlFile`
+- `coDescription`
+- `CIK`
+- `name`
+- `countryinc`
+- `cityma`
+- `SIC`
+- `SIC_desc`
+
+For our purposes, we will be focusing on `name` (identifies the company), `coDescription` (the Business Overview), `SIC_desc` (the industry they operate in)
+
+Within our pre-processing, we focus on `coDescription`. 
+We further cleaned up the `Description` text by removing HTML code, the first couple words which were common among all filings such as _"business overview"_, and filtering for filings with over 250 characters.
+
+We then removed _stop words_ from the business descriptions, which are very commong words like "the, they, and, is, are, there" and others. These words don't provide meaning and therefore do not contribute to our goal of extracting meaning.
+
+We also lemmatized all possible words, aka Text/Word Normalization which means all instances of "am, are, is" are converted to "be" and "playing, played, plays" are all converted to "play". This reduces the amount of different words we have to process, and also condensing the amount of information we recieve since words that all carry the same meaning are represented together.
 
 Check out each page bundled within this book to see more on a given topic.
 
