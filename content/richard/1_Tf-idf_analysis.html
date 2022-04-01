@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LDA (Latent Dirichlet Allocation)" href="2_LDA_topic_modelling.html" />
-    <link rel="prev" title="Unsupervised analysis of Textual data from 10K Financial Reports" href="../../intro.html" />
+    <link rel="prev" title="Introduction" href="../../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,7 +91,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   Unsupervised analysis of Textual data from 10K Financial Reports
+   Introduction
   </a>
  </li>
 </ul>
@@ -225,19 +225,6 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#minor-data-cleaning">
-   Minor data cleaning
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -250,19 +237,6 @@ const thebe_selector_output = ".output, .cell_output"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#minor-data-cleaning">
-   Minor data cleaning
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -271,13 +245,13 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="word-embedding-using-tf-idf-matrices">
 <h1>Word embedding using tf-idf matrices<a class="headerlink" href="#word-embedding-using-tf-idf-matrices" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook I’ll attempt to use tf-idf matrices to create word embeddings for the first 100 companies.</p>
+<p>This notebook uses tf-idf matrices to create word embeddings for companies.</p>
 <p>Tf-Idf stands for <em>term frequency - inverse document frequency</em>. Each row in this matrix represents one document (in this case, one company) and each column represents a word (or n-gram, a sequence of words like “University of Toronto”). A term frequency matrix has the count of occurences of a given word for each document, while a tf-idf matrix performs a transformation on that term frequency matrix. The computation for each cell uses:</p>
-<p>\begin{align}
+<p>\begin{align*}
 \text{tf-idf}(t,d) &amp;= \text{tf}(t,d) \cdot \text{idf}(t,d)\ \
 \text{Where: } \quad \text{tf}(t,d) &amp;= |t| \text{ in } d\ \
 \text{idf}(t,d) &amp;= \log\frac{N}{\text{df}(t)}\
-\end{align}</p>
+\end{align*}</p>
 <ul class="simple">
 <li><p>Where <strong>t</strong> is the current term we are process, and <strong>d</strong> is the current document we are looking in</p></li>
 <li><p>Where <strong>N</strong> is the total number of documents in the document set and <strong>df(t)</strong> is the document frequency of t;</p>
@@ -289,546 +263,77 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">bigquery</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="s2">&quot;ubineerpoc&quot;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
-<span class="c1"># query = &quot;&quot;&quot;</span>
-<span class="c1"># SELECT MAX(reportingDate), financialEntity, coDescription FROM `ubineerpoc.10KData.10KBusinessDesc`</span>
-<span class="c1"># GROUP BY financialEntity, coDescription</span>
-<span class="c1"># LIMIT 500</span>
-<span class="c1"># &quot;&quot;&quot;</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT coDescription FROM `ubineerpoc.10KData.10KBusinessDesc` LIMIT 500</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">query_job</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>  <span class="c1"># API request - starts the query</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
-<span class="n">df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://mega.nz/file/2dIEQBhQ#OvgE2YB2YdkplKt7-3unbEn7HTVZo3JbJAsv1NfFHeg&quot;</span><span class="p">)</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+                                           <span class="n">stop_words</span> <span class="o">=</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)),</span>
+                  <span class="p">(</span><span class="s1">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">())])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">DefaultCredentialsError</span><span class="g g-Whitespace">                   </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="s2">&quot;ubineerpoc&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># query = &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># SELECT MAX(reportingDate), financialEntity, coDescription FROM `ubineerpoc.10KData.10KBusinessDesc`</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># GROUP BY financialEntity, coDescription</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># LIMIT 500</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="s2"> SELECT coDescription FROM `ubineerpoc.10KData.10KBusinessDesc` LIMIT 500</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="s2"> &quot;&quot;&quot;</span>
+<span class="ne">ParserError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://mega.nz/file/2dIEQBhQ#OvgE2YB2YdkplKt7-3unbEn7HTVZo3JbJAsv1NfFHeg&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>                                            <span class="n">stop_words</span> <span class="o">=</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)),</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>                   <span class="p">(</span><span class="s1">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">())])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/google/cloud/bigquery/client.py:231,</span> in <span class="ni">Client.__init__</span><span class="nt">(self, project, credentials, _http, location, default_query_job_config, client_info, client_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:680,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">delimiter</span><span class="p">,</span>
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>     <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span> <span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">231</span>     <span class="nb">super</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span>         <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>         <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>         <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="n">_http</span><span class="o">=</span><span class="n">_http</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span>     <span class="n">kw_args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;client_info&quot;</span><span class="p">:</span> <span class="n">client_info</span><span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="k">if</span> <span class="n">client_options</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">680</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/google/cloud/client/__init__.py:319,</span> in <span class="ni">ClientWithProject.__init__</span><span class="nt">(self, project, credentials, client_options, _http)</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="n">_ClientProjectMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">319</span>     <span class="n">Client</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span> <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span> <span class="n">_http</span><span class="o">=</span><span class="n">_http</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span>     <span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:581,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">return</span> <span class="n">parser</span>
+<span class="g g-Whitespace">    </span><span class="mi">580</span> <span class="k">with</span> <span class="n">parser</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">581</span>     <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/google/cloud/client/__init__.py:178,</span> in <span class="ni">Client.__init__</span><span class="nt">(self, credentials, _http, client_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="n">credentials</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">load_credentials_from_file</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span>             <span class="n">client_options</span><span class="o">.</span><span class="n">credentials_file</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">177</span>     <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">178</span>         <span class="n">credentials</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span> <span class="bp">self</span><span class="o">.</span><span class="n">_credentials</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">with_scopes_if_required</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="n">credentials</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span> <span class="k">if</span> <span class="n">client_options</span><span class="o">.</span><span class="n">quota_project_id</span><span class="p">:</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1250,</span> in <span class="ni">TextFileReader.read</span><span class="nt">(self, nrows)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1248</span> <span class="n">nrows</span> <span class="o">=</span> <span class="n">validate_integer</span><span class="p">(</span><span class="s2">&quot;nrows&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1249</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1250</span>     <span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">col_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1251</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span>     <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/google/auth/_default.py:575,</span> in <span class="ni">default</span><span class="nt">(scopes, request, quota_project_id, default_scopes)</span>
-<span class="g g-Whitespace">    </span><span class="mi">567</span>             <span class="n">_LOGGER</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">568</span>                 <span class="s2">&quot;No project ID could be determined. Consider running &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span>                 <span class="s2">&quot;`gcloud config set project` or setting the </span><span class="si">%s</span><span class="s2"> &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">570</span>                 <span class="s2">&quot;environment variable&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">571</span>                 <span class="n">environment_vars</span><span class="o">.</span><span class="n">PROJECT</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">572</span>             <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">573</span>         <span class="k">return</span> <span class="n">credentials</span><span class="p">,</span> <span class="n">effective_project_id</span>
-<span class="ne">--&gt; </span><span class="mi">575</span> <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DefaultCredentialsError</span><span class="p">(</span><span class="n">_HELP_MESSAGE</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:225,</span> in <span class="ni">CParserWrapper.read</span><span class="nt">(self, nrows)</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">low_memory</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">225</span>         <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">read_low_memory</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>         <span class="c1"># destructive to chunks</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">_concatenate_chunks</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
 
-<span class="ne">DefaultCredentialsError</span>: Could not automatically determine credentials. Please set GOOGLE_APPLICATION_CREDENTIALS or explicitly create credentials and re-run the application. For more information, please see https://cloud.google.com/docs/authentication/getting-started
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#strip any left over html code</span>
-<span class="kn">import</span> <span class="nn">re</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:805,</span> in <span class="ni">pandas._libs.parsers.TextReader.read_low_memory</span><span class="nt">()</span>
 
-<span class="k">def</span> <span class="nf">clean_data_fn</span><span class="p">(</span><span class="n">insrt_data</span><span class="p">):</span>
-    <span class="n">clean_data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">insrt_data</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s2">&quot;https://www.sec.gov/Archives/edgar/data/&quot;</span> <span class="ow">in</span> <span class="n">ele</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">clean_txt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;&lt;.*?&gt;&#39;</span><span class="p">)</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">clean_txt</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">ele</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;</span><span class="se">\xa0</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">250</span><span class="p">:</span>
-                <span class="k">pass</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">clean_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
-    <span class="k">return</span><span class="p">(</span><span class="n">clean_data</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:861,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
 
-<span class="c1"># non_html_data = clean_data_fn(df)</span>
-<span class="c1"># non_html_data</span>
-<span class="n">non_html_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clean_data_fn</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]))</span>
-<span class="n">non_html_data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:847,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:1960,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ITEM 1. BUSINESSBackgroundNocopi Technologies,...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ITEM 1.BUSINESS. Introduction United Refining ...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ITEM 1 - BUSINESS This Annual Report on Form 1...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Item 1B. Unresolved Staff Comments.Not Applica...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ITEM 1.BUSINESS  Fastenal Company (“Fastenal” ...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>291</th>
-      <td>Item 1.  BusinessOverviewWe are a leading prov...</td>
-    </tr>
-    <tr>
-      <th>292</th>
-      <td>ITEM 1. BUSINESSGENERALAcadia Realty Trust (th...</td>
-    </tr>
-    <tr>
-      <th>293</th>
-      <td>Item 1.Business We are a diversified gaming an...</td>
-    </tr>
-    <tr>
-      <th>294</th>
-      <td>ITEM 1. BUSINESSThe disclosures set forth in t...</td>
-    </tr>
-    <tr>
-      <th>295</th>
-      <td>ITEM 1. BUSINESS Overview We were formed in th...</td>
-    </tr>
-  </tbody>
-</table>
-<p>296 rows × 1 columns</p>
-</div></div></div>
-</div>
-<div class="section" id="minor-data-cleaning">
-<h2>Minor data cleaning<a class="headerlink" href="#minor-data-cleaning" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># all observed after the first run through</span>
-<span class="c1"># components.abs().sort_values(0, axis = 1, ascending = False)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>(font size,)</th>
-      <th>(style font,)</th>
-      <th>(font style,)</th>
-      <th>(font family,)</th>
-      <th>(new roman,)</th>
-      <th>(times new roman,)</th>
-      <th>(times new,)</th>
-      <th>(font size pt,)</th>
-      <th>(size pt,)</th>
-      <th>(sec gov,)</th>
-      <th>...</th>
-      <th>(analysis financial condition results,)</th>
-      <th>(analysis financial condition,)</th>
-      <th>(method providing,)</th>
-      <th>(item management discussion,)</th>
-      <th>(item management discussion analysis,)</th>
-      <th>(management discussion analysis financial,)</th>
-      <th>(discussion analysis financial,)</th>
-      <th>(discussion analysis financial condition,)</th>
-      <th>(common equity,)</th>
-      <th>(controls procedures,)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.335025</td>
-      <td>0.306278</td>
-      <td>0.262956</td>
-      <td>0.253597</td>
-      <td>0.245409</td>
-      <td>0.245409</td>
-      <td>0.245409</td>
-      <td>0.238038</td>
-      <td>0.238038</td>
-      <td>0.231815</td>
-      <td>...</td>
-      <td>0.001476</td>
-      <td>0.001476</td>
-      <td>0.001474</td>
-      <td>0.001280</td>
-      <td>0.001280</td>
-      <td>0.001199</td>
-      <td>0.001199</td>
-      <td>0.000852</td>
-      <td>0.000790</td>
-      <td>0.000765</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.085236</td>
-      <td>0.115257</td>
-      <td>0.089485</td>
-      <td>0.088612</td>
-      <td>0.088807</td>
-      <td>0.088807</td>
-      <td>0.088807</td>
-      <td>0.080790</td>
-      <td>0.080790</td>
-      <td>0.502185</td>
-      <td>...</td>
-      <td>0.015646</td>
-      <td>0.015646</td>
-      <td>0.002072</td>
-      <td>0.009583</td>
-      <td>0.009583</td>
-      <td>0.014547</td>
-      <td>0.014547</td>
-      <td>0.014622</td>
-      <td>0.013230</td>
-      <td>0.015057</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.806077</td>
-      <td>0.015912</td>
-      <td>0.080478</td>
-      <td>0.100109</td>
-      <td>0.171465</td>
-      <td>0.171465</td>
-      <td>0.171465</td>
-      <td>0.035468</td>
-      <td>0.035468</td>
-      <td>0.017966</td>
-      <td>...</td>
-      <td>0.016976</td>
-      <td>0.016976</td>
-      <td>0.000930</td>
-      <td>0.015291</td>
-      <td>0.015291</td>
-      <td>0.016397</td>
-      <td>0.016397</td>
-      <td>0.016905</td>
-      <td>0.015802</td>
-      <td>0.020781</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.010846</td>
-      <td>0.055740</td>
-      <td>0.025546</td>
-      <td>0.019314</td>
-      <td>0.014817</td>
-      <td>0.014817</td>
-      <td>0.014817</td>
-      <td>0.025157</td>
-      <td>0.025157</td>
-      <td>0.036886</td>
-      <td>...</td>
-      <td>0.006147</td>
-      <td>0.006147</td>
-      <td>0.002354</td>
-      <td>0.011222</td>
-      <td>0.011222</td>
-      <td>0.011849</td>
-      <td>0.011849</td>
-      <td>0.011481</td>
-      <td>0.037080</td>
-      <td>0.003517</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.167648</td>
-      <td>0.060118</td>
-      <td>0.019144</td>
-      <td>0.031778</td>
-      <td>0.027972</td>
-      <td>0.027972</td>
-      <td>0.027972</td>
-      <td>0.065454</td>
-      <td>0.065454</td>
-      <td>0.070642</td>
-      <td>...</td>
-      <td>0.017819</td>
-      <td>0.017819</td>
-      <td>0.006264</td>
-      <td>0.004796</td>
-      <td>0.004796</td>
-      <td>0.016261</td>
-      <td>0.016261</td>
-      <td>0.017315</td>
-      <td>0.004154</td>
-      <td>0.042637</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.345211</td>
-      <td>0.350450</td>
-      <td>0.439137</td>
-      <td>0.163390</td>
-      <td>0.181639</td>
-      <td>0.181639</td>
-      <td>0.181639</td>
-      <td>0.266241</td>
-      <td>0.266241</td>
-      <td>0.017379</td>
-      <td>...</td>
-      <td>0.018822</td>
-      <td>0.018822</td>
-      <td>0.001960</td>
-      <td>0.020464</td>
-      <td>0.020464</td>
-      <td>0.017822</td>
-      <td>0.017822</td>
-      <td>0.018673</td>
-      <td>0.023637</td>
-      <td>0.049777</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.075678</td>
-      <td>0.109432</td>
-      <td>0.078070</td>
-      <td>0.048999</td>
-      <td>0.026448</td>
-      <td>0.026448</td>
-      <td>0.026448</td>
-      <td>0.114533</td>
-      <td>0.114533</td>
-      <td>0.054698</td>
-      <td>...</td>
-      <td>0.070217</td>
-      <td>0.070217</td>
-      <td>0.013292</td>
-      <td>0.061169</td>
-      <td>0.061169</td>
-      <td>0.066239</td>
-      <td>0.066239</td>
-      <td>0.069748</td>
-      <td>0.044356</td>
-      <td>0.157928</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.019745</td>
-      <td>0.049941</td>
-      <td>0.070026</td>
-      <td>0.011863</td>
-      <td>0.056283</td>
-      <td>0.056283</td>
-      <td>0.056283</td>
-      <td>0.007968</td>
-      <td>0.007968</td>
-      <td>0.016519</td>
-      <td>...</td>
-      <td>0.070761</td>
-      <td>0.070761</td>
-      <td>0.000794</td>
-      <td>0.049201</td>
-      <td>0.049201</td>
-      <td>0.067983</td>
-      <td>0.067983</td>
-      <td>0.070003</td>
-      <td>0.042120</td>
-      <td>0.081672</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.024701</td>
-      <td>0.013087</td>
-      <td>0.112221</td>
-      <td>0.035492</td>
-      <td>0.068468</td>
-      <td>0.068468</td>
-      <td>0.068468</td>
-      <td>0.022259</td>
-      <td>0.022259</td>
-      <td>0.019296</td>
-      <td>...</td>
-      <td>0.023022</td>
-      <td>0.023022</td>
-      <td>0.000145</td>
-      <td>0.015098</td>
-      <td>0.015098</td>
-      <td>0.017607</td>
-      <td>0.017607</td>
-      <td>0.018739</td>
-      <td>0.013136</td>
-      <td>0.047117</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0.124293</td>
-      <td>0.245725</td>
-      <td>0.549725</td>
-      <td>0.088886</td>
-      <td>0.292968</td>
-      <td>0.292968</td>
-      <td>0.292968</td>
-      <td>0.214176</td>
-      <td>0.214176</td>
-      <td>0.004338</td>
-      <td>...</td>
-      <td>0.017065</td>
-      <td>0.017065</td>
-      <td>0.000168</td>
-      <td>0.015490</td>
-      <td>0.015490</td>
-      <td>0.016329</td>
-      <td>0.016329</td>
-      <td>0.017597</td>
-      <td>0.012599</td>
-      <td>0.002477</td>
-    </tr>
-  </tbody>
-</table>
-<p>10 rows × 400 columns</p>
-</div></div></div>
-</div>
-<p>The data still seems to be quite a bit dirty, as the top influencial n tuple terms are formatting related, probably within the HTML of the descriptions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I&#39;m going to remove the first seven characters, since in almost all cases they just contain some variation of &quot;item 1.&quot;.</span>
-<span class="c1"># This also removes any html code leftover at the end of each string, such as font specifications</span>
-
-<span class="k">def</span> <span class="nf">remove_beg_txt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;BUSINESS&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Business.&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-            <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">6</span> <span class="p">:</span> <span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span> <span class="p">)])</span>
-           
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># found &quot;Business.&quot;, remove everything after it</span>
-            <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">[(</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Business.&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">9</span> <span class="p">)</span> <span class="p">:</span> <span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span> <span class="p">)</span> <span class="p">])</span>
-    
-    <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">[(</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;BUSINESS&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">8</span> <span class="p">)</span> <span class="p">:</span> <span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span> <span class="p">)</span> <span class="p">])</span>
-<span class="c1"># find end function</span>
-
-<span class="n">df_1</span> <span class="o">=</span> <span class="n">non_html_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">remove_beg_txt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">df_1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      .In General  NVE Corporation, referred to as N...
-1        Information Regarding Forward Looking Statem...
-2        General  Chiquita Brands International, Inc....
-3        We are an innovative designer, marketer and ...
-4      . Our CompanyWe were originally incorporated o...
-                             ...                        
-275     Introduction We are a blank check company inc...
-276     Loews Corporation was incorporated in 1969 an...
-277     GENERAL ClearOne (the Company) was formed as ...
-278    Corporate HistoryRosehill Resources Inc. (the ...
-279    . Business  OVERVIEW We are an independent exp...
-Name: 0, Length: 280, dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-
-<span class="c1"># remove all numbers so they don&#39;t show up as dimensions</span>
-<span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">text</span>
-
-<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span><span class="o">=</span><span class="n">preprocess_text</span><span class="p">,</span>
-                                           <span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
-                                           <span class="n">stop_words</span> <span class="o">=</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)),</span>
-                  <span class="p">(</span><span class="s1">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">())])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_1</span><span class="p">)</span>
+<span class="ne">ParserError</span>: Error tokenizing data. C error: Expected 1 fields in line 13, saw 2
 </pre></div>
 </div>
 </div>
@@ -866,51 +371,78 @@ Name: 0, Length: 280, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>accounting principles</td>
+      <td>com spec</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>accounts receivable</td>
+      <td>com spec v1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>act amended</td>
+      <td>git lfs</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>additional information</td>
+      <td>git lfs github</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>adverse effect</td>
+      <td>git lfs github com</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
+      <th>5</th>
+      <td>github com</td>
     </tr>
     <tr>
-      <th>395</th>
-      <td>year end</td>
+      <th>6</th>
+      <td>github com spec</td>
     </tr>
     <tr>
-      <th>396</th>
-      <td>year ended</td>
+      <th>7</th>
+      <td>github com spec v1</td>
     </tr>
     <tr>
-      <th>397</th>
-      <td>year ended december</td>
+      <th>8</th>
+      <td>https git</td>
     </tr>
     <tr>
-      <th>398</th>
-      <td>years ended</td>
+      <th>9</th>
+      <td>https git lfs</td>
     </tr>
     <tr>
-      <th>399</th>
-      <td>years ended december</td>
+      <th>10</th>
+      <td>https git lfs github</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>lfs github</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>lfs github com</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>lfs github com spec</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>spec v1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>version https</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>version https git</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>version https git lfs</td>
     </tr>
   </tbody>
 </table>
-<p>400 rows × 1 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1948,7 +1480,6 @@ if (outputEl) {{
 <p>need to find a way to remove common words from the representation</p>
 <p>perhaps remove words that exist in more than half the documents?</p>
 </div>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1979,7 +1510,7 @@ if (outputEl) {{
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Unsupervised analysis of Textual data from 10K Financial Reports</p>
+            <p class="prev-next-title">Introduction</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="2_LDA_topic_modelling.html" title="next page">
