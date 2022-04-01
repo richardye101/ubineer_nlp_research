@@ -1,0 +1,1157 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Topic Modelling &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Embedding methods to augment with dynamic analysis" href="../richard/8_Dynamic_Embedding.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Unsupervised analysis of Textual data from 10K Financial Reports</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   <center>
+    Unsupervised analysis of Textual data from 10K Financial Reports
+   </center>
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/1_Tf-idf_analysis.html">
+   Word embedding using tf-idf matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/2_LDA_topic_modelling.html">
+   LDA (Latent Dirichlet Allocation)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/3_LSA_topic_modelling.html">
+   Experimenting with lemmatization SVD/LSA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/4_Word2Vec.html">
+   Word2vec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/5_Doc2Vec.html">
+   Doc2Vec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/8_Dynamic_Embedding.html">
+   Embedding methods to augment with dynamic analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Dynamic Topic Modelling
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/mary/Report_Topic_Modelling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/richardye101/ubineer_nlp_research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/richardye101/ubineer_nlp_research/issues/new?title=Issue%20on%20page%20%2Fcontent/mary/Report_Topic_Modelling.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/richardye101/ubineer_nlp_research/main?urlpath=tree/../content/content/mary/Report_Topic_Modelling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#netflix">
+   Netflix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-electric">
+   General Electric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-negative-matrix-factorization">
+   Non-Negative Matrix Factorization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#netflix-analysis">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-electric-analysis">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsa">
+   LSA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda">
+   LDA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-topic-modelling">
+   Summary of Topic Modelling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nmf-results">
+   NMF Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda-results">
+   LDA Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsa-results">
+   LSA Results
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dynamic Topic Modelling</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#netflix">
+   Netflix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-electric">
+   General Electric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-negative-matrix-factorization">
+   Non-Negative Matrix Factorization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#netflix-analysis">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-electric-analysis">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsa">
+   LSA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda">
+   LDA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-topic-modelling">
+   Summary of Topic Modelling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nmf-results">
+   NMF Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda-results">
+   LDA Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsa-results">
+   LSA Results
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+<span class="o">%</span><span class="k">reload_ext</span> autoreload
+<span class="kn">import</span> <span class="nn">sys</span>  
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">std_func</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">std_func</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /home/runner/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package wordnet to /home/runner/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt to /home/runner/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /home/runner/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package wordnet to /home/runner/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt to /home/runner/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;std_func&#39; from &#39;/home/runner/work/ubineer_nlp_research/ubineer_nlp_research/content/mary/../std_func.py&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dynamic-topic-modelling">
+<h1>Dynamic Topic Modelling<a class="headerlink" href="#dynamic-topic-modelling" title="Permalink to this headline">¶</a></h1>
+<p>Change is important for businesses to hold a competitive edge and to meet the ever-changing needs of customers. Netflix and General Electric are two examples of companies that have evolved to adapt to the fast moving trends of their respective industry. On the other hand, businesses like BlockBuster and MySpace failed to innovate and adapt with the moving trends. Investors often spend a great deal of time to read through finacial reports to detect signs of change and adaption, so our work systematically summarises the business model of a company over time.</p>
+<p>In this section, we apply several topic modelling techniques to the Business description of filings between the years of 2016 and 2018 to detect differences and emerging themes within a company. By finding these differences, we can see how the company has evolved over the years and understand shifts in operation of the company. More specifically, we explored Non-negative matrix factorization (NMF), latent dirichilet allocation (LDA), and Latent semantic analysis (LSA) for topic modelling.</p>
+<p>We use Netflix (NTFL) and General Electric (GE) as a Proof of Concept to test our topic models, since they are companies that have evolved drastically over the past 15 years.</p>
+<div class="section" id="netflix">
+<h2>Netflix<a class="headerlink" href="#netflix" title="Permalink to this headline">¶</a></h2>
+<p>Netflix was founded by Reed Hastings and Marc Rudolph in 1997 as a DVD rental-by-mail business. A year later, Netflix introduced a subscription model where customers could rent DVDs online for a fixed fee per month. In 2007, it entered the market of video streaming where anyone could enjoy live streaming videos at their computer for for a monthly subscription fee. Around this time, the world was getting accustomed to the internet and technology was advancing rapidly. In 2009, the company began partnering with electronic companies to get Netflix on multiple devices like smart TVs and gaming consoles. This move attracted audiences with different background profiles and pushed Netflix to the top of the video-streaming industry. In 2011, Netflix introduced its mobile apps and ios service for smartphone users.</p>
+<p>Throughout the years, Netflix stayed competitive by changing their business strategy with the advancement of technology and catering to changing customer needs.</p>
+</div>
+<div class="section" id="general-electric">
+<h2>General Electric<a class="headerlink" href="#general-electric" title="Permalink to this headline">¶</a></h2>
+<p>General Electric (GE) was founded in 1892 and currently operates through eight industrial segments: Aviation, Healthcare, Transportation, Renewable Energy, Oil &amp; Gas, Appliances &amp; Lighting, Power &amp; Water,and Capital. GE Aviation is GE’s most profitable division. It made steps forward in recent years, namely 2007 by acquiring Smith Aerospace, an American aircraft engine and aircraft parts manufacturer, and 2012 by acquiring Avio S.p.A., an Italy-based manufacturer of aviation propulsion components and systems for civil and military aircraft. On the other hand, GE Healthcare had slow growth in the years of 2010 to 2015 but saw an significant increase in profits in 2016 by more than 0.3 billion dollars compared to the year before. GE Power &amp; Water, GE Renewable Energy, GE Oil &amp; Gas were all under GE Energy up until its split in 2012. In 2014, GE’s Power made moves to purchase French gas turbine company Alstom for <span class="math notranslate nohighlight">\(\$\)</span> 13 billion dollars. Unfortunately, this move coincided with a global downturn in the price of renewables, lessening demand for the gas turbines, and did not bring the profits that GE had hoped for. 2014 was also the year that GE agreed to sell GE Appliances to Electrolux, a Swedish appliance manufacturer and the second-largest consumer appliance manufacturer after Whirlpool Corporation, for US <span class="math notranslate nohighlight">\(\$\)</span>3.3 billion in cash.</p>
+<p>In the history of the business, GE suffered through the financial crisis in 2008 and began its downfall. Throughout 2008 to 2017, the company consistently slashed its dividends year over year and laid off thousands of employees across all divisions. However, in 2018, GE made significant improvements in cutting debt and raising capital by selling off subsidiaries. In 2021, GE decided to separate GE HealthCare and GE Power into public companies and focus mainly on GE Aviation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Dynamic Topic Modelling with Netflix, GE</span>
+<span class="n">targetComp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/dynamic_companies.csv&quot;</span><span class="p">)</span>
+<span class="n">netflix</span> <span class="o">=</span> <span class="n">targetComp</span><span class="p">[</span><span class="n">targetComp</span><span class="p">[</span><span class="s2">&quot;financialEntity&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;financialEntities/params;cik=1065280&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">ge</span> <span class="o">=</span> <span class="n">targetComp</span><span class="p">[</span><span class="n">targetComp</span><span class="p">[</span><span class="s2">&quot;financialEntity&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;financialEntities/params;cik=40545&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">## Dynamic Topic Modelling with Netflix, GE</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">targetComp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/dynamic_companies.csv&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">netflix</span> <span class="o">=</span> <span class="n">targetComp</span><span class="p">[</span><span class="n">targetComp</span><span class="p">[</span><span class="s2">&quot;financialEntity&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;financialEntities/params;cik=1065280&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ge</span> <span class="o">=</span> <span class="n">targetComp</span><span class="p">[</span><span class="n">targetComp</span><span class="p">[</span><span class="s2">&quot;financialEntity&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;financialEntities/params;cik=40545&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:680,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">680</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:575,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">575</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:933,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">933</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1217,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span> <span class="c1"># error: No overload variant of &quot;get_handle&quot; matches argument types</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span> <span class="c1"># &quot;Union[str, PathLike[str], ReadCsvBuffer[bytes], ReadCsvBuffer[str]]&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1216</span> <span class="c1"># , &quot;str&quot;, &quot;bool&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1217</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>  <span class="c1"># type: ignore[call-overload]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1219</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1220</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1221</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1222</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1223</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1224</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1228</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/common.py:789,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">789</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/dynamic_companies.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="non-negative-matrix-factorization">
+<h2>Non-Negative Matrix Factorization<a class="headerlink" href="#non-negative-matrix-factorization" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative matrix factorization uses linear algebra to discover underlying relationships between texts. It factorizes/decomposes high-dimensionality vectors(ie. TF-IDF or BOW embeddings) into a lower dimensional representation. Given an original matrix obtained using TF-IDF or any word embedding algorithm of size MxN where M is the number of documents and N is the number of ngrams, NMF generates the <strong>Feature</strong> matrix and <strong>Components</strong> matrix. The Features matrix represents weights of topics for each doument and Component matrix represents weights of words for each topic. NMF modifies the values of the initial Feature matrix and Components matrix so that the product approaches the original matrix until approximation error converges or max iterations are reached (ie. <span class="math notranslate nohighlight">\(Original Matrix \approx\)</span> <span class="math notranslate nohighlight">\(Features \times Components\)</span>) . The matrices generated by NMF will only give non-negative values.</p>
+<p>NMF is very sensitive to the hyperparameters such as the number of topics, so we can use coherence scores to evaluate the most optimal number of topics so that each topic is human interpretable.The coherence of a topic, used as a proxy for topic quality, is based on the distributional hypothesis that states that words with similar meaning tend to co-occur within a similar context.</p>
+<p>Coherence score measures the relative distance between words within a topic. There are several coherence metrics but the most popular one is CV, which is the metrics that we will use in our report. CV coherence score creates content vectors of words using their co-occurrences (ie. co-occurence of “Las” and “Vegas” would be very high) and calculates the score using normalized pointwise mutual information (NPMI) and cosine similarity. NPMI is the likelihood of the co-occurrence of two words, taking into account the fact that it might be caused by the frequency of the single words.</p>
+<p><span class="math notranslate nohighlight">\(NPMI(a,b) = \frac{log\frac{P(a,b)+\epsilon}{P(a)P(b)}}{-log(P(a,b)+\epsilon)}\)</span></p>
+<p>Probabilities of single words p(a) or the joint probabilizy of two words p(a,b) can be estimated by Boolean document calculation, that is, the number of documents in which (a) or (a,b) occurs, divided by the total number of documents.</p>
+<p>We calculate the global coherence of the topic as the average pairwise coherence scores on the top N words which describe the topic.</p>
+<p>We ran the metric over a range of 3 to 40 topics, incrementing by 3 and achieved the result below. Although coherence is highest for 6 topics, we know that there are close to 50 different categories of companies in the dataset and thus 6 topics will not give well separated results. Therefore, we chose the give our model 18 topics, which has the next highest coherence score and will not give topics that are too specific to this set of data. If you’re interested in the code, see this  <a class="reference external" href="https://richardye101.github.io/ubineer_nlp_research/lab?path=mary%2FWeek+10+-+NMF+vs+LDA+vs+LSA.ipynb">file</a>
+<img alt="image-3.png" src="content/mary/attachment:image-3.png" /></p>
+<p>The table below illustrates the results produced by the NMF model tuned to generate 18 topics. Each column is a topic identified by the column index and is represented by the top 10 words in the topic by weight.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">NMF</span>
+<span class="n">filtered</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;mary/filtered_timeseries_data.csv&quot;</span><span class="p">)</span>
+<span class="n">filtered_data</span> <span class="o">=</span> <span class="n">filtered</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s2">&quot;coDescription_stopwords&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">filtered_dates</span> <span class="o">=</span> <span class="n">filtered</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+<span class="n">tf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span> 
+<span class="n">filtered_all_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">)</span>
+
+<span class="n">nmf_model</span> <span class="o">=</span> <span class="n">NMF</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;nndsvd&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">nmf_feature</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_all_X</span><span class="p">)</span>
+<span class="n">nmf_component</span> <span class="o">=</span><span class="n">nmf_model</span><span class="o">.</span><span class="n">components_</span>
+
+<span class="n">nmf_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">nmf_model</span><span class="p">,</span><span class="n">tf_vectorizer</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">nmf_topics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">NMF</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">filtered</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;mary/filtered_timeseries_data.csv&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">filtered_data</span> <span class="o">=</span> <span class="n">filtered</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s2">&quot;coDescription_stopwords&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">filtered_dates</span> <span class="o">=</span> <span class="n">filtered</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:680,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">680</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:575,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">575</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:933,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">933</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1217,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span> <span class="c1"># error: No overload variant of &quot;get_handle&quot; matches argument types</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span> <span class="c1"># &quot;Union[str, PathLike[str], ReadCsvBuffer[bytes], ReadCsvBuffer[str]]&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1216</span> <span class="c1"># , &quot;str&quot;, &quot;bool&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1217</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>  <span class="c1"># type: ignore[call-overload]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1219</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1220</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1221</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1222</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1223</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1224</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1228</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/common.py:789,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">789</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;mary/filtered_timeseries_data.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="netflix-analysis">
+<h3>Netflix Analysis<a class="headerlink" href="#netflix-analysis" title="Permalink to this headline">¶</a></h3>
+<p>Interesting decrease in Topic 8 (software) especially in 2011 when Netflix rolled out mobile apps for smartphone users</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">netflix_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">netflix_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
+<span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="c1"># netflix_top_df.columns = [&quot;Topic #&quot; + str(i) for i in range(1,18+)]1</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">netflix_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">netflix_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;tf_vectorizer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="c1">#compare 2012 with 2008 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#compare 2012 with 2008 </span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;nmf_topics&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 2(retail/store), 15(real estate/residential)</p></li>
+<li><p>increase in topic 10 (finances), 11 (food), 16(common financial report terms)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 2(retail/store) and 15(real estate/residential) may be a result of Netflix’s change in business model in 2007 which hugely emphasized moving into the video streaming industry and being able to watch content in the comfort of your own home. However, in 2014, the business model is already established so there is a decrease on the emphasis of these topics.</p>
+<p>Topics 11,16, 10 are too general to be interpreted or is irrelevant.</p>
+</div>
+<div class="section" id="general-electric-analysis">
+<h3>General Electric Analysis<a class="headerlink" href="#general-electric-analysis" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ge_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">ge_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
+<span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ge_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;tf_vectorizer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># #compare 2014 to 2011 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># #compare 2014 to 2011 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;nmf_topics&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 15(real estate/land), 18(aerospace, vehicles)</p></li>
+<li><p>increase in topic 5(loan/bank), 6(energy/gas), 16 (financial/analysis)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 18(aerospace/vehicles) may indicate that the company is seeing steady growth in the Aerospace section and did not make major changes in their business model. Decrease in topic 15(real estate/residential) may be explained by the planned acquisition of GE Appliances by Electrolux.</p>
+<p>Increase in Topic 5 (loan/bank) may be explained by its acquistion activities where GE Power acquired Alcom and GE Appliances is set to be acquired by Electrolux. Increase in Topic 6(energy/gas) may be explained by GE Power’s plan to acquire Alcom.</p>
+</div>
+</div>
+<div class="section" id="lsa">
+<h2>LSA<a class="headerlink" href="#lsa" title="Permalink to this headline">¶</a></h2>
+<p>Difficult to interpret the topics, there are several different categories of words in each topic</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+<span class="n">svd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">svd_model</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">svd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_all_X</span><span class="p">))</span>
+<span class="n">lsa_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">svd</span><span class="p">,</span><span class="n">tf_vectorizer</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">lsa_topics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">svd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">svd_model</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">svd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_all_X</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">lsa_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">svd</span><span class="p">,</span><span class="n">tf_vectorizer</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">lsa_topics</span>
+
+<span class="ne">NameError</span>: name &#39;filtered_all_X&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Netflix Analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">netflix_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
+<span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">netflix_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;netflix_X&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#compare 2012 with 2008 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#compare 2012 with 2008 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;lsa_topics&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 2(retail/store) ,8(software, mining), 10(loan, home, commodities, cannabis), 13(investment, cannabis)</p></li>
+<li><p>increase in topic 17(mining, financial)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 2(retail/store) and 8(software, mining) may be a result of Netflix’s change in business model in 2007 which hugely emphasized moving into the video streaming industry and being able to watch content in the comfort of your own home. However, in 2014, the business model is already established so there is a decrease on the emphasis of these topics.</p>
+<p>Topics 10, 13, 17 are too general to be interpreted, or is irrelevant.</p>
+</div>
+<div class="section" id="id2">
+<h3>General Electric Analysis<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ge_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
+<span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ge_X&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare 2014 to 2011 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># compare 2014 to 2011 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;lsa_topics&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 18(aerospace)</p></li>
+<li><p>increase in topic 14(business, acquisition), 17(mining, financial), 19(food/store), 20(vehicle, mineral, partner)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 18(aerospace/vehicles) may indicate that the company is seeing steady growth in the Aerospace section and did not make major changes in their business model.</p>
+<p>Increase in Topic 14(business, acquisition) may be explained by its increased acquistion activities where GE Power acquired Alcom and GE Appliances is set to be acquired by Electrolux.</p>
+<p>Topic 17, 19, 20 are too general to be interpreted or is irrelevant.</p>
+</div>
+</div>
+<div class="section" id="lda">
+<h2>LDA<a class="headerlink" href="#lda" title="Permalink to this headline">¶</a></h2>
+<p>We ran the coherence score benchmarking over a range of 3 to 40 topics, incrementing by 3 and achieved the result below. We chose the give our model 9 topics, which has the highest coherence score. If you’re interested in the code, see this  <a class="reference external" href="https://richardye101.github.io/ubineer_nlp_research/lab?path=mary%2FWeek+10+-+NMF+vs+LDA+vs+LSA.ipynb">file</a></p>
+<p><img alt="image.png" src="content/mary/attachment:image.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">LatentDirichletAllocation</span>
+
+<span class="c1"># LDA can only use raw term counts for LDA because it is a probabilistic graphical model</span>
+<span class="n">count_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">filtered_all_count_X</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">)</span>
+<span class="n">count_feature_names</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">filtered_all_count_X</span><span class="p">)</span>
+<span class="n">lda_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span><span class="n">count_vectorizer</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">lda_topics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># LDA can only use raw term counts for LDA because it is a probabilistic graphical model</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">count_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">filtered_all_count_X</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">count_feature_names</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">filtered_all_count_X</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;filtered_data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Netflix Analysis<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">netlfix_X</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">netflix_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netlfix_X</span><span class="p">)</span>
+<span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">netlfix_X</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">netflix_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netlfix_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;netflix&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#compare 2012 with 2008 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#compare 2012 with 2008 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;lda_topics&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 1(common financial terms) ,5(software)</p></li>
+<li><p>increase in topic 6(common financial terms), 7(retail/branding), 9(managment positions?)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 5 (software) may be a result of Netflix’s change in business model in 2007 which hugely emphasized moving into the video streaming/software industry. However, in 2014, the business model is already established so there is a decrease on the emphasis of software.</p>
+<p>Topics 1,6,7,9 are too general to be interpreted or is irrelevant</p>
+</div>
+<div class="section" id="id4">
+<h3>General Electric Analysis<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ge_X</span> <span class="o">=</span>  <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">ge_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span> <span class="p">)</span>
+<span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ge_X</span> <span class="o">=</span>  <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;ge&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare 2014 to 2011 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [17],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># compare 2014 to 2011 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;lda_topics&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 9(managment positions?)</p></li>
+<li><p>increase in topic 7(retail/branding), 8(finance, loan), 1(common financial report terms), 6(positive financial report terms)</p></li>
+</ul>
+<p>Anlysis:
+Topics are too general to be interpreted</p>
+</div>
+</div>
+<div class="section" id="summary-of-topic-modelling">
+<h2>Summary of Topic Modelling<a class="headerlink" href="#summary-of-topic-modelling" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="nmf-results">
+<h2>NMF Results<a class="headerlink" href="#nmf-results" title="Permalink to this headline">¶</a></h2>
+<p><strong>Netflix</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 2(retail/store), 15(real estate/residential)</p></li>
+<li><p>increase in topic 10 (finances), 11 (food), 16(common financial report terms)</p></li>
+</ul>
+<p><strong>GE</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 15(real estate/land), 18(aerospace, vehicles)</p></li>
+<li><p>increase in topic 5(loan/bank), 6(energy/gas), 16 (financial/analysis)</p></li>
+</ul>
+</div>
+<div class="section" id="lda-results">
+<h2>LDA Results<a class="headerlink" href="#lda-results" title="Permalink to this headline">¶</a></h2>
+<p><strong>Netflix</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 1(common financial terms) ,5(software)</p></li>
+<li><p>increase in topic 6(common financial terms), 7(retail/branding), 9(managment positions?)</p></li>
+</ul>
+<p><strong>GE</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 9(managment positions?)</p></li>
+<li><p>increase in topic 7(retail/branding), 8(finance, loan), 1(common financial report terms), 6(positive financial report terms)</p></li>
+</ul>
+</div>
+<div class="section" id="lsa-results">
+<h2>LSA Results<a class="headerlink" href="#lsa-results" title="Permalink to this headline">¶</a></h2>
+<p><strong>Netflix</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 2(retail/store) ,8(software, mining), 10(loan, home, commodities, cannabis), 13(investment, cannabis)</p></li>
+<li><p>increase in topic 17(mining, financial)</p></li>
+</ul>
+<p><strong>GE</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 18(aerospace)</p></li>
+<li><p>increase in topic 14(business, acquisition), 17(mining, financial), 19(food/store), 20(vehicle, mineral, partner)</p></li>
+</ul>
+<p>Topics generated by the NMF model is the easiest to evaluate and is more coherent compared to LDA and LSA. We saw that the LSA model generated topics with mixed category of words in each topic and contained negative weights which is difficult to interpret.  The LDA model generated many topics with common financial terms that appear in most 10k reports so it did not give meaningful information of each company. Therefore, NMF does the best using this dataset which is expected since NMF usually has higher performance than LDA and LSA when using a small dataset.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/mary"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../richard/8_Dynamic_Embedding.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Embedding methods to augment with dynamic analysis</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Peitong Lu, Mary Xu, Richard Ye<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
