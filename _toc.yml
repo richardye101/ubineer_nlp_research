@@ -9,8 +9,11 @@ chapters:
 - file: content/richard/3_LSA_topic_modelling.ipynb
 - file: content/richard/4_Word2Vec.ipynb
 - file: content/richard/5_Doc2Vec.ipynb
+<<<<<<< Updated upstream
 - file: content/mary/Report_USE.ipynb
 - file: content/mary/Report_TowTowers.ipynb
+=======
+>>>>>>> Stashed changes
 - file: content/richard/8_Dynamic_Embedding.ipynb
 - file: content/mary/Report_Topic_Modelling.ipynb
 
