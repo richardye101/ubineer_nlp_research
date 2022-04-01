@@ -152,6 +152,25 @@ def conf_mat(matrix, data):
     
     return dot_product_df
     
+def get_accuracy(cosine_matrix):
+    np.fill_diagonal(cosine_matrix.values, 0)
+    cosine_matrix.index = df["SIC_desc"]
+    cosine_matrix.columns = df["SIC_desc"]
+    prediction = pd.DataFrame(cosine_matrix.idxmax(axis=1))
+    prediction.reset_index(level=0, inplace=True)
+    prediction.columns = ["y_true","y_pred"]
+    return (prediction, np.sum(np.where(prediction.iloc[:,1] == prediction.iloc[:,0], 1, 0))/len(prediction),
+            confusion_matrix(prediction["y_true"], prediction["y_pred"], labels=None, sample_weight=None, normalize='true'))
+
+def conf_mat_cosine(matrix):
+    prediction, accuracy, cm = get_accuracy(matrix)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=df["SIC_desc"].unique())
+    disp.plot(xticks_rotation='vertical')
+    disp.figure_.savefig('conf_mat.png', dpi=200, bbox_inches='tight')
+
+    return prediction
+
+
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
