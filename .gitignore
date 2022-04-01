@@ -1,6 +1,8 @@
 # jupyter book
 _build/
 
+content/data/timeseries_data.csv
+
 *.bundle.*
 lib/
 node_modules/
