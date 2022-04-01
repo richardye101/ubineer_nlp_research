@@ -289,6 +289,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#we-also-lemmatized-all-possible-words-aka-text-word-normalization-which-means-all-instances-of-am-are-is-are-converted-to-be-and-playing-played-plays-are-all-converted-to-play-this-reduces-the-amount-of-different-words-we-have-to-process-and-also-condensing-the-amount-of-information-we-recieve-since-words-that-all-carry-the-same-meaning-are-represented-together">
+   We also lemmatized all possible words, aka Text/Word Normalization which means all instances of “am, are, is” are converted to “be” and “playing, played, plays” are all converted to “play”. This reduces the amount of different words we have to process, and also condensing the amount of information we recieve since words that all carry the same meaning are represented together.
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -374,6 +379,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#we-also-lemmatized-all-possible-words-aka-text-word-normalization-which-means-all-instances-of-am-are-is-are-converted-to-be-and-playing-played-plays-are-all-converted-to-play-this-reduces-the-amount-of-different-words-we-have-to-process-and-also-condensing-the-amount-of-information-we-recieve-since-words-that-all-carry-the-same-meaning-are-represented-together">
+   We also lemmatized all possible words, aka Text/Word Normalization which means all instances of “am, are, is” are converted to “be” and “playing, played, plays” are all converted to “play”. This reduces the amount of different words we have to process, and also condensing the amount of information we recieve since words that all carry the same meaning are represented together.
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -424,6 +434,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h3>Text to Financial Return Relationship<a class="headerlink" href="#text-to-financial-return-relationship" title="Permalink to this headline">¶</a></h3>
 <p>Lastly, the relationship between companies based on the document embeddings and their financial returns was analyzed. Monte-Carlo simulations were used to analyze different portfolios of companies in a given industry and comparing the returns of those simulations to the Efficient Frontier. For the data collection, we used the company’s Central Index Key (CIK) as the identifier to obtain monthly stock returns data from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. We included only the companies with filings that were used in our previous embedding work and the timespan of returns ranges for each filer, but they are all within June 2016 to November 2020. We computed the returns correlations and used these correlations to build portfolios. We conducted mean-variance analysis with covariance of the returns and covariance generated using variance of each stock and cosine distance as correlation to compare the portfolios.</p>
 <p><strong>ADD MORE DETAILS ABOUT CREATING THE PORTFOLIOS?</strong></p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</p>
 </div>
 <div class="section" id="data-preprocessing">
 <h3>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h3>
@@ -447,7 +458,26 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Within our pre-processing, we focus on <code class="docutils literal notranslate"><span class="pre">coDescription</span></code>.
 We further cleaned up the <code class="docutils literal notranslate"><span class="pre">Description</span></code> text by removing HTML code, the first couple words which were common among all filings such as <em>“business overview”</em>, and filtering for filings with over 250 characters.</p>
 <p>We then removed <em>stop words</em> from the business descriptions, which are very commong words like “the, they, and, is, are, there” and others. These words don’t provide meaning and therefore do not contribute to our goal of extracting meaning.</p>
-<p>We also lemmatized all possible words, aka Text/Word Normalization which means all instances of “am, are, is” are converted to “be” and “playing, played, plays” are all converted to “play”. This reduces the amount of different words we have to process, and also condensing the amount of information we recieve since words that all carry the same meaning are represented together.</p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="we-also-lemmatized-all-possible-words-aka-text-word-normalization-which-means-all-instances-of-am-are-is-are-converted-to-be-and-playing-played-plays-are-all-converted-to-play-this-reduces-the-amount-of-different-words-we-have-to-process-and-also-condensing-the-amount-of-information-we-recieve-since-words-that-all-carry-the-same-meaning-are-represented-together">
+<h1>We also lemmatized all possible words, aka Text/Word Normalization which means all instances of “am, are, is” are converted to “be” and “playing, played, plays” are all converted to “play”. This reduces the amount of different words we have to process, and also condensing the amount of information we recieve since words that all carry the same meaning are represented together.<a class="headerlink" href="#we-also-lemmatized-all-possible-words-aka-text-word-normalization-which-means-all-instances-of-am-are-is-are-converted-to-be-and-playing-played-plays-are-all-converted-to-play-this-reduces-the-amount-of-different-words-we-have-to-process-and-also-condensing-the-amount-of-information-we-recieve-since-words-that-all-carry-the-same-meaning-are-represented-together" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>Stashed changes</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <p>Check out each page bundled within this book to see more on a given topic.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -461,8 +491,6 @@ We further cleaned up the <code class="docutils literal notranslate"><span class
 <li class="toctree-l1"><a class="reference internal" href="content/richard/8_Dynamic_Embedding.html">Embedding methods to augment with dynamic analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Topic_Modelling.html">Dynamic Topic Modelling</a></li>
 </ul>
-</div>
-</div>
 </div>
 </div>
 
