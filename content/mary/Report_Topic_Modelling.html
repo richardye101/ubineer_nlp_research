@@ -522,7 +522,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Probabilities of single words p(a) or the joint probabilizy of two words p(a,b) can be estimated by Boolean document calculation, that is, the number of documents in which (a) or (a,b) occurs, divided by the total number of documents.</p>
 <p>We calculate the global coherence of the topic as the average pairwise coherence scores on the top N words which describe the topic.</p>
 <p>We ran the metric over a range of 3 to 40 topics, incrementing by 3 and achieved the result below. Although coherence is highest for 6 topics, we know that there are close to 50 different categories of companies in the dataset and thus 6 topics will not give well separated results. Therefore, we chose the give our model 18 topics, which has the next highest coherence score and will not give topics that are too specific to this set of data. If you’re interested in the code, see this  <a class="reference external" href="https://richardye101.github.io/ubineer_nlp_research/lab?path=mary%2FWeek+10+-+NMF+vs+LDA+vs+LSA.ipynb">file</a></p>
-<p><img alt="NMF Coherence" src="content/images/nmf_coherence.png" /></p>
+<p><img alt="NMF Coherence" src="../../_images/nmf_coherence.png" /></p>
 <p>The table below illustrates the results produced by the NMF model tuned to generate 18 topics. Each column is a topic identified by the column index and is represented by the top 10 words in the topic by weight.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -545,85 +545,262 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">NMF</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">filtered</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;filtered_timeseries_data.csv&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">filtered_data</span> <span class="o">=</span> <span class="n">filtered</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s2">&quot;coDescription_stopwords&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">filtered_dates</span> <span class="o">=</span> <span class="n">filtered</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:680,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">680</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:575,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">575</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:933,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">--&gt; </span><span class="mi">933</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1217,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1214</span> <span class="c1"># error: No overload variant of &quot;get_handle&quot; matches argument types</span>
-<span class="g g-Whitespace">   </span><span class="mi">1215</span> <span class="c1"># &quot;Union[str, PathLike[str], ReadCsvBuffer[bytes], ReadCsvBuffer[str]]&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1216</span> <span class="c1"># , &quot;str&quot;, &quot;bool&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1217</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>  <span class="c1"># type: ignore[call-overload]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1219</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1220</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1221</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1222</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1223</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1224</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1226</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1227</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1228</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/io/common.py:789,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">788</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">789</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">790</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">791</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">795</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">797</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;filtered_timeseries_data.csv&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+  warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topic # 01</th>
+      <th>Topic # 02</th>
+      <th>Topic # 03</th>
+      <th>Topic # 04</th>
+      <th>Topic # 05</th>
+      <th>Topic # 06</th>
+      <th>Topic # 07</th>
+      <th>Topic # 08</th>
+      <th>Topic # 09</th>
+      <th>Topic # 10</th>
+      <th>Topic # 11</th>
+      <th>Topic # 12</th>
+      <th>Topic # 13</th>
+      <th>Topic # 14</th>
+      <th>Topic # 15</th>
+      <th>Topic # 16</th>
+      <th>Topic # 17</th>
+      <th>Topic # 18</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>customer</td>
+      <td>store</td>
+      <td>share</td>
+      <td>patient</td>
+      <td>loan</td>
+      <td>gas</td>
+      <td>ethanol</td>
+      <td>software</td>
+      <td>president</td>
+      <td>tax</td>
+      <td>brand</td>
+      <td>mineral</td>
+      <td>investment</td>
+      <td>cannabis</td>
+      <td>home</td>
+      <td>item</td>
+      <td>client</td>
+      <td>aircraft</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>manufacturing</td>
+      <td>merchandise</td>
+      <td>stock</td>
+      <td>clinical</td>
+      <td>bank</td>
+      <td>oil</td>
+      <td>corn</td>
+      <td>customer</td>
+      <td>vice</td>
+      <td>income</td>
+      <td>food</td>
+      <td>exploration</td>
+      <td>fund</td>
+      <td>medical</td>
+      <td>land</td>
+      <td>statement</td>
+      <td>solution</td>
+      <td>system</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>material</td>
+      <td>customer</td>
+      <td>common</td>
+      <td>fda</td>
+      <td>credit</td>
+      <td>natural</td>
+      <td>grain</td>
+      <td>application</td>
+      <td>officer</td>
+      <td>cash</td>
+      <td>consumer</td>
+      <td>mining</td>
+      <td>adviser</td>
+      <td>lease</td>
+      <td>property</td>
+      <td>registrant</td>
+      <td>care</td>
+      <td>aviation</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>semiconductor</td>
+      <td>brand</td>
+      <td>agreement</td>
+      <td>trial</td>
+      <td>institution</td>
+      <td>drilling</td>
+      <td>distiller</td>
+      <td>solution</td>
+      <td>chief</td>
+      <td>asset</td>
+      <td>segment</td>
+      <td>claim</td>
+      <td>portfolio</td>
+      <td>property</td>
+      <td>construction</td>
+      <td>part</td>
+      <td>healthcare</td>
+      <td>flight</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>technology</td>
+      <td>apparel</td>
+      <td>merger</td>
+      <td>drug</td>
+      <td>borrower</td>
+      <td>well</td>
+      <td>fuel</td>
+      <td>data</td>
+      <td>served</td>
+      <td>note</td>
+      <td>retail</td>
+      <td>gold</td>
+      <td>income</td>
+      <td>colorado</td>
+      <td>community</td>
+      <td>stockholder</td>
+      <td>health</td>
+      <td>power</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>equipment</td>
+      <td>retail</td>
+      <td>shareholder</td>
+      <td>cancer</td>
+      <td>mortgage</td>
+      <td>pipeline</td>
+      <td>gallon</td>
+      <td>platform</td>
+      <td>executive</td>
+      <td>net</td>
+      <td>beverage</td>
+      <td>property</td>
+      <td>capital</td>
+      <td>pharmaceutical</td>
+      <td>mortgage</td>
+      <td>equity</td>
+      <td>provider</td>
+      <td>military</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>industrial</td>
+      <td>fiscal</td>
+      <td>director</td>
+      <td>device</td>
+      <td>deposit</td>
+      <td>production</td>
+      <td>plant</td>
+      <td>user</td>
+      <td>senior</td>
+      <td>loss</td>
+      <td>restaurant</td>
+      <td>project</td>
+      <td>advisor</td>
+      <td>facility</td>
+      <td>estate</td>
+      <td>supplementary</td>
+      <td>provide</td>
+      <td>energy</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>segment</td>
+      <td>assortment</td>
+      <td>issued</td>
+      <td>treatment</td>
+      <td>lending</td>
+      <td>reserve</td>
+      <td>gasoline</td>
+      <td>cloud</td>
+      <td>since</td>
+      <td>liability</td>
+      <td>agreement</td>
+      <td>mine</td>
+      <td>security</td>
+      <td>growing</td>
+      <td>real</td>
+      <td>discussion</td>
+      <td>segment</td>
+      <td>engine</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>system</td>
+      <td>retailer</td>
+      <td>outstanding</td>
+      <td>study</td>
+      <td>federal</td>
+      <td>crude</td>
+      <td>renewable</td>
+      <td>network</td>
+      <td>director</td>
+      <td>statement</td>
+      <td>ingredient</td>
+      <td>permit</td>
+      <td>fee</td>
+      <td>plant</td>
+      <td>building</td>
+      <td>disclosure</td>
+      <td>revenue</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>solution</td>
+      <td>footwear</td>
+      <td>exchange</td>
+      <td>therapy</td>
+      <td>estate</td>
+      <td>water</td>
+      <td>energy</td>
+      <td>mobile</td>
+      <td>joining</td>
+      <td>ended</td>
+      <td>distribution</td>
+      <td>environmental</td>
+      <td>equity</td>
+      <td>warrant</td>
+      <td>residential</td>
+      <td>ii</td>
+      <td>security</td>
+      <td>contract</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="section" id="netflix-analysis">
 <h3>Netflix Analysis<a class="headerlink" href="#netflix-analysis" title="Permalink to this headline">¶</a></h3>
@@ -639,16 +816,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">netflix_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">netflix_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;tf_vectorizer&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/Report_Topic_Modelling_11_0.png" src="../../_images/Report_Topic_Modelling_11_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -660,17 +828,57 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#compare 2012 with 2008 </span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;nmf_topics&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #15</th>
+      <td>-0.048122</td>
+      <td>home, land, property, construction, community, mortgage, estate, real, building, residential</td>
+    </tr>
+    <tr>
+      <th>Topic #2</th>
+      <td>-0.033552</td>
+      <td>store, merchandise, customer, brand, apparel, retail, fiscal, assortment, retailer, footwear</td>
+    </tr>
+    <tr>
+      <th>Topic #11</th>
+      <td>0.031877</td>
+      <td>brand, food, consumer, segment, retail, beverage, restaurant, agreement, ingredient, distribution</td>
+    </tr>
+    <tr>
+      <th>Topic #16</th>
+      <td>0.029032</td>
+      <td>item, statement, registrant, part, stockholder, equity, supplementary, discussion, disclosure, ii</td>
+    </tr>
+    <tr>
+      <th>Topic #10</th>
+      <td>0.017785</td>
+      <td>tax, income, cash, asset, note, net, loss, liability, statement, ended</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 2(retail/store), 15(real estate/residential)</p></li>
@@ -692,16 +900,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ge_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;tf_vectorizer&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/Report_Topic_Modelling_15_0.png" src="../../_images/Report_Topic_Modelling_15_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -712,16 +911,57 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># #compare 2014 to 2011 </span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;nmf_topics&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #18</th>
+      <td>-0.034192</td>
+      <td>aircraft, system, aviation, flight, power, military, energy, engine, defense, contract</td>
+    </tr>
+    <tr>
+      <th>Topic #16</th>
+      <td>0.029161</td>
+      <td>item, statement, registrant, part, stockholder, equity, supplementary, discussion, disclosure, ii</td>
+    </tr>
+    <tr>
+      <th>Topic #15</th>
+      <td>-0.024753</td>
+      <td>home, land, property, construction, community, mortgage, estate, real, building, residential</td>
+    </tr>
+    <tr>
+      <th>Topic #5</th>
+      <td>0.020200</td>
+      <td>loan, bank, credit, institution, borrower, mortgage, deposit, lending, federal, estate</td>
+    </tr>
+    <tr>
+      <th>Topic #6</th>
+      <td>0.019347</td>
+      <td>gas, oil, natural, drilling, well, pipeline, production, reserve, crude, water</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 15(real estate/land), 18(aerospace, vehicles)</p></li>
@@ -746,19 +986,284 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">svd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">svd_model</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">svd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_all_X</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">lsa_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">svd</span><span class="p">,</span><span class="n">tf_vectorizer</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">lsa_topics</span>
-
-<span class="ne">NameError</span>: name &#39;filtered_all_X&#39; is not defined
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+  warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topic # 01</th>
+      <th>Topic # 02</th>
+      <th>Topic # 03</th>
+      <th>Topic # 04</th>
+      <th>Topic # 05</th>
+      <th>Topic # 06</th>
+      <th>Topic # 07</th>
+      <th>Topic # 08</th>
+      <th>Topic # 09</th>
+      <th>Topic # 10</th>
+      <th>Topic # 11</th>
+      <th>Topic # 12</th>
+      <th>Topic # 13</th>
+      <th>Topic # 14</th>
+      <th>Topic # 15</th>
+      <th>Topic # 16</th>
+      <th>Topic # 17</th>
+      <th>Topic # 18</th>
+      <th>Topic # 19</th>
+      <th>Topic # 20</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>customer</td>
+      <td>store</td>
+      <td>store</td>
+      <td>patient</td>
+      <td>loan</td>
+      <td>oil</td>
+      <td>ethanol</td>
+      <td>gas</td>
+      <td>president</td>
+      <td>loan</td>
+      <td>food</td>
+      <td>mineral</td>
+      <td>investment</td>
+      <td>customer</td>
+      <td>home</td>
+      <td>client</td>
+      <td>item</td>
+      <td>aircraft</td>
+      <td>cannabis</td>
+      <td>energy</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>store</td>
+      <td>customer</td>
+      <td>merchandise</td>
+      <td>clinical</td>
+      <td>bank</td>
+      <td>gas</td>
+      <td>corn</td>
+      <td>oil</td>
+      <td>vice</td>
+      <td>share</td>
+      <td>brand</td>
+      <td>mining</td>
+      <td>fund</td>
+      <td>merger</td>
+      <td>cannabis</td>
+      <td>solution</td>
+      <td>segment</td>
+      <td>food</td>
+      <td>food</td>
+      <td>device</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>system</td>
+      <td>merchandise</td>
+      <td>loan</td>
+      <td>fda</td>
+      <td>patient</td>
+      <td>ethanol</td>
+      <td>grain</td>
+      <td>software</td>
+      <td>officer</td>
+      <td>mineral</td>
+      <td>client</td>
+      <td>exploration</td>
+      <td>adviser</td>
+      <td>client</td>
+      <td>aircraft</td>
+      <td>care</td>
+      <td>registrant</td>
+      <td>restaurant</td>
+      <td>restaurant</td>
+      <td>client</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fiscal</td>
+      <td>brand</td>
+      <td>share</td>
+      <td>drug</td>
+      <td>fda</td>
+      <td>natural</td>
+      <td>distiller</td>
+      <td>exploration</td>
+      <td>chief</td>
+      <td>cannabis</td>
+      <td>investment</td>
+      <td>project</td>
+      <td>client</td>
+      <td>target</td>
+      <td>client</td>
+      <td>mineral</td>
+      <td>statement</td>
+      <td>franchise</td>
+      <td>solution</td>
+      <td>power</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>share</td>
+      <td>apparel</td>
+      <td>stock</td>
+      <td>trial</td>
+      <td>clinical</td>
+      <td>production</td>
+      <td>software</td>
+      <td>client</td>
+      <td>served</td>
+      <td>bank</td>
+      <td>consumer</td>
+      <td>claim</td>
+      <td>portfolio</td>
+      <td>vehicle</td>
+      <td>construction</td>
+      <td>exploration</td>
+      <td>solution</td>
+      <td>system</td>
+      <td>store</td>
+      <td>home</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>brand</td>
+      <td>retail</td>
+      <td>brand</td>
+      <td>cancer</td>
+      <td>mortgage</td>
+      <td>exploration</td>
+      <td>client</td>
+      <td>property</td>
+      <td>executive</td>
+      <td>agreement</td>
+      <td>restaurant</td>
+      <td>property</td>
+      <td>advisor</td>
+      <td>transaction</td>
+      <td>item</td>
+      <td>mining</td>
+      <td>client</td>
+      <td>store</td>
+      <td>customer</td>
+      <td>care</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>technology</td>
+      <td>retailer</td>
+      <td>common</td>
+      <td>store</td>
+      <td>trial</td>
+      <td>water</td>
+      <td>gallon</td>
+      <td>natural</td>
+      <td>client</td>
+      <td>exploration</td>
+      <td>beverage</td>
+      <td>mine</td>
+      <td>store</td>
+      <td>opportunity</td>
+      <td>segment</td>
+      <td>share</td>
+      <td>loan</td>
+      <td>franchisees</td>
+      <td>franchise</td>
+      <td>solar</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>agreement</td>
+      <td>fiscal</td>
+      <td>investment</td>
+      <td>study</td>
+      <td>credit</td>
+      <td>drilling</td>
+      <td>data</td>
+      <td>mineral</td>
+      <td>care</td>
+      <td>mining</td>
+      <td>fund</td>
+      <td>gold</td>
+      <td>cannabis</td>
+      <td>security</td>
+      <td>land</td>
+      <td>health</td>
+      <td>equity</td>
+      <td>aviation</td>
+      <td>semiconductor</td>
+      <td>project</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>stock</td>
+      <td>footwear</td>
+      <td>apparel</td>
+      <td>treatment</td>
+      <td>drug</td>
+      <td>grain</td>
+      <td>solution</td>
+      <td>data</td>
+      <td>senior</td>
+      <td>stock</td>
+      <td>ingredient</td>
+      <td>ethanol</td>
+      <td>capital</td>
+      <td>loan</td>
+      <td>building</td>
+      <td>healthcare</td>
+      <td>brand</td>
+      <td>flight</td>
+      <td>franchisees</td>
+      <td>system</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>segment</td>
+      <td>assortment</td>
+      <td>retail</td>
+      <td>medical</td>
+      <td>estate</td>
+      <td>mineral</td>
+      <td>fuel</td>
+      <td>drilling</td>
+      <td>food</td>
+      <td>home</td>
+      <td>segment</td>
+      <td>statement</td>
+      <td>estate</td>
+      <td>could</td>
+      <td>registrant</td>
+      <td>customer</td>
+      <td>mining</td>
+      <td>entertainment</td>
+      <td>property</td>
+      <td>technology</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="section" id="id1">
 <h3>Netflix Analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -771,16 +1276,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">netflix_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;netflix_X&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/Report_Topic_Modelling_22_0.png" src="../../_images/Report_Topic_Modelling_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -791,16 +1287,57 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#compare 2012 with 2008 </span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;lsa_topics&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #2</th>
+      <td>-0.074932</td>
+      <td>store, customer, merchandise, brand, apparel, retail, retailer, fiscal, footwear, assortment</td>
+    </tr>
+    <tr>
+      <th>Topic #8</th>
+      <td>-0.064628</td>
+      <td>gas, oil, software, exploration, client, property, natural, mineral, data, drilling</td>
+    </tr>
+    <tr>
+      <th>Topic #17</th>
+      <td>0.055296</td>
+      <td>item, segment, registrant, statement, solution, client, loan, equity, brand, mining</td>
+    </tr>
+    <tr>
+      <th>Topic #10</th>
+      <td>-0.047412</td>
+      <td>loan, share, mineral, cannabis, bank, agreement, exploration, mining, stock, home</td>
+    </tr>
+    <tr>
+      <th>Topic #13</th>
+      <td>-0.046673</td>
+      <td>investment, fund, adviser, client, portfolio, advisor, store, cannabis, capital, estate</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 2(retail/store) ,8(software, mining), 10(loan, home, commodities, cannabis), 13(investment, cannabis)</p></li>
@@ -821,16 +1358,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;ge_X&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/Report_Topic_Modelling_26_0.png" src="../../_images/Report_Topic_Modelling_26_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -841,16 +1369,57 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># compare 2014 to 2011 </span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;lsa_topics&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #18</th>
+      <td>-0.077682</td>
+      <td>aircraft, food, restaurant, franchise, system, store, franchisees, aviation, flight, entertainment</td>
+    </tr>
+    <tr>
+      <th>Topic #14</th>
+      <td>0.071551</td>
+      <td>customer, merger, client, target, vehicle, transaction, opportunity, security, loan, could</td>
+    </tr>
+    <tr>
+      <th>Topic #19</th>
+      <td>0.066230</td>
+      <td>cannabis, food, restaurant, solution, store, customer, franchise, semiconductor, franchisees, property</td>
+    </tr>
+    <tr>
+      <th>Topic #17</th>
+      <td>0.058573</td>
+      <td>item, segment, registrant, statement, solution, client, loan, equity, brand, mining</td>
+    </tr>
+    <tr>
+      <th>Topic #16</th>
+      <td>0.032796</td>
+      <td>client, solution, care, mineral, exploration, mining, share, health, healthcare, customer</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 18(aerospace)</p></li>
@@ -865,7 +1434,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="lda">
 <h2>LDA<a class="headerlink" href="#lda" title="Permalink to this headline">¶</a></h2>
 <p>We ran the coherence score benchmarking over a range of 3 to 40 topics, incrementing by 3 and achieved the result below. We chose the give our model 9 topics, which has the highest coherence score. If you’re interested in the code, see this  <a class="reference external" href="https://richardye101.github.io/ubineer_nlp_research/lab?path=mary%2FWeek+10+-+NMF+vs+LDA+vs+LSA.ipynb">file</a></p>
-<p><img alt="NMF Coherence" src="content/images/lda_coherence.png" /></p>
+<p><img alt="NMF Coherence" src="../../_images/lda_coherence.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
@@ -882,19 +1451,163 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># LDA can only use raw term counts for LDA because it is a probabilistic graphical model</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">count_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">filtered_all_count_X</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">count_feature_names</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">filtered_all_count_X</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;filtered_data&#39; is not defined
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+  warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topic # 01</th>
+      <th>Topic # 02</th>
+      <th>Topic # 03</th>
+      <th>Topic # 04</th>
+      <th>Topic # 05</th>
+      <th>Topic # 06</th>
+      <th>Topic # 07</th>
+      <th>Topic # 08</th>
+      <th>Topic # 09</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>share</td>
+      <td>customer</td>
+      <td>investment</td>
+      <td>patient</td>
+      <td>customer</td>
+      <td>asset</td>
+      <td>store</td>
+      <td>loan</td>
+      <td>property</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>stock</td>
+      <td>material</td>
+      <td>security</td>
+      <td>fda</td>
+      <td>solution</td>
+      <td>cash</td>
+      <td>customer</td>
+      <td>bank</td>
+      <td>president</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>agreement</td>
+      <td>system</td>
+      <td>tax</td>
+      <td>clinical</td>
+      <td>system</td>
+      <td>note</td>
+      <td>brand</td>
+      <td>federal</td>
+      <td>program</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>common</td>
+      <td>energy</td>
+      <td>capital</td>
+      <td>drug</td>
+      <td>technology</td>
+      <td>tax</td>
+      <td>retail</td>
+      <td>institution</td>
+      <td>vice</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>issued</td>
+      <td>production</td>
+      <td>income</td>
+      <td>health</td>
+      <td>application</td>
+      <td>fiscal</td>
+      <td>fiscal</td>
+      <td>capital</td>
+      <td>officer</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>date</td>
+      <td>oil</td>
+      <td>could</td>
+      <td>patent</td>
+      <td>data</td>
+      <td>statement</td>
+      <td>distribution</td>
+      <td>credit</td>
+      <td>home</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>per</td>
+      <td>equipment</td>
+      <td>fund</td>
+      <td>medical</td>
+      <td>software</td>
+      <td>net</td>
+      <td>believe</td>
+      <td>rate</td>
+      <td>revenue</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>price</td>
+      <td>cost</td>
+      <td>fee</td>
+      <td>device</td>
+      <td>support</td>
+      <td>september</td>
+      <td>consumer</td>
+      <td>september</td>
+      <td>approximately</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>director</td>
+      <td>facility</td>
+      <td>subject</td>
+      <td>treatment</td>
+      <td>provide</td>
+      <td>value</td>
+      <td>approximately</td>
+      <td>real</td>
+      <td>chief</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>exchange</td>
+      <td>gas</td>
+      <td>act</td>
+      <td>approval</td>
+      <td>network</td>
+      <td>income</td>
+      <td>marketing</td>
+      <td>million</td>
+      <td>regulation</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="section" id="id3">
 <h3>Netflix Analysis<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
@@ -908,32 +1621,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotFittedError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">netlfix_X</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">netflix_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netlfix_X</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/feature_extraction/text.py:1376,</span> in <span class="ni">CountVectorizer.transform</span><span class="nt">(self, raw_documents)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1372</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1373</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1374</span>         <span class="s2">&quot;Iterable over raw text documents expected, string object received.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1375</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1376</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_vocabulary</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1378</span> <span class="c1"># use the same matrix-building strategy as fit_transform</span>
-<span class="g g-Whitespace">   </span><span class="mi">1379</span> <span class="n">_</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count_vocab</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">,</span> <span class="n">fixed_vocab</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/feature_extraction/text.py:498,</span> in <span class="ni">_VectorizerMixin._check_vocabulary</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_vocabulary</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixed_vocabulary_</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">498</span>         <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Vocabulary not fitted or provided&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vocabulary is empty&quot;</span><span class="p">)</span>
-
-<span class="ne">NotFittedError</span>: Vocabulary not fitted or provided
-</pre></div>
-</div>
+<img alt="../../_images/Report_Topic_Modelling_34_0.png" src="../../_images/Report_Topic_Modelling_34_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -944,16 +1632,57 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#compare 2012 with 2008 </span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;lda_topics&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #5</th>
+      <td>-0.090778</td>
+      <td>customer, solution, system, technology, application, data, software, support, provide, network</td>
+    </tr>
+    <tr>
+      <th>Topic #9</th>
+      <td>0.050576</td>
+      <td>property, president, program, vice, officer, home, revenue, approximately, chief, regulation</td>
+    </tr>
+    <tr>
+      <th>Topic #7</th>
+      <td>0.032062</td>
+      <td>store, customer, brand, retail, fiscal, distribution, believe, consumer, approximately, marketing</td>
+    </tr>
+    <tr>
+      <th>Topic #6</th>
+      <td>0.023481</td>
+      <td>asset, cash, note, tax, fiscal, statement, net, september, value, income</td>
+    </tr>
+    <tr>
+      <th>Topic #1</th>
+      <td>-0.013953</td>
+      <td>share, stock, agreement, common, issued, date, per, price, director, exchange</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 1(common financial terms) ,5(software)</p></li>
@@ -975,32 +1704,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotFittedError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ge_X</span> <span class="o">=</span>  <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/feature_extraction/text.py:1376,</span> in <span class="ni">CountVectorizer.transform</span><span class="nt">(self, raw_documents)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1372</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1373</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1374</span>         <span class="s2">&quot;Iterable over raw text documents expected, string object received.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1375</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1376</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_vocabulary</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1378</span> <span class="c1"># use the same matrix-building strategy as fit_transform</span>
-<span class="g g-Whitespace">   </span><span class="mi">1379</span> <span class="n">_</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count_vocab</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">,</span> <span class="n">fixed_vocab</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/feature_extraction/text.py:498,</span> in <span class="ni">_VectorizerMixin._check_vocabulary</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_vocabulary</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixed_vocabulary_</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">498</span>         <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Vocabulary not fitted or provided&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vocabulary is empty&quot;</span><span class="p">)</span>
-
-<span class="ne">NotFittedError</span>: Vocabulary not fitted or provided
-</pre></div>
-</div>
+<img alt="../../_images/Report_Topic_Modelling_38_0.png" src="../../_images/Report_Topic_Modelling_38_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1011,16 +1715,57 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [17],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># compare 2014 to 2011 </span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;lda_topics&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #9</th>
+      <td>-0.160586</td>
+      <td>property, president, program, vice, officer, home, revenue, approximately, chief, regulation</td>
+    </tr>
+    <tr>
+      <th>Topic #7</th>
+      <td>0.067685</td>
+      <td>store, customer, brand, retail, fiscal, distribution, believe, consumer, approximately, marketing</td>
+    </tr>
+    <tr>
+      <th>Topic #8</th>
+      <td>0.056961</td>
+      <td>loan, bank, federal, institution, capital, credit, rate, september, real, million</td>
+    </tr>
+    <tr>
+      <th>Topic #1</th>
+      <td>0.016514</td>
+      <td>share, stock, agreement, common, issued, date, per, price, director, exchange</td>
+    </tr>
+    <tr>
+      <th>Topic #6</th>
+      <td>0.015117</td>
+      <td>asset, cash, note, tax, fiscal, statement, net, september, value, income</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 9(managment positions?)</p></li>
