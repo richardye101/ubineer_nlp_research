@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Embedding methods to augment with dynamic analysis" href="8_Dynamic_Embedding.html" />
+    <link rel="next" title="Universal Sentence Encoder" href="../mary/Report_USE.html" />
     <link rel="prev" title="Word2vec" href="4_Word2Vec.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -121,6 +121,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Doc2Vec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mary/Report_USE.html">
+   Universal Sentence Encoder
   </a>
  </li>
  <li class="toctree-l1">
@@ -269,13 +274,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /home/runner/nltk_data...
-[nltk_data]   Unzipping corpora/stopwords.zip.
+[nltk_data]   Package stopwords is already up-to-date!
 [nltk_data] Downloading package wordnet to /home/runner/nltk_data...
-[nltk_data]   Unzipping corpora/wordnet.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /home/runner/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt.zip.
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt to /home/runner/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
 </pre></div>
 </div>
 </div>
@@ -360,123 +363,123 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>0</th>
-      <td>-0.380907</td>
-      <td>1.315344</td>
-      <td>-2.381459</td>
-      <td>2.110680</td>
-      <td>0.880907</td>
-      <td>-0.845591</td>
-      <td>-0.824409</td>
-      <td>-1.508214</td>
-      <td>-1.477542</td>
-      <td>-0.548313</td>
+      <td>-1.354214</td>
+      <td>-0.068568</td>
+      <td>-2.327100</td>
+      <td>3.132524</td>
+      <td>1.724344</td>
+      <td>0.538217</td>
+      <td>-1.858593</td>
+      <td>-0.928079</td>
+      <td>-1.474550</td>
+      <td>-1.552019</td>
       <td>...</td>
-      <td>0.959716</td>
-      <td>-1.535963</td>
-      <td>-3.471786</td>
-      <td>0.123058</td>
-      <td>0.446877</td>
-      <td>-0.291844</td>
-      <td>0.763954</td>
-      <td>2.724582</td>
-      <td>-1.285289</td>
-      <td>-1.929918</td>
+      <td>0.994734</td>
+      <td>-2.535478</td>
+      <td>-4.632698</td>
+      <td>-0.553328</td>
+      <td>0.264999</td>
+      <td>0.328212</td>
+      <td>0.426942</td>
+      <td>3.509211</td>
+      <td>0.090132</td>
+      <td>-1.989172</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.170514</td>
-      <td>-0.614125</td>
-      <td>-2.609775</td>
-      <td>0.803752</td>
-      <td>0.321746</td>
-      <td>0.174974</td>
-      <td>-0.515597</td>
-      <td>-2.393066</td>
-      <td>-1.363940</td>
-      <td>0.883951</td>
+      <td>0.049945</td>
+      <td>-1.922150</td>
+      <td>-2.517067</td>
+      <td>1.432296</td>
+      <td>0.609791</td>
+      <td>0.590496</td>
+      <td>-1.748379</td>
+      <td>-2.178607</td>
+      <td>-0.842086</td>
+      <td>0.567441</td>
       <td>...</td>
-      <td>-0.904047</td>
-      <td>-0.530824</td>
-      <td>-3.559509</td>
-      <td>-0.560555</td>
-      <td>-0.118323</td>
-      <td>0.391584</td>
-      <td>-0.217874</td>
-      <td>1.006544</td>
-      <td>0.394089</td>
-      <td>-1.614865</td>
+      <td>-1.169782</td>
+      <td>-1.202854</td>
+      <td>-2.787099</td>
+      <td>-0.473907</td>
+      <td>0.345323</td>
+      <td>0.719367</td>
+      <td>0.505630</td>
+      <td>1.143154</td>
+      <td>0.715484</td>
+      <td>-1.382218</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-2.240332</td>
-      <td>-0.295259</td>
-      <td>-2.447670</td>
-      <td>2.491738</td>
-      <td>0.106329</td>
-      <td>-0.686927</td>
-      <td>-0.814107</td>
-      <td>-1.807450</td>
-      <td>-2.994643</td>
-      <td>0.503477</td>
+      <td>-2.505952</td>
+      <td>-0.510110</td>
+      <td>-2.366401</td>
+      <td>3.880435</td>
+      <td>1.542603</td>
+      <td>1.194336</td>
+      <td>-0.852221</td>
+      <td>-2.357244</td>
+      <td>-1.920780</td>
+      <td>-1.234237</td>
       <td>...</td>
-      <td>-0.151516</td>
-      <td>0.323328</td>
-      <td>-4.363357</td>
-      <td>0.992306</td>
-      <td>-0.296278</td>
-      <td>0.822577</td>
-      <td>-2.496480</td>
-      <td>1.044266</td>
-      <td>1.762239</td>
-      <td>-2.929838</td>
+      <td>0.315810</td>
+      <td>-0.184873</td>
+      <td>-4.026338</td>
+      <td>-0.207851</td>
+      <td>0.096296</td>
+      <td>2.478389</td>
+      <td>-1.847570</td>
+      <td>1.284606</td>
+      <td>2.486785</td>
+      <td>-3.002422</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>-1.310140</td>
-      <td>0.264392</td>
-      <td>-0.985516</td>
-      <td>1.182047</td>
-      <td>-0.961454</td>
-      <td>-0.796317</td>
-      <td>-0.388467</td>
-      <td>-1.390821</td>
-      <td>-1.748222</td>
-      <td>0.131730</td>
+      <td>-0.508333</td>
+      <td>-0.151117</td>
+      <td>-1.283534</td>
+      <td>0.950504</td>
+      <td>0.114134</td>
+      <td>-0.249004</td>
+      <td>-1.641870</td>
+      <td>-1.335227</td>
+      <td>-1.071470</td>
+      <td>0.387852</td>
       <td>...</td>
-      <td>-1.519514</td>
-      <td>-1.968524</td>
-      <td>-3.153565</td>
-      <td>-0.310683</td>
-      <td>-1.307266</td>
-      <td>1.478014</td>
-      <td>-0.401754</td>
-      <td>1.171913</td>
-      <td>2.015745</td>
-      <td>-0.859385</td>
+      <td>-1.804426</td>
+      <td>-2.351982</td>
+      <td>-3.068425</td>
+      <td>0.049630</td>
+      <td>-0.963584</td>
+      <td>1.713163</td>
+      <td>-0.401551</td>
+      <td>0.955858</td>
+      <td>3.490525</td>
+      <td>-1.156985</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-1.469136</td>
-      <td>-2.198555</td>
-      <td>-1.705614</td>
-      <td>2.357231</td>
-      <td>-1.651980</td>
-      <td>-0.410564</td>
-      <td>-1.454924</td>
-      <td>2.613884</td>
-      <td>0.547006</td>
-      <td>1.469264</td>
+      <td>-1.797978</td>
+      <td>-2.161768</td>
+      <td>-2.659359</td>
+      <td>2.109452</td>
+      <td>-0.605828</td>
+      <td>-0.784222</td>
+      <td>-1.356329</td>
+      <td>1.742479</td>
+      <td>-1.634152</td>
+      <td>2.852395</td>
       <td>...</td>
-      <td>-2.698907</td>
-      <td>1.342051</td>
-      <td>-3.955109</td>
-      <td>1.958484</td>
-      <td>2.528223</td>
-      <td>4.075663</td>
-      <td>-1.853452</td>
-      <td>1.472310</td>
-      <td>-0.633896</td>
-      <td>-2.484922</td>
+      <td>-1.400662</td>
+      <td>-0.318309</td>
+      <td>-5.216362</td>
+      <td>1.917731</td>
+      <td>1.958430</td>
+      <td>3.139240</td>
+      <td>-1.984267</td>
+      <td>2.703711</td>
+      <td>-2.460435</td>
+      <td>-3.123654</td>
     </tr>
     <tr>
       <th>...</th>
@@ -504,123 +507,123 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
     <tr>
       <th>670</th>
-      <td>-1.643620</td>
-      <td>0.436801</td>
-      <td>-0.279302</td>
-      <td>0.664502</td>
-      <td>2.179152</td>
-      <td>-0.416583</td>
-      <td>0.297527</td>
-      <td>1.131879</td>
-      <td>-2.533519</td>
-      <td>-0.314326</td>
+      <td>-1.942573</td>
+      <td>0.404202</td>
+      <td>-0.359140</td>
+      <td>0.202052</td>
+      <td>2.356576</td>
+      <td>-0.299952</td>
+      <td>0.622391</td>
+      <td>0.233234</td>
+      <td>-2.232196</td>
+      <td>-0.726407</td>
       <td>...</td>
-      <td>-1.549796</td>
-      <td>0.204286</td>
-      <td>-1.091443</td>
-      <td>-1.766844</td>
-      <td>0.820000</td>
-      <td>0.748200</td>
-      <td>0.597843</td>
-      <td>0.475814</td>
-      <td>0.642731</td>
-      <td>-0.567436</td>
+      <td>-1.468267</td>
+      <td>-0.297097</td>
+      <td>-0.759568</td>
+      <td>-1.053626</td>
+      <td>1.149973</td>
+      <td>0.756013</td>
+      <td>0.907099</td>
+      <td>0.659090</td>
+      <td>0.857840</td>
+      <td>-0.417671</td>
     </tr>
     <tr>
       <th>671</th>
-      <td>-3.440623</td>
-      <td>-1.861057</td>
-      <td>-0.882173</td>
-      <td>1.673210</td>
-      <td>3.124889</td>
-      <td>0.537978</td>
-      <td>-2.348698</td>
-      <td>1.482148</td>
-      <td>-1.786932</td>
-      <td>0.487969</td>
+      <td>-2.979685</td>
+      <td>-1.171609</td>
+      <td>0.960084</td>
+      <td>0.990585</td>
+      <td>3.738474</td>
+      <td>0.321929</td>
+      <td>-0.962689</td>
+      <td>1.332093</td>
+      <td>-0.805311</td>
+      <td>0.911547</td>
       <td>...</td>
-      <td>-2.868869</td>
-      <td>-1.061560</td>
-      <td>-1.259684</td>
-      <td>-0.451905</td>
-      <td>0.370810</td>
-      <td>4.557724</td>
-      <td>-2.764357</td>
-      <td>0.871710</td>
-      <td>-1.883556</td>
-      <td>1.790232</td>
+      <td>-3.151504</td>
+      <td>-0.055599</td>
+      <td>-1.230315</td>
+      <td>-1.206633</td>
+      <td>2.561301</td>
+      <td>3.560622</td>
+      <td>-2.148134</td>
+      <td>0.536677</td>
+      <td>-0.680423</td>
+      <td>0.582720</td>
     </tr>
     <tr>
       <th>672</th>
-      <td>-0.802177</td>
-      <td>-0.257258</td>
-      <td>-0.556294</td>
-      <td>1.885425</td>
-      <td>-1.929832</td>
-      <td>-0.377061</td>
-      <td>-1.708430</td>
-      <td>-3.030439</td>
-      <td>-0.868517</td>
-      <td>2.497248</td>
+      <td>-0.537686</td>
+      <td>-0.431457</td>
+      <td>-0.362159</td>
+      <td>0.608382</td>
+      <td>-1.698441</td>
+      <td>0.473520</td>
+      <td>-2.716688</td>
+      <td>-3.100569</td>
+      <td>-0.650797</td>
+      <td>2.039496</td>
       <td>...</td>
-      <td>-0.690123</td>
-      <td>-0.178713</td>
-      <td>-2.945611</td>
-      <td>-1.990553</td>
-      <td>-0.511411</td>
-      <td>1.017272</td>
-      <td>3.623763</td>
-      <td>0.271167</td>
-      <td>-0.782870</td>
-      <td>-1.450474</td>
+      <td>-0.658801</td>
+      <td>-0.165295</td>
+      <td>-3.266846</td>
+      <td>-3.914001</td>
+      <td>-0.999564</td>
+      <td>1.226300</td>
+      <td>3.009075</td>
+      <td>0.491138</td>
+      <td>0.627519</td>
+      <td>-2.109178</td>
     </tr>
     <tr>
       <th>673</th>
-      <td>-1.925226</td>
-      <td>0.358404</td>
-      <td>-0.670676</td>
-      <td>0.949305</td>
-      <td>1.682687</td>
-      <td>-0.684520</td>
-      <td>-0.839642</td>
-      <td>1.077771</td>
-      <td>-2.360000</td>
-      <td>-0.448839</td>
+      <td>-1.727428</td>
+      <td>0.387432</td>
+      <td>-0.558882</td>
+      <td>0.183356</td>
+      <td>1.454596</td>
+      <td>-0.682471</td>
+      <td>-0.433976</td>
+      <td>1.359148</td>
+      <td>-1.719432</td>
+      <td>-1.374103</td>
       <td>...</td>
-      <td>-1.135604</td>
-      <td>1.340907</td>
-      <td>-0.395603</td>
-      <td>-1.513263</td>
-      <td>1.420007</td>
-      <td>-1.347788</td>
-      <td>0.240365</td>
-      <td>-0.689627</td>
-      <td>0.810173</td>
-      <td>-0.298472</td>
+      <td>-1.403725</td>
+      <td>1.252195</td>
+      <td>-0.491383</td>
+      <td>-1.327238</td>
+      <td>1.638756</td>
+      <td>-0.606230</td>
+      <td>-0.041789</td>
+      <td>-1.072540</td>
+      <td>0.675080</td>
+      <td>0.029642</td>
     </tr>
     <tr>
       <th>674</th>
-      <td>-0.812609</td>
-      <td>-0.245400</td>
-      <td>-3.408040</td>
-      <td>2.539225</td>
-      <td>1.130185</td>
-      <td>0.126285</td>
-      <td>-0.575731</td>
-      <td>-0.082641</td>
-      <td>-1.566596</td>
-      <td>0.145863</td>
+      <td>-0.094581</td>
+      <td>-0.885774</td>
+      <td>-2.108537</td>
+      <td>3.201611</td>
+      <td>1.388210</td>
+      <td>0.505369</td>
+      <td>-1.613524</td>
+      <td>-1.452815</td>
+      <td>-0.640518</td>
+      <td>-0.539938</td>
       <td>...</td>
-      <td>-1.968825</td>
-      <td>0.390853</td>
-      <td>-6.982255</td>
-      <td>-0.785853</td>
-      <td>-0.471890</td>
-      <td>0.033193</td>
-      <td>0.928721</td>
-      <td>-0.115978</td>
-      <td>0.517828</td>
-      <td>-2.516020</td>
+      <td>-1.192346</td>
+      <td>-1.553221</td>
+      <td>-5.970480</td>
+      <td>-0.712167</td>
+      <td>-0.869353</td>
+      <td>0.904467</td>
+      <td>1.693868</td>
+      <td>0.180963</td>
+      <td>0.478707</td>
+      <td>-2.775253</td>
     </tr>
   </tbody>
 </table>
@@ -695,10 +698,10 @@ const thebe_selector_output = ".output, .cell_output"
             <p class="prev-next-title">Word2vec</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="8_Dynamic_Embedding.html" title="next page">
+    <a class='right-next' id="next-link" href="../mary/Report_USE.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Embedding methods to augment with dynamic analysis</p>
+        <p class="prev-next-title">Universal Sentence Encoder</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
