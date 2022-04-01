@@ -1,4 +1,4 @@
-_Cloned from [Jupyter Lite Demo](https://github.com/jupyterlite/demo)_
+<!-- _Cloned from [Jupyter Lite Demo](https://github.com/jupyterlite/demo)_ -->
 
 # NLP Research into public 10K filings
 
