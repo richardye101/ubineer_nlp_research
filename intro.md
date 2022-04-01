@@ -1,4 +1,6 @@
-# Unsupervised analysis of Textual data from 10K Financial Reports
+# Introduction 
+
+## Unsupervised analysis of Textual data from 10K Financial Reports
 
 In this research report we will be diving into Annual Reports of publicly traded companies. Specifically, we will analyze the text in the `Business Description` section of each report.
 
