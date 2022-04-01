@@ -1,6 +1,7 @@
 # jupyter book
 _build/
 
+*.Rmd
 content/data/timeseries_data.csv
 
 *.bundle.*
