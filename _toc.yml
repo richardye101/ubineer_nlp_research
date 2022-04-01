@@ -8,7 +8,7 @@ chapters:
 - file: content/richard/2_LDA_topic_modelling.ipynb
 - file: content/richard/3_LSA_topic_modelling.ipynb
 - file: content/richard/4_Word2Vec.ipynb
-- file: content/richard/7_idk.ipynb
+- file: content/richard/5_Doc2Vec.ipynb
 - file: content/richard/8_Dynamic_Embedding.ipynb
 
 
