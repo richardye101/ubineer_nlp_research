@@ -12,7 +12,7 @@ chapters:
 - file: content/richard/4_Word2Vec.ipynb
 - file: content/richard/5_Doc2Vec.ipynb
 - file: content/mary/Report_USE.ipynb
-- file: content/mary/Report_TowTowers.ipynb
+- file: content/mary/Report_TwoTowers.ipynb
 - file: content/richard/8_Dynamic_Embedding.ipynb
 - file: content/mary/Report_Topic_Modelling.ipynb
 - file: content/peitong/3_Minimum_Variance_Analysis.ipynb
