@@ -368,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="part-of-speech-pos-tagging">
 <h1>Part-of-Speech (POS) Tagging<a class="headerlink" href="#part-of-speech-pos-tagging" title="Permalink to this headline">¶</a></h1>
 <p>Part-of-speech (POS) tagging is a process of grammatical classification to classify texts into list of tuples where each word in the sentence gets a tag (label) that tells its part of speech (e.g. noun, pronoun, verb, adjective, adverb). According to Asoka Diggs, a Data Scientist at Intel, his research shows that nouns are better than n-grams. As a result, we used POS tagging to extract only nouns. We have examined the case with multiple-gram nouns. However, the results do not show distinct difference between documents, which may be caused by overfitting the model. Here we only consider 1-gram nouns. We conduct the consine similarity measure on the word counts from POS tagging.</p>
-<p><a class="reference external" href="https://databricks.com/session/nouns-are-better-than-n-grams">https://databricks.com/session/nouns-are-better-than-n-grams</a></p>
+<p>https://databricks.com/session/nouns-are-better-than-n-grams</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>

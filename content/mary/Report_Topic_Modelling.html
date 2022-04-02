@@ -51,8 +51,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -505,7 +503,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="general-electric">
 <h2>General Electric<a class="headerlink" href="#general-electric" title="Permalink to this headline">¶</a></h2>
-<p>General Electric (GE) was founded in 1892 and currently operates through eight industrial segments: Aviation, Healthcare, Transportation, Renewable Energy, Oil &amp; Gas, Appliances &amp; Lighting, Power &amp; Water,and Capital. GE Aviation is GE’s most profitable division. It made steps forward in recent years, namely 2007 by acquiring Smith Aerospace, an American aircraft engine and aircraft parts manufacturer, and 2012 by acquiring Avio S.p.A., an Italy-based manufacturer of aviation propulsion components and systems for civil and military aircraft. On the other hand, GE Healthcare had slow growth in the years of 2010 to 2015 but saw an significant increase in profits in 2016 by more than 0.3 billion dollars compared to the year before. GE Power &amp; Water, GE Renewable Energy, GE Oil &amp; Gas were all under GE Energy up until its split in 2012. In 2014, GE’s Power made moves to purchase French gas turbine company Alstom for <span class="math notranslate nohighlight">\(\$\)</span> 13 billion dollars. Unfortunately, this move coincided with a global downturn in the price of renewables, lessening demand for the gas turbines, and did not bring the profits that GE had hoped for. 2014 was also the year that GE agreed to sell GE Appliances to Electrolux, a Swedish appliance manufacturer and the second-largest consumer appliance manufacturer after Whirlpool Corporation, for US <span class="math notranslate nohighlight">\(\$\)</span>3.3 billion in cash.</p>
+<p>General Electric (GE) was founded in 1892 and currently operates through eight industrial segments: Aviation, Healthcare, Transportation, Renewable Energy, Oil &amp; Gas, Appliances &amp; Lighting, Power &amp; Water,and Capital. GE Aviation is GE’s most profitable division. It made steps forward in recent years, namely 2007 by acquiring Smith Aerospace, an American aircraft engine and aircraft parts manufacturer, and 2012 by acquiring Avio S.p.A., an Italy-based manufacturer of aviation propulsion components and systems for civil and military aircraft. On the other hand, GE Healthcare had slow growth in the years of 2010 to 2015 but saw an significant increase in profits in 2016 by more than 0.3 billion dollars compared to the year before. GE Power &amp; Water, GE Renewable Energy, GE Oil &amp; Gas were all under GE Energy up until its split in 2012. In 2014, GE’s Power made moves to purchase French gas turbine company Alstom for $$$ 13 billion dollars. Unfortunately, this move coincided with a global downturn in the price of renewables, lessening demand for the gas turbines, and did not bring the profits that GE had hoped for. 2014 was also the year that GE agreed to sell GE Appliances to Electrolux, a Swedish appliance manufacturer and the second-largest consumer appliance manufacturer after Whirlpool Corporation, for US $$$3.3 billion in cash.</p>
 <p>In the history of the business, GE suffered through the financial crisis in 2008 and began its downfall. Throughout 2008 to 2017, the company consistently slashed its dividends year over year and laid off thousands of employees across all divisions. However, in 2018, GE made significant improvements in cutting debt and raising capital by selling off subsidiaries. In 2021, GE decided to separate GE HealthCare and GE Power into public companies and focus mainly on GE Aviation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -520,10 +518,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="non-negative-matrix-factorization">
 <h2>Non-Negative Matrix Factorization<a class="headerlink" href="#non-negative-matrix-factorization" title="Permalink to this headline">¶</a></h2>
-<p>Non-negative matrix factorization uses linear algebra to discover underlying relationships between texts. It factorizes/decomposes high-dimensionality vectors(ie. TF-IDF or BOW embeddings) into a lower dimensional representation. Given an original matrix obtained using TF-IDF or any word embedding algorithm of size MxN where M is the number of documents and N is the number of ngrams, NMF generates the <strong>Feature</strong> matrix and <strong>Components</strong> matrix. The Features matrix represents weights of topics for each doument and Component matrix represents weights of words for each topic. NMF modifies the values of the initial Feature matrix and Components matrix so that the product approaches the original matrix until approximation error converges or max iterations are reached (ie. <span class="math notranslate nohighlight">\(Original Matrix \approx\)</span> <span class="math notranslate nohighlight">\(Features \times Components\)</span>) . The matrices generated by NMF will only give non-negative values.</p>
+<p>Non-negative matrix factorization uses linear algebra to discover underlying relationships between texts. It factorizes/decomposes high-dimensionality vectors(ie. TF-IDF or BOW embeddings) into a lower dimensional representation. Given an original matrix obtained using TF-IDF or any word embedding algorithm of size MxN where M is the number of documents and N is the number of ngrams, NMF generates the <strong>Feature</strong> matrix and <strong>Components</strong> matrix. The Features matrix represents weights of topics for each doument and Component matrix represents weights of words for each topic. NMF modifies the values of the initial Feature matrix and Components matrix so that the product approaches the original matrix until approximation error converges or max iterations are reached (ie. $Original Matrix \approx$ $Features \times Components$) . The matrices generated by NMF will only give non-negative values.</p>
 <p>NMF is very sensitive to the hyperparameters such as the number of topics, so we can use coherence scores to evaluate the most optimal number of topics so that each topic is human interpretable.The coherence of a topic, used as a proxy for topic quality, is based on the distributional hypothesis that states that words with similar meaning tend to co-occur within a similar context.</p>
 <p>Coherence score measures the relative distance between words within a topic. There are several coherence metrics but the most popular one is CV, which is the metrics that we will use in our report. CV coherence score creates content vectors of words using their co-occurrences (ie. co-occurence of “Las” and “Vegas” would be very high) and calculates the score using normalized pointwise mutual information (NPMI) and cosine similarity. NPMI is the likelihood of the co-occurrence of two words, taking into account the fact that it might be caused by the frequency of the single words.</p>
-<p><span class="math notranslate nohighlight">\(NPMI(a,b) = \frac{log\frac{P(a,b)+\epsilon}{P(a)P(b)}}{-log(P(a,b)+\epsilon)}\)</span></p>
+<p>$NPMI(a,b) = \frac{log\frac{P(a,b)+\epsilon}{P(a)P(b)}}{-log(P(a,b)+\epsilon)}$</p>
 <p>Probabilities of single words p(a) or the joint probabilizy of two words p(a,b) can be estimated by Boolean document calculation, that is, the number of documents in which (a) or (a,b) occurs, divided by the total number of documents.</p>
 <p>We calculate the global coherence of the topic as the average pairwise coherence scores on the top N words which describe the topic.</p>
 <p>We ran the metric over a range of 3 to 40 topics, incrementing by 3 and achieved the result below. Although coherence is highest for 6 topics, we know that there are close to 50 different categories of companies in the dataset and thus 6 topics will not give well separated results. Therefore, we chose the give our model 18 topics, which has the next highest coherence score and will not give topics that are too specific to this set of data. If you’re interested in the code, see this  <a class="reference external" href="https://richardye101.github.io/ubineer_nlp_research/lab?path=mary%2FWeek+10+-+NMF+vs+LDA+vs+LSA.ipynb">file</a></p>
@@ -1053,7 +1051,7 @@ const thebe_selector_output = ".output, .cell_output"
       <td>investment</td>
       <td>customer</td>
       <td>home</td>
-      <td>registrant</td>
+      <td>item</td>
       <td>item</td>
       <td>aircraft</td>
       <td>food</td>
@@ -1073,12 +1071,12 @@ const thebe_selector_output = ".output, .cell_output"
       <td>share</td>
       <td>brand</td>
       <td>mining</td>
-      <td>adviser</td>
+      <td>fund</td>
       <td>merger</td>
       <td>cannabis</td>
-      <td>item</td>
+      <td>registrant</td>
       <td>client</td>
-      <td>restaurant</td>
+      <td>system</td>
       <td>cannabis</td>
       <td>vehicle</td>
     </tr>
@@ -1096,14 +1094,14 @@ const thebe_selector_output = ".output, .cell_output"
       <td>mineral</td>
       <td>client</td>
       <td>exploration</td>
-      <td>fund</td>
+      <td>adviser</td>
       <td>client</td>
       <td>aircraft</td>
-      <td>estate</td>
-      <td>registrant</td>
-      <td>system</td>
       <td>restaurant</td>
-      <td>investment</td>
+      <td>solution</td>
+      <td>restaurant</td>
+      <td>restaurant</td>
+      <td>cannabis</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1120,13 +1118,13 @@ const thebe_selector_output = ".output, .cell_output"
       <td>investment</td>
       <td>project</td>
       <td>client</td>
-      <td>vehicle</td>
+      <td>target</td>
       <td>client</td>
-      <td>property</td>
-      <td>brand</td>
+      <td>estate</td>
+      <td>segment</td>
       <td>franchise</td>
-      <td>store</td>
-      <td>cannabis</td>
+      <td>franchise</td>
+      <td>investment</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1136,20 +1134,20 @@ const thebe_selector_output = ".output, .cell_output"
       <td>trial</td>
       <td>clinical</td>
       <td>production</td>
-      <td>software</td>
+      <td>client</td>
       <td>client</td>
       <td>served</td>
       <td>bank</td>
-      <td>consumer</td>
+      <td>restaurant</td>
       <td>claim</td>
       <td>portfolio</td>
-      <td>target</td>
+      <td>transaction</td>
       <td>construction</td>
-      <td>real</td>
-      <td>segment</td>
-      <td>food</td>
-      <td>solution</td>
-      <td>item</td>
+      <td>investment</td>
+      <td>registrant</td>
+      <td>aviation</td>
+      <td>store</td>
+      <td>property</td>
     </tr>
     <tr>
       <th>5</th>
@@ -1159,20 +1157,20 @@ const thebe_selector_output = ".output, .cell_output"
       <td>cancer</td>
       <td>mortgage</td>
       <td>exploration</td>
-      <td>client</td>
+      <td>software</td>
       <td>property</td>
       <td>executive</td>
       <td>agreement</td>
-      <td>restaurant</td>
-      <td>property</td>
+      <td>consumer</td>
+      <td>mine</td>
       <td>cannabis</td>
-      <td>transaction</td>
-      <td>segment</td>
-      <td>investment</td>
-      <td>statement</td>
-      <td>aviation</td>
-      <td>franchise</td>
+      <td>opportunity</td>
+      <td>item</td>
       <td>property</td>
+      <td>statement</td>
+      <td>flight</td>
+      <td>franchisees</td>
+      <td>part</td>
     </tr>
     <tr>
       <th>6</th>
@@ -1180,22 +1178,22 @@ const thebe_selector_output = ".output, .cell_output"
       <td>retailer</td>
       <td>common</td>
       <td>store</td>
-      <td>trial</td>
+      <td>credit</td>
       <td>water</td>
       <td>gallon</td>
       <td>natural</td>
       <td>client</td>
       <td>exploration</td>
       <td>beverage</td>
-      <td>mine</td>
+      <td>property</td>
       <td>advisor</td>
-      <td>opportunity</td>
-      <td>item</td>
+      <td>vehicle</td>
+      <td>segment</td>
+      <td>real</td>
+      <td>brand</td>
       <td>entertainment</td>
       <td>solution</td>
-      <td>franchisees</td>
-      <td>franchisees</td>
-      <td>part</td>
+      <td>item</td>
     </tr>
     <tr>
       <th>7</th>
@@ -1203,7 +1201,7 @@ const thebe_selector_output = ".output, .cell_output"
       <td>fiscal</td>
       <td>investment</td>
       <td>study</td>
-      <td>credit</td>
+      <td>trial</td>
       <td>drilling</td>
       <td>data</td>
       <td>mineral</td>
@@ -1212,13 +1210,13 @@ const thebe_selector_output = ".output, .cell_output"
       <td>fund</td>
       <td>gold</td>
       <td>store</td>
-      <td>could</td>
+      <td>security</td>
       <td>land</td>
       <td>statement</td>
       <td>loan</td>
-      <td>flight</td>
-      <td>ingredient</td>
-      <td>dealer</td>
+      <td>franchisees</td>
+      <td>customer</td>
+      <td>lease</td>
     </tr>
     <tr>
       <th>8</th>
@@ -1235,13 +1233,13 @@ const thebe_selector_output = ".output, .cell_output"
       <td>ingredient</td>
       <td>ethanol</td>
       <td>capital</td>
-      <td>loan</td>
+      <td>sec</td>
       <td>contract</td>
-      <td>partnership</td>
-      <td>equity</td>
       <td>entertainment</td>
-      <td>medical</td>
       <td>mineral</td>
+      <td>military</td>
+      <td>tax</td>
+      <td>dealer</td>
     </tr>
     <tr>
       <th>9</th>
@@ -1258,13 +1256,13 @@ const thebe_selector_output = ".output, .cell_output"
       <td>segment</td>
       <td>statement</td>
       <td>power</td>
-      <td>security</td>
-      <td>building</td>
-      <td>device</td>
+      <td>acquisition</td>
+      <td>system</td>
+      <td>semiconductor</td>
       <td>mining</td>
-      <td>energy</td>
+      <td>engine</td>
       <td>coffee</td>
-      <td>exploration</td>
+      <td>aircraft</td>
     </tr>
   </tbody>
 </table>
@@ -1322,23 +1320,23 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
     <tr>
       <th>Topic #8</th>
-      <td>-0.064194</td>
+      <td>-0.064225</td>
       <td>gas, oil, software, exploration, client, property, natural, mineral, data, drilling</td>
     </tr>
     <tr>
       <th>Topic #17</th>
-      <td>0.053744</td>
-      <td>item, client, registrant, brand, segment, statement, solution, loan, equity, mining</td>
+      <td>0.051945</td>
+      <td>item, client, solution, segment, registrant, statement, brand, loan, mineral, mining</td>
     </tr>
     <tr>
       <th>Topic #10</th>
-      <td>-0.047697</td>
+      <td>-0.047329</td>
       <td>loan, share, mineral, cannabis, bank, agreement, exploration, mining, stock, home</td>
     </tr>
     <tr>
       <th>Topic #13</th>
-      <td>-0.045713</td>
-      <td>investment, adviser, fund, client, portfolio, cannabis, advisor, store, capital, power</td>
+      <td>-0.047128</td>
+      <td>investment, fund, adviser, client, portfolio, cannabis, advisor, store, capital, power</td>
     </tr>
   </tbody>
 </table>
@@ -1399,28 +1397,28 @@ const thebe_selector_output = ".output, .cell_output"
   <tbody>
     <tr>
       <th>Topic #18</th>
-      <td>-0.083222</td>
-      <td>aircraft, restaurant, system, franchise, food, aviation, franchisees, flight, entertainment, energy</td>
+      <td>-0.086139</td>
+      <td>aircraft, system, restaurant, franchise, aviation, flight, entertainment, franchisees, military, engine</td>
     </tr>
     <tr>
       <th>Topic #14</th>
-      <td>0.073601</td>
-      <td>customer, merger, client, vehicle, target, transaction, opportunity, could, loan, security</td>
+      <td>0.074280</td>
+      <td>customer, merger, client, target, transaction, opportunity, vehicle, security, sec, acquisition</td>
     </tr>
     <tr>
       <th>Topic #17</th>
-      <td>0.061766</td>
-      <td>item, client, registrant, brand, segment, statement, solution, loan, equity, mining</td>
+      <td>0.068801</td>
+      <td>item, client, solution, segment, registrant, statement, brand, loan, mineral, mining</td>
     </tr>
     <tr>
-      <th>Topic #19</th>
-      <td>0.036978</td>
-      <td>food, cannabis, restaurant, store, solution, franchise, franchisees, ingredient, medical, coffee</td>
+      <th>Topic #3</th>
+      <td>0.032513</td>
+      <td>store, merchandise, loan, share, stock, brand, common, investment, apparel, retail</td>
     </tr>
     <tr>
-      <th>Topic #16</th>
-      <td>-0.032873</td>
-      <td>registrant, item, estate, property, real, investment, entertainment, statement, partnership, device</td>
+      <th>Topic #12</th>
+      <td>-0.031170</td>
+      <td>mineral, mining, exploration, project, claim, mine, property, gold, ethanol, statement</td>
     </tr>
   </tbody>
 </table>
