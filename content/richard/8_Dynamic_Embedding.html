@@ -400,14 +400,203 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">LookupError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/corpus/util.py:84,</span> in <span class="ni">LazyCorpusLoader.__load</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">84</span>     <span class="n">root</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subdir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">zip_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span> <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/data.py:583,</span> in <span class="ni">find</span><span class="nt">(resource_name, paths)</span>
+<span class="g g-Whitespace">    </span><span class="mi">582</span> <span class="n">resource_not_found</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">583</span> <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="n">resource_not_found</span><span class="p">)</span>
+
+<span class="ne">LookupError</span>: 
+<span class="o">**********************************************************************</span>
+  <span class="n">Resource</span> <span class="n">omw</span><span class="o">-</span><span class="mf">1.4</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+  <span class="n">Please</span> <span class="n">use</span> <span class="n">the</span> <span class="n">NLTK</span> <span class="n">Downloader</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">the</span> <span class="n">resource</span><span class="p">:</span>
+
+  <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">nltk</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;omw-1.4&#39;</span><span class="p">)</span>
+  
+  <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nltk</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">html</span>
+
+  <span class="n">Attempted</span> <span class="n">to</span> <span class="n">load</span> <span class="n">corpora</span><span class="o">/</span><span class="n">omw</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="n">zip</span><span class="o">/</span><span class="n">omw</span><span class="o">-</span><span class="mf">1.4</span><span class="o">/</span>
+
+  <span class="n">Searched</span> <span class="ow">in</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">&#39;/home/runner/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/opt/hostedtoolcache/Python/3.8.12/x64/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/opt/hostedtoolcache/Python/3.8.12/x64/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/opt/hostedtoolcache/Python/3.8.12/x64/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/lib/nltk_data&#39;</span>
+<span class="o">**********************************************************************</span>
+
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">LookupError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">data_five_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/bq_dynamic_five.csv&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">data_five_raw</span><span class="p">[</span><span class="s2">&quot;CIK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_five_raw</span><span class="p">[</span><span class="s2">&quot;financialEntity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">data_five</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">data_five_raw</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">data_five</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+<span class="nn">File ~/work/ubineer_nlp_research/ubineer_nlp_research/content/richard/../std_func.py:120,</span> in <span class="ni">clean</span><span class="nt">(df)</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="n">non_html_data</span> <span class="o">=</span> <span class="n">clean_data_fn</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="c1">#.rename(columns = {&quot;financialEntity&quot;:&quot;CIK&quot;})</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="n">non_html_data</span><span class="p">[</span><span class="s2">&quot;CIK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">non_html_data</span><span class="p">[</span><span class="s2">&quot;CIK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">120</span> <span class="n">lemma_desc</span> <span class="o">=</span> <span class="n">non_html_data</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lemmatize_sentence</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="n">non_html_data</span><span class="p">[</span><span class="s2">&quot;coDescription_lemmatized&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lemma_desc</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="n">non_html_data</span><span class="p">[</span><span class="s2">&quot;coDescription_lemmatized&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/series.py:4433,</span> in <span class="ni">Series.apply</span><span class="nt">(self, func, convert_dtype, args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4323</span> <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">4324</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4325</span>     <span class="n">func</span><span class="p">:</span> <span class="n">AggFuncType</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4328</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4329</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span> <span class="o">|</span> <span class="n">Series</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">4330</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">4331</span><span class="sd">     Invoke function on values of Series.</span>
+<span class="g g-Whitespace">   </span><span class="mi">4332</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4431</span><span class="sd">     dtype: float64</span>
+<span class="g g-Whitespace">   </span><span class="mi">4432</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">4433</span>     <span class="k">return</span> <span class="n">SeriesApply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">convert_dtype</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/apply.py:1082,</span> in <span class="ni">SeriesApply.apply</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="c1"># if we are a string, try to dispatch</span>
+<span class="g g-Whitespace">   </span><span class="mi">1080</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_str</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1082</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_standard</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/apply.py:1137,</span> in <span class="ni">SeriesApply.apply_standard</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1131</span>         <span class="n">values</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">_values</span>
+<span class="g g-Whitespace">   </span><span class="mi">1132</span>         <span class="c1"># error: Argument 2 to &quot;map_infer&quot; has incompatible type</span>
+<span class="g g-Whitespace">   </span><span class="mi">1133</span>         <span class="c1"># &quot;Union[Callable[..., Any], str, List[Union[Callable[..., Any], str]],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1134</span>         <span class="c1"># Dict[Hashable, Union[Union[Callable[..., Any], str],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1135</span>         <span class="c1"># List[Union[Callable[..., Any], str]]]]]&quot;; expected</span>
+<span class="g g-Whitespace">   </span><span class="mi">1136</span>         <span class="c1"># &quot;Callable[[Any], Any]&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1137</span>         <span class="n">mapped</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">map_infer</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1138</span>             <span class="n">values</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1139</span>             <span class="n">f</span><span class="p">,</span>  <span class="c1"># type: ignore[arg-type]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1140</span>             <span class="n">convert</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1141</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1143</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mapped</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ABCSeries</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="c1"># GH#43986 Need to do list(mapped) in order to get treated as nested</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>     <span class="c1">#  See also GH#25959 regarding EA support</span>
+<span class="g g-Whitespace">   </span><span class="mi">1146</span>     <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">_constructor_expanddim</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">mapped</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/_libs/lib.pyx:2870,</span> in <span class="ni">pandas._libs.lib.map_infer</span><span class="nt">()</span>
+
+<span class="nn">File ~/work/ubineer_nlp_research/ubineer_nlp_research/content/richard/../std_func.py:97,</span> in <span class="ni">lemmatize_sentence</span><span class="nt">(sentence)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">def</span> <span class="nf">lemmatize_sentence</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="c1">#lemmatization</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="n">lemmatizer</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">97</span>     <span class="n">lemmatized_output</span> <span class="o">=</span> <span class="p">[</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">)]</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lemmatized_output</span><span class="p">)</span>
+
+<span class="nn">File ~/work/ubineer_nlp_research/ubineer_nlp_research/content/richard/../std_func.py:97,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">def</span> <span class="nf">lemmatize_sentence</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="c1">#lemmatization</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="n">lemmatizer</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">97</span>     <span class="n">lemmatized_output</span> <span class="o">=</span> <span class="p">[</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">)]</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lemmatized_output</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/stem/wordnet.py:45,</span> in <span class="ni">WordNetLemmatizer.lemmatize</span><span class="nt">(self, word, pos)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="sd">&quot;&quot;&quot;Lemmatize `word` using WordNet&#39;s built-in morphy function.</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="sd">     Returns the input word unchanged if it cannot be found in WordNet.</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span><span class="sd">     :return: The lemma of `word`, for the given `pos`.</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="n">lemmas</span> <span class="o">=</span> <span class="n">wn</span><span class="o">.</span><span class="n">_morphy</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">lemmas</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="k">if</span> <span class="n">lemmas</span> <span class="k">else</span> <span class="n">word</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/corpus/util.py:121,</span> in <span class="ni">LazyCorpusLoader.__getattr__</span><span class="nt">(self, attr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;__bases__&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;LazyCorpusLoader object has no attribute &#39;__bases__&#39;&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">121</span> <span class="bp">self</span><span class="o">.</span><span class="n">__load</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="c1"># This looks circular, but its not, since __load() changes our</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="c1"># __class__ to something new:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/corpus/util.py:89,</span> in <span class="ni">LazyCorpusLoader.__load</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>             <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="c1"># Load the corpus.</span>
+<span class="ne">---&gt; </span><span class="mi">89</span> <span class="n">corpus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reader_cls</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">__kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span> <span class="c1"># This is where the magic happens!  Transform ourselves into</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="c1"># the corpus by modifying our own __dict__ and __class__ to</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span> <span class="c1"># match that of the corpus.</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__kwargs</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/corpus/reader/wordnet.py:1176,</span> in <span class="ni">WordNetCorpusReader.__init__</span><span class="nt">(self, root, omw_reader)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1172</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1173</span>         <span class="s2">&quot;The multilingual functions are not available with this Wordnet version&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1174</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1175</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1176</span>     <span class="bp">self</span><span class="o">.</span><span class="n">provenances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">omw_prov</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1178</span> <span class="c1"># A cache to store the wordnet data of multiple languages</span>
+<span class="g g-Whitespace">   </span><span class="mi">1179</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lang_data</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/corpus/reader/wordnet.py:1285,</span> in <span class="ni">WordNetCorpusReader.omw_prov</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1283</span> <span class="n">provdict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">   </span><span class="mi">1284</span> <span class="n">provdict</span><span class="p">[</span><span class="s2">&quot;eng&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1285</span> <span class="n">fileids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_omw_reader</span><span class="o">.</span><span class="n">fileids</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1286</span> <span class="k">for</span> <span class="n">fileid</span> <span class="ow">in</span> <span class="n">fileids</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1287</span>     <span class="n">prov</span><span class="p">,</span> <span class="n">langfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">fileid</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/corpus/util.py:121,</span> in <span class="ni">LazyCorpusLoader.__getattr__</span><span class="nt">(self, attr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;__bases__&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;LazyCorpusLoader object has no attribute &#39;__bases__&#39;&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">121</span> <span class="bp">self</span><span class="o">.</span><span class="n">__load</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="c1"># This looks circular, but its not, since __load() changes our</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="c1"># __class__ to something new:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/corpus/util.py:86,</span> in <span class="ni">LazyCorpusLoader.__load</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>             <span class="n">root</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subdir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">zip_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span>         <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">86</span>             <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="c1"># Load the corpus.</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span> <span class="n">corpus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reader_cls</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">__kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/corpus/util.py:81,</span> in <span class="ni">LazyCorpusLoader.__load</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">81</span>         <span class="n">root</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subdir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="k">except</span> <span class="ne">LookupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>         <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nltk/data.py:583,</span> in <span class="ni">find</span><span class="nt">(resource_name, paths)</span>
+<span class="g g-Whitespace">    </span><span class="mi">581</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="mi">70</span>
+<span class="g g-Whitespace">    </span><span class="mi">582</span> <span class="n">resource_not_found</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">583</span> <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="n">resource_not_found</span><span class="p">)</span>
+
+<span class="ne">LookupError</span>: 
+<span class="o">**********************************************************************</span>
+  <span class="n">Resource</span> <span class="n">omw</span><span class="o">-</span><span class="mf">1.4</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+  <span class="n">Please</span> <span class="n">use</span> <span class="n">the</span> <span class="n">NLTK</span> <span class="n">Downloader</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">the</span> <span class="n">resource</span><span class="p">:</span>
+
+  <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">nltk</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;omw-1.4&#39;</span><span class="p">)</span>
+  
+  <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nltk</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">html</span>
+
+  <span class="n">Attempted</span> <span class="n">to</span> <span class="n">load</span> <span class="n">corpora</span><span class="o">/</span><span class="n">omw</span><span class="o">-</span><span class="mf">1.4</span>
+
+  <span class="n">Searched</span> <span class="ow">in</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">&#39;/home/runner/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/opt/hostedtoolcache/Python/3.8.12/x64/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/opt/hostedtoolcache/Python/3.8.12/x64/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/opt/hostedtoolcache/Python/3.8.12/x64/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/lib/nltk_data&#39;</span>
+<span class="o">**********************************************************************</span>
 </pre></div>
 </div>
 </div>
@@ -1109,7 +1298,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="nn">Input In [30],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">std_func</span><span class="o">.</span><span class="n">pca_visualize_2d</span><span class="p">(</span><span class="n">doc_vec</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clustering</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
 
-<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+<span class="ne">NameError</span>: name &#39;doc_vec&#39; is not defined
 </pre></div>
 </div>
 </div>
