@@ -496,23 +496,23 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /home/runner/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package wordnet to /home/runner/nltk_data...
-[nltk_data]   Package wordnet is already up-to-date!
-[nltk_data] Downloading package punkt to /home/runner/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /home/runner/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package wordnet to /home/runner/nltk_data...
-[nltk_data]   Package wordnet is already up-to-date!
-[nltk_data] Downloading package punkt to /home/runner/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;std_func&#39; from &#39;/home/runner/work/ubineer_nlp_research/ubineer_nlp_research/content/mary/../std_func.py&#39;&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">std_func</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">importlib</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">std_func</span><span class="p">)</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">ubineer_nlp_research</span><span class="o">/</span><span class="n">ubineer_nlp_research</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">mary</span><span class="o">/../</span><span class="n">std_func</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">re</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">nltk</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">wordnet</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span> 
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;nltk&#39;
 </pre></div>
 </div>
 </div>
@@ -574,262 +574,18 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
-  warnings.warn(msg, category=FutureWarning)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">nmf_feature</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_all_X</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">nmf_component</span> <span class="o">=</span><span class="n">nmf_model</span><span class="o">.</span><span class="n">components_</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">nmf_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">nmf_model</span><span class="p">,</span><span class="n">tf_vectorizer</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">nmf_topics</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Topic # 01</th>
-      <th>Topic # 02</th>
-      <th>Topic # 03</th>
-      <th>Topic # 04</th>
-      <th>Topic # 05</th>
-      <th>Topic # 06</th>
-      <th>Topic # 07</th>
-      <th>Topic # 08</th>
-      <th>Topic # 09</th>
-      <th>Topic # 10</th>
-      <th>Topic # 11</th>
-      <th>Topic # 12</th>
-      <th>Topic # 13</th>
-      <th>Topic # 14</th>
-      <th>Topic # 15</th>
-      <th>Topic # 16</th>
-      <th>Topic # 17</th>
-      <th>Topic # 18</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>customer</td>
-      <td>store</td>
-      <td>share</td>
-      <td>patient</td>
-      <td>loan</td>
-      <td>gas</td>
-      <td>ethanol</td>
-      <td>software</td>
-      <td>president</td>
-      <td>tax</td>
-      <td>brand</td>
-      <td>mineral</td>
-      <td>investment</td>
-      <td>cannabis</td>
-      <td>home</td>
-      <td>item</td>
-      <td>client</td>
-      <td>aircraft</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>manufacturing</td>
-      <td>merchandise</td>
-      <td>stock</td>
-      <td>clinical</td>
-      <td>bank</td>
-      <td>oil</td>
-      <td>corn</td>
-      <td>customer</td>
-      <td>vice</td>
-      <td>income</td>
-      <td>food</td>
-      <td>exploration</td>
-      <td>fund</td>
-      <td>medical</td>
-      <td>land</td>
-      <td>statement</td>
-      <td>solution</td>
-      <td>system</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>material</td>
-      <td>customer</td>
-      <td>common</td>
-      <td>fda</td>
-      <td>credit</td>
-      <td>natural</td>
-      <td>grain</td>
-      <td>application</td>
-      <td>officer</td>
-      <td>cash</td>
-      <td>consumer</td>
-      <td>mining</td>
-      <td>adviser</td>
-      <td>lease</td>
-      <td>property</td>
-      <td>registrant</td>
-      <td>care</td>
-      <td>aviation</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>semiconductor</td>
-      <td>brand</td>
-      <td>agreement</td>
-      <td>trial</td>
-      <td>institution</td>
-      <td>drilling</td>
-      <td>distiller</td>
-      <td>solution</td>
-      <td>chief</td>
-      <td>asset</td>
-      <td>segment</td>
-      <td>claim</td>
-      <td>portfolio</td>
-      <td>property</td>
-      <td>construction</td>
-      <td>part</td>
-      <td>healthcare</td>
-      <td>flight</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>technology</td>
-      <td>apparel</td>
-      <td>merger</td>
-      <td>drug</td>
-      <td>borrower</td>
-      <td>well</td>
-      <td>fuel</td>
-      <td>data</td>
-      <td>served</td>
-      <td>note</td>
-      <td>retail</td>
-      <td>gold</td>
-      <td>income</td>
-      <td>colorado</td>
-      <td>community</td>
-      <td>stockholder</td>
-      <td>health</td>
-      <td>power</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>equipment</td>
-      <td>retail</td>
-      <td>shareholder</td>
-      <td>cancer</td>
-      <td>mortgage</td>
-      <td>pipeline</td>
-      <td>gallon</td>
-      <td>platform</td>
-      <td>executive</td>
-      <td>net</td>
-      <td>beverage</td>
-      <td>property</td>
-      <td>capital</td>
-      <td>pharmaceutical</td>
-      <td>mortgage</td>
-      <td>equity</td>
-      <td>provider</td>
-      <td>military</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>industrial</td>
-      <td>fiscal</td>
-      <td>director</td>
-      <td>device</td>
-      <td>deposit</td>
-      <td>production</td>
-      <td>plant</td>
-      <td>user</td>
-      <td>senior</td>
-      <td>loss</td>
-      <td>restaurant</td>
-      <td>project</td>
-      <td>advisor</td>
-      <td>facility</td>
-      <td>estate</td>
-      <td>supplementary</td>
-      <td>provide</td>
-      <td>energy</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>segment</td>
-      <td>assortment</td>
-      <td>issued</td>
-      <td>treatment</td>
-      <td>lending</td>
-      <td>reserve</td>
-      <td>gasoline</td>
-      <td>cloud</td>
-      <td>since</td>
-      <td>liability</td>
-      <td>agreement</td>
-      <td>mine</td>
-      <td>security</td>
-      <td>growing</td>
-      <td>real</td>
-      <td>discussion</td>
-      <td>segment</td>
-      <td>engine</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>system</td>
-      <td>retailer</td>
-      <td>outstanding</td>
-      <td>study</td>
-      <td>federal</td>
-      <td>crude</td>
-      <td>renewable</td>
-      <td>network</td>
-      <td>director</td>
-      <td>statement</td>
-      <td>ingredient</td>
-      <td>permit</td>
-      <td>fee</td>
-      <td>plant</td>
-      <td>building</td>
-      <td>disclosure</td>
-      <td>revenue</td>
-      <td>defense</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>solution</td>
-      <td>footwear</td>
-      <td>exchange</td>
-      <td>therapy</td>
-      <td>estate</td>
-      <td>water</td>
-      <td>energy</td>
-      <td>mobile</td>
-      <td>joining</td>
-      <td>ended</td>
-      <td>distribution</td>
-      <td>environmental</td>
-      <td>equity</td>
-      <td>warrant</td>
-      <td>residential</td>
-      <td>ii</td>
-      <td>security</td>
-      <td>contract</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+</div>
 </div>
 <div class="section" id="netflix-analysis">
 <h3>Netflix Analysis<a class="headerlink" href="#netflix-analysis" title="Permalink to this headline">¶</a></h3>
@@ -845,7 +601,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Report_Topic_Modelling_11_0.png" src="../../_images/Report_Topic_Modelling_11_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># netflix_top_df.columns = [&quot;Topic #&quot; + str(i) for i in range(1,18+)]1</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -857,57 +622,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#compare 2012 with 2008 </span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>weight_diff</th>
-      <th>words</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Topic #15</th>
-      <td>-0.048122</td>
-      <td>home, land, property, construction, community, mortgage, estate, real, building, residential</td>
-    </tr>
-    <tr>
-      <th>Topic #2</th>
-      <td>-0.033552</td>
-      <td>store, merchandise, customer, brand, apparel, retail, fiscal, assortment, retailer, footwear</td>
-    </tr>
-    <tr>
-      <th>Topic #11</th>
-      <td>0.031877</td>
-      <td>brand, food, consumer, segment, retail, beverage, restaurant, agreement, ingredient, distribution</td>
-    </tr>
-    <tr>
-      <th>Topic #16</th>
-      <td>0.029032</td>
-      <td>item, statement, registrant, part, stockholder, equity, supplementary, discussion, disclosure, ii</td>
-    </tr>
-    <tr>
-      <th>Topic #10</th>
-      <td>0.017785</td>
-      <td>tax, income, cash, asset, note, net, loss, liability, statement, ended</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 2(retail/store), 15(real estate/residential)</p></li>
@@ -929,7 +654,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Report_Topic_Modelling_15_0.png" src="../../_images/Report_Topic_Modelling_15_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -940,57 +674,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># #compare 2014 to 2011 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>weight_diff</th>
-      <th>words</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Topic #18</th>
-      <td>-0.034192</td>
-      <td>aircraft, system, aviation, flight, power, military, energy, engine, defense, contract</td>
-    </tr>
-    <tr>
-      <th>Topic #16</th>
-      <td>0.029161</td>
-      <td>item, statement, registrant, part, stockholder, equity, supplementary, discussion, disclosure, ii</td>
-    </tr>
-    <tr>
-      <th>Topic #15</th>
-      <td>-0.024753</td>
-      <td>home, land, property, construction, community, mortgage, estate, real, building, residential</td>
-    </tr>
-    <tr>
-      <th>Topic #5</th>
-      <td>0.020200</td>
-      <td>loan, bank, credit, institution, borrower, mortgage, deposit, lending, federal, estate</td>
-    </tr>
-    <tr>
-      <th>Topic #6</th>
-      <td>0.019347</td>
-      <td>gas, oil, natural, drilling, well, pipeline, production, reserve, crude, water</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 15(real estate/land), 18(aerospace, vehicles)</p></li>
@@ -1015,284 +708,18 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
-  warnings.warn(msg, category=FutureWarning)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">svd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">svd_model</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">svd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_all_X</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">lsa_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">svd</span><span class="p">,</span><span class="n">tf_vectorizer</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">lsa_topics</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Topic # 01</th>
-      <th>Topic # 02</th>
-      <th>Topic # 03</th>
-      <th>Topic # 04</th>
-      <th>Topic # 05</th>
-      <th>Topic # 06</th>
-      <th>Topic # 07</th>
-      <th>Topic # 08</th>
-      <th>Topic # 09</th>
-      <th>Topic # 10</th>
-      <th>Topic # 11</th>
-      <th>Topic # 12</th>
-      <th>Topic # 13</th>
-      <th>Topic # 14</th>
-      <th>Topic # 15</th>
-      <th>Topic # 16</th>
-      <th>Topic # 17</th>
-      <th>Topic # 18</th>
-      <th>Topic # 19</th>
-      <th>Topic # 20</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>customer</td>
-      <td>store</td>
-      <td>store</td>
-      <td>patient</td>
-      <td>loan</td>
-      <td>oil</td>
-      <td>ethanol</td>
-      <td>gas</td>
-      <td>president</td>
-      <td>loan</td>
-      <td>food</td>
-      <td>mineral</td>
-      <td>investment</td>
-      <td>customer</td>
-      <td>device</td>
-      <td>item</td>
-      <td>item</td>
-      <td>aircraft</td>
-      <td>food</td>
-      <td>customer</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>store</td>
-      <td>customer</td>
-      <td>merchandise</td>
-      <td>clinical</td>
-      <td>bank</td>
-      <td>gas</td>
-      <td>corn</td>
-      <td>oil</td>
-      <td>vice</td>
-      <td>share</td>
-      <td>brand</td>
-      <td>mining</td>
-      <td>fund</td>
-      <td>merger</td>
-      <td>semiconductor</td>
-      <td>registrant</td>
-      <td>client</td>
-      <td>system</td>
-      <td>cannabis</td>
-      <td>vehicle</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>system</td>
-      <td>merchandise</td>
-      <td>loan</td>
-      <td>fda</td>
-      <td>patient</td>
-      <td>ethanol</td>
-      <td>grain</td>
-      <td>software</td>
-      <td>officer</td>
-      <td>mineral</td>
-      <td>client</td>
-      <td>exploration</td>
-      <td>adviser</td>
-      <td>client</td>
-      <td>could</td>
-      <td>restaurant</td>
-      <td>registrant</td>
-      <td>aviation</td>
-      <td>restaurant</td>
-      <td>cannabis</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>fiscal</td>
-      <td>brand</td>
-      <td>share</td>
-      <td>drug</td>
-      <td>fda</td>
-      <td>natural</td>
-      <td>distiller</td>
-      <td>exploration</td>
-      <td>chief</td>
-      <td>bank</td>
-      <td>investment</td>
-      <td>project</td>
-      <td>client</td>
-      <td>vehicle</td>
-      <td>mineral</td>
-      <td>estate</td>
-      <td>statement</td>
-      <td>flight</td>
-      <td>store</td>
-      <td>investment</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>share</td>
-      <td>apparel</td>
-      <td>stock</td>
-      <td>trial</td>
-      <td>clinical</td>
-      <td>production</td>
-      <td>software</td>
-      <td>client</td>
-      <td>served</td>
-      <td>cannabis</td>
-      <td>consumer</td>
-      <td>claim</td>
-      <td>portfolio</td>
-      <td>target</td>
-      <td>exploration</td>
-      <td>property</td>
-      <td>segment</td>
-      <td>entertainment</td>
-      <td>franchise</td>
-      <td>property</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>brand</td>
-      <td>retail</td>
-      <td>brand</td>
-      <td>cancer</td>
-      <td>mortgage</td>
-      <td>exploration</td>
-      <td>client</td>
-      <td>property</td>
-      <td>executive</td>
-      <td>agreement</td>
-      <td>restaurant</td>
-      <td>property</td>
-      <td>advisor</td>
-      <td>transaction</td>
-      <td>wafer</td>
-      <td>real</td>
-      <td>brand</td>
-      <td>vehicle</td>
-      <td>franchisees</td>
-      <td>part</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>technology</td>
-      <td>retailer</td>
-      <td>common</td>
-      <td>store</td>
-      <td>credit</td>
-      <td>water</td>
-      <td>gallon</td>
-      <td>natural</td>
-      <td>client</td>
-      <td>exploration</td>
-      <td>beverage</td>
-      <td>mine</td>
-      <td>store</td>
-      <td>opportunity</td>
-      <td>memory</td>
-      <td>statement</td>
-      <td>loan</td>
-      <td>military</td>
-      <td>tax</td>
-      <td>item</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>agreement</td>
-      <td>fiscal</td>
-      <td>investment</td>
-      <td>study</td>
-      <td>trial</td>
-      <td>drilling</td>
-      <td>data</td>
-      <td>mineral</td>
-      <td>care</td>
-      <td>mining</td>
-      <td>fund</td>
-      <td>gold</td>
-      <td>capital</td>
-      <td>act</td>
-      <td>ic</td>
-      <td>investment</td>
-      <td>equity</td>
-      <td>video</td>
-      <td>client</td>
-      <td>mineral</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>stock</td>
-      <td>footwear</td>
-      <td>apparel</td>
-      <td>treatment</td>
-      <td>drug</td>
-      <td>grain</td>
-      <td>solution</td>
-      <td>data</td>
-      <td>senior</td>
-      <td>stock</td>
-      <td>ingredient</td>
-      <td>ethanol</td>
-      <td>cannabis</td>
-      <td>loan</td>
-      <td>consumer</td>
-      <td>entertainment</td>
-      <td>mining</td>
-      <td>engine</td>
-      <td>merchandise</td>
-      <td>exploration</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>segment</td>
-      <td>assortment</td>
-      <td>retail</td>
-      <td>medical</td>
-      <td>estate</td>
-      <td>mineral</td>
-      <td>fuel</td>
-      <td>drilling</td>
-      <td>food</td>
-      <td>home</td>
-      <td>segment</td>
-      <td>statement</td>
-      <td>power</td>
-      <td>security</td>
-      <td>brand</td>
-      <td>device</td>
-      <td>solution</td>
-      <td>defense</td>
-      <td>card</td>
-      <td>drug</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+</div>
 </div>
 <div class="section" id="id1">
 <h3>Netflix Analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -1305,7 +732,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Report_Topic_Modelling_22_0.png" src="../../_images/Report_Topic_Modelling_22_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">netflix_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1316,57 +752,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#compare 2012 with 2008 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>weight_diff</th>
-      <th>words</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Topic #2</th>
-      <td>-0.074932</td>
-      <td>store, customer, merchandise, brand, apparel, retail, retailer, fiscal, footwear, assortment</td>
-    </tr>
-    <tr>
-      <th>Topic #8</th>
-      <td>-0.064239</td>
-      <td>gas, oil, software, exploration, client, property, natural, mineral, data, drilling</td>
-    </tr>
-    <tr>
-      <th>Topic #17</th>
-      <td>0.050765</td>
-      <td>item, client, registrant, statement, segment, brand, loan, equity, mining, solution</td>
-    </tr>
-    <tr>
-      <th>Topic #10</th>
-      <td>-0.047219</td>
-      <td>loan, share, mineral, bank, cannabis, agreement, exploration, mining, stock, home</td>
-    </tr>
-    <tr>
-      <th>Topic #13</th>
-      <td>-0.046206</td>
-      <td>investment, fund, adviser, client, portfolio, advisor, store, capital, cannabis, power</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 2(retail/store) ,8(software, mining), 10(loan, home, commodities, cannabis), 13(investment, cannabis)</p></li>
@@ -1387,7 +782,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Report_Topic_Modelling_26_0.png" src="../../_images/Report_Topic_Modelling_26_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1398,57 +802,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># compare 2014 to 2011 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>weight_diff</th>
-      <th>words</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Topic #18</th>
-      <td>-0.098795</td>
-      <td>aircraft, system, aviation, flight, entertainment, vehicle, military, video, engine, defense</td>
-    </tr>
-    <tr>
-      <th>Topic #14</th>
-      <td>0.073090</td>
-      <td>customer, merger, client, vehicle, target, transaction, opportunity, act, loan, security</td>
-    </tr>
-    <tr>
-      <th>Topic #17</th>
-      <td>0.062079</td>
-      <td>item, client, registrant, statement, segment, brand, loan, equity, mining, solution</td>
-    </tr>
-    <tr>
-      <th>Topic #3</th>
-      <td>0.032511</td>
-      <td>store, merchandise, loan, share, stock, brand, common, investment, apparel, retail</td>
-    </tr>
-    <tr>
-      <th>Topic #20</th>
-      <td>0.031515</td>
-      <td>customer, vehicle, cannabis, investment, property, part, item, mineral, exploration, drug</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 18(aerospace)</p></li>
@@ -1484,159 +847,18 @@ const thebe_selector_output = ".output, .cell_output"
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">count_feature_names</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">filtered_all_count_X</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">lda_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span><span class="n">count_vectorizer</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">lda_topics</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Topic # 01</th>
-      <th>Topic # 02</th>
-      <th>Topic # 03</th>
-      <th>Topic # 04</th>
-      <th>Topic # 05</th>
-      <th>Topic # 06</th>
-      <th>Topic # 07</th>
-      <th>Topic # 08</th>
-      <th>Topic # 09</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>share</td>
-      <td>customer</td>
-      <td>investment</td>
-      <td>patient</td>
-      <td>customer</td>
-      <td>asset</td>
-      <td>store</td>
-      <td>loan</td>
-      <td>property</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>stock</td>
-      <td>material</td>
-      <td>security</td>
-      <td>fda</td>
-      <td>solution</td>
-      <td>cash</td>
-      <td>customer</td>
-      <td>bank</td>
-      <td>president</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>agreement</td>
-      <td>system</td>
-      <td>tax</td>
-      <td>clinical</td>
-      <td>system</td>
-      <td>note</td>
-      <td>brand</td>
-      <td>federal</td>
-      <td>program</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>common</td>
-      <td>energy</td>
-      <td>capital</td>
-      <td>drug</td>
-      <td>technology</td>
-      <td>tax</td>
-      <td>retail</td>
-      <td>institution</td>
-      <td>vice</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>issued</td>
-      <td>production</td>
-      <td>income</td>
-      <td>health</td>
-      <td>application</td>
-      <td>fiscal</td>
-      <td>fiscal</td>
-      <td>capital</td>
-      <td>officer</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>date</td>
-      <td>oil</td>
-      <td>could</td>
-      <td>patent</td>
-      <td>data</td>
-      <td>statement</td>
-      <td>distribution</td>
-      <td>credit</td>
-      <td>home</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>per</td>
-      <td>equipment</td>
-      <td>fund</td>
-      <td>medical</td>
-      <td>software</td>
-      <td>net</td>
-      <td>believe</td>
-      <td>rate</td>
-      <td>revenue</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>price</td>
-      <td>cost</td>
-      <td>fee</td>
-      <td>device</td>
-      <td>support</td>
-      <td>september</td>
-      <td>consumer</td>
-      <td>september</td>
-      <td>approximately</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>director</td>
-      <td>facility</td>
-      <td>subject</td>
-      <td>treatment</td>
-      <td>provide</td>
-      <td>value</td>
-      <td>approximately</td>
-      <td>real</td>
-      <td>chief</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>exchange</td>
-      <td>gas</td>
-      <td>act</td>
-      <td>approval</td>
-      <td>network</td>
-      <td>income</td>
-      <td>marketing</td>
-      <td>million</td>
-      <td>regulation</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="id3">
 <h3>Netflix Analysis<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
@@ -1650,7 +872,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Report_Topic_Modelling_34_0.png" src="../../_images/Report_Topic_Modelling_34_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">netflix_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netlfix_X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1661,57 +892,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#compare 2012 with 2008 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>weight_diff</th>
-      <th>words</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Topic #5</th>
-      <td>-0.090778</td>
-      <td>customer, solution, system, technology, application, data, software, support, provide, network</td>
-    </tr>
-    <tr>
-      <th>Topic #9</th>
-      <td>0.050576</td>
-      <td>property, president, program, vice, officer, home, revenue, approximately, chief, regulation</td>
-    </tr>
-    <tr>
-      <th>Topic #7</th>
-      <td>0.032062</td>
-      <td>store, customer, brand, retail, fiscal, distribution, believe, consumer, approximately, marketing</td>
-    </tr>
-    <tr>
-      <th>Topic #6</th>
-      <td>0.023481</td>
-      <td>asset, cash, note, tax, fiscal, statement, net, september, value, income</td>
-    </tr>
-    <tr>
-      <th>Topic #1</th>
-      <td>-0.013953</td>
-      <td>share, stock, agreement, common, issued, date, per, price, director, exchange</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 1(common financial terms) ,5(software)</p></li>
@@ -1733,7 +923,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Report_Topic_Modelling_38_0.png" src="../../_images/Report_Topic_Modelling_38_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ge_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1744,57 +943,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [17],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># compare 2014 to 2011 </span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>weight_diff</th>
-      <th>words</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Topic #9</th>
-      <td>-0.160586</td>
-      <td>property, president, program, vice, officer, home, revenue, approximately, chief, regulation</td>
-    </tr>
-    <tr>
-      <th>Topic #7</th>
-      <td>0.067685</td>
-      <td>store, customer, brand, retail, fiscal, distribution, believe, consumer, approximately, marketing</td>
-    </tr>
-    <tr>
-      <th>Topic #8</th>
-      <td>0.056961</td>
-      <td>loan, bank, federal, institution, capital, credit, rate, september, real, million</td>
-    </tr>
-    <tr>
-      <th>Topic #1</th>
-      <td>0.016514</td>
-      <td>share, stock, agreement, common, issued, date, per, price, director, exchange</td>
-    </tr>
-    <tr>
-      <th>Topic #6</th>
-      <td>0.015117</td>
-      <td>asset, cash, note, tax, fiscal, statement, net, september, value, income</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>decrease in topic 9(managment positions?)</p></li>
