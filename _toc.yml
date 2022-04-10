@@ -5,7 +5,7 @@ format: jb-book
 root: intro
 parts:
 chapters:
-- file:content/richard/0_Methods.ipynb
+- file: content/richard/0_Methods.ipynb
   - caption: Word Embedding
     chapters:
     - file: content/richard/1_Tf-idf_analysis.ipynb
