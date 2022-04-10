@@ -1,6 +1,7 @@
 # jupyter book
 _build/
 
+/venv
 *.Rmd
 content/data/timeseries_data_lg.csv
 
