@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Word embedding using tf-idf matrices" href="content/richard/1_Tf-idf_analysis.html" />
+    <link rel="next" title="Our Setup: Data ETL and Methods of evaluation" href="content/richard/0_Methods.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -77,6 +77,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/favicon.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Unsupervised analysis of Textual data from 10K Financial Reports</h1>
@@ -93,6 +98,18 @@ const thebe_selector_output = ".output, .cell_output"
    <center>
     Unsupervised analysis of Textual data from 10K Financial Reports
    </center>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/richard/0_Methods.html">
+   Our Setup: Data ETL and Methods of evaluation
   </a>
  </li>
 </ul>
@@ -500,6 +517,12 @@ We further cleaned up the <code class="docutils literal notranslate"><span class
 <p>We also lemmatized all possible words, aka Text/Word Normalization which means all instances of “am, are, is” are converted to “be” and “playing, played, plays” are all converted to “play”. This reduces the amount of different words we have to process, and also condensing the amount of information we recieve since words that all carry the same meaning are represented together.</p>
 <p>Check out each page bundled within this book to see more on a given topic.</p>
 <div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="content/richard/0_Methods.html">Our Setup: Data ETL and Methods of evaluation</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Word Embedding</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="content/richard/1_Tf-idf_analysis.html">Word embedding using tf-idf matrices</a></li>
@@ -564,10 +587,10 @@ We further cleaned up the <code class="docutils literal notranslate"><span class
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="content/richard/1_Tf-idf_analysis.html" title="next page">
+    <a class='right-next' id="next-link" href="content/richard/0_Methods.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Word embedding using tf-idf matrices</p>
+        <p class="prev-next-title">Our Setup: Data ETL and Methods of evaluation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
