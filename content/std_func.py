@@ -236,11 +236,12 @@ def get_topics(model, vectorizer, num_topics):
 def graph_netflix(num_topics, netflix_top_df):
     plt.rcParams['figure.figsize'] = [12, 7]
     X_axis = np.arange(num_topics)
-    plt.bar(X_axis - 0.4,list (netflix_top_df.iloc[0]), 0.2, label="2008", color="lightcyan")
-    plt.bar(X_axis - 0.2, list(netflix_top_df.iloc[1]), 0.2, label="2009", color="paleturquoise")
-    plt.bar(X_axis, list(netflix_top_df.iloc[2]), 0.2, label="2010", color="mediumturquoise")
-    plt.bar(X_axis + 0.2, list(netflix_top_df.iloc[3]), 0.2, label="2011", color="teal")
-    plt.bar(X_axis + 0.4, list(netflix_top_df.iloc[4]), 0.2, label="2012", color="darkslategrey")
+    plt.bar(X_axis - 0.5,list (netflix_top_df.iloc[0]), 0.15, label="2006", color="lightcyan")
+    plt.bar(X_axis - 0.3, list(netflix_top_df.iloc[1]), 0.15, label="2007", color="paleturquoise")
+    plt.bar(X_axis - 0.1, list(netflix_top_df.iloc[2]), 0.15, label="2008", color="mediumturquoise")
+    plt.bar(X_axis + 0.1, list(netflix_top_df.iloc[3]), 0.15, label="2009", color="teal")
+    plt.bar(X_axis + 0.3, list(netflix_top_df.iloc[4]), 0.15, label="2010", color="darkslategrey")
+    plt.bar(X_axis + 0.5, list(netflix_top_df.iloc[5]), 0.15, label="2011", color="black")
     plt.xticks(X_axis, [str(i) for i in range(1,num_topics+1)])
     plt.xlabel("Topics")
     plt.ylabel("Weight")
