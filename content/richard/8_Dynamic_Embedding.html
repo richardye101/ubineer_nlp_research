@@ -121,13 +121,18 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Tf-idf_analysis.html">
+  <a class="reference internal" href="tfidf.html">
    Word embedding using tf-idf matrices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../peitong/1_Cosine_Similarity_Distances.html">
    Cosine Similarity Distances
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Tf-idf_analysis-new.html">
+   Word embedding using tf-idf matrices
   </a>
  </li>
  <li class="toctree-l1">
@@ -391,9 +396,11 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">sys</span>  
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">std_func</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+<span class="o">%</span><span class="k">aimport</span> std_func
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/preprocessed.csv&quot;</span><span class="p">)</span>
 <span class="n">data_t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/timeseries_data_2.csv&quot;</span><span class="p">)</span>
@@ -780,7 +787,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/bin/sh: 1: source: not found
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:source:1: no such file or directory: /Users/richardye/Documents/Python/venv_ubineer/bin/activate
 </pre></div>
 </div>
 </div>
@@ -1362,7 +1369,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">clusterer</span> <span class="o">=</span> <span class="n">hdbscan</span><span class="o">.</span><span class="n">HDBSCAN</span><span class="p">()</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">doc_vec_2</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/hdbscan/hdbscan_.py:1151,</span> in <span class="ni">HDBSCAN.fit</span><span class="nt">(self, X, y)</span>
+<span class="nn">File ~/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/hdbscan/hdbscan_.py:1151,</span> in <span class="ni">HDBSCAN.fit</span><span class="nt">(self, X, y)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1134</span> <span class="sd">&quot;&quot;&quot;Perform HDBSCAN clustering from features or distance matrix.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1135</span><span class="sd"> </span>
 <span class="g g-Whitespace">   </span><span class="mi">1136</span><span class="sd"> Parameters</span>
@@ -1376,7 +1383,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="g g-Whitespace">   </span><span class="mi">1152</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_raw_data</span> <span class="o">=</span> <span class="n">X</span>
 <span class="g g-Whitespace">   </span><span class="mi">1154</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_all_finite</span> <span class="o">=</span> <span class="n">is_finite</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/utils/validation.py:665,</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)</span>
+<span class="nn">File ~/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/sklearn/utils/validation.py:665,</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)</span>
 <span class="g g-Whitespace">    </span><span class="mi">662</span>                     <span class="n">has_pd_integer_array</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="g g-Whitespace">    </span><span class="mi">664</span>     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">dtype</span> <span class="ow">in</span> <span class="n">dtypes_orig</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">665</span>         <span class="n">dtype_orig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="o">*</span><span class="n">dtypes_orig</span><span class="p">)</span>
