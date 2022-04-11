@@ -1,5 +1,5 @@
 # jupyter book
-_build/
+#_build/
 
 /venv
 

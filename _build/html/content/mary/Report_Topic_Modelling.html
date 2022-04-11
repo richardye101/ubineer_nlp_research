@@ -1,0 +1,1893 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Topic Modelling &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mean-Variance Analysis - Minimum Variance" href="../peitong/3_Minimum_Variance_Analysis.html" />
+    <link rel="prev" title="Embedding methods to augment with dynamic analysis" href="../richard/8_Dynamic_Embedding.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/favicon.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Unsupervised analysis of Textual data from 10K Financial Reports</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   <center>
+    Unsupervised analysis of Textual data from 10K Financial Reports
+   </center>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/0_Methods.html">
+   Our Setup: Data ETL and Methods of evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Word Embedding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/1_Cosine_Similarity_Distances.html">
+   Cosine Similarity Distances
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/1_Tf-idf_analysis-new.html">
+   Word embedding using tf-idf matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/2_Part_of_Speech_Tagging.html">
+   Part-of-Speech (POS) Tagging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/4_Word2Vec.html">
+   Word2vec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/5_Doc2Vec.html">
+   Doc2Vec
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topic Modelling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/2_LDA_topic_modelling.html">
+   LDA (Latent Dirichlet Allocation)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/3_LSA_topic_modelling.html">
+   Experimenting with lemmatization SVD/LSA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Report_USE.html">
+   Universal Sentence Encoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Report_TwoTowers.html">
+   Two Towers
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic Topic Modelling Analysis
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/8_Dynamic_Embedding.html">
+   Embedding methods to augment with dynamic analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Dynamic Topic Modelling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/3_Minimum_Variance_Analysis.html">
+   Mean-Variance Analysis - Minimum Variance
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/mary/Report_Topic_Modelling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/richardye101/ubineer_nlp_research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/richardye101/ubineer_nlp_research/issues/new?title=Issue%20on%20page%20%2Fcontent/mary/Report_Topic_Modelling.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/richardye101/ubineer_nlp_research/main?urlpath=tree/../content/content/mary/Report_Topic_Modelling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#netflix">
+   Netflix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-electric">
+   General Electric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-negative-matrix-factorization">
+   Non-Negative Matrix Factorization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#netflix-analysis">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-electric-analysis">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsa">
+   LSA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda">
+   LDA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-topic-modelling">
+   Summary of Topic Modelling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nmf-results">
+   NMF Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda-results">
+   LDA Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsa-results">
+   LSA Results
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dynamic Topic Modelling</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#netflix">
+   Netflix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-electric">
+   General Electric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-negative-matrix-factorization">
+   Non-Negative Matrix Factorization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#netflix-analysis">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-electric-analysis">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsa">
+   LSA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda">
+   LDA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Netflix Analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     General Electric Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-topic-modelling">
+   Summary of Topic Modelling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nmf-results">
+   NMF Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda-results">
+   LDA Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsa-results">
+   LSA Results
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="dynamic-topic-modelling">
+<h1>Dynamic Topic Modelling<a class="headerlink" href="#dynamic-topic-modelling" title="Permalink to this headline">¶</a></h1>
+<p>Change is important for businesses to hold a competitive edge and to meet the ever-changing needs of customers. Netflix and General Electric are two examples of companies that have evolved to adapt to the fast moving trends of their respective industry. On the other hand, businesses like BlockBuster and MySpace failed to innovate and adapt with the moving trends. Investors often spend a great deal of time to read through finacial reports to detect signs of change and adaption, so our work systematically summarises the business model of a company over time.</p>
+<p>In this section, we apply several topic modelling techniques to the Business description of filings between the years of 2016 and 2018 to detect differences and emerging themes within a company. By finding these differences, we can see how the company has evolved over the years and understand shifts in operation of the company. More specifically, we explored Non-negative matrix factorization (NMF), latent dirichilet allocation (LDA), and Latent semantic analysis (LSA) for topic modelling.</p>
+<p>We use Netflix (NTFL) and General Electric (GE) as a Proof of Concept to test our topic models, since they are companies that have evolved drastically over the past 15 years.</p>
+<div class="section" id="netflix">
+<h2>Netflix<a class="headerlink" href="#netflix" title="Permalink to this headline">¶</a></h2>
+<p>Netflix was founded by Reed Hastings and Marc Rudolph in 1997 as a DVD rental-by-mail business. A year later, Netflix introduced a subscription model where customers could rent DVDs online for a fixed fee per month. In 2007, it entered the market of video streaming where anyone could enjoy live streaming videos at their computer for for a monthly subscription fee. Around this time, the world was getting accustomed to the internet and technology was advancing rapidly. In 2009, the company began partnering with electronic companies to get Netflix on multiple devices like smart TVs and gaming consoles. This move attracted audiences with different background profiles and pushed Netflix to the top of the video-streaming industry. In 2011, Netflix introduced its mobile apps and ios service for smartphone users.</p>
+<p>Throughout the years, Netflix stayed competitive by changing their business strategy with the advancement of technology and catering to changing customer needs.</p>
+</div>
+<div class="section" id="general-electric">
+<h2>General Electric<a class="headerlink" href="#general-electric" title="Permalink to this headline">¶</a></h2>
+<p>General Electric (GE) was founded in 1892 and currently operates through eight industrial segments: Aviation, Healthcare, Transportation, Renewable Energy, Oil &amp; Gas, Appliances &amp; Lighting, Power &amp; Water,and Capital. GE Aviation is GE’s most profitable division. It made steps forward in recent years, namely 2007 by acquiring Smith Aerospace, an American aircraft engine and aircraft parts manufacturer, and 2012 by acquiring Avio S.p.A., an Italy-based manufacturer of aviation propulsion components and systems for civil and military aircraft. On the other hand, GE Healthcare had slow growth in the years of 2010 to 2015 but saw an significant increase in profits in 2016 by more than 0.3 billion dollars compared to the year before. GE Power &amp; Water, GE Renewable Energy, GE Oil &amp; Gas were all under GE Energy up until its split in 2012. In 2014, GE’s Power made moves to purchase French gas turbine company Alstom for $$$ 13 billion dollars. Unfortunately, this move coincided with a global downturn in the price of renewables, lessening demand for the gas turbines, and did not bring the profits that GE had hoped for. 2014 was also the year that GE agreed to sell GE Appliances to Electrolux, a Swedish appliance manufacturer and the second-largest consumer appliance manufacturer after Whirlpool Corporation, for US $$$3.3 billion in cash.</p>
+<p>In the history of the business, GE suffered through the financial crisis in 2008 and began its downfall. Throughout 2008 to 2017, the company consistently slashed its dividends year over year and laid off thousands of employees across all divisions. However, in 2018, GE made significant improvements in cutting debt and raising capital by selling off subsidiaries. In 2021, GE decided to separate GE HealthCare and GE Power into public companies and focus mainly on GE Aviation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Dynamic Topic Modelling with Netflix, GE</span>
+<span class="n">targetComp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/dynamic_companies.csv&quot;</span><span class="p">)</span>
+<span class="n">netflix</span> <span class="o">=</span> <span class="n">targetComp</span><span class="p">[</span><span class="n">targetComp</span><span class="p">[</span><span class="s2">&quot;financialEntity&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;financialEntities/params;cik=1065280&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">ge</span> <span class="o">=</span> <span class="n">targetComp</span><span class="p">[</span><span class="n">targetComp</span><span class="p">[</span><span class="s2">&quot;financialEntity&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;financialEntities/params;cik=40545&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="non-negative-matrix-factorization">
+<h2>Non-Negative Matrix Factorization<a class="headerlink" href="#non-negative-matrix-factorization" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative matrix factorization uses linear algebra to discover underlying relationships between texts. It factorizes/decomposes high-dimensionality vectors(ie. TF-IDF or BOW embeddings) into a lower dimensional representation. Given an original matrix obtained using TF-IDF or any word embedding algorithm of size MxN where M is the number of documents and N is the number of ngrams, NMF generates the <strong>Feature</strong> matrix and <strong>Components</strong> matrix. The Features matrix represents weights of topics for each doument and Component matrix represents weights of words for each topic. NMF modifies the values of the initial Feature matrix and Components matrix so that the product approaches the original matrix until approximation error converges or max iterations are reached (ie. $Original Matrix \approx$ $Features \times Components$) . The matrices generated by NMF will only give non-negative values.</p>
+<p>NMF is very sensitive to the hyperparameters such as the number of topics, so we can use coherence scores to evaluate the most optimal number of topics so that each topic is human interpretable.The coherence of a topic, used as a proxy for topic quality, is based on the distributional hypothesis that states that words with similar meaning tend to co-occur within a similar context.</p>
+<p>Coherence score measures the relative distance between words within a topic. There are several coherence metrics but the most popular one is CV, which is the metrics that we will use in our report. CV coherence score creates content vectors of words using their co-occurrences (ie. co-occurence of “Las” and “Vegas” would be very high) and calculates the score using normalized pointwise mutual information (NPMI) and cosine similarity. NPMI is the likelihood of the co-occurrence of two words, taking into account the fact that it might be caused by the frequency of the single words.</p>
+<p>$NPMI(a,b) = \frac{log\frac{P(a,b)+\epsilon}{P(a)P(b)}}{-log(P(a,b)+\epsilon)}$</p>
+<p>Probabilities of single words p(a) or the joint probabilizy of two words p(a,b) can be estimated by Boolean document calculation, that is, the number of documents in which (a) or (a,b) occurs, divided by the total number of documents.</p>
+<p>We calculate the global coherence of the topic as the average pairwise coherence scores on the top N words which describe the topic.</p>
+<p>We ran the metric over a range of 3 to 40 topics, incrementing by 3 and achieved the result below. Although coherence is highest for 6 topics, we know that there are close to 50 different categories of companies in the dataset and thus 6 topics will not give well separated results. Therefore, we chose the give our model 18 topics, which has the next highest coherence score and will not give topics that are too specific to this set of data. If you’re interested in the code, see this  <a class="reference external" href="https://richardye101.github.io/ubineer_nlp_research/lab?path=mary%2FWeek+10+-+NMF+vs+LDA+vs+LSA.ipynb">file</a></p>
+<p><img alt="NMF Coherence" src="../../_images/nmf_coherence.png" /></p>
+<p>The table below illustrates the results produced by the NMF model tuned to generate 18 topics. Each column is a topic identified by the column index and is represented by the top 10 words in the topic by weight.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">NMF</span>
+<span class="n">filtered</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;filtered_timeseries_data.csv&quot;</span><span class="p">)</span>
+<span class="n">filtered_data</span> <span class="o">=</span> <span class="n">filtered</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s2">&quot;coDescription_stopwords&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">filtered_dates</span> <span class="o">=</span> <span class="n">filtered</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+<span class="n">tf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span> 
+<span class="n">filtered_all_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">)</span>
+
+<span class="n">nmf_model</span> <span class="o">=</span> <span class="n">NMF</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;nndsvd&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">nmf_feature</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_all_X</span><span class="p">)</span>
+<span class="n">nmf_component</span> <span class="o">=</span><span class="n">nmf_model</span><span class="o">.</span><span class="n">components_</span>
+
+<span class="n">nmf_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">nmf_model</span><span class="p">,</span><span class="n">tf_vectorizer</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">nmf_topics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/richardye/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topic # 01</th>
+      <th>Topic # 02</th>
+      <th>Topic # 03</th>
+      <th>Topic # 04</th>
+      <th>Topic # 05</th>
+      <th>Topic # 06</th>
+      <th>Topic # 07</th>
+      <th>Topic # 08</th>
+      <th>Topic # 09</th>
+      <th>Topic # 10</th>
+      <th>Topic # 11</th>
+      <th>Topic # 12</th>
+      <th>Topic # 13</th>
+      <th>Topic # 14</th>
+      <th>Topic # 15</th>
+      <th>Topic # 16</th>
+      <th>Topic # 17</th>
+      <th>Topic # 18</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>customer</td>
+      <td>store</td>
+      <td>share</td>
+      <td>patient</td>
+      <td>loan</td>
+      <td>gas</td>
+      <td>ethanol</td>
+      <td>software</td>
+      <td>president</td>
+      <td>tax</td>
+      <td>brand</td>
+      <td>mineral</td>
+      <td>investment</td>
+      <td>cannabis</td>
+      <td>home</td>
+      <td>item</td>
+      <td>client</td>
+      <td>aircraft</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>manufacturing</td>
+      <td>merchandise</td>
+      <td>stock</td>
+      <td>clinical</td>
+      <td>bank</td>
+      <td>oil</td>
+      <td>corn</td>
+      <td>customer</td>
+      <td>vice</td>
+      <td>income</td>
+      <td>food</td>
+      <td>exploration</td>
+      <td>fund</td>
+      <td>medical</td>
+      <td>land</td>
+      <td>statement</td>
+      <td>solution</td>
+      <td>system</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>material</td>
+      <td>customer</td>
+      <td>common</td>
+      <td>fda</td>
+      <td>credit</td>
+      <td>natural</td>
+      <td>grain</td>
+      <td>application</td>
+      <td>officer</td>
+      <td>cash</td>
+      <td>consumer</td>
+      <td>mining</td>
+      <td>adviser</td>
+      <td>lease</td>
+      <td>property</td>
+      <td>registrant</td>
+      <td>care</td>
+      <td>aviation</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>semiconductor</td>
+      <td>brand</td>
+      <td>agreement</td>
+      <td>trial</td>
+      <td>institution</td>
+      <td>drilling</td>
+      <td>distiller</td>
+      <td>solution</td>
+      <td>chief</td>
+      <td>asset</td>
+      <td>segment</td>
+      <td>claim</td>
+      <td>portfolio</td>
+      <td>property</td>
+      <td>construction</td>
+      <td>part</td>
+      <td>healthcare</td>
+      <td>flight</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>technology</td>
+      <td>apparel</td>
+      <td>merger</td>
+      <td>drug</td>
+      <td>borrower</td>
+      <td>well</td>
+      <td>fuel</td>
+      <td>data</td>
+      <td>served</td>
+      <td>note</td>
+      <td>retail</td>
+      <td>gold</td>
+      <td>income</td>
+      <td>colorado</td>
+      <td>community</td>
+      <td>stockholder</td>
+      <td>health</td>
+      <td>power</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>equipment</td>
+      <td>retail</td>
+      <td>shareholder</td>
+      <td>cancer</td>
+      <td>mortgage</td>
+      <td>pipeline</td>
+      <td>gallon</td>
+      <td>platform</td>
+      <td>executive</td>
+      <td>net</td>
+      <td>beverage</td>
+      <td>property</td>
+      <td>capital</td>
+      <td>pharmaceutical</td>
+      <td>mortgage</td>
+      <td>equity</td>
+      <td>provider</td>
+      <td>military</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>industrial</td>
+      <td>fiscal</td>
+      <td>director</td>
+      <td>device</td>
+      <td>deposit</td>
+      <td>production</td>
+      <td>plant</td>
+      <td>user</td>
+      <td>senior</td>
+      <td>loss</td>
+      <td>restaurant</td>
+      <td>project</td>
+      <td>advisor</td>
+      <td>facility</td>
+      <td>estate</td>
+      <td>supplementary</td>
+      <td>provide</td>
+      <td>energy</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>segment</td>
+      <td>assortment</td>
+      <td>issued</td>
+      <td>treatment</td>
+      <td>lending</td>
+      <td>reserve</td>
+      <td>gasoline</td>
+      <td>cloud</td>
+      <td>since</td>
+      <td>liability</td>
+      <td>agreement</td>
+      <td>mine</td>
+      <td>security</td>
+      <td>growing</td>
+      <td>real</td>
+      <td>discussion</td>
+      <td>segment</td>
+      <td>engine</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>system</td>
+      <td>retailer</td>
+      <td>outstanding</td>
+      <td>study</td>
+      <td>federal</td>
+      <td>crude</td>
+      <td>renewable</td>
+      <td>network</td>
+      <td>director</td>
+      <td>statement</td>
+      <td>ingredient</td>
+      <td>permit</td>
+      <td>fee</td>
+      <td>plant</td>
+      <td>building</td>
+      <td>disclosure</td>
+      <td>revenue</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>solution</td>
+      <td>footwear</td>
+      <td>exchange</td>
+      <td>therapy</td>
+      <td>estate</td>
+      <td>water</td>
+      <td>energy</td>
+      <td>mobile</td>
+      <td>joining</td>
+      <td>ended</td>
+      <td>distribution</td>
+      <td>environmental</td>
+      <td>equity</td>
+      <td>warrant</td>
+      <td>residential</td>
+      <td>ii</td>
+      <td>security</td>
+      <td>contract</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="netflix-analysis">
+<h3>Netflix Analysis<a class="headerlink" href="#netflix-analysis" title="Permalink to this headline">¶</a></h3>
+<p>Interesting decrease in Topic 8 (software) especially in 2011 when Netflix rolled out mobile apps for smartphone users</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">netflix_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">netflix_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
+<span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="c1"># netflix_top_df.columns = [&quot;Topic #&quot; + str(i) for i in range(1,18+)]1</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Report_Topic_Modelling_11_0.png" src="../../_images/Report_Topic_Modelling_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="c1">#compare 2012 with 2008 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #15</th>
+      <td>-0.048122</td>
+      <td>home, land, property, construction, community, mortgage, estate, real, building, residential</td>
+    </tr>
+    <tr>
+      <th>Topic #2</th>
+      <td>-0.033552</td>
+      <td>store, merchandise, customer, brand, apparel, retail, fiscal, assortment, retailer, footwear</td>
+    </tr>
+    <tr>
+      <th>Topic #11</th>
+      <td>0.031877</td>
+      <td>brand, food, consumer, segment, retail, beverage, restaurant, agreement, ingredient, distribution</td>
+    </tr>
+    <tr>
+      <th>Topic #16</th>
+      <td>0.029032</td>
+      <td>item, statement, registrant, part, stockholder, equity, supplementary, discussion, disclosure, ii</td>
+    </tr>
+    <tr>
+      <th>Topic #10</th>
+      <td>0.017785</td>
+      <td>tax, income, cash, asset, note, net, loss, liability, statement, ended</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 2(retail/store), 15(real estate/residential)</p></li>
+<li><p>increase in topic 10 (finances), 11 (food), 16(common financial report terms)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 2(retail/store) and 15(real estate/residential) may be a result of Netflix’s change in business model in 2007 which hugely emphasized moving into the video streaming industry and being able to watch content in the comfort of your own home. However, in 2014, the business model is already established so there is a decrease on the emphasis of these topics.</p>
+<p>Topics 11,16, 10 are too general to be interpreted or is irrelevant.</p>
+</div>
+<div class="section" id="general-electric-analysis">
+<h3>General Electric Analysis<a class="headerlink" href="#general-electric-analysis" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ge_X</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">ge_top</span> <span class="o">=</span> <span class="n">nmf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
+<span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Report_Topic_Modelling_15_0.png" src="../../_images/Report_Topic_Modelling_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># #compare 2014 to 2011 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">nmf_topics</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #18</th>
+      <td>-0.034192</td>
+      <td>aircraft, system, aviation, flight, power, military, energy, engine, defense, contract</td>
+    </tr>
+    <tr>
+      <th>Topic #16</th>
+      <td>0.029161</td>
+      <td>item, statement, registrant, part, stockholder, equity, supplementary, discussion, disclosure, ii</td>
+    </tr>
+    <tr>
+      <th>Topic #15</th>
+      <td>-0.024753</td>
+      <td>home, land, property, construction, community, mortgage, estate, real, building, residential</td>
+    </tr>
+    <tr>
+      <th>Topic #5</th>
+      <td>0.020200</td>
+      <td>loan, bank, credit, institution, borrower, mortgage, deposit, lending, federal, estate</td>
+    </tr>
+    <tr>
+      <th>Topic #6</th>
+      <td>0.019347</td>
+      <td>gas, oil, natural, drilling, well, pipeline, production, reserve, crude, water</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 15(real estate/land), 18(aerospace, vehicles)</p></li>
+<li><p>increase in topic 5(loan/bank), 6(energy/gas), 16 (financial/analysis)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 18(aerospace/vehicles) may indicate that the company is seeing steady growth in the Aerospace section and did not make major changes in their business model. Decrease in topic 15(real estate/residential) may be explained by the planned acquisition of GE Appliances by Electrolux.</p>
+<p>Increase in Topic 5 (loan/bank) may be explained by its acquistion activities where GE Power acquired Alcom and GE Appliances is set to be acquired by Electrolux. Increase in Topic 6(energy/gas) may be explained by GE Power’s plan to acquire Alcom.</p>
+</div>
+</div>
+<div class="section" id="lsa">
+<h2>LSA<a class="headerlink" href="#lsa" title="Permalink to this headline">¶</a></h2>
+<p>Difficult to interpret the topics, there are several different categories of words in each topic</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+<span class="n">svd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">svd_model</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">svd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_all_X</span><span class="p">))</span>
+<span class="n">lsa_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">svd</span><span class="p">,</span><span class="n">tf_vectorizer</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">lsa_topics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/richardye/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topic # 01</th>
+      <th>Topic # 02</th>
+      <th>Topic # 03</th>
+      <th>Topic # 04</th>
+      <th>Topic # 05</th>
+      <th>Topic # 06</th>
+      <th>Topic # 07</th>
+      <th>Topic # 08</th>
+      <th>Topic # 09</th>
+      <th>Topic # 10</th>
+      <th>Topic # 11</th>
+      <th>Topic # 12</th>
+      <th>Topic # 13</th>
+      <th>Topic # 14</th>
+      <th>Topic # 15</th>
+      <th>Topic # 16</th>
+      <th>Topic # 17</th>
+      <th>Topic # 18</th>
+      <th>Topic # 19</th>
+      <th>Topic # 20</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>customer</td>
+      <td>store</td>
+      <td>store</td>
+      <td>patient</td>
+      <td>loan</td>
+      <td>oil</td>
+      <td>ethanol</td>
+      <td>gas</td>
+      <td>president</td>
+      <td>loan</td>
+      <td>food</td>
+      <td>mineral</td>
+      <td>investment</td>
+      <td>customer</td>
+      <td>home</td>
+      <td>item</td>
+      <td>client</td>
+      <td>aircraft</td>
+      <td>food</td>
+      <td>customer</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>store</td>
+      <td>customer</td>
+      <td>merchandise</td>
+      <td>clinical</td>
+      <td>bank</td>
+      <td>gas</td>
+      <td>corn</td>
+      <td>oil</td>
+      <td>vice</td>
+      <td>share</td>
+      <td>brand</td>
+      <td>mining</td>
+      <td>fund</td>
+      <td>merger</td>
+      <td>cannabis</td>
+      <td>registrant</td>
+      <td>item</td>
+      <td>franchise</td>
+      <td>cannabis</td>
+      <td>vehicle</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>system</td>
+      <td>merchandise</td>
+      <td>loan</td>
+      <td>fda</td>
+      <td>patient</td>
+      <td>ethanol</td>
+      <td>grain</td>
+      <td>software</td>
+      <td>officer</td>
+      <td>mineral</td>
+      <td>client</td>
+      <td>exploration</td>
+      <td>adviser</td>
+      <td>vehicle</td>
+      <td>aircraft</td>
+      <td>investment</td>
+      <td>segment</td>
+      <td>system</td>
+      <td>restaurant</td>
+      <td>cannabis</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fiscal</td>
+      <td>brand</td>
+      <td>share</td>
+      <td>drug</td>
+      <td>fda</td>
+      <td>natural</td>
+      <td>distiller</td>
+      <td>exploration</td>
+      <td>chief</td>
+      <td>cannabis</td>
+      <td>investment</td>
+      <td>project</td>
+      <td>client</td>
+      <td>target</td>
+      <td>construction</td>
+      <td>restaurant</td>
+      <td>solution</td>
+      <td>restaurant</td>
+      <td>solution</td>
+      <td>investment</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>share</td>
+      <td>apparel</td>
+      <td>stock</td>
+      <td>trial</td>
+      <td>clinical</td>
+      <td>production</td>
+      <td>software</td>
+      <td>client</td>
+      <td>served</td>
+      <td>bank</td>
+      <td>restaurant</td>
+      <td>claim</td>
+      <td>portfolio</td>
+      <td>transaction</td>
+      <td>client</td>
+      <td>property</td>
+      <td>statement</td>
+      <td>food</td>
+      <td>store</td>
+      <td>part</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>brand</td>
+      <td>retail</td>
+      <td>brand</td>
+      <td>cancer</td>
+      <td>mortgage</td>
+      <td>exploration</td>
+      <td>client</td>
+      <td>property</td>
+      <td>executive</td>
+      <td>exploration</td>
+      <td>consumer</td>
+      <td>property</td>
+      <td>advisor</td>
+      <td>opportunity</td>
+      <td>item</td>
+      <td>statement</td>
+      <td>loan</td>
+      <td>franchisees</td>
+      <td>franchise</td>
+      <td>item</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>technology</td>
+      <td>retailer</td>
+      <td>common</td>
+      <td>store</td>
+      <td>credit</td>
+      <td>water</td>
+      <td>gallon</td>
+      <td>mineral</td>
+      <td>client</td>
+      <td>agreement</td>
+      <td>beverage</td>
+      <td>mine</td>
+      <td>cannabis</td>
+      <td>client</td>
+      <td>land</td>
+      <td>device</td>
+      <td>registrant</td>
+      <td>aviation</td>
+      <td>franchisees</td>
+      <td>mineral</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>agreement</td>
+      <td>fiscal</td>
+      <td>investment</td>
+      <td>study</td>
+      <td>trial</td>
+      <td>drilling</td>
+      <td>data</td>
+      <td>natural</td>
+      <td>care</td>
+      <td>mining</td>
+      <td>fund</td>
+      <td>gold</td>
+      <td>store</td>
+      <td>security</td>
+      <td>building</td>
+      <td>entertainment</td>
+      <td>brand</td>
+      <td>entertainment</td>
+      <td>customer</td>
+      <td>exploration</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>stock</td>
+      <td>footwear</td>
+      <td>apparel</td>
+      <td>treatment</td>
+      <td>drug</td>
+      <td>grain</td>
+      <td>solution</td>
+      <td>data</td>
+      <td>senior</td>
+      <td>stock</td>
+      <td>ingredient</td>
+      <td>ethanol</td>
+      <td>capital</td>
+      <td>loan</td>
+      <td>registrant</td>
+      <td>estate</td>
+      <td>mining</td>
+      <td>store</td>
+      <td>health</td>
+      <td>cancer</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>segment</td>
+      <td>assortment</td>
+      <td>retail</td>
+      <td>medical</td>
+      <td>estate</td>
+      <td>mineral</td>
+      <td>fuel</td>
+      <td>drilling</td>
+      <td>food</td>
+      <td>home</td>
+      <td>segment</td>
+      <td>statement</td>
+      <td>power</td>
+      <td>act</td>
+      <td>contract</td>
+      <td>real</td>
+      <td>mineral</td>
+      <td>flight</td>
+      <td>coffee</td>
+      <td>trial</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="id1">
+<h3>Netflix Analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">netflix_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix_X</span><span class="p">)</span>
+<span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Report_Topic_Modelling_22_0.png" src="../../_images/Report_Topic_Modelling_22_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#compare 2012 with 2008 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #2</th>
+      <td>-0.074932</td>
+      <td>store, customer, merchandise, brand, apparel, retail, retailer, fiscal, footwear, assortment</td>
+    </tr>
+    <tr>
+      <th>Topic #8</th>
+      <td>-0.064287</td>
+      <td>gas, oil, software, exploration, client, property, mineral, natural, data, drilling</td>
+    </tr>
+    <tr>
+      <th>Topic #17</th>
+      <td>0.052252</td>
+      <td>client, item, segment, solution, statement, loan, registrant, brand, mining, mineral</td>
+    </tr>
+    <tr>
+      <th>Topic #13</th>
+      <td>-0.047373</td>
+      <td>investment, fund, adviser, client, portfolio, advisor, cannabis, store, capital, power</td>
+    </tr>
+    <tr>
+      <th>Topic #10</th>
+      <td>-0.046948</td>
+      <td>loan, share, mineral, cannabis, bank, exploration, agreement, mining, stock, home</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 2(retail/store) ,8(software, mining), 10(loan, home, commodities, cannabis), 13(investment, cannabis)</p></li>
+<li><p>increase in topic 17(mining, financial)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 2(retail/store) and 8(software, mining) may be a result of Netflix’s change in business model in 2007 which hugely emphasized moving into the video streaming industry and being able to watch content in the comfort of your own home. However, in 2014, the business model is already established so there is a decrease on the emphasis of these topics.</p>
+<p>Topics 10, 13, 17 are too general to be interpreted, or is irrelevant.</p>
+</div>
+<div class="section" id="id2">
+<h3>General Electric Analysis<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ge_top</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span><span class="p">)</span>
+<span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Report_Topic_Modelling_26_0.png" src="../../_images/Report_Topic_Modelling_26_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare 2014 to 2011 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lsa_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #18</th>
+      <td>-0.083466</td>
+      <td>aircraft, franchise, system, restaurant, food, franchisees, aviation, entertainment, store, flight</td>
+    </tr>
+    <tr>
+      <th>Topic #14</th>
+      <td>0.066581</td>
+      <td>customer, merger, vehicle, target, transaction, opportunity, client, security, loan, act</td>
+    </tr>
+    <tr>
+      <th>Topic #17</th>
+      <td>0.066458</td>
+      <td>client, item, segment, solution, statement, loan, registrant, brand, mining, mineral</td>
+    </tr>
+    <tr>
+      <th>Topic #19</th>
+      <td>0.039764</td>
+      <td>food, cannabis, restaurant, solution, store, franchise, franchisees, customer, health, coffee</td>
+    </tr>
+    <tr>
+      <th>Topic #3</th>
+      <td>0.032512</td>
+      <td>store, merchandise, loan, share, stock, brand, common, investment, apparel, retail</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 18(aerospace)</p></li>
+<li><p>increase in topic 14(business, acquisition), 17(mining, financial), 19(food/store), 20(vehicle, mineral, partner)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 18(aerospace/vehicles) may indicate that the company is seeing steady growth in the Aerospace section and did not make major changes in their business model.</p>
+<p>Increase in Topic 14(business, acquisition) may be explained by its increased acquistion activities where GE Power acquired Alcom and GE Appliances is set to be acquired by Electrolux.</p>
+<p>Topic 17, 19, 20 are too general to be interpreted or is irrelevant.</p>
+</div>
+</div>
+<div class="section" id="lda">
+<h2>LDA<a class="headerlink" href="#lda" title="Permalink to this headline">¶</a></h2>
+<p>We ran the coherence score benchmarking over a range of 3 to 40 topics, incrementing by 3 and achieved the result below. We chose the give our model 9 topics, which has the highest coherence score. If you’re interested in the code, see this  <a class="reference external" href="https://richardye101.github.io/ubineer_nlp_research/lab?path=mary%2FWeek+10+-+NMF+vs+LDA+vs+LSA.ipynb">file</a></p>
+<p><img alt="NMF Coherence" src="../../_images/lda_coherence.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">LatentDirichletAllocation</span>
+
+<span class="c1"># LDA can only use raw term counts for LDA because it is a probabilistic graphical model</span>
+<span class="n">count_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">filtered_all_count_X</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">)</span>
+<span class="n">count_feature_names</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">filtered_all_count_X</span><span class="p">)</span>
+<span class="n">lda_topics</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_topics</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span><span class="n">count_vectorizer</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">lda_topics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/richardye/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topic # 01</th>
+      <th>Topic # 02</th>
+      <th>Topic # 03</th>
+      <th>Topic # 04</th>
+      <th>Topic # 05</th>
+      <th>Topic # 06</th>
+      <th>Topic # 07</th>
+      <th>Topic # 08</th>
+      <th>Topic # 09</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>share</td>
+      <td>customer</td>
+      <td>investment</td>
+      <td>patient</td>
+      <td>customer</td>
+      <td>asset</td>
+      <td>store</td>
+      <td>loan</td>
+      <td>property</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>stock</td>
+      <td>material</td>
+      <td>security</td>
+      <td>fda</td>
+      <td>solution</td>
+      <td>cash</td>
+      <td>customer</td>
+      <td>bank</td>
+      <td>president</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>agreement</td>
+      <td>system</td>
+      <td>tax</td>
+      <td>clinical</td>
+      <td>system</td>
+      <td>note</td>
+      <td>brand</td>
+      <td>federal</td>
+      <td>program</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>common</td>
+      <td>energy</td>
+      <td>capital</td>
+      <td>drug</td>
+      <td>technology</td>
+      <td>tax</td>
+      <td>retail</td>
+      <td>institution</td>
+      <td>vice</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>issued</td>
+      <td>production</td>
+      <td>income</td>
+      <td>health</td>
+      <td>application</td>
+      <td>fiscal</td>
+      <td>fiscal</td>
+      <td>capital</td>
+      <td>officer</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>date</td>
+      <td>oil</td>
+      <td>could</td>
+      <td>patent</td>
+      <td>data</td>
+      <td>statement</td>
+      <td>distribution</td>
+      <td>credit</td>
+      <td>home</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>per</td>
+      <td>equipment</td>
+      <td>fund</td>
+      <td>medical</td>
+      <td>software</td>
+      <td>net</td>
+      <td>believe</td>
+      <td>rate</td>
+      <td>revenue</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>price</td>
+      <td>cost</td>
+      <td>fee</td>
+      <td>device</td>
+      <td>support</td>
+      <td>september</td>
+      <td>consumer</td>
+      <td>september</td>
+      <td>approximately</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>director</td>
+      <td>facility</td>
+      <td>subject</td>
+      <td>treatment</td>
+      <td>provide</td>
+      <td>value</td>
+      <td>approximately</td>
+      <td>real</td>
+      <td>chief</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>exchange</td>
+      <td>gas</td>
+      <td>act</td>
+      <td>approval</td>
+      <td>network</td>
+      <td>income</td>
+      <td>marketing</td>
+      <td>million</td>
+      <td>regulation</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="id3">
+<h3>Netflix Analysis<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">netlfix_X</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">netflix_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">netlfix_X</span><span class="p">)</span>
+<span class="n">netflix_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">netflix_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">netflix</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_netflix</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">netflix_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Report_Topic_Modelling_34_0.png" src="../../_images/Report_Topic_Modelling_34_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#compare 2012 with 2008 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">netflix_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #5</th>
+      <td>-0.090778</td>
+      <td>customer, solution, system, technology, application, data, software, support, provide, network</td>
+    </tr>
+    <tr>
+      <th>Topic #9</th>
+      <td>0.050576</td>
+      <td>property, president, program, vice, officer, home, revenue, approximately, chief, regulation</td>
+    </tr>
+    <tr>
+      <th>Topic #7</th>
+      <td>0.032062</td>
+      <td>store, customer, brand, retail, fiscal, distribution, believe, consumer, approximately, marketing</td>
+    </tr>
+    <tr>
+      <th>Topic #6</th>
+      <td>0.023481</td>
+      <td>asset, cash, note, tax, fiscal, statement, net, september, value, income</td>
+    </tr>
+    <tr>
+      <th>Topic #1</th>
+      <td>-0.013953</td>
+      <td>share, stock, agreement, common, issued, date, per, price, director, exchange</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 1(common financial terms) ,5(software)</p></li>
+<li><p>increase in topic 6(common financial terms), 7(retail/branding), 9(managment positions?)</p></li>
+</ul>
+<p>Anlysis:</p>
+<p>Decrease in topic 5 (software) may be a result of Netflix’s change in business model in 2007 which hugely emphasized moving into the video streaming/software industry. However, in 2014, the business model is already established so there is a decrease on the emphasis of software.</p>
+<p>Topics 1,6,7,9 are too general to be interpreted or is irrelevant</p>
+</div>
+<div class="section" id="id4">
+<h3>General Electric Analysis<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ge_X</span> <span class="o">=</span>  <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;coDescription&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">ge_top</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ge_X</span> <span class="p">)</span>
+<span class="n">ge_top_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ge_top</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ge</span><span class="p">[</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">graph_ge</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">ge_top_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Report_Topic_Modelling_38_0.png" src="../../_images/Report_Topic_Modelling_38_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare 2014 to 2011 </span>
+<span class="n">std_func</span><span class="o">.</span><span class="n">get_differences</span><span class="p">(</span><span class="n">lda_topics</span><span class="p">,</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ge_top_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weight_diff</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topic #9</th>
+      <td>-0.160586</td>
+      <td>property, president, program, vice, officer, home, revenue, approximately, chief, regulation</td>
+    </tr>
+    <tr>
+      <th>Topic #7</th>
+      <td>0.067685</td>
+      <td>store, customer, brand, retail, fiscal, distribution, believe, consumer, approximately, marketing</td>
+    </tr>
+    <tr>
+      <th>Topic #8</th>
+      <td>0.056961</td>
+      <td>loan, bank, federal, institution, capital, credit, rate, september, real, million</td>
+    </tr>
+    <tr>
+      <th>Topic #1</th>
+      <td>0.016514</td>
+      <td>share, stock, agreement, common, issued, date, per, price, director, exchange</td>
+    </tr>
+    <tr>
+      <th>Topic #6</th>
+      <td>0.015117</td>
+      <td>asset, cash, note, tax, fiscal, statement, net, september, value, income</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>decrease in topic 9(managment positions?)</p></li>
+<li><p>increase in topic 7(retail/branding), 8(finance, loan), 1(common financial report terms), 6(positive financial report terms)</p></li>
+</ul>
+<p>Anlysis:
+Topics are too general to be interpreted</p>
+</div>
+</div>
+<div class="section" id="summary-of-topic-modelling">
+<h2>Summary of Topic Modelling<a class="headerlink" href="#summary-of-topic-modelling" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="nmf-results">
+<h2>NMF Results<a class="headerlink" href="#nmf-results" title="Permalink to this headline">¶</a></h2>
+<p><strong>Netflix</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 2(retail/store), 15(real estate/residential)</p></li>
+<li><p>increase in topic 10 (finances), 11 (food), 16(common financial report terms)</p></li>
+</ul>
+<p><strong>GE</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 15(real estate/land), 18(aerospace, vehicles)</p></li>
+<li><p>increase in topic 5(loan/bank), 6(energy/gas), 16 (financial/analysis)</p></li>
+</ul>
+</div>
+<div class="section" id="lda-results">
+<h2>LDA Results<a class="headerlink" href="#lda-results" title="Permalink to this headline">¶</a></h2>
+<p><strong>Netflix</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 1(common financial terms) ,5(software)</p></li>
+<li><p>increase in topic 6(common financial terms), 7(retail/branding), 9(managment positions?)</p></li>
+</ul>
+<p><strong>GE</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 9(managment positions?)</p></li>
+<li><p>increase in topic 7(retail/branding), 8(finance, loan), 1(common financial report terms), 6(positive financial report terms)</p></li>
+</ul>
+</div>
+<div class="section" id="lsa-results">
+<h2>LSA Results<a class="headerlink" href="#lsa-results" title="Permalink to this headline">¶</a></h2>
+<p><strong>Netflix</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 2(retail/store) ,8(software, mining), 10(loan, home, commodities, cannabis), 13(investment, cannabis)</p></li>
+<li><p>increase in topic 17(mining, financial)</p></li>
+</ul>
+<p><strong>GE</strong></p>
+<ul class="simple">
+<li><p>decrease in topic 18(aerospace)</p></li>
+<li><p>increase in topic 14(business, acquisition), 17(mining, financial), 19(food/store), 20(vehicle, mineral, partner)</p></li>
+</ul>
+<p>Topics generated by the NMF model is the easiest to evaluate and is more coherent compared to LDA and LSA. We saw that the LSA model generated topics with mixed category of words in each topic and contained negative weights which is difficult to interpret.  The LDA model generated many topics with common financial terms that appear in most 10k reports so it did not give meaningful information of each company. Therefore, NMF does the best using this dataset which is expected since NMF usually has higher performance than LDA and LSA when using a small dataset.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/mary"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../richard/8_Dynamic_Embedding.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Embedding methods to augment with dynamic analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../peitong/3_Minimum_Variance_Analysis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mean-Variance Analysis - Minimum Variance</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Peitong Lu, Mary Xu, Richard Ye<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
