@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -327,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Word embedding using tf-idf matrices<a class="headerlink" href="#word-embedding-using-tf-idf-matrices" title="Permalink to this headline">¶</a></h1>
 <p>This notebook uses tf-idf matrices to create word embeddings for companies.</p>
 <p>Tf-Idf stands for <em>term frequency - inverse document frequency</em>. Each row in this matrix represents one document (in this case, one company) and each column represents a word (or n-gram, a sequence of words like “University of Toronto”). A term frequency matrix has the count of occurences of a given word for each document, while a tf-idf matrix performs a transformation on that term frequency matrix. The computation for each cell uses:</p>
+<p><span class="math notranslate nohighlight">\(\sum^n_{i=1} x \)</span></p>
 <ul class="simple">
 <li><p>Where <strong>t</strong> is the current term we are process, and <strong>d</strong> is the current document we are looking in</p></li>
 <li><p>Where <strong>N</strong> is the total number of documents in the document set and <strong>df(t)</strong> is the document frequency of t;</p>

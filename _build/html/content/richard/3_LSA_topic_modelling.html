@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -121,13 +123,13 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../peitong/1_Cosine_Similarity_Distances.html">
-   Cosine Similarity Distances
+  <a class="reference internal" href="1_Tf-idf_analysis-new.html">
+   Word embedding using tf-idf matrices
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Tf-idf_analysis-new.html">
-   Word embedding using tf-idf matrices
+  <a class="reference internal" href="../peitong/1_Cosine_Similarity_Distances.html">
+   Cosine Similarity Distances
   </a>
  </li>
  <li class="toctree-l1">
@@ -323,7 +325,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>LSA attempts to reduce the high dimensional data created from tf-idf into a lower dimensional space using SVD. SVD stands for <strong>Singular Value Decomposition</strong>. It is used commonly in conjunction with tf-idf matrices to perform what is known as <strong>Latent Semantic Analysis (LSA)</strong>. Contrary to PCA, SVD will not center the data before reducing dimensions, which makes it work better with sparse matrices (exactly what we have).</p>
 <p>Otherwise, this is exactly the same as LDA Topic modelling.</p>
 <p>This dimensionality reduction can be performed using truncated SVD. SVD, or singular value decomposition, is a technique in linear algebra that factorizes any matrix M into the product of 3 separate matrices:</p>
-<p>$$M=U<em>S</em>V$$</p>
+<div class="math notranslate nohighlight">
+\[M=U*S*V\]</div>
 <p>Where S is a diagonal matrix of the singular values of M. Critically, truncated SVD reduces dimensionality by selecting only the t largest singular values, and only keeping the first t columns of U and V. In this case, t is a hyperparameter we can select and adjust to reflect the number of topics we want to find.</p>
 <p><img alt="image.png" src="../../_images/lsa.png" /></p>
 <div class="cell tag_hide-input tag_hide-output docutils container">

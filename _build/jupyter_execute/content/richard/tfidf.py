@@ -7,6 +7,7 @@
 # 
 # Tf-Idf stands for _term frequency - inverse document frequency_. Each row in this matrix represents one document (in this case, one company) and each column represents a word (or n-gram, a sequence of words like "University of Toronto"). A term frequency matrix has the count of occurences of a given word for each document, while a tf-idf matrix performs a transformation on that term frequency matrix. The computation for each cell uses:
 # 
+# $\sum^n_{i=1} x $
 # - Where **t** is the current term we are process, and **d** is the current document we are looking in
 # - Where **N** is the total number of documents in the document set and **df(t)** is the document frequency of t;
 #     - The document frequency is the number of documents in the document set that contain the term t  

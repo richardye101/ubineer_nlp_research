@@ -9,9 +9,8 @@ parts:
       - file: content/richard/0_Methods.ipynb
   - caption: Word Embedding
     chapters:
-    - file: content/richard/tfidf.ipynb
-    - file: content/peitong/1_Cosine_Similarity_Distances.ipynb
     - file: content/richard/1_Tf-idf_analysis-new.ipynb
+    - file: content/peitong/1_Cosine_Similarity_Distances.ipynb
     - file: content/peitong/2_Part_of_Speech_Tagging.ipynb
     - file: content/richard/4_Word2Vec.ipynb
     - file: content/richard/5_Doc2Vec.ipynb

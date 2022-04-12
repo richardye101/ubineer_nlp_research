@@ -19,10 +19,10 @@ execute:
 
 # Parsing math blocks
 parse:
-  myst_enable_extensions:
+  myst_enable_extensions: ["dollarmath", "amsmath"]
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!
-    - amsmath
+    # - amsmath
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
@@ -50,3 +50,4 @@ sphinx:
   config:
     html_js_files:
     - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
