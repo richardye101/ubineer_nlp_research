@@ -7,9 +7,10 @@ parts:
   - caption: Methods
     chapters:
       - file: content/richard/0_Methods.ipynb
-  - caption: Word Embedding
+      - file: content/richard/0_1-Visualization.ipynb
+  - caption: Document Embedding
     chapters:
-    - file: content/richard/1_Tf-idf_analysis-new.ipynb
+    - file: content/richard/1_Tf-idf_analysis.ipynb
     - file: content/peitong/1_Cosine_Similarity_Distances.ipynb
     - file: content/peitong/2_Part_of_Speech_Tagging.ipynb
     - file: content/richard/4_Word2Vec.ipynb
