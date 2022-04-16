@@ -549,7 +549,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="n">r_selected</span> <span class="o">=</span> <span class="n">r_selected</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">r_selected</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># convert object to float</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/indexing.py:960,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
+<span class="nn">File ~/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/pandas/core/indexing.py:960,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
 <span class="g g-Whitespace">    </span><span class="mi">958</span>     <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">com</span><span class="o">.</span><span class="n">apply_if_callable</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">key</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">959</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_scalar_access</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">960</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_value</span><span class="p">(</span><span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="n">takeable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_takeable</span><span class="p">)</span>
@@ -557,7 +557,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="g g-Whitespace">    </span><span class="mi">962</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">963</span>     <span class="c1"># we by definition only have the 0th axis</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/frame.py:3613,</span> in <span class="ni">DataFrame._get_value</span><span class="nt">(self, index, col, takeable)</span>
+<span class="nn">File ~/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/pandas/core/frame.py:3613,</span> in <span class="ni">DataFrame._get_value</span><span class="nt">(self, index, col, takeable)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3611</span> <span class="k">if</span> <span class="n">takeable</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">3612</span>     <span class="n">series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ixs</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">3613</span>     <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
@@ -599,7 +599,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/richardye/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
@@ -1667,7 +1667,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">min_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">dfi</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;max_sharpe_cos_sim.png&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/generic.py:5575,</span> in <span class="ni">NDFrame.__getattr__</span><span class="nt">(self, name)</span>
+<span class="nn">File ~/Documents/GitHub/ubineer_nlp_research/venv/lib/python3.9/site-packages/pandas/core/generic.py:5575,</span> in <span class="ni">NDFrame.__getattr__</span><span class="nt">(self, name)</span>
 <span class="g g-Whitespace">   </span><span class="mi">5568</span> <span class="k">if</span> <span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">5569</span>     <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_internal_names_set</span>
 <span class="g g-Whitespace">   </span><span class="mi">5570</span>     <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span>
