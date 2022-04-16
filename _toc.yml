@@ -10,21 +10,22 @@ parts:
       - file: content/richard/0_1-Visualization.ipynb
   - caption: Document Embedding
     chapters:
-    - file: content/richard/1_Tf-idf_analysis.ipynb
-    - file: content/peitong/1_Cosine_Similarity_Distances.ipynb
-    - file: content/peitong/2_Part_of_Speech_Tagging.ipynb
-    - file: content/richard/4_Word2Vec.ipynb
-    - file: content/richard/5_Doc2Vec.ipynb
+      - file: content/richard/1_Tf-idf_analysis.ipynb
+      - file: content/peitong/1_Cosine_Similarity_Distances.ipynb
+      - file: content/peitong/2_Part_of_Speech_Tagging.ipynb
+      - file: content/richard/4_Word2Vec.ipynb
+      - file: content/richard/5_Doc2Vec.ipynb
+      - file: content/mary/Report_USE.ipynb
+      - file: content/mary/Report_TwoTowers.ipynb
+      - file: content/mary/Report_Embedding_Results.ipynb
   - caption: Topic Modelling
     chapters:
-    - file: content/richard/2_LDA_topic_modelling.ipynb
-    - file: content/richard/3_LSA_topic_modelling.ipynb
-    - file: content/mary/Report_USE.ipynb
-    - file: content/mary/Report_TwoTowers.ipynb
+      - file: content/richard/2_LDA_topic_modelling.ipynb
+      - file: content/richard/3_LSA_topic_modelling.ipynb
   - caption: Dynamic Topic Modelling Analysis
     chapters:
-    - file: content/richard/8_Dynamic_Embedding.ipynb
-    - file: content/mary/Report_Topic_Modelling.ipynb
+      - file: content/richard/8_Dynamic_Embedding.ipynb
+      - file: content/mary/Report_Topic_Modelling.ipynb
   - caption: Portfolio Analysis
     chapters:
-    - file: content/peitong/3_Minimum_Variance_Analysis.ipynb
+      - file: content/peitong/3_Minimum_Variance_Analysis.ipynb
