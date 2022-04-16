@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Embedding methods to augment with dynamic analysis" href="../richard/8_Dynamic_Embedding.html" />
+    <link rel="next" title="Document Embedding Results" href="Report_Embedding_Results.html" />
     <link rel="prev" title="Universal Sentence Encoder" href="Report_USE.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -124,7 +124,7 @@ const thebe_selector_output = ".output, .cell_output"
   Document Embedding
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../richard/1_Tf-idf_analysis.html">
    Word embedding using tf-idf matrices
@@ -150,23 +150,6 @@ const thebe_selector_output = ".output, .cell_output"
    Doc2Vec
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Topic Modelling
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../richard/2_LDA_topic_modelling.html">
-   LDA (Latent Dirichlet Allocation)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../richard/3_LSA_topic_modelling.html">
-   Experimenting with lemmatization SVD/LSA
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Report_USE.html">
    Universal Sentence Encoder
@@ -175,6 +158,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Two Towers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Report_Embedding_Results.html">
+   Document Embedding Results
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topic Modelling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/2_LDA_topic_modelling.html">
+   LDA (Latent Dirichlet Allocation)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../richard/3_LSA_topic_modelling.html">
+   Experimenting with lemmatization SVD/LSA
   </a>
  </li>
 </ul>
@@ -305,6 +310,36 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Two Towers
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-data">
+     Training Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting">
+   Plotting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -317,6 +352,36 @@ const thebe_selector_output = ".output, .cell_output"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Two Towers
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-data">
+     Training Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting">
+   Plotting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -327,8 +392,10 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Two Towers<a class="headerlink" href="#two-towers" title="Permalink to this headline">¶</a></h1>
 <p>The two-tower model learns to represent two items of various types (such as user profiles, search queries, web documents, answer passages, or images) in the same vector space, so that similar or related items are close to each other. These two items are referred to as the query and candidate object, since when paired with a nearest neighbour search service such as Vertex Matching Engine, the two-tower model can retrieve candidate objects related to an input query object. These objects are encoded by a query and candidate encoder (the two “towers”) respectively, which are trained on pairs of relevant items.</p>
 <p>Since we wish to retrieve financial entities related to each other, we have the query item as the business description in plain text and the candidate item as the CIK ticker and its SIC category description of the financial entity.</p>
-<p>Training Data
-We used the 2018 filings of companies descriptions from the top 5 categories (Prepackaged Software, Pharmaceutical Preparations, Crude Petroleum and Natural Gas, Real Estate Investment Trusts, State Commercial Banks) to train our model. Filings from multiple years for each company is used so that the model has a better understanding of each company and its relevant descriptions.</p>
+<div class="section" id="training-data">
+<h2>Training Data<a class="headerlink" href="#training-data" title="Permalink to this headline">¶</a></h2>
+<p>Training data consists of query document and candidate document pairs. It is needed to provide only positive pairs, where the query and candidate documents are considered a match. Training with negative pairs or partial matches is not supported.</p>
+<p>We used the 2018 filings of companies descriptions from the top 5 categories (Prepackaged Software, Pharmaceutical Preparations, Crude Petroleum and Natural Gas, Real Estate Investment Trusts, State Commercial Banks) to train our model. Filings from multiple years for each company is used so that the model has a better understanding of each company and its relevant descriptions.</p>
 <p>Structure of a single record in the training data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
         <span class="s2">&quot;query&quot;</span><span class="p">:</span>
@@ -343,8 +410,17 @@ We used the 2018 filings of companies descriptions from the top 5 categories (Pr
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="plotting">
+<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
 <p><img alt="twotowers_3d" src="../../_images/twotowers_3d.png" /></p>
+</div>
+<div class="section" id="results">
+<h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h1>
 <p><img alt="twotowers_cm" src="../../_images/twotowers_cm.png" /></p>
+<p><img alt="twotowers_cm" src="content/images/twotowers_results.png" /></p>
+<p>From the confusion matrix and the classification report, we can conclude that the Two Tower model does not do a good job at classfying the category of the companies compared to the other models. We believe this is due to the nature of our data as there are only a hand-full of “positive” pairs of query objects(10k report description) and candidate objects(company ID &amp; category). With a large set of data but very few pairs of data, it is difficult for the model to create an embedding space where related items are close together.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -379,10 +455,10 @@ We used the 2018 filings of companies descriptions from the top 5 categories (Pr
             <p class="prev-next-title">Universal Sentence Encoder</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../richard/8_Dynamic_Embedding.html" title="next page">
+    <a class='right-next' id="next-link" href="Report_Embedding_Results.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Embedding methods to augment with dynamic analysis</p>
+        <p class="prev-next-title">Document Embedding Results</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
