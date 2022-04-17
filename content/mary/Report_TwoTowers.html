@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Document Embedding Results" href="Report_Embedding_Results.html" />
-    <link rel="prev" title="Universal Sentence Encoder" href="Report_USE.html" />
+    <link rel="next" title="Universal Sentence Encoder" href="Report_USE.html" />
+    <link rel="prev" title="Doc2Vec" href="../richard/5_Doc2Vec.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -126,6 +126,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="Report_Embedding_Introduction.html">
+   Document Embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../richard/1_Tf-idf_analysis.html">
    Word embedding using tf-idf matrices
   </a>
@@ -150,14 +155,14 @@ const thebe_selector_output = ".output, .cell_output"
    Doc2Vec
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Report_USE.html">
-   Universal Sentence Encoder
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Two Towers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Report_USE.html">
+   Universal Sentence Encoder
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,6 +177,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Report_Topic_Modelling_Introduction.html">
+   Dynamic Topic Modelling Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../richard/2_LDA_topic_modelling.html">
    LDA (Latent Dirichlet Allocation)
@@ -189,6 +199,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Report_Dynamic_Modelling_Introduction.html">
+   Dynamic Topic Modelling Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../richard/8_Dynamic_Embedding.html">
    Embedding methods to augment with dynamic analysis
@@ -414,13 +429,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="plotting">
 <h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
-<p><img alt="twotowers_3d" src="../../_images/twotowers_3d.png" /></p>
+<p><img alt="twotowers_3d_query" src="../../_images/twotowers_3d.png" /></p>
+<p><img alt="twotowers_3d_candidate" src="content/images/twotowers_3d_2.png" /></p>
 </div>
 <div class="section" id="results">
 <h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h1>
 <p><img alt="twotowers_cm" src="../../_images/twotowers_cm.png" /></p>
 <p><img alt="twotowers_cm" src="content/images/twotowers_results.png" /></p>
-<p>From the confusion matrix and the classification report, we can conclude that the Two Tower model does not do a good job at classfying the category of the companies compared to the other models. We believe this is due to the nature of our data as there are only a hand-full of “positive” pairs of query objects(10k report description) and candidate objects(company ID &amp; category). With a large set of data but very few pairs of data, it is difficult for the model to create an embedding space where related items are close together.</p>
+<p>From the confusion matrix and the classification report, we can conclude that the Two Tower model does not do a good job at classfying the category of the companies compared to the other models. We believe this is due to the nature of our data as there are only a hand-full of “positive” pairs of query objects(10k report description) and candidate objects(company ID &amp; category). With a large set of data but very few pairs of data, it is difficult for the model to create an embedding space where related items are close together. This is also apparent by looking at the 3D candidate embeddings generated using PCA.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -448,17 +464,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Report_USE.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../richard/5_Doc2Vec.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Universal Sentence Encoder</p>
+            <p class="prev-next-title">Doc2Vec</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Report_Embedding_Results.html" title="next page">
+    <a class='right-next' id="next-link" href="Report_USE.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Document Embedding Results</p>
+        <p class="prev-next-title">Universal Sentence Encoder</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
