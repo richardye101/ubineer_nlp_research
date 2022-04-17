@@ -41,7 +41,6 @@ def pca_visualize_2d(vectors, index):
         xanchor="center",
         x = .5
     ))
-    print("plotted figure")
     fig.show()
     
     return [pca, pca_embedding]
