@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mean-Variance Analysis - Minimum Variance &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
+    <title>Estimates from Sample Covariance &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Estimates from Sample Covariance" href="3.1_Minimum_Variance_Analysis-Sample_Estimates.html" />
-    <link rel="prev" title="Dynamic Topic Modelling" href="../mary/Report_Topic_Modelling.html" />
+    <link rel="next" title="Estimates from Cosine Similarity" href="3.2_Minimum_Variance_Analysis-Cosine_Similarity.html" />
+    <link rel="prev" title="Mean-Variance Analysis - Minimum Variance" href="3_Minimum_Variance_Analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -221,13 +221,13 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Minimum_Variance_Analysis.html">
    Mean-Variance Analysis - Minimum Variance
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3.1_Minimum_Variance_Analysis-Sample_Estimates.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Estimates from Sample Covariance
   </a>
  </li>
@@ -282,7 +282,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/content/peitong/3_Minimum_Variance_Analysis.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/content/peitong/3.1_Minimum_Variance_Analysis-Sample_Estimates.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -302,7 +302,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/richardye101/ubineer_nlp_research/issues/new?title=Issue%20on%20page%20%2Fcontent/peitong/3_Minimum_Variance_Analysis.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/richardye101/ubineer_nlp_research/issues/new?title=Issue%20on%20page%20%2Fcontent/peitong/3.1_Minimum_Variance_Analysis-Sample_Estimates.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -323,7 +323,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/richardye101/ubineer_nlp_research/main?urlpath=tree/../content/content/peitong/3_Minimum_Variance_Analysis.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/richardye101/ubineer_nlp_research/main?urlpath=tree/../content/content/peitong/3.1_Minimum_Variance_Analysis-Sample_Estimates.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -362,6 +362,25 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minmum-volatility-portfolio-weights">
+   Minmum Volatility Portfolio Weights
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-sample-mean-and-covariance">
+     Comparing sample mean and covariance
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#min-volatility">
+       min volatility
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -372,7 +391,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Mean-Variance Analysis - Minimum Variance</h1>
+                <h1>Estimates from Sample Covariance</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -399,6 +418,25 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minmum-volatility-portfolio-weights">
+   Minmum Volatility Portfolio Weights
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-sample-mean-and-covariance">
+     Comparing sample mean and covariance
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#min-volatility">
+       min volatility
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -420,9 +458,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="mean-variance-analysis-minimum-variance">
-<h1>Mean-Variance Analysis - Minimum Variance<a class="headerlink" href="#mean-variance-analysis-minimum-variance" title="Permalink to this headline">¶</a></h1>
-<p>Mean-variance analysis is a mathematical framework that examplifies the trade-off between return and risk. It is used to create diversified portfolios based on investors’ expectation. There are one main approach used in this report. We have the minimum volatility portfolio that concentrates on minimizing the risk of the portfolio. Mimimum variance portfolio can help us compare the correlation of simple sample covariance, covariance generated using cosine similarity distances and covariance generated using factor model in Sent-LDA.</p>
+<div class="section" id="estimates-from-sample-covariance">
+<h1>Estimates from Sample Covariance<a class="headerlink" href="#estimates-from-sample-covariance" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="monthly-returns">
 <h2>Monthly Returns<a class="headerlink" href="#monthly-returns" title="Permalink to this headline">¶</a></h2>
 <p>Since we will generate cosine similarity estimates in the next notebook using business description of companies from 2016 to 2018. We only consider monthly returns before 2019.</p>
@@ -503,24 +540,6 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_Pharm</span> <span class="o">=</span> <span class="n">mu</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span>
-<span class="n">mu_Pharm</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name
-MARINUS PHARMACEUTICALS INC        0.044790
-CORMEDIX INC.                      0.031226
-THERAPEUTICSMD, INC.              -0.016246
-GLOBAL BLOOD THERAPEUTICS, INC.    0.040060
-HORIZON PHARMA PLC                 0.011321
-                                     ...   
-AKORN INC                         -0.044988
-LEXICON PHARMACEUTICALS, INC.     -0.013984
-BIOSPECIFICS TECHNOLOGIES CORP     0.018357
-AMICUS THERAPEUTICS INC            0.018022
-KEMPHARM, INC                     -0.012939
-Length: 124, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -529,7 +548,63 @@ Length: 124, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
 <span class="n">cov_Pharm</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span>
-<span class="n">cov_Pharm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Cosine Similarity Distances in the Pharmaceutical Preparations Industry</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Covariance for Cosine Similarity</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+</div>
+</div>
+<div class="section" id="minmum-volatility-portfolio-weights">
+<h2>Minmum Volatility Portfolio Weights<a class="headerlink" href="#minmum-volatility-portfolio-weights" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comparing-sample-mean-and-covariance">
+<h3>Comparing sample mean and covariance<a class="headerlink" href="#comparing-sample-mean-and-covariance" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_Pharm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name
+CELGENE CORP /DE/                -0.010971
+PROGENICS PHARMACEUTICALS INC     0.011256
+ABBVIE INC.                       0.018973
+ENDO INTERNATIONAL PLC           -0.006443
+ULTRAGENYX PHARMACEUTICAL INC.   -0.000979
+                                    ...   
+PERRIGO CO PLC                   -0.023442
+INTRA-CELLULAR THERAPIES, INC.   -0.012532
+PORTOLA PHARMACEUTICALS INC       0.002689
+ONCOMED PHARMACEUTICALS INC      -0.065967
+HORIZON PHARMA PLC                0.011321
+Length: 124, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_Pharm</span>
 </pre></div>
 </div>
 </div>
@@ -552,27 +627,27 @@ Length: 124, dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th>name</th>
-      <th>MARINUS PHARMACEUTICALS INC</th>
-      <th>CORMEDIX INC.</th>
-      <th>THERAPEUTICSMD, INC.</th>
-      <th>GLOBAL BLOOD THERAPEUTICS, INC.</th>
-      <th>HORIZON PHARMA PLC</th>
-      <th>PERRIGO CO PLC</th>
-      <th>CYMABAY THERAPEUTICS, INC.</th>
-      <th>SYNDAX PHARMACEUTICALS INC</th>
-      <th>RECRO PHARMA, INC.</th>
+      <th>CELGENE CORP /DE/</th>
+      <th>PROGENICS PHARMACEUTICALS INC</th>
       <th>ABBVIE INC.</th>
+      <th>ENDO INTERNATIONAL PLC</th>
+      <th>ULTRAGENYX PHARMACEUTICAL INC.</th>
+      <th>RXI PHARMACEUTICALS CORP</th>
+      <th>PTC THERAPEUTICS, INC.</th>
+      <th>ASSEMBLY BIOSCIENCES, INC.</th>
+      <th>ORAGENICS INC</th>
+      <th>BRISTOL MYERS SQUIBB CO</th>
       <th>...</th>
-      <th>STRONGBRIDGE BIOPHARMA PLC</th>
+      <th>SIERRA ONCOLOGY, INC.</th>
+      <th>STEMLINE THERAPEUTICS INC</th>
+      <th>CHIASMA, INC</th>
+      <th>ARQULE INC</th>
+      <th>VERASTEM, INC.</th>
+      <th>PERRIGO CO PLC</th>
       <th>INTRA-CELLULAR THERAPIES, INC.</th>
-      <th>CATABASIS PHARMACEUTICALS INC</th>
-      <th>ACHILLION PHARMACEUTICALS INC</th>
-      <th>PFIZER INC</th>
-      <th>AKORN INC</th>
-      <th>LEXICON PHARMACEUTICALS, INC.</th>
-      <th>BIOSPECIFICS TECHNOLOGIES CORP</th>
-      <th>AMICUS THERAPEUTICS INC</th>
-      <th>KEMPHARM, INC</th>
+      <th>PORTOLA PHARMACEUTICALS INC</th>
+      <th>ONCOMED PHARMACEUTICALS INC</th>
+      <th>HORIZON PHARMA PLC</th>
     </tr>
     <tr>
       <th>name</th>
@@ -601,124 +676,124 @@ Length: 124, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>MARINUS PHARMACEUTICALS INC</th>
-      <td>0.116634</td>
-      <td>0.037378</td>
-      <td>0.022292</td>
-      <td>0.017911</td>
-      <td>0.009777</td>
-      <td>0.009379</td>
-      <td>0.018308</td>
-      <td>0.016206</td>
-      <td>0.006748</td>
-      <td>0.013436</td>
+      <th>CELGENE CORP /DE/</th>
+      <td>0.009487</td>
+      <td>0.010937</td>
+      <td>0.002554</td>
+      <td>0.004700</td>
+      <td>0.008968</td>
+      <td>0.005875</td>
+      <td>0.007595</td>
+      <td>0.003729</td>
+      <td>0.002816</td>
+      <td>0.003344</td>
       <td>...</td>
-      <td>0.006895</td>
-      <td>0.018270</td>
-      <td>0.042373</td>
-      <td>0.013083</td>
-      <td>0.005779</td>
-      <td>0.022491</td>
-      <td>0.012878</td>
-      <td>-0.002467</td>
-      <td>0.024469</td>
-      <td>0.030854</td>
+      <td>-0.001273</td>
+      <td>0.000060</td>
+      <td>0.002474</td>
+      <td>0.001612</td>
+      <td>0.007853</td>
+      <td>0.003549</td>
+      <td>0.004193</td>
+      <td>0.006878</td>
+      <td>0.005349</td>
+      <td>0.003863</td>
     </tr>
     <tr>
-      <th>CORMEDIX INC.</th>
-      <td>0.037378</td>
-      <td>0.142607</td>
-      <td>0.006005</td>
-      <td>0.008098</td>
-      <td>0.006018</td>
-      <td>0.004552</td>
-      <td>-0.012248</td>
-      <td>0.001320</td>
-      <td>0.001959</td>
-      <td>0.002032</td>
+      <th>PROGENICS PHARMACEUTICALS INC</th>
+      <td>0.010937</td>
+      <td>0.041838</td>
+      <td>0.005213</td>
+      <td>0.002199</td>
+      <td>0.025506</td>
+      <td>0.015999</td>
+      <td>0.026502</td>
+      <td>-0.004005</td>
+      <td>0.013752</td>
+      <td>0.006694</td>
       <td>...</td>
-      <td>-0.015399</td>
-      <td>0.004449</td>
-      <td>-0.005365</td>
-      <td>0.000029</td>
-      <td>0.007924</td>
-      <td>-0.005619</td>
-      <td>0.001834</td>
-      <td>0.000684</td>
-      <td>-0.004717</td>
-      <td>-0.020554</td>
+      <td>0.002805</td>
+      <td>0.003552</td>
+      <td>-0.002141</td>
+      <td>0.010543</td>
+      <td>-0.001409</td>
+      <td>0.005158</td>
+      <td>0.013523</td>
+      <td>0.007109</td>
+      <td>0.014850</td>
+      <td>0.012896</td>
     </tr>
     <tr>
-      <th>THERAPEUTICSMD, INC.</th>
-      <td>0.022292</td>
-      <td>0.006005</td>
-      <td>0.022313</td>
-      <td>0.007081</td>
-      <td>0.007120</td>
-      <td>0.001867</td>
-      <td>0.006606</td>
-      <td>0.006653</td>
-      <td>0.004107</td>
-      <td>0.003974</td>
+      <th>ABBVIE INC.</th>
+      <td>0.002554</td>
+      <td>0.005213</td>
+      <td>0.007276</td>
+      <td>-0.003613</td>
+      <td>0.005456</td>
+      <td>0.002918</td>
+      <td>0.005702</td>
+      <td>0.002336</td>
+      <td>0.004906</td>
+      <td>0.003309</td>
       <td>...</td>
-      <td>0.009638</td>
-      <td>0.010674</td>
-      <td>0.003270</td>
-      <td>0.006416</td>
-      <td>0.002476</td>
-      <td>0.005202</td>
-      <td>0.008827</td>
-      <td>0.001850</td>
-      <td>0.005136</td>
-      <td>0.011389</td>
-    </tr>
-    <tr>
-      <th>GLOBAL BLOOD THERAPEUTICS, INC.</th>
-      <td>0.017911</td>
-      <td>0.008098</td>
-      <td>0.007081</td>
-      <td>0.052549</td>
-      <td>0.005524</td>
-      <td>-0.002783</td>
-      <td>0.035648</td>
-      <td>0.024883</td>
-      <td>0.001856</td>
-      <td>0.005501</td>
-      <td>...</td>
-      <td>0.014406</td>
-      <td>0.003036</td>
-      <td>0.000203</td>
-      <td>0.000501</td>
-      <td>0.001104</td>
-      <td>-0.000405</td>
-      <td>0.008533</td>
-      <td>0.001385</td>
-      <td>0.011488</td>
-      <td>0.024444</td>
-    </tr>
-    <tr>
-      <th>HORIZON PHARMA PLC</th>
-      <td>0.009777</td>
-      <td>0.006018</td>
-      <td>0.007120</td>
-      <td>0.005524</td>
-      <td>0.014189</td>
-      <td>0.001706</td>
-      <td>0.000766</td>
-      <td>-0.000765</td>
-      <td>-0.000387</td>
+      <td>0.001970</td>
+      <td>0.002921</td>
+      <td>0.003221</td>
+      <td>-0.001468</td>
+      <td>0.005232</td>
+      <td>0.001101</td>
+      <td>0.005228</td>
+      <td>0.006395</td>
+      <td>-0.001497</td>
       <td>0.003174</td>
+    </tr>
+    <tr>
+      <th>ENDO INTERNATIONAL PLC</th>
+      <td>0.004700</td>
+      <td>0.002199</td>
+      <td>-0.003613</td>
+      <td>0.037921</td>
+      <td>0.006636</td>
+      <td>-0.004220</td>
+      <td>-0.000719</td>
+      <td>-0.003207</td>
+      <td>-0.006531</td>
+      <td>0.001586</td>
       <td>...</td>
-      <td>0.000610</td>
-      <td>0.012408</td>
-      <td>0.001941</td>
-      <td>-0.001670</td>
-      <td>0.001550</td>
-      <td>0.002804</td>
-      <td>0.008460</td>
-      <td>0.001250</td>
-      <td>0.003980</td>
-      <td>0.006371</td>
+      <td>0.001864</td>
+      <td>-0.002577</td>
+      <td>0.005163</td>
+      <td>0.012335</td>
+      <td>0.009025</td>
+      <td>0.007845</td>
+      <td>-0.004566</td>
+      <td>-0.006540</td>
+      <td>0.001341</td>
+      <td>-0.000178</td>
+    </tr>
+    <tr>
+      <th>ULTRAGENYX PHARMACEUTICAL INC.</th>
+      <td>0.008968</td>
+      <td>0.025506</td>
+      <td>0.005456</td>
+      <td>0.006636</td>
+      <td>0.031959</td>
+      <td>0.013289</td>
+      <td>0.027055</td>
+      <td>0.000310</td>
+      <td>0.015196</td>
+      <td>0.004256</td>
+      <td>...</td>
+      <td>0.013037</td>
+      <td>0.006105</td>
+      <td>-0.001466</td>
+      <td>0.023325</td>
+      <td>0.012636</td>
+      <td>0.004360</td>
+      <td>0.008125</td>
+      <td>0.013637</td>
+      <td>0.009496</td>
+      <td>0.013208</td>
     </tr>
     <tr>
       <th>...</th>
@@ -745,149 +820,250 @@ Length: 124, dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>AKORN INC</th>
-      <td>0.022491</td>
-      <td>-0.005619</td>
-      <td>0.005202</td>
-      <td>-0.000405</td>
-      <td>0.002804</td>
-      <td>0.010168</td>
-      <td>0.001447</td>
-      <td>0.013714</td>
-      <td>0.000579</td>
-      <td>0.003815</td>
+      <th>PERRIGO CO PLC</th>
+      <td>0.003549</td>
+      <td>0.005158</td>
+      <td>0.001101</td>
+      <td>0.007845</td>
+      <td>0.004360</td>
+      <td>0.000471</td>
+      <td>0.007985</td>
+      <td>0.000361</td>
+      <td>0.000687</td>
+      <td>0.001567</td>
       <td>...</td>
-      <td>0.001304</td>
-      <td>0.003470</td>
-      <td>-0.001512</td>
-      <td>0.003149</td>
-      <td>0.002698</td>
-      <td>0.037979</td>
-      <td>0.014393</td>
-      <td>0.002347</td>
-      <td>0.011761</td>
-      <td>0.017723</td>
+      <td>0.004245</td>
+      <td>0.003233</td>
+      <td>0.002296</td>
+      <td>0.004932</td>
+      <td>0.003241</td>
+      <td>0.008113</td>
+      <td>0.003110</td>
+      <td>0.001511</td>
+      <td>0.004444</td>
+      <td>0.001706</td>
     </tr>
     <tr>
-      <th>LEXICON PHARMACEUTICALS, INC.</th>
-      <td>0.012878</td>
-      <td>0.001834</td>
-      <td>0.008827</td>
-      <td>0.008533</td>
-      <td>0.008460</td>
-      <td>0.003631</td>
-      <td>0.001920</td>
-      <td>0.007552</td>
-      <td>-0.007868</td>
-      <td>0.002851</td>
+      <th>INTRA-CELLULAR THERAPIES, INC.</th>
+      <td>0.004193</td>
+      <td>0.013523</td>
+      <td>0.005228</td>
+      <td>-0.004566</td>
+      <td>0.008125</td>
+      <td>0.013127</td>
+      <td>0.000372</td>
+      <td>-0.002469</td>
+      <td>0.001032</td>
+      <td>0.005489</td>
       <td>...</td>
-      <td>0.000334</td>
-      <td>0.002116</td>
-      <td>-0.001279</td>
-      <td>0.000180</td>
-      <td>0.001417</td>
-      <td>0.014393</td>
-      <td>0.021954</td>
-      <td>0.003596</td>
-      <td>0.010739</td>
-      <td>0.012670</td>
+      <td>0.003916</td>
+      <td>0.002323</td>
+      <td>0.013882</td>
+      <td>0.010129</td>
+      <td>0.013702</td>
+      <td>0.003110</td>
+      <td>0.047693</td>
+      <td>0.006427</td>
+      <td>0.018251</td>
+      <td>0.012408</td>
     </tr>
     <tr>
-      <th>BIOSPECIFICS TECHNOLOGIES CORP</th>
-      <td>-0.002467</td>
-      <td>0.000684</td>
-      <td>0.001850</td>
-      <td>0.001385</td>
-      <td>0.001250</td>
-      <td>0.000707</td>
-      <td>-0.003754</td>
-      <td>0.000227</td>
-      <td>0.002464</td>
-      <td>-0.000729</td>
+      <th>PORTOLA PHARMACEUTICALS INC</th>
+      <td>0.006878</td>
+      <td>0.007109</td>
+      <td>0.006395</td>
+      <td>-0.006540</td>
+      <td>0.013637</td>
+      <td>0.005510</td>
+      <td>0.014432</td>
+      <td>0.000116</td>
+      <td>-0.003610</td>
+      <td>0.003670</td>
       <td>...</td>
-      <td>-0.000654</td>
-      <td>-0.003011</td>
-      <td>0.000939</td>
-      <td>-0.000150</td>
-      <td>0.000560</td>
-      <td>0.002347</td>
-      <td>0.003596</td>
-      <td>0.006124</td>
-      <td>-0.001933</td>
-      <td>0.001209</td>
+      <td>0.013802</td>
+      <td>0.000614</td>
+      <td>-0.002375</td>
+      <td>0.000991</td>
+      <td>0.014298</td>
+      <td>0.001511</td>
+      <td>0.006427</td>
+      <td>0.029926</td>
+      <td>0.007101</td>
+      <td>0.004733</td>
     </tr>
     <tr>
-      <th>AMICUS THERAPEUTICS INC</th>
-      <td>0.024469</td>
-      <td>-0.004717</td>
-      <td>0.005136</td>
-      <td>0.011488</td>
-      <td>0.003980</td>
-      <td>0.003666</td>
-      <td>0.012932</td>
-      <td>0.015773</td>
-      <td>-0.001877</td>
-      <td>0.002028</td>
+      <th>ONCOMED PHARMACEUTICALS INC</th>
+      <td>0.005349</td>
+      <td>0.014850</td>
+      <td>-0.001497</td>
+      <td>0.001341</td>
+      <td>0.009496</td>
+      <td>0.017153</td>
+      <td>0.001692</td>
+      <td>0.011553</td>
+      <td>0.001115</td>
+      <td>0.002309</td>
       <td>...</td>
-      <td>0.013418</td>
-      <td>0.003823</td>
-      <td>0.007181</td>
-      <td>0.004562</td>
-      <td>0.000309</td>
-      <td>0.011761</td>
-      <td>0.010739</td>
-      <td>-0.001933</td>
-      <td>0.017413</td>
-      <td>0.014611</td>
+      <td>0.011458</td>
+      <td>0.004055</td>
+      <td>0.019129</td>
+      <td>0.024511</td>
+      <td>0.009481</td>
+      <td>0.004444</td>
+      <td>0.018251</td>
+      <td>0.007101</td>
+      <td>0.048878</td>
+      <td>0.006595</td>
     </tr>
     <tr>
-      <th>KEMPHARM, INC</th>
-      <td>0.030854</td>
-      <td>-0.020554</td>
-      <td>0.011389</td>
-      <td>0.024444</td>
-      <td>0.006371</td>
-      <td>0.003219</td>
-      <td>0.025228</td>
-      <td>0.036630</td>
-      <td>0.002505</td>
-      <td>0.007644</td>
+      <th>HORIZON PHARMA PLC</th>
+      <td>0.003863</td>
+      <td>0.012896</td>
+      <td>0.003174</td>
+      <td>-0.000178</td>
+      <td>0.013208</td>
+      <td>0.010067</td>
+      <td>0.009381</td>
+      <td>-0.003719</td>
+      <td>0.000079</td>
+      <td>0.003176</td>
       <td>...</td>
-      <td>0.010644</td>
-      <td>0.010174</td>
-      <td>0.023653</td>
-      <td>0.013529</td>
-      <td>0.001147</td>
-      <td>0.017723</td>
-      <td>0.012670</td>
-      <td>0.001209</td>
-      <td>0.014611</td>
-      <td>0.056323</td>
+      <td>0.005003</td>
+      <td>0.005286</td>
+      <td>0.005336</td>
+      <td>0.008261</td>
+      <td>0.002660</td>
+      <td>0.001706</td>
+      <td>0.012408</td>
+      <td>0.004733</td>
+      <td>0.006595</td>
+      <td>0.014189</td>
     </tr>
   </tbody>
 </table>
 <p>124 rows × 124 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Cosine Similarity Distances in the Pharmaceutical Preparations Industry</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ef1</span> <span class="o">=</span> <span class="n">EfficientFrontier</span><span class="p">(</span><span class="n">mu_Pharm</span><span class="p">,</span> <span class="n">cov_Pharm</span><span class="p">,</span> <span class="n">weight_bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_efficient_frontier</span><span class="p">(</span><span class="n">ef1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">show_assets</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Find and plot the tangency portfolio</span>
+<span class="n">ef2</span> <span class="o">=</span> <span class="n">EfficientFrontier</span><span class="p">(</span><span class="n">mu_Pharm</span><span class="p">,</span> <span class="n">cov_Pharm</span><span class="p">,</span> <span class="n">weight_bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+<span class="c1"># min volatility</span>
+<span class="n">ef2</span><span class="o">.</span><span class="n">min_volatility</span><span class="p">()</span>
+<span class="n">ret_tangent</span><span class="p">,</span> <span class="n">std_tangent</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ef2</span><span class="o">.</span><span class="n">portfolio_performance</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">std_tangent</span><span class="p">,</span> <span class="n">ret_tangent</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Min Volatility&quot;</span><span class="p">)</span>
+
+<span class="c1"># Format</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Efficient Frontier&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/Efficient_Frontier_Returns.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [24],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ef1</span> <span class="o">=</span> <span class="n">EfficientFrontier</span><span class="p">(</span><span class="n">mu_Pharm</span><span class="p">,</span> <span class="n">cov_Pharm</span><span class="p">,</span> <span class="n">weight_bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_efficient_frontier</span><span class="p">(</span><span class="n">ef1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">show_assets</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;EfficientFrontier&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="min-volatility">
+<h4>min volatility<a class="headerlink" href="#min-volatility" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ef2</span><span class="o">.</span><span class="n">portfolio_performance</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [25],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ef2</span><span class="o">.</span><span class="n">portfolio_performance</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ef2&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Covariance for Cosine Similarity</span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [26],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">companies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">weights</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">for</span> <span class="n">company</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">ef2</span><span class="o">.</span><span class="n">clean_weights</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">if</span> <span class="n">weight</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="n">companies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">company</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ef2&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [27],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">dic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Company_Name&#39;</span><span class="p">:</span><span class="n">companies</span><span class="p">,</span><span class="s1">&#39;Weight&#39;</span><span class="p">:</span><span class="n">weights</span><span class="p">}</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">min_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">dataframe_image</span> <span class="k">as</span> <span class="nn">dfi</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">dfi</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;min_vol_returns.png&#39;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;dataframe_image&#39;
+</pre></div>
 </div>
-<div class="cell tag_remove-input docutils container">
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_vol</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Company_Name</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 </div>
 </div>
@@ -918,17 +1094,17 @@ Length: 124, dtype: float64
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../mary/Report_Topic_Modelling.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="3_Minimum_Variance_Analysis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Dynamic Topic Modelling</p>
+            <p class="prev-next-title">Mean-Variance Analysis - Minimum Variance</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="3.1_Minimum_Variance_Analysis-Sample_Estimates.html" title="next page">
+    <a class='right-next' id="next-link" href="3.2_Minimum_Variance_Analysis-Cosine_Similarity.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Estimates from Sample Covariance</p>
+        <p class="prev-next-title">Estimates from Cosine Similarity</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
