@@ -505,10 +505,131 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="cell tag_remove-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run twice</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;coDescription_lemmatized&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_nouns</span><span class="p">)</span>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/__init__.py:609,</span> in <span class="ni">_read</span><span class="nt">(path, encoding, comment)</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span>         <span class="k">yield</span> <span class="n">line</span>
+<span class="ne">--&gt; </span><span class="mi">609</span> <span class="k">raise</span> <span class="ne">StopIteration</span>
+
+<span class="ne">StopIteration</span>: 
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;coDescription_lemmatized&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_nouns</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/series.py:4433,</span> in <span class="ni">Series.apply</span><span class="nt">(self, func, convert_dtype, args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4323</span> <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">4324</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4325</span>     <span class="n">func</span><span class="p">:</span> <span class="n">AggFuncType</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4328</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4329</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span> <span class="o">|</span> <span class="n">Series</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">4330</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">4331</span><span class="sd">     Invoke function on values of Series.</span>
+<span class="g g-Whitespace">   </span><span class="mi">4332</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4431</span><span class="sd">     dtype: float64</span>
+<span class="g g-Whitespace">   </span><span class="mi">4432</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">4433</span>     <span class="k">return</span> <span class="n">SeriesApply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">convert_dtype</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/apply.py:1082,</span> in <span class="ni">SeriesApply.apply</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="c1"># if we are a string, try to dispatch</span>
+<span class="g g-Whitespace">   </span><span class="mi">1080</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_str</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1082</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_standard</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/core/apply.py:1137,</span> in <span class="ni">SeriesApply.apply_standard</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1131</span>         <span class="n">values</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">_values</span>
+<span class="g g-Whitespace">   </span><span class="mi">1132</span>         <span class="c1"># error: Argument 2 to &quot;map_infer&quot; has incompatible type</span>
+<span class="g g-Whitespace">   </span><span class="mi">1133</span>         <span class="c1"># &quot;Union[Callable[..., Any], str, List[Union[Callable[..., Any], str]],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1134</span>         <span class="c1"># Dict[Hashable, Union[Union[Callable[..., Any], str],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1135</span>         <span class="c1"># List[Union[Callable[..., Any], str]]]]]&quot;; expected</span>
+<span class="g g-Whitespace">   </span><span class="mi">1136</span>         <span class="c1"># &quot;Callable[[Any], Any]&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1137</span>         <span class="n">mapped</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">map_infer</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1138</span>             <span class="n">values</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1139</span>             <span class="n">f</span><span class="p">,</span>  <span class="c1"># type: ignore[arg-type]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1140</span>             <span class="n">convert</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1141</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1143</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mapped</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ABCSeries</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="c1"># GH#43986 Need to do list(mapped) in order to get treated as nested</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>     <span class="c1">#  See also GH#25959 regarding EA support</span>
+<span class="g g-Whitespace">   </span><span class="mi">1146</span>     <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">_constructor_expanddim</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">mapped</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pandas/_libs/lib.pyx:2870,</span> in <span class="ni">pandas._libs.lib.map_infer</span><span class="nt">()</span>
+
+<span class="nn">Input In [5],</span> in <span class="ni">extract_nouns</span><span class="nt">(t)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">extract_nouns</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">tree</span> <span class="o">=</span> <span class="n">parsetree</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">nouns</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">tree</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/en/__init__.py:175,</span> in <span class="ni">parsetree</span><span class="nt">(s, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span> <span class="k">def</span> <span class="nf">parsetree</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="sd">&quot;&quot;&quot; Returns a parsed Text from the given string.</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">175</span>     <span class="k">return</span> <span class="n">Text</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/en/__init__.py:169,</span> in <span class="ni">parse</span><span class="nt">(s, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="sd">&quot;&quot;&quot; Returns a tagged Unicode string.</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">169</span>     <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/__init__.py:1172,</span> in <span class="ni">Parser.parse</span><span class="nt">(self, s, tokenize, tags, chunks, relations, lemmata, encoding, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1170</span> <span class="c1"># Tagger (required by chunker, labeler &amp; lemmatizer).</span>
+<span class="g g-Whitespace">   </span><span class="mi">1171</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">or</span> <span class="n">chunks</span> <span class="ow">or</span> <span class="n">relations</span> <span class="ow">or</span> <span class="n">lemmata</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1172</span>     <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_tags</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1173</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1174</span>     <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/en/__init__.py:114,</span> in <span class="ni">Parser.find_tags</span><span class="nt">(self, tokens, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tagset&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">UNIVERSAL</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;map&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">token</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="n">penntreebank2universal</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">tag</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">114</span> <span class="k">return</span> <span class="n">_Parser</span><span class="o">.</span><span class="n">find_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/__init__.py:1113,</span> in <span class="ni">Parser.find_tags</span><span class="nt">(self, tokens, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1108</span> <span class="sd">&quot;&quot;&quot; Annotates the given list of tokens with part-of-speech tags.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1109</span><span class="sd">     Returns a list of tokens, where each token is now a [word, tag]-list.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1110</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1111</span> <span class="c1"># [&quot;The&quot;, &quot;cat&quot;, &quot;purs&quot;] =&gt; [[&quot;The&quot;, &quot;DT&quot;], [&quot;cat&quot;, &quot;NN&quot;], [&quot;purs&quot;, &quot;VB&quot;]]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1112</span> <span class="k">return</span> <span class="n">find_tags</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">1113</span>             <span class="n">lexicon</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lexicon&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lexicon</span> <span class="ow">or</span> <span class="p">{}),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1114</span>               <span class="n">model</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1115</span>          <span class="n">morphology</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;morphology&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">morphology</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1116</span>             <span class="n">context</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;context&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1117</span>            <span class="n">entities</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;entities&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">entities</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span>            <span class="n">language</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;language&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">language</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span>             <span class="n">default</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1120</span>                 <span class="nb">map</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;map&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/__init__.py:376,</span> in <span class="ni">lazydict.__len__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">375</span> <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">376</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lazy</span><span class="p">(</span><span class="s2">&quot;__len__&quot;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/__init__.py:368,</span> in <span class="ni">lazydict._lazy</span><span class="nt">(self, method, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span> <span class="sd">&quot;&quot;&quot; If the dictionary is empty, calls lazydict.load().</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span><span class="sd">     Replaces lazydict.method() with dict.method() and calls it.</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span> <span class="k">if</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">368</span>     <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">method</span><span class="p">),</span> <span class="bp">self</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">method</span><span class="p">)(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/__init__.py:625,</span> in <span class="ni">Lexicon.load</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span> <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span>     <span class="c1"># Arnold NNP x</span>
+<span class="nn">--&gt; 625     dict.update(self, (x.split(&quot; &quot;)[:2] for x</span> in <span class="ni">_read(self._path) if len(x.split</span><span class="nt">(&quot; &quot;)) &gt; 1))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/pattern/text/__init__.py:625,</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span> <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span>     <span class="c1"># Arnold NNP x</span>
+<span class="nn">--&gt; 625     dict.update(self, (x.split(&quot; &quot;)[:2] for x</span> in <span class="ni">_read(self._path) if len(x.split</span><span class="nt">(&quot; &quot;)) &gt; 1))</span>
+
+<span class="ne">RuntimeError</span>: generator raised StopIteration
 </pre></div>
 </div>
 </div>
