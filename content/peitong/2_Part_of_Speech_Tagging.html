@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Part-of-Speech (POS) Tagging &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
+    <title>Part-of-Speech (POS) Tagging - Cosine Similarity Analysis &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Word2vec" href="../richard/4_Word2Vec.html" />
-    <link rel="prev" title="Cosine Similarity Distances" href="1_Cosine_Similarity_Distances.html" />
+    <link rel="prev" title="N-grams Embeddings - Cosine Similarity Analysis" href="1_Cosine_Similarity_Distances.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -137,12 +137,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="1_Cosine_Similarity_Distances.html">
-   Cosine Similarity Distances
+   N-grams Embeddings - Cosine Similarity Analysis
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Part-of-Speech (POS) Tagging
+   Part-of-Speech (POS) Tagging - Cosine Similarity Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -374,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Part-of-Speech (POS) Tagging</h1>
+                <h1>Part-of-Speech (POS) Tagging - Cosine Similarity Analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -429,8 +429,8 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="cell tag_remove-input docutils container">
 </div>
-<div class="section" id="part-of-speech-pos-tagging">
-<h1>Part-of-Speech (POS) Tagging<a class="headerlink" href="#part-of-speech-pos-tagging" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="part-of-speech-pos-tagging-cosine-similarity-analysis">
+<h1>Part-of-Speech (POS) Tagging - Cosine Similarity Analysis<a class="headerlink" href="#part-of-speech-pos-tagging-cosine-similarity-analysis" title="Permalink to this headline">¶</a></h1>
 <p>Part-of-speech (POS) tagging is a process of grammatical classification to classify texts into list of tuples where each word in the sentence gets a tag (label) that tells its part of speech (e.g. noun, pronoun, verb, adjective, adverb). According to Asoka Diggs, a Data Scientist at Intel, his research shows that nouns are better than n-grams. As a result, we used POS tagging to extract only nouns. We have examined the case with multiple-gram nouns. However, the results do not show distinct difference between documents, which may be caused by overfitting the model. Here we only consider 1-gram nouns. We conduct the consine similarity measure on the word counts from POS tagging.</p>
 <p>Source: https://databricks.com/session/nouns-are-better-than-n-grams</p>
 <div class="cell tag_hide-input docutils container">
@@ -1059,7 +1059,7 @@ const thebe_selector_output = ".output, .cell_output"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Cosine Similarity Distances</p>
+            <p class="prev-next-title">N-grams Embeddings - Cosine Similarity Analysis</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../richard/4_Word2Vec.html" title="next page">
