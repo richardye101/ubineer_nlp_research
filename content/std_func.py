@@ -16,6 +16,9 @@ from sklearn.decomposition import PCA
 from sklearn.decomposition import TruncatedSVD
 from sklearn.cluster import KMeans
 import plotly.express as px
+import pattern
+import collections
+from pattern.en import parsetree, singularize
 
 # Referenced from my CSCD25 course
 def pca_visualize_2d(vectors, index):
@@ -148,6 +151,15 @@ def clean(df):
     
     return non_html_data
 
+## POS-tagging
+def extract_nouns(t):
+    tree = parsetree(t)
+    nouns = []
+    for sentence in tree:
+        for word in sentence:
+            if 'NN' in word.type:
+                nouns.append(singularize(word.string))
+    return " ".join(nouns)
 
 ## Accuracy measures
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
