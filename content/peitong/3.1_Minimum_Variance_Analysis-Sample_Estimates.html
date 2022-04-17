@@ -381,6 +381,37 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-results-for-the-other-4-industries">
+   Get results for the other 4 industries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-estate-investment-trusts">
+     Real Estate Investment Trusts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       min volatility
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-commercial-banks-commercial-banking">
+     State Commercial Banks (commercial banking)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       min volatility
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -437,6 +468,37 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-results-for-the-other-4-industries">
+   Get results for the other 4 industries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-estate-investment-trusts">
+     Real Estate Investment Trusts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       min volatility
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-commercial-banks-commercial-banking">
+     State Commercial Banks (commercial banking)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       min volatility
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -481,16 +543,6 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
 </div>
 <div class="section" id="perform-mean-variance-analysis">
 <h2>Perform Mean-Variance Analysis<a class="headerlink" href="#perform-mean-variance-analysis" title="Permalink to this headline">¶</a></h2>
@@ -507,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">EfficientFrontier</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">risk_models</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">expected_returns</span>
@@ -525,12 +577,36 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># get the names of the companies in the pharmaceutical preparations industry</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">Pharm</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">SIC</span> <span class="o">==</span> <span class="mi">2834</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">Pharm_list</span> <span class="o">=</span> <span class="n">Pharm</span><span class="o">.</span><span class="n">index</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the companies name that match return data and business description data</span>
 <span class="n">SET</span> <span class="o">=</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">Pharm_list</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">r_selected</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
 <span class="n">LIST</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">SET</span><span class="p">,</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># get the companies name that match return data and business description data</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">SET</span> <span class="o">=</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">Pharm_list</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">r_selected</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">LIST</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">SET</span><span class="p">,</span> <span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;Pharm_list&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -543,6 +619,16 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mu_Pharm</span> <span class="o">=</span> <span class="n">mu</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;LIST&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -551,26 +637,17 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Cosine Similarity Distances in the Pharmaceutical Preparations Industry</span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">cov_Pharm</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;LIST&#39; is not defined
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Covariance for Cosine Similarity</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
 </div>
 </div>
 </div>
@@ -578,372 +655,6 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Minmum Volatility Portfolio Weights<a class="headerlink" href="#minmum-volatility-portfolio-weights" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="comparing-sample-mean-and-covariance">
 <h3>Comparing sample mean and covariance<a class="headerlink" href="#comparing-sample-mean-and-covariance" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_Pharm</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name
-CELGENE CORP /DE/                -0.010971
-PROGENICS PHARMACEUTICALS INC     0.011256
-ABBVIE INC.                       0.018973
-ENDO INTERNATIONAL PLC           -0.006443
-ULTRAGENYX PHARMACEUTICAL INC.   -0.000979
-                                    ...   
-PERRIGO CO PLC                   -0.023442
-INTRA-CELLULAR THERAPIES, INC.   -0.012532
-PORTOLA PHARMACEUTICALS INC       0.002689
-ONCOMED PHARMACEUTICALS INC      -0.065967
-HORIZON PHARMA PLC                0.011321
-Length: 124, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_Pharm</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>name</th>
-      <th>CELGENE CORP /DE/</th>
-      <th>PROGENICS PHARMACEUTICALS INC</th>
-      <th>ABBVIE INC.</th>
-      <th>ENDO INTERNATIONAL PLC</th>
-      <th>ULTRAGENYX PHARMACEUTICAL INC.</th>
-      <th>RXI PHARMACEUTICALS CORP</th>
-      <th>PTC THERAPEUTICS, INC.</th>
-      <th>ASSEMBLY BIOSCIENCES, INC.</th>
-      <th>ORAGENICS INC</th>
-      <th>BRISTOL MYERS SQUIBB CO</th>
-      <th>...</th>
-      <th>SIERRA ONCOLOGY, INC.</th>
-      <th>STEMLINE THERAPEUTICS INC</th>
-      <th>CHIASMA, INC</th>
-      <th>ARQULE INC</th>
-      <th>VERASTEM, INC.</th>
-      <th>PERRIGO CO PLC</th>
-      <th>INTRA-CELLULAR THERAPIES, INC.</th>
-      <th>PORTOLA PHARMACEUTICALS INC</th>
-      <th>ONCOMED PHARMACEUTICALS INC</th>
-      <th>HORIZON PHARMA PLC</th>
-    </tr>
-    <tr>
-      <th>name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>CELGENE CORP /DE/</th>
-      <td>0.009487</td>
-      <td>0.010937</td>
-      <td>0.002554</td>
-      <td>0.004700</td>
-      <td>0.008968</td>
-      <td>0.005875</td>
-      <td>0.007595</td>
-      <td>0.003729</td>
-      <td>0.002816</td>
-      <td>0.003344</td>
-      <td>...</td>
-      <td>-0.001273</td>
-      <td>0.000060</td>
-      <td>0.002474</td>
-      <td>0.001612</td>
-      <td>0.007853</td>
-      <td>0.003549</td>
-      <td>0.004193</td>
-      <td>0.006878</td>
-      <td>0.005349</td>
-      <td>0.003863</td>
-    </tr>
-    <tr>
-      <th>PROGENICS PHARMACEUTICALS INC</th>
-      <td>0.010937</td>
-      <td>0.041838</td>
-      <td>0.005213</td>
-      <td>0.002199</td>
-      <td>0.025506</td>
-      <td>0.015999</td>
-      <td>0.026502</td>
-      <td>-0.004005</td>
-      <td>0.013752</td>
-      <td>0.006694</td>
-      <td>...</td>
-      <td>0.002805</td>
-      <td>0.003552</td>
-      <td>-0.002141</td>
-      <td>0.010543</td>
-      <td>-0.001409</td>
-      <td>0.005158</td>
-      <td>0.013523</td>
-      <td>0.007109</td>
-      <td>0.014850</td>
-      <td>0.012896</td>
-    </tr>
-    <tr>
-      <th>ABBVIE INC.</th>
-      <td>0.002554</td>
-      <td>0.005213</td>
-      <td>0.007276</td>
-      <td>-0.003613</td>
-      <td>0.005456</td>
-      <td>0.002918</td>
-      <td>0.005702</td>
-      <td>0.002336</td>
-      <td>0.004906</td>
-      <td>0.003309</td>
-      <td>...</td>
-      <td>0.001970</td>
-      <td>0.002921</td>
-      <td>0.003221</td>
-      <td>-0.001468</td>
-      <td>0.005232</td>
-      <td>0.001101</td>
-      <td>0.005228</td>
-      <td>0.006395</td>
-      <td>-0.001497</td>
-      <td>0.003174</td>
-    </tr>
-    <tr>
-      <th>ENDO INTERNATIONAL PLC</th>
-      <td>0.004700</td>
-      <td>0.002199</td>
-      <td>-0.003613</td>
-      <td>0.037921</td>
-      <td>0.006636</td>
-      <td>-0.004220</td>
-      <td>-0.000719</td>
-      <td>-0.003207</td>
-      <td>-0.006531</td>
-      <td>0.001586</td>
-      <td>...</td>
-      <td>0.001864</td>
-      <td>-0.002577</td>
-      <td>0.005163</td>
-      <td>0.012335</td>
-      <td>0.009025</td>
-      <td>0.007845</td>
-      <td>-0.004566</td>
-      <td>-0.006540</td>
-      <td>0.001341</td>
-      <td>-0.000178</td>
-    </tr>
-    <tr>
-      <th>ULTRAGENYX PHARMACEUTICAL INC.</th>
-      <td>0.008968</td>
-      <td>0.025506</td>
-      <td>0.005456</td>
-      <td>0.006636</td>
-      <td>0.031959</td>
-      <td>0.013289</td>
-      <td>0.027055</td>
-      <td>0.000310</td>
-      <td>0.015196</td>
-      <td>0.004256</td>
-      <td>...</td>
-      <td>0.013037</td>
-      <td>0.006105</td>
-      <td>-0.001466</td>
-      <td>0.023325</td>
-      <td>0.012636</td>
-      <td>0.004360</td>
-      <td>0.008125</td>
-      <td>0.013637</td>
-      <td>0.009496</td>
-      <td>0.013208</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>PERRIGO CO PLC</th>
-      <td>0.003549</td>
-      <td>0.005158</td>
-      <td>0.001101</td>
-      <td>0.007845</td>
-      <td>0.004360</td>
-      <td>0.000471</td>
-      <td>0.007985</td>
-      <td>0.000361</td>
-      <td>0.000687</td>
-      <td>0.001567</td>
-      <td>...</td>
-      <td>0.004245</td>
-      <td>0.003233</td>
-      <td>0.002296</td>
-      <td>0.004932</td>
-      <td>0.003241</td>
-      <td>0.008113</td>
-      <td>0.003110</td>
-      <td>0.001511</td>
-      <td>0.004444</td>
-      <td>0.001706</td>
-    </tr>
-    <tr>
-      <th>INTRA-CELLULAR THERAPIES, INC.</th>
-      <td>0.004193</td>
-      <td>0.013523</td>
-      <td>0.005228</td>
-      <td>-0.004566</td>
-      <td>0.008125</td>
-      <td>0.013127</td>
-      <td>0.000372</td>
-      <td>-0.002469</td>
-      <td>0.001032</td>
-      <td>0.005489</td>
-      <td>...</td>
-      <td>0.003916</td>
-      <td>0.002323</td>
-      <td>0.013882</td>
-      <td>0.010129</td>
-      <td>0.013702</td>
-      <td>0.003110</td>
-      <td>0.047693</td>
-      <td>0.006427</td>
-      <td>0.018251</td>
-      <td>0.012408</td>
-    </tr>
-    <tr>
-      <th>PORTOLA PHARMACEUTICALS INC</th>
-      <td>0.006878</td>
-      <td>0.007109</td>
-      <td>0.006395</td>
-      <td>-0.006540</td>
-      <td>0.013637</td>
-      <td>0.005510</td>
-      <td>0.014432</td>
-      <td>0.000116</td>
-      <td>-0.003610</td>
-      <td>0.003670</td>
-      <td>...</td>
-      <td>0.013802</td>
-      <td>0.000614</td>
-      <td>-0.002375</td>
-      <td>0.000991</td>
-      <td>0.014298</td>
-      <td>0.001511</td>
-      <td>0.006427</td>
-      <td>0.029926</td>
-      <td>0.007101</td>
-      <td>0.004733</td>
-    </tr>
-    <tr>
-      <th>ONCOMED PHARMACEUTICALS INC</th>
-      <td>0.005349</td>
-      <td>0.014850</td>
-      <td>-0.001497</td>
-      <td>0.001341</td>
-      <td>0.009496</td>
-      <td>0.017153</td>
-      <td>0.001692</td>
-      <td>0.011553</td>
-      <td>0.001115</td>
-      <td>0.002309</td>
-      <td>...</td>
-      <td>0.011458</td>
-      <td>0.004055</td>
-      <td>0.019129</td>
-      <td>0.024511</td>
-      <td>0.009481</td>
-      <td>0.004444</td>
-      <td>0.018251</td>
-      <td>0.007101</td>
-      <td>0.048878</td>
-      <td>0.006595</td>
-    </tr>
-    <tr>
-      <th>HORIZON PHARMA PLC</th>
-      <td>0.003863</td>
-      <td>0.012896</td>
-      <td>0.003174</td>
-      <td>-0.000178</td>
-      <td>0.013208</td>
-      <td>0.010067</td>
-      <td>0.009381</td>
-      <td>-0.003719</td>
-      <td>0.000079</td>
-      <td>0.003176</td>
-      <td>...</td>
-      <td>0.005003</td>
-      <td>0.005286</td>
-      <td>0.005336</td>
-      <td>0.008261</td>
-      <td>0.002660</td>
-      <td>0.001706</td>
-      <td>0.012408</td>
-      <td>0.004733</td>
-      <td>0.006595</td>
-      <td>0.014189</td>
-    </tr>
-  </tbody>
-</table>
-<p>124 rows × 124 columns</p>
-</div></div></div>
-</div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ef1</span> <span class="o">=</span> <span class="n">EfficientFrontier</span><span class="p">(</span><span class="n">mu_Pharm</span><span class="p">,</span> <span class="n">cov_Pharm</span><span class="p">,</span> <span class="n">weight_bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
@@ -956,10 +667,10 @@ Length: 124, dtype: float64
 <span class="c1"># min volatility</span>
 <span class="n">ef2</span><span class="o">.</span><span class="n">min_volatility</span><span class="p">()</span>
 <span class="n">ret_tangent</span><span class="p">,</span> <span class="n">std_tangent</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ef2</span><span class="o">.</span><span class="n">portfolio_performance</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">std_tangent</span><span class="p">,</span> <span class="n">ret_tangent</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Min Volatility&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">std_tangent</span><span class="p">,</span> <span class="n">ret_tangent</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Min Volatility&quot;</span><span class="p">)</span>
 
 <span class="c1"># Format</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Efficient Frontier&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Efficient Frontier - Pharmaceutical Preparations </span><span class="se">\n</span><span class="s2"> Sample Covariance Estimates&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/Efficient_Frontier_Returns.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
@@ -970,7 +681,7 @@ Length: 124, dtype: float64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [24],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ef1</span> <span class="o">=</span> <span class="n">EfficientFrontier</span><span class="p">(</span><span class="n">mu_Pharm</span><span class="p">,</span> <span class="n">cov_Pharm</span><span class="p">,</span> <span class="n">weight_bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_efficient_frontier</span><span class="p">(</span><span class="n">ef1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">show_assets</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -991,7 +702,7 @@ Length: 124, dtype: float64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [25],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ef2</span><span class="o">.</span><span class="n">portfolio_performance</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;ef2&#39; is not defined
@@ -1003,7 +714,7 @@ Length: 124, dtype: float64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [26],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">companies</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">weights</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">for</span> <span class="n">company</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">ef2</span><span class="o">.</span><span class="n">clean_weights</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -1019,11 +730,11 @@ Length: 124, dtype: float64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [27],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">dic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Company_Name&#39;</span><span class="p">:</span><span class="n">companies</span><span class="p">,</span><span class="s1">&#39;Weight&#39;</span><span class="p">:</span><span class="n">weights</span><span class="p">}</span>
+<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">min_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">dataframe_image</span> <span class="k">as</span> <span class="nn">dfi</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">dfi</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;min_vol_returns.png&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;min_vol_returns.csv&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">dataframe_image</span> <span class="k">as</span> <span class="nn">dfi</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">dfi</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;min_vol_returns.png&#39;</span><span class="p">)</span>
 
 <span class="ne">ModuleNotFoundError</span>: No module named &#39;dataframe_image&#39;
 </pre></div>
@@ -1063,6 +774,143 @@ Length: 124, dtype: float64
   </tbody>
 </table>
 </div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="get-results-for-the-other-4-industries">
+<h2>Get results for the other 4 industries<a class="headerlink" href="#get-results-for-the-other-4-industries" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="real-estate-investment-trusts">
+<h3>Real Estate Investment Trusts<a class="headerlink" href="#real-estate-investment-trusts" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [18],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">industry_name</span> <span class="o">=</span> <span class="n">SIC_desc</span><span class="p">[</span><span class="n">SIC_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">SIC</span><span class="p">)]</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># get the names of the companies in the other industries</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">Companies</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">SIC</span> <span class="o">==</span> <span class="n">SIC</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">Company_list</span> <span class="o">=</span> <span class="n">Companies</span><span class="o">.</span><span class="n">index</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># get the companies name that match return data and business description data</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>min volatility<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [19],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ef2</span><span class="o">.</span><span class="n">portfolio_performance</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ef2&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [20],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">companies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">weights</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">for</span> <span class="n">company</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">ef2</span><span class="o">.</span><span class="n">clean_weights</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">if</span> <span class="n">weight</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="n">companies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">company</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ef2&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [21],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">min_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;min_vol_sample&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">industry_name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">dataframe_image</span> <span class="k">as</span> <span class="nn">dfi</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">dfi</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;min_vol_sample&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">industry_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">min_vol</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;dataframe_image&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="state-commercial-banks-commercial-banking">
+<h3>State Commercial Banks (commercial banking)<a class="headerlink" href="#state-commercial-banks-commercial-banking" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [22],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">industry_name</span> <span class="o">=</span> <span class="n">SIC_desc</span><span class="p">[</span><span class="n">SIC_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">SIC</span><span class="p">)]</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># get the names of the companies in the other industries</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">Companies</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">SIC</span> <span class="o">==</span> <span class="n">SIC</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">Company_list</span> <span class="o">=</span> <span class="n">Companies</span><span class="o">.</span><span class="n">index</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># get the companies name that match return data and business description data</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>min volatility<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [23],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ef2</span><span class="o">.</span><span class="n">portfolio_performance</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ef2&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [24],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">companies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">weights</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">for</span> <span class="n">company</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">ef2</span><span class="o">.</span><span class="n">clean_weights</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">if</span> <span class="n">weight</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="n">companies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">company</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ef2&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [25],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">min_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;min_vol_sample&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">industry_name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">dataframe_image</span> <span class="k">as</span> <span class="nn">dfi</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">min_vol</span><span class="o">.</span><span class="n">dfi</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;min_vol_sample&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">industry_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">min_vol</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;dataframe_image&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
