@@ -4,14 +4,23 @@
 
 ## Summary
 
-Leave for last
+- Word Embedding results
+  - We evaluated several models
+  - We were able to accomplish up to 94% recall for predicting similar companies when matched with their categories.
+- Topic Modelling results
+  - can reveal significant changes but increase in an topic does not necessarily mean the company is leaning more in the direction of the topic.
+  - Increase or decrease in topic could bring investor attention to the topic at hand for more investigation
+- Portfolio selection results
 
 ## Introduction
 
-Public-traded companies file a comprehensive annual financial report(10K) to discuss their financial performance as required by the U.S Securities and Exchange Commission(SEC). These reports can contain quantitative data and qualitative data. Quantitative data includes the income statement, balance sheets, and statement of cash flows. Qualitative data includes a description of the business, risk factors, and management's discussion and analysis. Many researchers and investors have saturated the area of using quantitative data to build portfolios and evaluate the risks and returns of a company. In this report, we hope to focus our attention on the analysis of qualitative data which provides more forward-looking information that may reveal the company's plans and anticipated events/risks.
+Public-traded companies file a comprehensive annual financial report(10K) to discuss their financial performance as required by the U.S Securities and Exchange Commission(SEC). These reports can contain quantitative data and qualitative data. Quantitative data includes the income statement, balance sheets, and statement of cash flows. Qualitative data includes a description of the business, risk factors, and management's discussion and analysis. Many researchers and investors have saturated the area of using quantitative data to build portfolios and evaluate the risks and returns of a company. However, there has not been much focus in the analysis of qualitative data provided in financial reports. In this report, we hope to focus our attention on the analysis of qualitative data which provides more forward-looking information that may reveal the company's plans and anticipated events/risks.
 
 This study focuses on the analysis of the Business section of the 10K filings. The Business section provides an overview of the company's main operations, including its products and services. It may also include recent events, competition, regulation, labor issues, operating costs, or insurance matters.
-_**INSERT MORE DETAILS ABOUT unstructured data, steps to perform the analysis, desired outcome**_
+
+Now we provide a short overview of our approach. Our work is considered textual analysis on unstructured data(data not organized in a pre-defined manner) since individual companies may include different sections of text in the business description of a 10k report. We apply various document embedding techniques to model the similarity between companies using the corresponding business description (i.e. the document in discussion). We then branch off into two separate directions. First. we do a deep dive into each individual company using topic modelling techniques to understand the general categories associated with their business model. We also apply topic modelling in the dynamic analysis of emerging trends within a company over a number of years. In this work, we specifically use Netflix and General Electric as a proof of concept to validate our hypothesis that there should be a significant change in a topic category during a specific year that a company has altered their business model. Second, we use the document embedding results to perform portfolio analysis using mean-variance analysis. **_Potentially add more details about the different ways of creating the portfolio_**
+
+This study is exploratory and so our desired outcome is to provide insight into the multitude of unstructured textual analysis techniques and their fitness for our data and purpose.
 
 ## Methodology
 
@@ -25,7 +34,27 @@ The filings of companies from 2016 to 2018 were used in the dynamic topic analys
 
 _**INSERT DATA DESC/SOURCE USED FOR RETURNS/PORTFOLIO EVALUATION**_
 
-### Data Preprocessing
+### Methods
+
+The research design of this study was experimental and exploratory.
+
+#### Company Embeddings
+
+We started by investigating a variety of word embedding to model the description similarity between companies. These modeling techniques include TF-IDF, Word2Vec, Universal Sentence Encoder, Doc2Vec, and many others that we will discuss in detail in this report. Prior to fitting each model, we applied consistent data preprocessing methods such as word normalization by lemmatizing, stop word removal, and special character removal. We also applied dimensionality reduction using PCA and truncated SVD (specifically for LSA) to visualize the 2D and 3D plots of word embeddings. We then evaluated the performance of our embedding models by comparing the cosine distance between text embeddings and applying a 1-nearest-neighbor algorithm to determine the accuracy of SIC category predictions. The goal is to find techniques that cluster company filings closer if those companies are very related, and farther if they are unrelated.
+
+#### Topic Modelling
+
+Topics created based on the words available in the corpus theoretically resemble the respective industries each company operates in. This section examines the possibility to extract topics from the corpus of annual reports, potentially allowing us to create our own groupings for companies such as _software_ or _pharmaceutical_. This would be another avenue we could take to explore clustering companies based on their relationship to all the topics. We investigated topic modeling techniques such as Latent Dirichlet Allocation, Non-Negative Matrix Factorization, and Latent Semantic Analysis. We manually interpreted and evaluated the performance of the topic models as these techniques are known to be difficult to perform quantitative evaluations for.
+
+To extend the previous idea, multiple annual reports per company were analyzed to understand how companies may have changed in business direction or target industries over multiple years.
+
+#### Text to Financial Return Relationship
+
+Lastly, the relationship between companies based on the document embeddings and their financial returns was analyzed. Monte-Carlo simulations were used to analyze different portfolios of companies in a given industry and compare the returns of those simulations to the Efficient Frontier. For the data collection, we used the company's Central Index Key (CIK) as the identifier to obtain monthly stock returns data from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. We included only the companies with filings that were used in our previous embedding work and the timespan of returns ranges for each filer, but they are all from June 2016 to November 2020. We computed the returns correlations and used these correlations to build portfolios. We conducted a mean-variance analysis with the covariance of the returns and covariance generated using the variance of each stock and cosine distance as correlation to compare the portfolios.
+
+**ADD MORE DETAILS ABOUT CREATING THE PORTFOLIOS?**
+
+#### Data Preprocessing
 
 The data was provided to us by Ubineer, which has been pulled and preprocessed for us. One of the main datasets we used is the `bq_2018_top5SIC.json` file prepared by Professor Sotiros Damouras, by selecting companies who have filed in 2018 and belong to the top 5 industries within the dataset. This file has 1127 filings (one per company).
 
@@ -52,26 +81,6 @@ We further cleaned up the `Description` text by removing HTML code, the first co
 We then removed _stop words_ from the business descriptions, which are very commong words like "the, they, and, is, are, there" and others. These words don't provide meaning and therefore do not contribute to our goal of extracting meaning.
 
 We also lemmatized all possible words, aka Text/Word Normalization which means all instances of "am, are, is" are converted to "be" and "playing, played, plays" are all converted to "play". This reduces the amount of different words we have to process, and also condensing the amount of information we recieve since words that all carry the same meaning are represented together.
-
-### Methods
-
-The research design of this study was experimental and exploratory.
-
-#### Company Embeddings
-
-We started by investigating a variety of word embedding to model the description similarity between companies. These modeling techniques include TF-IDF, Word2Vec, Universal Sentence Encoder, Doc2Vec, and many others that we will discuss in detail in this report. Prior to fitting each model, we applied consistent data preprocessing methods such as word normalization by lemmatizing, stop word removal, and special character removal. We also applied dimensionality reduction using PCA and truncated SVD (specifically for LSA) to visualize the 2D and 3D plots of word embeddings. We then evaluated the performance of our embedding models by comparing the cosine distance between text embeddings and applying a 1-nearest-neighbor algorithm to determine the accuracy of SIC category predictions. The goal is to find techniques that cluster company filings closer if those companies are very related, and farther if they are unrelated.
-
-#### Topic Modelling
-
-Topics created based on the words available in the corpus theoretically resemble the respective industries each company operates in. This section examines the possibility to extract topics from the corpus of annual reports, potentially allowing us to create our own groupings for companies such as _software_ or _pharmaceutical_. This would be another avenue we could take to explore clustering companies based on their relationship to all the topics. We investigated topic modeling techniques such as Latent Dirichlet Allocation, Non-Negative Matrix Factorization, and Latent Semantic Analysis. We manually interpreted and evaluated the performance of the topic models as these techniques are known to be difficult to perform quantitative evaluations for.
-
-To extend the previous idea, multiple annual reports per company were analyzed to understand how companies may have changed in business direction or target industries over multiple years.
-
-#### Text to Financial Return Relationship
-
-Lastly, the relationship between companies based on the document embeddings and their financial returns was analyzed. Monte-Carlo simulations were used to analyze different portfolios of companies in a given industry and compare the returns of those simulations to the Efficient Frontier. For the data collection, we used the company's Central Index Key (CIK) as the identifier to obtain monthly stock returns data from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. We included only the companies with filings that were used in our previous embedding work and the timespan of returns ranges for each filer, but they are all from June 2016 to November 2020. We computed the returns correlations and used these correlations to build portfolios. We conducted a mean-variance analysis with the covariance of the returns and covariance generated using the variance of each stock and cosine distance as correlation to compare the portfolios.
-
-**ADD MORE DETAILS ABOUT CREATING THE PORTFOLIOS?**
 
 Check out each page bundled within this book to see more on a given topic.
 
