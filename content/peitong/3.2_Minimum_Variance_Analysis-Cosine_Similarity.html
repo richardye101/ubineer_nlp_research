@@ -506,7 +506,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="estimates-from-cosine-similarity">
 <h1>Estimates from Cosine Similarity<a class="headerlink" href="#estimates-from-cosine-similarity" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_selected</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/filtered_r.csv&quot;</span><span class="p">)</span>
 <span class="c1"># get the mean of all </span>
@@ -1240,18 +1240,92 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We only use the Pharmaceutical Preparations industry data to generate portfolio based on Mean-Variance Analysis.</p>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: PyPortfolioOpt in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (1.5.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: dataframe_image in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (0.1.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cvxpy&lt;2.0.0,&gt;=1.1.10 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.2.0)
-Requirement already satisfied: scipy&lt;2.0,&gt;=1.3 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.8.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nbconvert&gt;=5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (6.4.5)
+Requirement already satisfied: matplotlib&gt;=3.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (3.5.1)
+Requirement already satisfied: aiohttp in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (3.8.1)
+Requirement already satisfied: requests in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (2.27.1)
+Requirement already satisfied: pandas&gt;=0.24 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (1.4.2)
+Requirement already satisfied: beautifulsoup4 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (4.11.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (1.4.2)
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (3.0.7)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (21.3)
+Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (9.1.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (4.32.0)
+Requirement already satisfied: numpy&gt;=1.17 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (1.22.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (2.8.2)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (0.11.0)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (1.5.0)
+Requirement already satisfied: nbformat&gt;=4.4 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (5.3.0)
+Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.5.13)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (2.1.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.8.4)
+Requirement already satisfied: testpath in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.6.0)
+Requirement already satisfied: traitlets&gt;=5.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (5.1.1)
+Requirement already satisfied: pygments&gt;=2.4.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (2.11.2)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.4)
+Requirement already satisfied: bleach in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (5.0.0)
+Requirement already satisfied: jupyterlab-pygments in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.2.0)
+Requirement already satisfied: defusedxml in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.7.1)
+Requirement already satisfied: jinja2&gt;=2.4 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (3.0.3)
+Requirement already satisfied: jupyter-core in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (4.9.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pandas&gt;=0.24-&gt;dataframe_image) (2022.1)
+Requirement already satisfied: frozenlist&gt;=1.1.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (1.3.0)
+Requirement already satisfied: aiosignal&gt;=1.1.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (1.2.0)
+Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (4.0.2)
+Requirement already satisfied: attrs&gt;=17.3.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (21.4.0)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (6.0.2)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (1.7.2)
+Requirement already satisfied: charset-normalizer&lt;3.0,&gt;=2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (2.0.12)
+Requirement already satisfied: soupsieve&gt;1.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from beautifulsoup4-&gt;dataframe_image) (2.3.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;dataframe_image) (3.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;dataframe_image) (2021.10.8)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;dataframe_image) (1.26.9)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jupyter-client&gt;=6.1.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=5-&gt;dataframe_image) (7.2.2)
+Requirement already satisfied: nest-asyncio in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=5-&gt;dataframe_image) (1.5.5)
+Requirement already satisfied: fastjsonschema in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe_image) (2.15.3)
+Requirement already satisfied: jsonschema&gt;=2.6 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe_image) (3.2.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib&gt;=3.1-&gt;dataframe_image) (1.16.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: webencodings in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;dataframe_image) (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: setuptools in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe_image) (56.0.0)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe_image) (0.18.1)
+Requirement already satisfied: pyzmq&gt;=22.3 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jupyter-client&gt;=6.1.5-&gt;nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=5-&gt;dataframe_image) (22.3.0)
+Requirement already satisfied: tornado&gt;=6.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jupyter-client&gt;=6.1.5-&gt;nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=5-&gt;dataframe_image) (6.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: PyPortfolioOpt in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (1.5.2)
 Requirement already satisfied: numpy&lt;2.0,&gt;=1.12 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.22.3)
 Requirement already satisfied: pandas&gt;=0.19 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.4.2)
-Requirement already satisfied: osqp&gt;=0.4.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (0.6.2.post5)
+Requirement already satisfied: cvxpy&lt;2.0.0,&gt;=1.1.10 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.2.0)
+Requirement already satisfied: scipy&lt;2.0,&gt;=1.3 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.8.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scs&gt;=1.1.6 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (3.2.0)
 Requirement already satisfied: ecos&gt;=2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (2.0.10)
-Requirement already satisfied: scs&gt;=1.1.6 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (3.2.0)
-Requirement already satisfied: python-dateutil&gt;=2.8.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pandas&gt;=0.19-&gt;PyPortfolioOpt) (2.8.2)
+Requirement already satisfied: osqp&gt;=0.4.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (0.6.2.post5)
 Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pandas&gt;=0.19-&gt;PyPortfolioOpt) (2022.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pandas&gt;=0.19-&gt;PyPortfolioOpt) (2.8.2)
 Requirement already satisfied: qdldl in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from osqp&gt;=0.4.1-&gt;cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (0.1.5.post2)
 Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from python-dateutil&gt;=2.8.1-&gt;pandas&gt;=0.19-&gt;PyPortfolioOpt) (1.16.0)
 </pre></div>
@@ -1361,7 +1435,7 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.8.12
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_24_0.png" src="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_24_0.png" />
+<img alt="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_25_0.png" src="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_25_0.png" />
 </div>
 </div>
 <div class="section" id="min-volatility">
@@ -1384,17 +1458,107 @@ Sharpe Ratio: -0.32
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [18],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">dataframe_image</span> <span class="k">as</span> <span class="nn">dfi</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Company_Name&#39;</span><span class="p">:</span><span class="n">companies</span><span class="p">,</span><span class="s1">&#39;Weight&#39;</span><span class="p">:</span><span class="n">weights</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">min_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;dataframe_image&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0418/004952.957424:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[0418/004953.005015:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+[0418/004953.156805:INFO:headless_shell.cc(659)] Written to file /tmp/tmpshp7rhwe/temp.png.
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Company_Name</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BIOSPECIFICS TECHNOLOGIES CORP</td>
+      <td>0.07394</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LILLY ELI &amp; CO</td>
+      <td>0.03562</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PERRIGO CO PLC</td>
+      <td>0.01497</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>JOHNSON &amp; JOHNSON</td>
+      <td>0.18756</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>XENCOR INC</td>
+      <td>0.02108</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ARQULE INC</td>
+      <td>0.00068</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>FIVE PRIME THERAPEUTICS INC</td>
+      <td>0.01782</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>HERON THERAPEUTICS, INC. /DE/</td>
+      <td>0.00906</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>BRISTOL MYERS SQUIBB CO</td>
+      <td>0.03719</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>PFIZER INC</td>
+      <td>0.20000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PACIRA PHARMACEUTICALS, INC.</td>
+      <td>0.01883</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ZOETIS INC.</td>
+      <td>0.20000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>BIOMARIN PHARMACEUTICAL INC</td>
+      <td>0.04572</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>MERCK &amp; CO., INC.</td>
+      <td>0.13753</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 </div>
