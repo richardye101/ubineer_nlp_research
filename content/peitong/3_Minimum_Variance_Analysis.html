@@ -428,6 +428,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Since we will generate cosine similarity estimates in the next notebook using business description of companies from 2016 to 2018. We only consider monthly returns before 2019.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#returns_data</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -444,6 +451,348 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_selected</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2016-06-30</th>
+      <th>2016-07-31</th>
+      <th>2016-08-31</th>
+      <th>2016-09-30</th>
+      <th>2016-10-31</th>
+      <th>2016-11-30</th>
+      <th>2016-12-31</th>
+      <th>2017-01-31</th>
+      <th>2017-02-28</th>
+      <th>2017-03-31</th>
+      <th>...</th>
+      <th>2018-03-31</th>
+      <th>2018-04-30</th>
+      <th>2018-05-31</th>
+      <th>2018-06-30</th>
+      <th>2018-07-31</th>
+      <th>2018-08-31</th>
+      <th>2018-09-30</th>
+      <th>2018-10-31</th>
+      <th>2018-11-30</th>
+      <th>2018-12-31</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1ST SOURCE CORP</th>
+      <td>-0.044261</td>
+      <td>0.043223</td>
+      <td>0.052960</td>
+      <td>0.008618</td>
+      <td>-0.026754</td>
+      <td>0.138889</td>
+      <td>0.134654</td>
+      <td>0.010076</td>
+      <td>0.039459</td>
+      <td>0.005138</td>
+      <td>...</td>
+      <td>0.026358</td>
+      <td>0.027262</td>
+      <td>0.027308</td>
+      <td>0.004701</td>
+      <td>0.058581</td>
+      <td>-0.005658</td>
+      <td>-0.060189</td>
+      <td>-0.114595</td>
+      <td>0.043357</td>
+      <td>-0.165840</td>
+    </tr>
+    <tr>
+      <th>2U, INC.</th>
+      <td>0.056394</td>
+      <td>0.189391</td>
+      <td>0.010292</td>
+      <td>0.083475</td>
+      <td>-0.089580</td>
+      <td>-0.051635</td>
+      <td>-0.088022</td>
+      <td>0.129022</td>
+      <td>0.073737</td>
+      <td>0.085089</td>
+      <td>...</td>
+      <td>0.015100</td>
+      <td>-0.042128</td>
+      <td>0.177786</td>
+      <td>-0.118565</td>
+      <td>-0.094543</td>
+      <td>0.181073</td>
+      <td>-0.158572</td>
+      <td>-0.163320</td>
+      <td>-0.071849</td>
+      <td>-0.148484</td>
+    </tr>
+    <tr>
+      <th>3D SYSTEMS CORP</th>
+      <td>0.022405</td>
+      <td>-0.021914</td>
+      <td>0.082898</td>
+      <td>0.237931</td>
+      <td>-0.227298</td>
+      <td>-0.001442</td>
+      <td>-0.040433</td>
+      <td>0.240783</td>
+      <td>-0.078229</td>
+      <td>-0.015789</td>
+      <td>...</td>
+      <td>0.220000</td>
+      <td>-0.133736</td>
+      <td>0.231076</td>
+      <td>0.117314</td>
+      <td>-0.118755</td>
+      <td>0.672145</td>
+      <td>-0.071253</td>
+      <td>-0.360847</td>
+      <td>0.024834</td>
+      <td>-0.178514</td>
+    </tr>
+    <tr>
+      <th>ABBOTT LABORATORIES</th>
+      <td>-0.008075</td>
+      <td>0.145001</td>
+      <td>-0.061006</td>
+      <td>0.006426</td>
+      <td>-0.065973</td>
+      <td>-0.029817</td>
+      <td>0.008931</td>
+      <td>0.094376</td>
+      <td>0.079243</td>
+      <td>-0.014862</td>
+      <td>...</td>
+      <td>-0.006796</td>
+      <td>-0.025200</td>
+      <td>0.058490</td>
+      <td>-0.008776</td>
+      <td>0.079193</td>
+      <td>0.019835</td>
+      <td>0.097546</td>
+      <td>-0.056434</td>
+      <td>0.074122</td>
+      <td>-0.023228</td>
+    </tr>
+    <tr>
+      <th>ABBVIE INC.</th>
+      <td>-0.016208</td>
+      <td>0.078986</td>
+      <td>-0.032161</td>
+      <td>-0.016069</td>
+      <td>-0.106548</td>
+      <td>0.089996</td>
+      <td>0.029934</td>
+      <td>-0.013893</td>
+      <td>0.011946</td>
+      <td>0.053687</td>
+      <td>...</td>
+      <td>-0.182854</td>
+      <td>0.030217</td>
+      <td>0.024754</td>
+      <td>-0.063574</td>
+      <td>0.005828</td>
+      <td>0.040659</td>
+      <td>-0.014586</td>
+      <td>-0.166737</td>
+      <td>0.210918</td>
+      <td>-0.022064</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>ZIOPHARM ONCOLOGY INC</th>
+      <td>-0.295250</td>
+      <td>-0.114754</td>
+      <td>0.043210</td>
+      <td>0.110454</td>
+      <td>0.008881</td>
+      <td>0.140845</td>
+      <td>-0.174383</td>
+      <td>0.106542</td>
+      <td>0.072635</td>
+      <td>-0.001575</td>
+      <td>...</td>
+      <td>0.050938</td>
+      <td>0.076531</td>
+      <td>0.161137</td>
+      <td>-0.383673</td>
+      <td>-0.142384</td>
+      <td>0.127413</td>
+      <td>0.095890</td>
+      <td>-0.381250</td>
+      <td>0.691919</td>
+      <td>-0.441791</td>
+    </tr>
+    <tr>
+      <th>ZOETIS INC.</th>
+      <td>0.002847</td>
+      <td>0.063422</td>
+      <td>0.012483</td>
+      <td>0.017808</td>
+      <td>-0.080946</td>
+      <td>0.055962</td>
+      <td>0.062525</td>
+      <td>0.028302</td>
+      <td>-0.029669</td>
+      <td>0.001125</td>
+      <td>...</td>
+      <td>0.032773</td>
+      <td>0.001150</td>
+      <td>0.002635</td>
+      <td>0.017802</td>
+      <td>0.016622</td>
+      <td>0.047641</td>
+      <td>0.010596</td>
+      <td>-0.015400</td>
+      <td>0.042662</td>
+      <td>-0.088740</td>
+    </tr>
+    <tr>
+      <th>ZOGENIX, INC.</th>
+      <td>-0.201389</td>
+      <td>0.134161</td>
+      <td>-0.044907</td>
+      <td>0.310780</td>
+      <td>-0.286964</td>
+      <td>0.546012</td>
+      <td>-0.035714</td>
+      <td>-0.337449</td>
+      <td>0.285714</td>
+      <td>0.048309</td>
+      <td>...</td>
+      <td>-0.055425</td>
+      <td>-0.018727</td>
+      <td>0.082697</td>
+      <td>0.038778</td>
+      <td>0.283937</td>
+      <td>-0.148899</td>
+      <td>0.026915</td>
+      <td>-0.158065</td>
+      <td>-0.016044</td>
+      <td>-0.112679</td>
+    </tr>
+    <tr>
+      <th>ZOSANO PHARMA CORP</th>
+      <td>-0.294444</td>
+      <td>0.377953</td>
+      <td>-0.542800</td>
+      <td>-0.012748</td>
+      <td>-0.253070</td>
+      <td>0.372881</td>
+      <td>-0.037037</td>
+      <td>0.538462</td>
+      <td>1.233333</td>
+      <td>-0.291045</td>
+      <td>...</td>
+      <td>-0.192308</td>
+      <td>-0.150794</td>
+      <td>-0.028037</td>
+      <td>-0.019231</td>
+      <td>0.024510</td>
+      <td>-0.002392</td>
+      <td>-0.019185</td>
+      <td>-0.171149</td>
+      <td>0.103245</td>
+      <td>-0.433155</td>
+    </tr>
+    <tr>
+      <th>ZYNERBA PHARMACEUTICALS, INC.</th>
+      <td>-0.216247</td>
+      <td>0.290511</td>
+      <td>-0.040724</td>
+      <td>0.538915</td>
+      <td>-0.117241</td>
+      <td>0.092014</td>
+      <td>0.239269</td>
+      <td>0.105837</td>
+      <td>0.328306</td>
+      <td>-0.122271</td>
+      <td>...</td>
+      <td>-0.107803</td>
+      <td>0.181818</td>
+      <td>0.038948</td>
+      <td>-0.087160</td>
+      <td>-0.317248</td>
+      <td>0.207519</td>
+      <td>0.016189</td>
+      <td>-0.355392</td>
+      <td>-0.083650</td>
+      <td>-0.383817</td>
+    </tr>
+  </tbody>
+</table>
+<p>719 rows × 31 columns</p>
+</div></div></div>
+</div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -452,97 +801,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="perform-mean-variance-analysis">
 <h2>Perform Mean-Variance Analysis<a class="headerlink" href="#perform-mean-variance-analysis" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input tag_hide-output docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: dataframe_image in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (0.1.1)
-Requirement already satisfied: matplotlib&gt;=3.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (3.5.1)
-Requirement already satisfied: nbconvert&gt;=5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (6.4.5)
-Requirement already satisfied: beautifulsoup4 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (4.11.1)
-Requirement already satisfied: requests in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (2.27.1)
-Requirement already satisfied: pandas&gt;=0.24 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (1.4.2)
-Requirement already satisfied: aiohttp in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from dataframe_image) (3.8.1)
-Requirement already satisfied: packaging&gt;=20.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (21.3)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (1.4.2)
-Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (9.1.0)
-Requirement already satisfied: numpy&gt;=1.17 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (1.22.3)
-Requirement already satisfied: pyparsing&gt;=2.2.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (3.0.7)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (4.32.0)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (2.8.2)
-Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.1-&gt;dataframe_image) (0.11.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.5.13)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (1.5.0)
-Requirement already satisfied: entrypoints&gt;=0.2.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.4)
-Requirement already satisfied: jupyterlab-pygments in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.2.0)
-Requirement already satisfied: traitlets&gt;=5.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (5.1.1)
-Requirement already satisfied: pygments&gt;=2.4.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (2.11.2)
-Requirement already satisfied: defusedxml in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.7.1)
-Requirement already satisfied: nbformat&gt;=4.4 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (5.3.0)
-Requirement already satisfied: testpath in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.6.0)
-Requirement already satisfied: jupyter-core in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (4.9.2)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (0.8.4)
-Requirement already satisfied: bleach in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (5.0.0)
-Requirement already satisfied: jinja2&gt;=2.4 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (3.0.3)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbconvert&gt;=5-&gt;dataframe_image) (2.1.1)
-Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pandas&gt;=0.24-&gt;dataframe_image) (2022.1)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (1.7.2)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (1.3.0)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (4.0.2)
-Requirement already satisfied: charset-normalizer&lt;3.0,&gt;=2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (2.0.12)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (1.2.0)
-Requirement already satisfied: attrs&gt;=17.3.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (21.4.0)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from aiohttp-&gt;dataframe_image) (6.0.2)
-Requirement already satisfied: soupsieve&gt;1.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from beautifulsoup4-&gt;dataframe_image) (2.3.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;dataframe_image) (1.26.9)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;dataframe_image) (3.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;dataframe_image) (2021.10.8)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nest-asyncio in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=5-&gt;dataframe_image) (1.5.5)
-Requirement already satisfied: jupyter-client&gt;=6.1.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=5-&gt;dataframe_image) (7.2.2)
-Requirement already satisfied: fastjsonschema in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe_image) (2.15.3)
-Requirement already satisfied: jsonschema&gt;=2.6 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe_image) (3.2.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib&gt;=3.1-&gt;dataframe_image) (1.16.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: webencodings in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;dataframe_image) (0.5.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: setuptools in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe_image) (56.0.0)
-Requirement already satisfied: pyrsistent&gt;=0.14.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe_image) (0.18.1)
-Requirement already satisfied: tornado&gt;=6.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jupyter-client&gt;=6.1.5-&gt;nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=5-&gt;dataframe_image) (6.1)
-Requirement already satisfied: pyzmq&gt;=22.3 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jupyter-client&gt;=6.1.5-&gt;nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert&gt;=5-&gt;dataframe_image) (22.3.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell tag_remove-input tag_hide-output docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: PyPortfolioOpt in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (1.5.2)
-Requirement already satisfied: numpy&lt;2.0,&gt;=1.12 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.22.3)
-Requirement already satisfied: pandas&gt;=0.19 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.4.2)
-Requirement already satisfied: scipy&lt;2.0,&gt;=1.3 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.8.0)
-Requirement already satisfied: cvxpy&lt;2.0.0,&gt;=1.1.10 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from PyPortfolioOpt) (1.2.0)
-Requirement already satisfied: scs&gt;=1.1.6 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (3.2.0)
-Requirement already satisfied: ecos&gt;=2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (2.0.10)
-Requirement already satisfied: osqp&gt;=0.4.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (0.6.2.post5)
-Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pandas&gt;=0.19-&gt;PyPortfolioOpt) (2022.1)
-Requirement already satisfied: python-dateutil&gt;=2.8.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pandas&gt;=0.19-&gt;PyPortfolioOpt) (2.8.2)
-Requirement already satisfied: qdldl in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from osqp&gt;=0.4.1-&gt;cvxpy&lt;2.0.0,&gt;=1.1.10-&gt;PyPortfolioOpt) (0.1.5.post2)
-Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from python-dateutil&gt;=2.8.1-&gt;pandas&gt;=0.19-&gt;PyPortfolioOpt) (1.16.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -551,6 +811,18 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.8.12
 <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">expected_returns</span>
 <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">objective_functions</span>
 <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">plotting</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">EfficientFrontier</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">risk_models</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">expected_returns</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pypfopt&#39;
 </pre></div>
 </div>
 </div>
@@ -584,17 +856,17 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.8.12
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name
-ACHILLION PHARMACEUTICALS INC    -0.039415
-BLUEPRINT MEDICINES CORP          0.045106
-SAREPTA THERAPEUTICS, INC.        0.083536
-ALEXION PHARMACEUTICALS INC      -0.007589
-PAIN THERAPEUTICS INC            -0.028535
-                                    ...   
-PARATEK PHARMACEUTICALS, INC.    -0.024066
-EYEGATE PHARMACEUTICALS INC      -0.034348
-BELLEROPHON THERAPEUTICS, INC.    0.034770
-XOMA CORP                         0.027546
-CONCERT PHARMACEUTICALS, INC.     0.014813
+ZOSANO PHARMA CORP                            -0.045029
+MERCK &amp; CO., INC.                              0.013889
+ACHILLION PHARMACEUTICALS INC                 -0.039415
+FIVE PRIME THERAPEUTICS INC                   -0.038194
+VALEANT PHARMACEUTICALS INTERNATIONAL, INC.    0.004328
+                                                 ...   
+MIRATI THERAPEUTICS, INC.                      0.075113
+LILLY ELI &amp; CO                                 0.017574
+SAREPTA THERAPEUTICS, INC.                     0.083536
+CATALYST BIOSCIENCES, INC.                     0.011478
+CELLECTAR BIOSCIENCES, INC.                   -0.075946
 Length: 124, dtype: float64
 </pre></div>
 </div>
@@ -627,27 +899,27 @@ Length: 124, dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th>name</th>
+      <th>ZOSANO PHARMA CORP</th>
+      <th>MERCK &amp; CO., INC.</th>
       <th>ACHILLION PHARMACEUTICALS INC</th>
-      <th>BLUEPRINT MEDICINES CORP</th>
-      <th>SAREPTA THERAPEUTICS, INC.</th>
-      <th>ALEXION PHARMACEUTICALS INC</th>
-      <th>PAIN THERAPEUTICS INC</th>
-      <th>BRISTOL MYERS SQUIBB CO</th>
-      <th>HERON THERAPEUTICS, INC. /DE/</th>
-      <th>CYCLACEL PHARMACEUTICALS, INC.</th>
-      <th>XENCOR INC</th>
-      <th>MARINUS PHARMACEUTICALS INC</th>
-      <th>...</th>
-      <th>TEVA PHARMACEUTICAL INDUSTRIES LTD</th>
-      <th>SIERRA ONCOLOGY, INC.</th>
+      <th>FIVE PRIME THERAPEUTICS INC</th>
+      <th>VALEANT PHARMACEUTICALS INTERNATIONAL, INC.</th>
+      <th>BIOMARIN PHARMACEUTICAL INC</th>
+      <th>JOHNSON &amp; JOHNSON</th>
+      <th>PFIZER INC</th>
       <th>CHIASMA, INC</th>
-      <th>NATURES SUNSHINE PRODUCTS INC</th>
-      <th>HEAT BIOLOGICS, INC.</th>
-      <th>PARATEK PHARMACEUTICALS, INC.</th>
-      <th>EYEGATE PHARMACEUTICALS INC</th>
-      <th>BELLEROPHON THERAPEUTICS, INC.</th>
-      <th>XOMA CORP</th>
-      <th>CONCERT PHARMACEUTICALS, INC.</th>
+      <th>ACELRX PHARMACEUTICALS INC</th>
+      <th>...</th>
+      <th>ATHERSYS, INC / NEW</th>
+      <th>XENON PHARMACEUTICALS INC.</th>
+      <th>ARQULE INC</th>
+      <th>ALEXION PHARMACEUTICALS INC</th>
+      <th>KARYOPHARM THERAPEUTICS INC.</th>
+      <th>MIRATI THERAPEUTICS, INC.</th>
+      <th>LILLY ELI &amp; CO</th>
+      <th>SAREPTA THERAPEUTICS, INC.</th>
+      <th>CATALYST BIOSCIENCES, INC.</th>
+      <th>CELLECTAR BIOSCIENCES, INC.</th>
     </tr>
     <tr>
       <th>name</th>
@@ -676,124 +948,124 @@ Length: 124, dtype: float64
   </thead>
   <tbody>
     <tr>
+      <th>ZOSANO PHARMA CORP</th>
+      <td>0.106290</td>
+      <td>0.004494</td>
+      <td>0.002514</td>
+      <td>0.015138</td>
+      <td>0.007901</td>
+      <td>0.014499</td>
+      <td>0.005264</td>
+      <td>0.006477</td>
+      <td>-0.006852</td>
+      <td>0.024977</td>
+      <td>...</td>
+      <td>0.000469</td>
+      <td>0.010329</td>
+      <td>0.000944</td>
+      <td>0.009030</td>
+      <td>0.004575</td>
+      <td>0.005768</td>
+      <td>0.006879</td>
+      <td>0.009079</td>
+      <td>-0.013231</td>
+      <td>0.025431</td>
+    </tr>
+    <tr>
+      <th>MERCK &amp; CO., INC.</th>
+      <td>0.004494</td>
+      <td>0.002449</td>
+      <td>0.000842</td>
+      <td>-0.000529</td>
+      <td>0.003592</td>
+      <td>0.001729</td>
+      <td>0.000408</td>
+      <td>0.000939</td>
+      <td>0.002036</td>
+      <td>0.003952</td>
+      <td>...</td>
+      <td>0.000865</td>
+      <td>0.001683</td>
+      <td>0.001233</td>
+      <td>0.000882</td>
+      <td>0.000540</td>
+      <td>-0.000293</td>
+      <td>0.001166</td>
+      <td>0.000311</td>
+      <td>0.002049</td>
+      <td>0.000554</td>
+    </tr>
+    <tr>
       <th>ACHILLION PHARMACEUTICALS INC</th>
+      <td>0.002514</td>
+      <td>0.000842</td>
       <td>0.031051</td>
-      <td>0.005126</td>
-      <td>0.006310</td>
-      <td>0.002751</td>
-      <td>-0.004319</td>
-      <td>-0.000137</td>
-      <td>0.001268</td>
-      <td>-0.000235</td>
-      <td>0.000335</td>
-      <td>0.013083</td>
-      <td>...</td>
-      <td>-0.003233</td>
-      <td>-0.006487</td>
+      <td>0.004796</td>
+      <td>0.008637</td>
+      <td>0.000697</td>
+      <td>0.002152</td>
+      <td>0.001404</td>
       <td>0.022700</td>
-      <td>0.002046</td>
-      <td>-0.007587</td>
-      <td>0.009770</td>
-      <td>-0.006993</td>
-      <td>-0.003977</td>
-      <td>0.003434</td>
-      <td>0.001774</td>
-    </tr>
-    <tr>
-      <th>BLUEPRINT MEDICINES CORP</th>
-      <td>0.005126</td>
-      <td>0.023244</td>
-      <td>0.008828</td>
-      <td>0.005220</td>
-      <td>0.010478</td>
-      <td>0.000736</td>
-      <td>0.002605</td>
-      <td>0.005636</td>
-      <td>0.007998</td>
-      <td>0.016396</td>
+      <td>0.004983</td>
       <td>...</td>
-      <td>0.004072</td>
-      <td>-0.001956</td>
-      <td>0.007661</td>
-      <td>0.001888</td>
-      <td>0.010068</td>
-      <td>0.007368</td>
-      <td>-0.008698</td>
-      <td>0.000667</td>
-      <td>0.007390</td>
-      <td>0.007184</td>
-    </tr>
-    <tr>
-      <th>SAREPTA THERAPEUTICS, INC.</th>
-      <td>0.006310</td>
-      <td>0.008828</td>
-      <td>0.084132</td>
-      <td>0.006465</td>
-      <td>-0.021343</td>
-      <td>-0.000488</td>
-      <td>0.007045</td>
-      <td>0.009295</td>
-      <td>0.008601</td>
-      <td>0.032263</td>
-      <td>...</td>
-      <td>0.005648</td>
-      <td>0.009781</td>
-      <td>0.018008</td>
-      <td>0.013429</td>
-      <td>0.000404</td>
-      <td>0.001587</td>
-      <td>-0.005361</td>
-      <td>-0.000903</td>
-      <td>0.001142</td>
-      <td>0.001043</td>
-    </tr>
-    <tr>
-      <th>ALEXION PHARMACEUTICALS INC</th>
+      <td>0.009400</td>
+      <td>0.010330</td>
+      <td>0.010633</td>
       <td>0.002751</td>
-      <td>0.005220</td>
-      <td>0.006465</td>
-      <td>0.012712</td>
-      <td>0.002209</td>
-      <td>0.001813</td>
-      <td>0.003020</td>
-      <td>-0.001824</td>
-      <td>0.001170</td>
-      <td>0.020038</td>
-      <td>...</td>
-      <td>0.006912</td>
-      <td>0.007720</td>
-      <td>0.004109</td>
-      <td>-0.003251</td>
-      <td>0.000688</td>
-      <td>0.005154</td>
-      <td>0.000209</td>
-      <td>0.005610</td>
-      <td>0.006099</td>
-      <td>-0.001042</td>
+      <td>0.008380</td>
+      <td>-0.007990</td>
+      <td>0.001825</td>
+      <td>0.006310</td>
+      <td>0.005642</td>
+      <td>0.012697</td>
     </tr>
     <tr>
-      <th>PAIN THERAPEUTICS INC</th>
-      <td>-0.004319</td>
-      <td>0.010478</td>
-      <td>-0.021343</td>
-      <td>0.002209</td>
-      <td>0.096589</td>
-      <td>0.000643</td>
-      <td>0.007795</td>
-      <td>0.011159</td>
-      <td>0.005384</td>
-      <td>0.021129</td>
+      <th>FIVE PRIME THERAPEUTICS INC</th>
+      <td>0.015138</td>
+      <td>-0.000529</td>
+      <td>0.004796</td>
+      <td>0.022705</td>
+      <td>-0.004560</td>
+      <td>0.004611</td>
+      <td>0.000675</td>
+      <td>0.001764</td>
+      <td>0.009991</td>
+      <td>0.006425</td>
       <td>...</td>
-      <td>0.009408</td>
-      <td>0.009692</td>
-      <td>-0.009049</td>
-      <td>-0.003608</td>
-      <td>0.009508</td>
-      <td>0.006248</td>
-      <td>0.006420</td>
-      <td>0.015027</td>
-      <td>0.033623</td>
-      <td>0.023706</td>
+      <td>0.003043</td>
+      <td>0.006868</td>
+      <td>-0.005347</td>
+      <td>0.005834</td>
+      <td>0.007672</td>
+      <td>0.011905</td>
+      <td>0.000214</td>
+      <td>0.015241</td>
+      <td>-0.005043</td>
+      <td>0.004796</td>
+    </tr>
+    <tr>
+      <th>VALEANT PHARMACEUTICALS INTERNATIONAL, INC.</th>
+      <td>0.007901</td>
+      <td>0.003592</td>
+      <td>0.008637</td>
+      <td>-0.004560</td>
+      <td>0.039376</td>
+      <td>0.006207</td>
+      <td>0.000620</td>
+      <td>0.001972</td>
+      <td>0.001665</td>
+      <td>0.014731</td>
+      <td>...</td>
+      <td>0.004323</td>
+      <td>0.005330</td>
+      <td>0.019954</td>
+      <td>0.006660</td>
+      <td>0.009153</td>
+      <td>0.014974</td>
+      <td>0.002161</td>
+      <td>0.004454</td>
+      <td>0.015132</td>
+      <td>0.001003</td>
     </tr>
     <tr>
       <th>...</th>
@@ -820,124 +1092,124 @@ Length: 124, dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>PARATEK PHARMACEUTICALS, INC.</th>
-      <td>0.009770</td>
-      <td>0.007368</td>
-      <td>0.001587</td>
-      <td>0.005154</td>
-      <td>0.006248</td>
-      <td>0.003766</td>
-      <td>0.003123</td>
-      <td>0.012054</td>
-      <td>0.002137</td>
-      <td>0.018491</td>
+      <th>MIRATI THERAPEUTICS, INC.</th>
+      <td>0.005768</td>
+      <td>-0.000293</td>
+      <td>-0.007990</td>
+      <td>0.011905</td>
+      <td>0.014974</td>
+      <td>0.007099</td>
+      <td>-0.003866</td>
+      <td>0.002425</td>
+      <td>0.003574</td>
+      <td>0.031394</td>
       <td>...</td>
-      <td>-0.004803</td>
-      <td>0.001729</td>
-      <td>0.014608</td>
-      <td>0.000984</td>
-      <td>0.014548</td>
-      <td>0.026534</td>
-      <td>-0.002395</td>
-      <td>-0.005607</td>
-      <td>0.015164</td>
-      <td>0.015012</td>
+      <td>0.013701</td>
+      <td>0.004200</td>
+      <td>0.018446</td>
+      <td>0.010516</td>
+      <td>0.027146</td>
+      <td>0.097249</td>
+      <td>0.002014</td>
+      <td>0.029382</td>
+      <td>0.034802</td>
+      <td>0.001527</td>
     </tr>
     <tr>
-      <th>EYEGATE PHARMACEUTICALS INC</th>
-      <td>-0.006993</td>
-      <td>-0.008698</td>
-      <td>-0.005361</td>
-      <td>0.000209</td>
-      <td>0.006420</td>
-      <td>0.002791</td>
-      <td>0.006248</td>
-      <td>-0.011521</td>
-      <td>0.003707</td>
-      <td>0.015749</td>
-      <td>...</td>
-      <td>0.010686</td>
-      <td>0.012778</td>
-      <td>-0.008895</td>
-      <td>-0.001080</td>
-      <td>0.015481</td>
-      <td>-0.002395</td>
-      <td>0.067765</td>
-      <td>0.028478</td>
-      <td>0.018463</td>
-      <td>-0.000187</td>
-    </tr>
-    <tr>
-      <th>BELLEROPHON THERAPEUTICS, INC.</th>
-      <td>-0.003977</td>
-      <td>0.000667</td>
-      <td>-0.000903</td>
-      <td>0.005610</td>
-      <td>0.015027</td>
-      <td>0.005002</td>
-      <td>0.004013</td>
-      <td>-0.002702</td>
-      <td>0.001442</td>
-      <td>0.023100</td>
-      <td>...</td>
-      <td>0.016369</td>
-      <td>0.016750</td>
-      <td>-0.017911</td>
-      <td>-0.010877</td>
-      <td>-0.027601</td>
-      <td>-0.005607</td>
-      <td>0.028478</td>
-      <td>0.100098</td>
-      <td>0.023299</td>
-      <td>0.003968</td>
-    </tr>
-    <tr>
-      <th>XOMA CORP</th>
-      <td>0.003434</td>
-      <td>0.007390</td>
-      <td>0.001142</td>
-      <td>0.006099</td>
-      <td>0.033623</td>
-      <td>0.005690</td>
-      <td>0.004936</td>
-      <td>0.006130</td>
-      <td>-0.002969</td>
-      <td>0.065473</td>
-      <td>...</td>
-      <td>0.000889</td>
-      <td>0.021166</td>
-      <td>0.010006</td>
-      <td>-0.003559</td>
-      <td>0.015210</td>
-      <td>0.015164</td>
-      <td>0.018463</td>
-      <td>0.023299</td>
-      <td>0.068901</td>
-      <td>0.022237</td>
-    </tr>
-    <tr>
-      <th>CONCERT PHARMACEUTICALS, INC.</th>
-      <td>0.001774</td>
-      <td>0.007184</td>
-      <td>0.001043</td>
-      <td>-0.001042</td>
-      <td>0.023706</td>
+      <th>LILLY ELI &amp; CO</th>
+      <td>0.006879</td>
+      <td>0.001166</td>
+      <td>0.001825</td>
+      <td>0.000214</td>
+      <td>0.002161</td>
+      <td>0.001831</td>
+      <td>0.001300</td>
+      <td>0.001537</td>
+      <td>0.002699</td>
       <td>0.002996</td>
-      <td>0.002848</td>
-      <td>0.006498</td>
-      <td>0.003764</td>
-      <td>0.019293</td>
       <td>...</td>
-      <td>0.000188</td>
-      <td>0.019466</td>
-      <td>0.001915</td>
-      <td>0.001471</td>
-      <td>-0.003840</td>
-      <td>0.015012</td>
-      <td>-0.000187</td>
-      <td>0.003968</td>
-      <td>0.022237</td>
-      <td>0.041740</td>
+      <td>0.002951</td>
+      <td>-0.000104</td>
+      <td>0.002177</td>
+      <td>0.001280</td>
+      <td>0.000243</td>
+      <td>0.002014</td>
+      <td>0.003017</td>
+      <td>0.001846</td>
+      <td>0.001371</td>
+      <td>0.001243</td>
+    </tr>
+    <tr>
+      <th>SAREPTA THERAPEUTICS, INC.</th>
+      <td>0.009079</td>
+      <td>0.000311</td>
+      <td>0.006310</td>
+      <td>0.015241</td>
+      <td>0.004454</td>
+      <td>0.007430</td>
+      <td>-0.000839</td>
+      <td>0.000009</td>
+      <td>0.018008</td>
+      <td>0.027816</td>
+      <td>...</td>
+      <td>0.010345</td>
+      <td>0.018586</td>
+      <td>0.026781</td>
+      <td>0.006465</td>
+      <td>0.007410</td>
+      <td>0.029382</td>
+      <td>0.001846</td>
+      <td>0.084132</td>
+      <td>0.004198</td>
+      <td>0.016882</td>
+    </tr>
+    <tr>
+      <th>CATALYST BIOSCIENCES, INC.</th>
+      <td>-0.013231</td>
+      <td>0.002049</td>
+      <td>0.005642</td>
+      <td>-0.005043</td>
+      <td>0.015132</td>
+      <td>0.002394</td>
+      <td>0.000209</td>
+      <td>0.003381</td>
+      <td>0.006490</td>
+      <td>0.011016</td>
+      <td>...</td>
+      <td>0.016910</td>
+      <td>-0.008064</td>
+      <td>0.013684</td>
+      <td>0.000734</td>
+      <td>0.013920</td>
+      <td>0.034802</td>
+      <td>0.001371</td>
+      <td>0.004198</td>
+      <td>0.107863</td>
+      <td>0.013722</td>
+    </tr>
+    <tr>
+      <th>CELLECTAR BIOSCIENCES, INC.</th>
+      <td>0.025431</td>
+      <td>0.000554</td>
+      <td>0.012697</td>
+      <td>0.004796</td>
+      <td>0.001003</td>
+      <td>-0.000337</td>
+      <td>0.001058</td>
+      <td>0.000514</td>
+      <td>0.010246</td>
+      <td>0.011892</td>
+      <td>...</td>
+      <td>0.007644</td>
+      <td>-0.005268</td>
+      <td>0.007865</td>
+      <td>-0.000421</td>
+      <td>0.001872</td>
+      <td>0.001527</td>
+      <td>0.001243</td>
+      <td>0.016882</td>
+      <td>0.013722</td>
+      <td>0.033018</td>
     </tr>
   </tbody>
 </table>
