@@ -349,15 +349,15 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#monthly-returns">
    Monthly Returns
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-mean-variance-analysis">
-   Perform Mean-Variance Analysis
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-and-covariance-for-returns-in-the-pharmaceutical-preparations-industry">
-     Mean and Covariance for Returns in the Pharmaceutical Preparations Industry
+    <a class="reference internal nav-link" href="#sample-mean">
+     Sample Mean
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-covariance">
+     Sample Covariance
     </a>
    </li>
   </ul>
@@ -386,15 +386,15 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#monthly-returns">
    Monthly Returns
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-mean-variance-analysis">
-   Perform Mean-Variance Analysis
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-and-covariance-for-returns-in-the-pharmaceutical-preparations-industry">
-     Mean and Covariance for Returns in the Pharmaceutical Preparations Industry
+    <a class="reference internal nav-link" href="#sample-mean">
+     Sample Mean
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-covariance">
+     Sample Covariance
     </a>
    </li>
   </ul>
@@ -410,6 +410,9 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="cell tag_remove-input docutils container">
 </div>
+<div class="section" id="mean-variance-analysis-minimum-variance">
+<h1>Mean-Variance Analysis - Minimum Variance<a class="headerlink" href="#mean-variance-analysis-minimum-variance" title="Permalink to this headline">¶</a></h1>
+<p>Mean-variance analysis is a mathematical framework that examplifies the trade-off between return and risk. It is used to create diversified portfolios based on investors’ expectation. There are one main approach used in this report. We have the minimum volatility portfolio that concentrates on minimizing the risk of the portfolio. Mimimum variance portfolio can help us compare the correlation of simple sample covariance, covariance generated using cosine similarity distances and covariance generated using factor model in Sent-LDA.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -420,25 +423,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="mean-variance-analysis-minimum-variance">
-<h1>Mean-Variance Analysis - Minimum Variance<a class="headerlink" href="#mean-variance-analysis-minimum-variance" title="Permalink to this headline">¶</a></h1>
-<p>Mean-variance analysis is a mathematical framework that examplifies the trade-off between return and risk. It is used to create diversified portfolios based on investors’ expectation. There are one main approach used in this report. We have the minimum volatility portfolio that concentrates on minimizing the risk of the portfolio. Mimimum variance portfolio can help us compare the correlation of simple sample covariance, covariance generated using cosine similarity distances and covariance generated using factor model in Sent-LDA.</p>
 <div class="section" id="monthly-returns">
 <h2>Monthly Returns<a class="headerlink" href="#monthly-returns" title="Permalink to this headline">¶</a></h2>
-<p>Since we will generate cosine similarity estimates in the next notebook using business description of companies from 2016 to 2018. We only consider monthly returns before 2019.</p>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#returns_data</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
+<p>Since we will generate cosine similarity estimate and factor model estimate using business description of companies from 2016 to 2018, we only consider monthly returns before 2019. We group the monthly stock returns data extracted from Wharton Research Data Services’s (WRDS) CRSP/Compustat database by company name and date first. After a selection of time span, from June 2016 to December 2018, we are able to get 31-month returns for 719 companies.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_selected</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/filtered_r.csv&quot;</span><span class="p">)</span>
@@ -451,7 +438,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_selected</span>
 </pre></div>
@@ -793,90 +780,38 @@ const thebe_selector_output = ".output, .cell_output"
 <p>719 rows × 31 columns</p>
 </div></div></div>
 </div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-</div>
-<div class="section" id="perform-mean-variance-analysis">
-<h2>Perform Mean-Variance Analysis<a class="headerlink" href="#perform-mean-variance-analysis" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-</div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
-</div>
+<div class="section" id="sample-mean">
+<h3>Sample Mean<a class="headerlink" href="#sample-mean" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">EfficientFrontier</span>
-<span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">risk_models</span>
-<span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">expected_returns</span>
-<span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">objective_functions</span>
-<span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">plotting</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">EfficientFrontier</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">risk_models</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">expected_returns</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pypfopt&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the names of the companies in the pharmaceutical preparations industry</span>
-<span class="n">Pharm</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">SIC</span> <span class="o">==</span> <span class="mi">2834</span><span class="p">]</span>
-<span class="n">Pharm_list</span> <span class="o">=</span> <span class="n">Pharm</span><span class="o">.</span><span class="n">index</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the companies name that match return data and business description data</span>
-<span class="n">SET</span> <span class="o">=</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">Pharm_list</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">r_selected</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
-<span class="n">LIST</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">SET</span><span class="p">,</span> <span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="mean-and-covariance-for-returns-in-the-pharmaceutical-preparations-industry">
-<h3>Mean and Covariance for Returns in the Pharmaceutical Preparations Industry<a class="headerlink" href="#mean-and-covariance-for-returns-in-the-pharmaceutical-preparations-industry" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_Pharm</span> <span class="o">=</span> <span class="n">mu</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span>
-<span class="n">mu_Pharm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name
-ZOSANO PHARMA CORP                            -0.045029
-MERCK &amp; CO., INC.                              0.013889
-ACHILLION PHARMACEUTICALS INC                 -0.039415
-FIVE PRIME THERAPEUTICS INC                   -0.038194
-VALEANT PHARMACEUTICALS INTERNATIONAL, INC.    0.004328
-                                                 ...   
-MIRATI THERAPEUTICS, INC.                      0.075113
-LILLY ELI &amp; CO                                 0.017574
-SAREPTA THERAPEUTICS, INC.                     0.083536
-CATALYST BIOSCIENCES, INC.                     0.011478
-CELLECTAR BIOSCIENCES, INC.                   -0.075946
-Length: 124, dtype: float64
+1ST SOURCE CORP                  0.009076
+2U, INC.                         0.024622
+3D SYSTEMS CORP                  0.009901
+ABBOTT LABORATORIES              0.022606
+ABBVIE INC.                      0.018973
+                                   ...   
+ZIOPHARM ONCOLOGY INC           -0.022408
+ZOETIS INC.                      0.020733
+ZOGENIX, INC.                    0.084996
+ZOSANO PHARMA CORP              -0.045029
+ZYNERBA PHARMACEUTICALS, INC.   -0.003030
+Length: 719, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="sample-covariance">
+<h3>Sample Covariance<a class="headerlink" href="#sample-covariance" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cov_Pharm</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span>
-<span class="n">cov_Pharm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov</span>
 </pre></div>
 </div>
 </div>
@@ -899,27 +834,27 @@ Length: 124, dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th>name</th>
-      <th>ZOSANO PHARMA CORP</th>
-      <th>MERCK &amp; CO., INC.</th>
-      <th>ACHILLION PHARMACEUTICALS INC</th>
-      <th>FIVE PRIME THERAPEUTICS INC</th>
-      <th>VALEANT PHARMACEUTICALS INTERNATIONAL, INC.</th>
-      <th>BIOMARIN PHARMACEUTICAL INC</th>
-      <th>JOHNSON &amp; JOHNSON</th>
-      <th>PFIZER INC</th>
-      <th>CHIASMA, INC</th>
+      <th>1ST SOURCE CORP</th>
+      <th>2U, INC.</th>
+      <th>3D SYSTEMS CORP</th>
+      <th>ABBOTT LABORATORIES</th>
+      <th>ABBVIE INC.</th>
+      <th>ABEONA THERAPEUTICS INC.</th>
+      <th>ABRAXAS PETROLEUM CORP</th>
+      <th>ACADIA PHARMACEUTICALS INC</th>
+      <th>ACADIA REALTY TRUST</th>
       <th>ACELRX PHARMACEUTICALS INC</th>
       <th>...</th>
-      <th>ATHERSYS, INC / NEW</th>
+      <th>XBIOTECH INC.</th>
+      <th>XENCOR INC</th>
       <th>XENON PHARMACEUTICALS INC.</th>
-      <th>ARQULE INC</th>
-      <th>ALEXION PHARMACEUTICALS INC</th>
-      <th>KARYOPHARM THERAPEUTICS INC.</th>
-      <th>MIRATI THERAPEUTICS, INC.</th>
-      <th>LILLY ELI &amp; CO</th>
-      <th>SAREPTA THERAPEUTICS, INC.</th>
-      <th>CATALYST BIOSCIENCES, INC.</th>
-      <th>CELLECTAR BIOSCIENCES, INC.</th>
+      <th>XOMA CORP</th>
+      <th>ZEDGE, INC.</th>
+      <th>ZIOPHARM ONCOLOGY INC</th>
+      <th>ZOETIS INC.</th>
+      <th>ZOGENIX, INC.</th>
+      <th>ZOSANO PHARMA CORP</th>
+      <th>ZYNERBA PHARMACEUTICALS, INC.</th>
     </tr>
     <tr>
       <th>name</th>
@@ -948,124 +883,124 @@ Length: 124, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>ZOSANO PHARMA CORP</th>
-      <td>0.106290</td>
-      <td>0.004494</td>
-      <td>0.002514</td>
-      <td>0.015138</td>
-      <td>0.007901</td>
-      <td>0.014499</td>
-      <td>0.005264</td>
-      <td>0.006477</td>
-      <td>-0.006852</td>
-      <td>0.024977</td>
+      <th>1ST SOURCE CORP</th>
+      <td>0.004037</td>
+      <td>0.002210</td>
+      <td>0.002809</td>
+      <td>0.000770</td>
+      <td>0.002418</td>
+      <td>0.003306</td>
+      <td>0.005177</td>
+      <td>0.002316</td>
+      <td>0.001162</td>
+      <td>0.003289</td>
       <td>...</td>
-      <td>0.000469</td>
-      <td>0.010329</td>
-      <td>0.000944</td>
-      <td>0.009030</td>
-      <td>0.004575</td>
-      <td>0.005768</td>
-      <td>0.006879</td>
-      <td>0.009079</td>
-      <td>-0.013231</td>
-      <td>0.025431</td>
+      <td>-0.003115</td>
+      <td>0.003075</td>
+      <td>0.002632</td>
+      <td>0.004194</td>
+      <td>0.004987</td>
+      <td>0.005336</td>
+      <td>0.001121</td>
+      <td>0.009492</td>
+      <td>0.006947</td>
+      <td>0.007938</td>
     </tr>
     <tr>
-      <th>MERCK &amp; CO., INC.</th>
-      <td>0.004494</td>
-      <td>0.002449</td>
-      <td>0.000842</td>
-      <td>-0.000529</td>
-      <td>0.003592</td>
-      <td>0.001729</td>
-      <td>0.000408</td>
-      <td>0.000939</td>
-      <td>0.002036</td>
-      <td>0.003952</td>
+      <th>2U, INC.</th>
+      <td>0.002210</td>
+      <td>0.011917</td>
+      <td>0.010599</td>
+      <td>0.001859</td>
+      <td>0.003255</td>
+      <td>0.008266</td>
+      <td>0.000459</td>
+      <td>0.002350</td>
+      <td>0.001803</td>
+      <td>0.007566</td>
       <td>...</td>
-      <td>0.000865</td>
-      <td>0.001683</td>
-      <td>0.001233</td>
-      <td>0.000882</td>
-      <td>0.000540</td>
-      <td>-0.000293</td>
-      <td>0.001166</td>
-      <td>0.000311</td>
-      <td>0.002049</td>
-      <td>0.000554</td>
+      <td>-0.002568</td>
+      <td>0.006610</td>
+      <td>0.002465</td>
+      <td>0.005714</td>
+      <td>0.002574</td>
+      <td>0.005000</td>
+      <td>0.001211</td>
+      <td>0.006308</td>
+      <td>0.006805</td>
+      <td>0.011199</td>
     </tr>
     <tr>
-      <th>ACHILLION PHARMACEUTICALS INC</th>
-      <td>0.002514</td>
-      <td>0.000842</td>
-      <td>0.031051</td>
-      <td>0.004796</td>
-      <td>0.008637</td>
-      <td>0.000697</td>
-      <td>0.002152</td>
-      <td>0.001404</td>
-      <td>0.022700</td>
-      <td>0.004983</td>
+      <th>3D SYSTEMS CORP</th>
+      <td>0.002809</td>
+      <td>0.010599</td>
+      <td>0.041611</td>
+      <td>0.002045</td>
+      <td>0.001621</td>
+      <td>0.003528</td>
+      <td>0.002866</td>
+      <td>0.000601</td>
+      <td>0.002762</td>
+      <td>0.008999</td>
       <td>...</td>
-      <td>0.009400</td>
-      <td>0.010330</td>
-      <td>0.010633</td>
-      <td>0.002751</td>
-      <td>0.008380</td>
-      <td>-0.007990</td>
-      <td>0.001825</td>
-      <td>0.006310</td>
-      <td>0.005642</td>
-      <td>0.012697</td>
+      <td>-0.004730</td>
+      <td>0.007320</td>
+      <td>0.016933</td>
+      <td>-0.010924</td>
+      <td>0.002617</td>
+      <td>0.010725</td>
+      <td>0.002968</td>
+      <td>0.003055</td>
+      <td>0.006912</td>
+      <td>0.016312</td>
     </tr>
     <tr>
-      <th>FIVE PRIME THERAPEUTICS INC</th>
-      <td>0.015138</td>
-      <td>-0.000529</td>
-      <td>0.004796</td>
-      <td>0.022705</td>
-      <td>-0.004560</td>
-      <td>0.004611</td>
-      <td>0.000675</td>
-      <td>0.001764</td>
-      <td>0.009991</td>
-      <td>0.006425</td>
+      <th>ABBOTT LABORATORIES</th>
+      <td>0.000770</td>
+      <td>0.001859</td>
+      <td>0.002045</td>
+      <td>0.002716</td>
+      <td>0.002223</td>
+      <td>0.000001</td>
+      <td>-0.001260</td>
+      <td>0.004953</td>
+      <td>0.000644</td>
+      <td>0.003408</td>
       <td>...</td>
-      <td>0.003043</td>
-      <td>0.006868</td>
-      <td>-0.005347</td>
-      <td>0.005834</td>
-      <td>0.007672</td>
-      <td>0.011905</td>
-      <td>0.000214</td>
-      <td>0.015241</td>
-      <td>-0.005043</td>
-      <td>0.004796</td>
+      <td>-0.001995</td>
+      <td>0.000060</td>
+      <td>0.001042</td>
+      <td>0.005094</td>
+      <td>0.000346</td>
+      <td>0.002999</td>
+      <td>0.000776</td>
+      <td>0.003065</td>
+      <td>0.008432</td>
+      <td>0.003382</td>
     </tr>
     <tr>
-      <th>VALEANT PHARMACEUTICALS INTERNATIONAL, INC.</th>
-      <td>0.007901</td>
-      <td>0.003592</td>
-      <td>0.008637</td>
-      <td>-0.004560</td>
-      <td>0.039376</td>
-      <td>0.006207</td>
-      <td>0.000620</td>
-      <td>0.001972</td>
-      <td>0.001665</td>
-      <td>0.014731</td>
+      <th>ABBVIE INC.</th>
+      <td>0.002418</td>
+      <td>0.003255</td>
+      <td>0.001621</td>
+      <td>0.002223</td>
+      <td>0.007276</td>
+      <td>0.003242</td>
+      <td>0.000717</td>
+      <td>0.003293</td>
+      <td>-0.000128</td>
+      <td>0.000062</td>
       <td>...</td>
-      <td>0.004323</td>
-      <td>0.005330</td>
-      <td>0.019954</td>
-      <td>0.006660</td>
-      <td>0.009153</td>
-      <td>0.014974</td>
-      <td>0.002161</td>
-      <td>0.004454</td>
-      <td>0.015132</td>
-      <td>0.001003</td>
+      <td>-0.002213</td>
+      <td>0.004581</td>
+      <td>-0.002855</td>
+      <td>0.013811</td>
+      <td>0.008295</td>
+      <td>0.008498</td>
+      <td>0.001434</td>
+      <td>0.014807</td>
+      <td>0.003906</td>
+      <td>0.005539</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1092,128 +1027,128 @@ Length: 124, dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>MIRATI THERAPEUTICS, INC.</th>
-      <td>0.005768</td>
-      <td>-0.000293</td>
-      <td>-0.007990</td>
-      <td>0.011905</td>
-      <td>0.014974</td>
-      <td>0.007099</td>
-      <td>-0.003866</td>
-      <td>0.002425</td>
-      <td>0.003574</td>
-      <td>0.031394</td>
+      <th>ZIOPHARM ONCOLOGY INC</th>
+      <td>0.005336</td>
+      <td>0.005000</td>
+      <td>0.010725</td>
+      <td>0.002999</td>
+      <td>0.008498</td>
+      <td>0.016045</td>
+      <td>0.002711</td>
+      <td>0.009927</td>
+      <td>0.001973</td>
+      <td>0.008192</td>
       <td>...</td>
-      <td>0.013701</td>
-      <td>0.004200</td>
-      <td>0.018446</td>
-      <td>0.010516</td>
-      <td>0.027146</td>
-      <td>0.097249</td>
-      <td>0.002014</td>
-      <td>0.029382</td>
-      <td>0.034802</td>
-      <td>0.001527</td>
+      <td>-0.002800</td>
+      <td>0.013566</td>
+      <td>-0.003391</td>
+      <td>0.011584</td>
+      <td>0.024891</td>
+      <td>0.045590</td>
+      <td>0.001967</td>
+      <td>0.004574</td>
+      <td>0.017793</td>
+      <td>0.012347</td>
     </tr>
     <tr>
-      <th>LILLY ELI &amp; CO</th>
-      <td>0.006879</td>
-      <td>0.001166</td>
-      <td>0.001825</td>
-      <td>0.000214</td>
-      <td>0.002161</td>
-      <td>0.001831</td>
-      <td>0.001300</td>
+      <th>ZOETIS INC.</th>
+      <td>0.001121</td>
+      <td>0.001211</td>
+      <td>0.002968</td>
+      <td>0.000776</td>
+      <td>0.001434</td>
+      <td>-0.000931</td>
+      <td>0.001524</td>
+      <td>0.000304</td>
+      <td>0.000496</td>
+      <td>0.002061</td>
+      <td>...</td>
+      <td>-0.002579</td>
+      <td>0.001551</td>
+      <td>0.001696</td>
+      <td>0.001430</td>
+      <td>0.002570</td>
+      <td>0.001967</td>
+      <td>0.002037</td>
+      <td>0.001968</td>
+      <td>0.001314</td>
+      <td>0.004093</td>
+    </tr>
+    <tr>
+      <th>ZOGENIX, INC.</th>
+      <td>0.009492</td>
+      <td>0.006308</td>
+      <td>0.003055</td>
+      <td>0.003065</td>
+      <td>0.014807</td>
+      <td>0.020618</td>
+      <td>0.013220</td>
+      <td>0.009577</td>
       <td>0.001537</td>
-      <td>0.002699</td>
-      <td>0.002996</td>
+      <td>0.028441</td>
       <td>...</td>
-      <td>0.002951</td>
-      <td>-0.000104</td>
-      <td>0.002177</td>
-      <td>0.001280</td>
-      <td>0.000243</td>
-      <td>0.002014</td>
-      <td>0.003017</td>
-      <td>0.001846</td>
-      <td>0.001371</td>
-      <td>0.001243</td>
+      <td>-0.015704</td>
+      <td>0.007531</td>
+      <td>-0.003133</td>
+      <td>0.059678</td>
+      <td>0.009011</td>
+      <td>0.004574</td>
+      <td>0.001968</td>
+      <td>0.153881</td>
+      <td>0.024156</td>
+      <td>0.033034</td>
     </tr>
     <tr>
-      <th>SAREPTA THERAPEUTICS, INC.</th>
-      <td>0.009079</td>
-      <td>0.000311</td>
-      <td>0.006310</td>
-      <td>0.015241</td>
-      <td>0.004454</td>
-      <td>0.007430</td>
-      <td>-0.000839</td>
-      <td>0.000009</td>
-      <td>0.018008</td>
-      <td>0.027816</td>
+      <th>ZOSANO PHARMA CORP</th>
+      <td>0.006947</td>
+      <td>0.006805</td>
+      <td>0.006912</td>
+      <td>0.008432</td>
+      <td>0.003906</td>
+      <td>-0.002526</td>
+      <td>-0.001789</td>
+      <td>0.021359</td>
+      <td>0.005113</td>
+      <td>0.024977</td>
       <td>...</td>
-      <td>0.010345</td>
-      <td>0.018586</td>
-      <td>0.026781</td>
-      <td>0.006465</td>
-      <td>0.007410</td>
-      <td>0.029382</td>
-      <td>0.001846</td>
-      <td>0.084132</td>
-      <td>0.004198</td>
-      <td>0.016882</td>
+      <td>-0.000696</td>
+      <td>0.003778</td>
+      <td>0.010329</td>
+      <td>0.010033</td>
+      <td>0.013489</td>
+      <td>0.017793</td>
+      <td>0.001314</td>
+      <td>0.024156</td>
+      <td>0.106290</td>
+      <td>0.037329</td>
     </tr>
     <tr>
-      <th>CATALYST BIOSCIENCES, INC.</th>
-      <td>-0.013231</td>
-      <td>0.002049</td>
-      <td>0.005642</td>
-      <td>-0.005043</td>
-      <td>0.015132</td>
-      <td>0.002394</td>
-      <td>0.000209</td>
-      <td>0.003381</td>
-      <td>0.006490</td>
-      <td>0.011016</td>
+      <th>ZYNERBA PHARMACEUTICALS, INC.</th>
+      <td>0.007938</td>
+      <td>0.011199</td>
+      <td>0.016312</td>
+      <td>0.003382</td>
+      <td>0.005539</td>
+      <td>0.010700</td>
+      <td>0.015823</td>
+      <td>0.004340</td>
+      <td>0.003028</td>
+      <td>0.020225</td>
       <td>...</td>
-      <td>0.016910</td>
-      <td>-0.008064</td>
-      <td>0.013684</td>
-      <td>0.000734</td>
-      <td>0.013920</td>
-      <td>0.034802</td>
-      <td>0.001371</td>
-      <td>0.004198</td>
-      <td>0.107863</td>
-      <td>0.013722</td>
-    </tr>
-    <tr>
-      <th>CELLECTAR BIOSCIENCES, INC.</th>
-      <td>0.025431</td>
-      <td>0.000554</td>
-      <td>0.012697</td>
-      <td>0.004796</td>
-      <td>0.001003</td>
-      <td>-0.000337</td>
-      <td>0.001058</td>
-      <td>0.000514</td>
-      <td>0.010246</td>
-      <td>0.011892</td>
-      <td>...</td>
-      <td>0.007644</td>
-      <td>-0.005268</td>
-      <td>0.007865</td>
-      <td>-0.000421</td>
-      <td>0.001872</td>
-      <td>0.001527</td>
-      <td>0.001243</td>
-      <td>0.016882</td>
-      <td>0.013722</td>
-      <td>0.033018</td>
+      <td>-0.013969</td>
+      <td>0.006585</td>
+      <td>0.008309</td>
+      <td>0.006049</td>
+      <td>0.011897</td>
+      <td>0.012347</td>
+      <td>0.004093</td>
+      <td>0.033034</td>
+      <td>0.037329</td>
+      <td>0.060301</td>
     </tr>
   </tbody>
 </table>
-<p>124 rows × 124 columns</p>
+<p>719 rows × 719 columns</p>
 </div></div></div>
 </div>
 </div>
