@@ -3,6 +3,8 @@
 
 # # Word2vec
 # 
+# Another method to find company embeddings is to use word2vec. How it works and how we aim to use is explained below.
+# 
 # ## How it works
 # 
 # Imagine I have two sentences:
@@ -29,6 +31,13 @@
 # 
 # Whereas, in the second option of using the continuous skip-gram architecture; the model uses the current word to predict the surrounding window of context words. The skip-gram architecture weighs nearby context words more heavily than more distant context words. The output probabilities are going to relate to how likely it is to find each vocabulary word near our input word. For example, if you gave the trained network the input word “Europe”, the output probabilities are going to be much higher for words like “Belgium” and “Continent” than for unrelated words like “fruits” and “cats”.
 # 
+# ## How we will use it
+# 
+# We will first run all the words in each annual report through the word2vec neural network in order to extract a matrix of word embeddings, where each word is theoretically close to semantically related words. We then take a subset of these word embeddings of only words that belong in a given company filing, and average them. This produces a pseudo-document vector which theoretically represents these companies semantically.
+# 
+# ## Lets get to the code!
+# 
+# First we need to load in the functions and data:
 
 # In[1]:
 
@@ -43,10 +52,14 @@ get_ipython().run_line_magic('load_ext', 'autoreload')
 get_ipython().run_line_magic('autoreload', '2')
 get_ipython().run_line_magic('aimport', 'std_func')
 
+# Hide warnings
+import warnings
+warnings.filterwarnings("ignore")
+
 df = pd.read_csv("../data/preprocessed.csv")
 
 
-# Here we split each document by word to create a word vector
+# Here we split each document converted into word vectors.
 
 # In[2]:
 
@@ -54,16 +67,16 @@ df = pd.read_csv("../data/preprocessed.csv")
 from gensim.models.word2vec import Word2Vec
 from gensim import utils
 
-revs_processed = df["coDescription_stopwords"].apply(lambda x: utils.simple_preprocess(x))
-revs_processed.head()
+bd_processed = df["coDescription_stopwords"].apply(lambda x: utils.simple_preprocess(x))
+bd_processed.head()
 
 
-# Now lets build the Word2Vec model
+# Now lets build the Word2Vec model! Due to the sheer amount of computation required, we will limit wach word vector produced to just 200 dimensions. Studies have shown that increasing this size beyond 200 - 300 does not bring much measurable benefit.
 
 # In[3]:
 
 
-model_w = Word2Vec(revs_processed, vector_size=200)
+model_w = Word2Vec(bd_processed, vector_size=200)
 
 
 # We can examine words and see which words are most similar. Below are the most similar words to `cloud`, `trial`, and `oil`.
@@ -99,7 +112,7 @@ def doc_to_vec(text):
     
     return np.mean(word_vecs, axis = 0)
 
-doc_vec = pd.DataFrame(revs_processed.apply(doc_to_vec).tolist())
+doc_vec = pd.DataFrame(bd_processed.apply(doc_to_vec).tolist())
 labels = np.asarray(model_w.wv.index_to_key)
 
 
@@ -110,6 +123,10 @@ labels = np.asarray(model_w.wv.index_to_key)
 
 doc_vec
 
+
+# ## Plotting the results
+# 
+# Here are the results of the word2vec semantic company embedding after dimensionality reduction using PCA.
 
 # In[9]:
 
@@ -123,55 +140,22 @@ plot_pca = std_func.pca_visualize_2d(doc_vec, df.loc[:,["name","SIC_desc"]])
 std_func.pca_visualize_3d(plot_pca)
 
 
+# conf_mat = std_func.conf_mat(tfidf,df)conf_mat = std_func.conf_mat(tfidf,df)As you can see, these company embeddings don't like quite that great in our reduced space. Perhaps they didn't capture the semantic meaning very well, or its accurate and the semantic embedding of many companies is very jumbled up and their industry classification isn't entirely correct.
+
+# ##  Performance Evaluation 
+
 # In[11]:
 
 
-from gensim.models import doc2vec
-from collections import namedtuple
-
-# Load data
-
-# doc1 = ["This is a sentence", "This is another sentence"]
-
-# Transform data (you can add more data preprocessing steps) 
-
-docs = []
-analyzedDocument = namedtuple('AnalyzedDocument', 'words tags')
-for i, text in enumerate(df["coDescription"]):
-    words = text.lower().split()
-    tags = [i]
-    docs.append(analyzedDocument(words, tags))
-
-# Train model (set min_count = 1, if you want the model to work with the provided example data set)
-
-model = doc2vec.Doc2Vec(docs, vector_size = 100, window = 10, min_count = 1, workers = 4)
+conf_mat = std_func.conf_mat(doc_vec,df)
 
 
 # In[12]:
 
 
-# Get the vectors
-
-doc_vec_2 = pd.DataFrame([model.dv[doc] for doc in np.arange(0,len(docs))])
-doc_vec_2
-
-
-# In[13]:
+dot_product_df, accuracy, cm = std_func.dot_product(doc_vec,df)
+from sklearn.metrics import classification_report
+print(classification_report(dot_product_df["y_true"], dot_product_df["y_pred"], target_names=df["SIC_desc"].unique()))
 
 
-plot_pca_doc2vec = visualize_pca(doc_vec_2, df.loc[:,["name","SIC_desc"]])
-
-
-# In[14]:
-
-
-fig = px.scatter_3d(plot_pca_doc2vec[1], x =0 , y = 1, z = 2, hover_data={"name": plot_pca_doc2vec[1].index.get_level_values(0),
-                                                              "industry": plot_pca_doc2vec[1].index.get_level_values(1)},
-                    color = plot_pca_doc2vec[1].index.get_level_values(1), width=1200, height=700)
-fig.show()
-
-
-# # confusion matrix/ accuracy measure?
-# perhaps use KNN and comapre to the cosine similarity work
-# 
-# collect all the work to get a good big picture idea of our progress
+# From the confusion matrix and the classification report, we can conclude that the word2vec pseudo-company embedding does a poor job at classifying the category of the companies, except for the Crude Petroleum. This is in line with our observations of the PCA plots, as they did not do a very good job at separating companies in different industries.

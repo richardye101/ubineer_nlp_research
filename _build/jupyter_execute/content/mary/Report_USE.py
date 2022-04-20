@@ -12,6 +12,8 @@ get_ipython().run_line_magic('aimport', 'std_func')
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import warnings
+warnings.filterwarnings('ignore')
 
 df = pd.read_csv("../data/preprocessed.csv")
 df.drop_duplicates(subset = "name", keep=False, inplace=True)
@@ -37,7 +39,6 @@ std_func.pca_visualize_3d(plot_d2v)
 
 
 # ##  Performance Evaluation 
-# USE gives normalized embeddings, so the inner product of encodings can be treated as a similarity matrix.
 
 # In[4]:
 
@@ -52,10 +53,4 @@ from sklearn.metrics import classification_report
 print(classification_report(dot_product_df["y_true"], dot_product_df["y_pred"], target_names=df["SIC_desc"].unique()))
 
 
-# In[6]:
-
-
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=df["SIC_desc"].unique())
-disp.plot(xticks_rotation=90)
-
+# From the confusion matrix and the classification report, we can conclude that the Universal Sentence Encoder model does a good job at classifying the category of the companies. More specifically, this model is best at classifying companies in the Crude Petroleum & Natural Gas, Real Estate and Commerical Banking industries.

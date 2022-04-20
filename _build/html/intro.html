@@ -112,26 +112,36 @@ const thebe_selector_output = ".output, .cell_output"
    Our Setup: Data ETL and Methods of evaluation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/richard/0_1-Visualization.html">
+   Visualizing our work
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Word Embedding
+  Document Embedding
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="content/richard/1_Tf-idf_analysis-new.html">
+  <a class="reference internal" href="content/mary/Report_Embedding_Introduction.html">
+   Document Embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/richard/1_Tf-idf_analysis.html">
    Word embedding using tf-idf matrices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="content/peitong/1_Cosine_Similarity_Distances.html">
-   Cosine Similarity Distances
+   N-grams Embeddings - Cosine Similarity Analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="content/peitong/2_Part_of_Speech_Tagging.html">
-   Part-of-Speech (POS) Tagging
+   Part-of-Speech (POS) Tagging - Cosine Similarity Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -144,21 +154,9 @@ const thebe_selector_output = ".output, .cell_output"
    Doc2Vec
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Topic Modelling
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="content/richard/2_LDA_topic_modelling.html">
-   LDA (Latent Dirichlet Allocation)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="content/richard/3_LSA_topic_modelling.html">
-   Experimenting with lemmatization SVD/LSA
+  <a class="reference internal" href="content/mary/Report_TwoTowers.html">
+   Two Towers
   </a>
  </li>
  <li class="toctree-l1">
@@ -167,20 +165,47 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="content/mary/Report_TwoTowers.html">
-   Two Towers
+  <a class="reference internal" href="content/mary/Report_Embedding_Results.html">
+   Document Embedding Results
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Dynamic Topic Modelling Analysis
+  Topic Modelling
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="content/mary/Report_Topic_Modelling_Introduction.html">
+   Topic Modelling Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/richard/2_LDA_topic_modelling.html">
+   LDA (Latent Dirichlet Allocation)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/richard/3_LSA_topic_modelling.html">
+   LSA (Latent Semantic Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic Modelling Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/mary/Report_Dynamic_Modelling_Introduction.html">
+   Dynamic Modelling Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="content/richard/8_Dynamic_Embedding.html">
-   Embedding methods to augment with dynamic analysis
+   Dynamic Company Embedding
   </a>
  </li>
  <li class="toctree-l1">
@@ -198,6 +223,21 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="content/peitong/3_Minimum_Variance_Analysis.html">
    Mean-Variance Analysis - Minimum Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/peitong/3.1_Minimum_Variance_Analysis-Sample_Estimates.html">
+   Estimates from Sample Covariance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/peitong/3.2_Minimum_Variance_Analysis-Cosine_Similarity.html">
+   Estimates from Cosine Similarity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/peitong/3.3_Minimum_Variance_Analysis-Factor_Model.html">
+   Estimates from Factor Model
   </a>
  </li>
 </ul>
@@ -458,39 +498,53 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
-<p>Leave for last</p>
+<ul class="simple">
+<li><p>Word Embedding results</p>
+<ul>
+<li><p>We evaluated several models</p></li>
+<li><p>We were able to accomplish up to 94% recall for predicting similar companies when matched with their categories.</p></li>
+</ul>
+</li>
+<li><p>Topic Modelling results</p>
+<ul>
+<li><p>can reveal significant changes but increase in an topic does not necessarily mean the company is leaning more in the direction of the topic.</p></li>
+<li><p>Increase or decrease in topic could bring investor attention to the topic at hand for more investigation</p></li>
+</ul>
+</li>
+<li><p>Portfolio selection results</p></li>
+</ul>
 </div>
 <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>Public-traded companies file a comprehensive annual financial report(10K) to discuss its financial performance as required by the U.S Securities and Exchange Commision(SEC). These reports can contain quantitative data and qualitative data. Quantitative data includes the income statement, balance sheets, and statement of cash flows. Qualitative data includes description of the business, risk factors, and management’s discussion and analysis. Many researchers and investors have saturated the area of using quantitative data to build porfolios and evaluate the risks and returns of a company. In this report, we hope to focus our attention on the analysis of qualitative data which provides more forward-looking information that may reveal the company’s future plans and anticipated events/risks.</p>
-<p>This study focuses on the analysis of the Business section of the 10K filings. The Business section provides an overview of the company’s main operations, including its products and services. It may also include recent events, competition, regulation, labor issues, operating costs, or insurance matters.
-<em><strong>INSERT MORE DETAILS ABOUT unstructured data, steps to perform the analysis, desired outcome</strong></em></p>
+<p>Public-traded companies file a comprehensive annual financial report(10K) to discuss their financial performance as required by the U.S Securities and Exchange Commission(SEC). These reports can contain quantitative data and qualitative data. Quantitative data includes the income statement, balance sheets, and statement of cash flows. Qualitative data includes a description of the business, risk factors, and management’s discussion and analysis. Many researchers and investors have saturated the area of using quantitative data to build portfolios and evaluate the risks and returns of a company. However, there has not been much focus in the analysis of qualitative data provided in financial reports. In this report, we hope to focus our attention on the analysis of qualitative data which provides more forward-looking information that may reveal the company’s plans and anticipated events/risks.</p>
+<p>This study focuses on the analysis of the Business section of the 10K filings. The Business section provides an overview of the company’s main operations, including its products and services. It may also include recent events, competition, regulation, labor issues, operating costs, or insurance matters.</p>
+<p>Now we provide a short overview of our approach. Our work is considered textual analysis on unstructured data(data not organized in a pre-defined manner) since individual companies may include different sections of text in the business description of a 10k report. We apply various document embedding techniques to model the similarity between companies using the corresponding business description (i.e. the document in discussion). We then branch off into two separate directions. First. we do a deep dive into each individual company using topic modelling techniques to understand the general categories associated with their business model. We also apply topic modelling in the dynamic analysis of emerging trends within a company over a number of years. In this work, we specifically use Netflix and General Electric as a proof of concept to validate our hypothesis that there should be a significant change in a topic category during a specific year that a company has altered their business model. Second, we use the document embedding results to perform portfolio analysis using mean-variance analysis. Minimum variance portfolios are constructed based on three estimates. The three estimates are simple sample covariance, cosine similarity generated covariance and factor model generated covariance. The portfolio using simple sample covariance is considered as reference to the other two portfolios to determine the feasibility of constructing optimized portfolios with the word embedding results.</p>
+<p>This study is exploratory and so our desired outcome is to provide insight into the multitude of unstructured textual analysis techniques and their fitness for our data and purpose.</p>
 </div>
 <div class="section" id="methodology">
 <h1>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
-<p>We used the business description(ie. Section 1) of 10K Annual Report Filings from SEC, with support from Ubineer for extracting the necesary data.  Additonally, we joined our dataset with SIC codes from the EDGAR database to obtain information regarding the SIC category of the company to better evaluate our results of company similarity and differences.</p>
+<p>We used the business description(ie. Section 1) of 10K Annual Report Filings from SEC, with support from Ubineer for extracting the necessary data. Additionally, we joined our dataset with SIC codes from the EDGAR database to obtain information regarding the SIC category of the company to better evaluate our results on company similarities and differences.</p>
 <p>The 2018 filings of companies from the top 5 categories (Prepackaged Software, Pharmaceutical Preparations, Crude Petroleum and Natural Gas, Real Estate Investment Trusts, State Commercial Banks) were used to train our word embedding models. There were a total of 1127 filings before we applied preprocessing techniques and 618 filings after.</p>
-<p>The filings of companies from 2016 to 2018 were used in the dynamic topic analysis models. There were a total of 2008 filings before we applied preprocessing techniques and 1692 afters.</p>
-<p><em><strong>INSERT DATA DESC/SOURCE USED FOR RETURNS/PORTFOLIO EVALUATION</strong></em></p>
+<p>The filings of companies from 2016 to 2018 were used in the dynamic topic analysis models. There were a total of 2008 filings before we applied preprocessing techniques and 1692 after.</p>
+<p>The monthly stock returns data from the top 5 SIC industries was extracted from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. After grouping the returns data in terms of company name and date, removing duplicate values, and selecting only from June 2016 to December 2018, there were a total of 719 companies with 31-month returns.</p>
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
 <p>The research design of this study was experimental and exploratory.</p>
 <div class="section" id="company-embeddings">
 <h3>Company Embeddings<a class="headerlink" href="#company-embeddings" title="Permalink to this headline">¶</a></h3>
-<p>We started by investigating a variety of word embedding to model the description similarity between companies. These modelling techniques include TF-IDF, Word2Vec, Universal Sentence Encoder, Doc2Vec, and many others that we will discuss in detail in this report. Prior to fitting each model, we applied consistent data preprocessing methods such as word normalization by lemmatizing, stop word removal, and special character removal. We also applied dimensionality reduction using PCA and truncated SVD (specifically for LSA) to visualize the 2D and 3D plots of word embeddings. We then evaluated the performance of our embedding models by comparing the cosine distance between text embeddings and applying a 1-nearest-neighbour algorithm to determine the accuracy of SIC category predictions. The goal is to find techniques that cluster company filings closer if those companies are very related, and farther if they are unrelated.</p>
+<p>We started by investigating a variety of word embedding to model the description similarity between companies. These modeling techniques include TF-IDF, Word2Vec, Universal Sentence Encoder, Doc2Vec, and many others that we will discuss in detail in this report. Prior to fitting each model, we applied consistent data preprocessing methods such as word normalization by lemmatizing, stop word removal, and special character removal. We also applied dimensionality reduction using PCA and truncated SVD (specifically for LSA) to visualize the 2D and 3D plots of word embeddings. We then evaluated the performance of our embedding models by comparing the cosine distance between text embeddings and applying a 1-nearest-neighbor algorithm to determine the accuracy of SIC category predictions. The goal is to find techniques that cluster company filings closer if those companies are very related, and farther if they are unrelated.</p>
 </div>
 <div class="section" id="topic-modelling">
 <h3>Topic Modelling<a class="headerlink" href="#topic-modelling" title="Permalink to this headline">¶</a></h3>
-<p>Topics created based on the words available in the corpus theoretically resemble the respective industries each company operates in. This section examines the possibility to extract topics from the corpus of annual reports, potentially allowing us to create our own groupings for companies such as <em>software</em> or <em>pharmaceutical</em>. This would be another avenue we could take to explore clustering companies based on their relationship to all the topics. We investigated topic modelling techniques such as Latent Dirichilet Allocation, Non-Negative Matrix Factorization, and Latent Semantic Analysis. We manually interpreted and evaluated the performance of the topic models as these techniques are known to be difficult to perform quantitative evaluations for.</p>
-<p>To extend the previous idea,  multiple annual reports per company were analyzed to understand how companies may have changed in business direction or target industries over multiple years.</p>
+<p>Topics created based on the words available in the corpus theoretically resemble the respective industries each company operates in. This section examines the possibility to extract topics from the corpus of annual reports, potentially allowing us to create our own groupings for companies such as <em>software</em> or <em>pharmaceutical</em>. This would be another avenue we could take to explore clustering companies based on their relationship to all the topics. We investigated topic modeling techniques such as Latent Dirichlet Allocation, Non-Negative Matrix Factorization, and Latent Semantic Analysis. We manually interpreted and evaluated the performance of the topic models as these techniques are known to be difficult to perform quantitative evaluations for.</p>
+<p>To extend the previous idea, multiple annual reports per company were analyzed to understand how companies may have changed in business direction or target industries over multiple years.</p>
 </div>
 <div class="section" id="text-to-financial-return-relationship">
 <h3>Text to Financial Return Relationship<a class="headerlink" href="#text-to-financial-return-relationship" title="Permalink to this headline">¶</a></h3>
-<p>Lastly, the relationship between companies based on the document embeddings and their financial returns was analyzed. Monte-Carlo simulations were used to analyze different portfolios of companies in a given industry and comparing the returns of those simulations to the Efficient Frontier. For the data collection, we used the company’s Central Index Key (CIK) as the identifier to obtain monthly stock returns data from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. We included only the companies with filings that were used in our previous embedding work and the timespan of returns ranges for each filer, but they are all within June 2016 to November 2020. We computed the returns correlations and used these correlations to build portfolios. We conducted mean-variance analysis with covariance of the returns and covariance generated using variance of each stock and cosine distance as correlation to compare the portfolios.</p>
-<p><strong>ADD MORE DETAILS ABOUT CREATING THE PORTFOLIOS?</strong></p>
+<p>Lastly, the relationship between companies based on the document embeddings and their financial returns was analyzed. Monte-Carlo simulations were used to analyze different portfolios of companies in a given industry and compare the returns of those simulations to the Efficient Frontier. For the data collection, we used the company’s Central Index Key (CIK) as the identifier to obtain monthly stock returns data from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. We included only the companies with filings that were used in our previous embedding work and the timespan of returns ranges for each filer, but they are all from June 2016 to December 2018. We conducted a mean-variance analysis with three covariance estimates - simple sample covariance, cosine similarity generated covariance, and factor model generated covariance, to construct minimum-variance portfolios. As for cosine similarity estimate, we use the cosine similarity distance as correlation and sample return standard deviation to calculate the covariance estimate. In terms of factor model estimate, we first conduct Sent-LDA model on company’s business description to build a matrix. Then, we ran linear regression on the topic model matrix with the returns matrix to get the coefficient matrix. Lastly, we calculate the residual’s covariance as factor model estimate.</p>
 </div>
 <div class="section" id="data-preprocessing">
 <h3>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h3>
@@ -520,35 +574,41 @@ We further cleaned up the <code class="docutils literal notranslate"><span class
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="content/richard/0_Methods.html">Our Setup: Data ETL and Methods of evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/richard/0_1-Visualization.html">Visualizing our work</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Word Embedding</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Document Embedding</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/1_Tf-idf_analysis-new.html">Word embedding using tf-idf matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/1_Cosine_Similarity_Distances.html">Cosine Similarity Distances</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/1_Cosine_Similarity_Distances.html#compute-cosine-similarity">Compute Cosine Similarity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/1_Cosine_Similarity_Distances.html#accuracy-confusion-matrix-roc-curves">Accuracy - Confusion Matrix / ROC Curves</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/1_Cosine_Similarity_Distances.html#plotting">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/2_Part_of_Speech_Tagging.html">Part-of-Speech (POS) Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Embedding_Introduction.html">Document Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/richard/1_Tf-idf_analysis.html">Word embedding using tf-idf matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/peitong/1_Cosine_Similarity_Distances.html">N-grams Embeddings - Cosine Similarity Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/peitong/2_Part_of_Speech_Tagging.html">Part-of-Speech (POS) Tagging - Cosine Similarity Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/richard/4_Word2Vec.html">Word2vec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/4_Word2Vec.html#confusion-matrix-accuracy-measure">confusion matrix/ accuracy measure?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/richard/5_Doc2Vec.html">Doc2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_TwoTowers.html">Two Towers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_TwoTowers.html#plotting">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_TwoTowers.html#results">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_USE.html">Universal Sentence Encoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Embedding_Results.html">Document Embedding Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Embedding_Results.html#conclusion">Conclusion</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Topic Modelling</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Topic_Modelling_Introduction.html">Topic Modelling Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/richard/2_LDA_topic_modelling.html">LDA (Latent Dirichlet Allocation)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/3_LSA_topic_modelling.html">Experimenting with lemmatization SVD/LSA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_USE.html">Universal Sentence Encoder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_TwoTowers.html">Two Towers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/richard/2_LDA_topic_modelling.html#lets-get-to-the-code">Lets get to the code!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/richard/2_LDA_topic_modelling.html#plotting-the-results">Plotting the results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/richard/3_LSA_topic_modelling.html">LSA (Latent Semantic Analysis)</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamic Topic Modelling Analysis</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamic Modelling Analysis</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/8_Dynamic_Embedding.html">Embedding methods to augment with dynamic analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Dynamic_Modelling_Introduction.html">Dynamic Modelling Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/richard/8_Dynamic_Embedding.html">Dynamic Company Embedding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Topic_Modelling.html">Dynamic Topic Modelling</a></li>
 </ul>
 </div>
@@ -556,6 +616,9 @@ We further cleaned up the <code class="docutils literal notranslate"><span class
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio Analysis</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="content/peitong/3_Minimum_Variance_Analysis.html">Mean-Variance Analysis - Minimum Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/peitong/3.1_Minimum_Variance_Analysis-Sample_Estimates.html">Estimates from Sample Covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/peitong/3.2_Minimum_Variance_Analysis-Cosine_Similarity.html">Estimates from Cosine Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/peitong/3.3_Minimum_Variance_Analysis-Factor_Model.html">Estimates from Factor Model</a></li>
 </ul>
 </div>
 </div>
