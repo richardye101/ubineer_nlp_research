@@ -543,7 +543,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="estimates-from-sample-covariance">
 <h1>Estimates from Sample Covariance<a class="headerlink" href="#estimates-from-sample-covariance" title="Permalink to this headline">¶</a></h1>
 <p>The portfolios we constructed in this notebook serve as reference to the portfolios using cosine similarity estimates and factor model estimates. Here, we simply use the sample return and sample covariance to generate portfolios for each industry.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -617,9 +617,21 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="sample-mean-for-the-pharmaceutical-preparations-industry">
 <h3>Sample Mean for the Pharmaceutical Preparations Industry<a class="headerlink" href="#sample-mean-for-the-pharmaceutical-preparations-industry" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_Pharm</span> <span class="o">=</span> <span class="n">mu</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name
+JOHNSON &amp; JOHNSON                 0.007494
+ACHILLION PHARMACEUTICALS INC    -0.039415
+VTV THERAPEUTICS INC.             0.043676
+HEAT BIOLOGICS, INC.             -0.010232
+AKORN INC                        -0.044988
+                                    ...   
+OPHTHOTECH CORP.                 -0.076591
+ACHAOGEN INC                      0.007742
+FLEXION THERAPEUTICS INC         -0.001757
+CATALYST PHARMACEUTICALS, INC.    0.058129
+PROTHENA CORP PLC                -0.022615
+Length: 124, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -627,13 +639,342 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="sample-covariance-for-the-pharmaceutical-preparations-industry">
 <h3>Sample Covariance for the Pharmaceutical Preparations Industry<a class="headerlink" href="#sample-covariance-for-the-pharmaceutical-preparations-industry" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cov_Pharm</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">LIST</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>name</th>
+      <th>JOHNSON &amp; JOHNSON</th>
+      <th>ACHILLION PHARMACEUTICALS INC</th>
+      <th>VTV THERAPEUTICS INC.</th>
+      <th>HEAT BIOLOGICS, INC.</th>
+      <th>AKORN INC</th>
+      <th>TEVA PHARMACEUTICAL INDUSTRIES LTD</th>
+      <th>ONCOSEC MEDICAL INC</th>
+      <th>WAVE LIFE SCIENCES LTD.</th>
+      <th>EYEGATE PHARMACEUTICALS INC</th>
+      <th>IONIS PHARMACEUTICALS INC</th>
+      <th>...</th>
+      <th>RETROPHIN, INC.</th>
+      <th>IRONWOOD PHARMACEUTICALS INC</th>
+      <th>RXI PHARMACEUTICALS CORP</th>
+      <th>CHEMBIO DIAGNOSTICS, INC.</th>
+      <th>PTC THERAPEUTICS, INC.</th>
+      <th>OPHTHOTECH CORP.</th>
+      <th>ACHAOGEN INC</th>
+      <th>FLEXION THERAPEUTICS INC</th>
+      <th>CATALYST PHARMACEUTICALS, INC.</th>
+      <th>PROTHENA CORP PLC</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>JOHNSON &amp; JOHNSON</th>
+      <td>0.001999</td>
+      <td>0.002152</td>
+      <td>-0.002487</td>
+      <td>-0.003021</td>
+      <td>0.004255</td>
+      <td>0.001027</td>
+      <td>0.001495</td>
+      <td>-0.000148</td>
+      <td>0.002694</td>
+      <td>0.000787</td>
+      <td>...</td>
+      <td>-0.000199</td>
+      <td>0.001663</td>
+      <td>0.000164</td>
+      <td>-0.000031</td>
+      <td>-0.002392</td>
+      <td>0.000064</td>
+      <td>0.001111</td>
+      <td>0.000971</td>
+      <td>0.000931</td>
+      <td>0.000863</td>
+    </tr>
+    <tr>
+      <th>ACHILLION PHARMACEUTICALS INC</th>
+      <td>0.002152</td>
+      <td>0.031051</td>
+      <td>-0.024456</td>
+      <td>-0.007587</td>
+      <td>0.003149</td>
+      <td>-0.003233</td>
+      <td>0.000432</td>
+      <td>0.003100</td>
+      <td>-0.006993</td>
+      <td>-0.004009</td>
+      <td>...</td>
+      <td>0.003152</td>
+      <td>0.004471</td>
+      <td>-0.001036</td>
+      <td>-0.002417</td>
+      <td>-0.001051</td>
+      <td>0.006983</td>
+      <td>0.001054</td>
+      <td>0.009767</td>
+      <td>0.006436</td>
+      <td>0.001305</td>
+    </tr>
+    <tr>
+      <th>VTV THERAPEUTICS INC.</th>
+      <td>-0.002487</td>
+      <td>-0.024456</td>
+      <td>0.249475</td>
+      <td>-0.025252</td>
+      <td>-0.039872</td>
+      <td>-0.010530</td>
+      <td>0.011680</td>
+      <td>-0.013002</td>
+      <td>-0.001515</td>
+      <td>-0.006597</td>
+      <td>...</td>
+      <td>-0.003378</td>
+      <td>-0.033267</td>
+      <td>-0.035699</td>
+      <td>-0.021235</td>
+      <td>-0.004191</td>
+      <td>-0.000552</td>
+      <td>0.002859</td>
+      <td>-0.028527</td>
+      <td>-0.029317</td>
+      <td>0.012677</td>
+    </tr>
+    <tr>
+      <th>HEAT BIOLOGICS, INC.</th>
+      <td>-0.003021</td>
+      <td>-0.007587</td>
+      <td>-0.025252</td>
+      <td>0.114481</td>
+      <td>-0.005095</td>
+      <td>-0.002655</td>
+      <td>-0.017062</td>
+      <td>0.021159</td>
+      <td>0.015481</td>
+      <td>0.025707</td>
+      <td>...</td>
+      <td>0.005753</td>
+      <td>0.012272</td>
+      <td>0.028633</td>
+      <td>0.002892</td>
+      <td>0.040970</td>
+      <td>0.012574</td>
+      <td>-0.018732</td>
+      <td>-0.000938</td>
+      <td>0.024567</td>
+      <td>0.006549</td>
+    </tr>
+    <tr>
+      <th>AKORN INC</th>
+      <td>0.004255</td>
+      <td>0.003149</td>
+      <td>-0.039872</td>
+      <td>-0.005095</td>
+      <td>0.037979</td>
+      <td>0.008522</td>
+      <td>0.000658</td>
+      <td>-0.010139</td>
+      <td>0.004524</td>
+      <td>0.004382</td>
+      <td>...</td>
+      <td>0.002611</td>
+      <td>0.010348</td>
+      <td>0.010589</td>
+      <td>0.010349</td>
+      <td>0.003618</td>
+      <td>0.004878</td>
+      <td>0.006662</td>
+      <td>0.007562</td>
+      <td>0.005256</td>
+      <td>0.016777</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>OPHTHOTECH CORP.</th>
+      <td>0.000064</td>
+      <td>0.006983</td>
+      <td>-0.000552</td>
+      <td>0.012574</td>
+      <td>0.004878</td>
+      <td>0.003012</td>
+      <td>0.017661</td>
+      <td>0.017766</td>
+      <td>-0.011197</td>
+      <td>-0.002165</td>
+      <td>...</td>
+      <td>0.006386</td>
+      <td>0.003526</td>
+      <td>0.017172</td>
+      <td>0.001960</td>
+      <td>-0.001052</td>
+      <td>0.044025</td>
+      <td>-0.030769</td>
+      <td>0.007407</td>
+      <td>0.013191</td>
+      <td>0.009056</td>
+    </tr>
+    <tr>
+      <th>ACHAOGEN INC</th>
+      <td>0.001111</td>
+      <td>0.001054</td>
+      <td>0.002859</td>
+      <td>-0.018732</td>
+      <td>0.006662</td>
+      <td>-0.002086</td>
+      <td>0.006631</td>
+      <td>-0.008309</td>
+      <td>-0.000641</td>
+      <td>0.007579</td>
+      <td>...</td>
+      <td>0.004455</td>
+      <td>0.008527</td>
+      <td>-0.006720</td>
+      <td>-0.000546</td>
+      <td>0.012414</td>
+      <td>-0.030769</td>
+      <td>0.097615</td>
+      <td>0.010023</td>
+      <td>0.002311</td>
+      <td>0.000702</td>
+    </tr>
+    <tr>
+      <th>FLEXION THERAPEUTICS INC</th>
+      <td>0.000971</td>
+      <td>0.009767</td>
+      <td>-0.028527</td>
+      <td>-0.000938</td>
+      <td>0.007562</td>
+      <td>0.004530</td>
+      <td>0.002549</td>
+      <td>0.008684</td>
+      <td>0.007866</td>
+      <td>-0.000903</td>
+      <td>...</td>
+      <td>0.005509</td>
+      <td>0.007071</td>
+      <td>0.004726</td>
+      <td>0.000113</td>
+      <td>-0.002383</td>
+      <td>0.007407</td>
+      <td>0.010023</td>
+      <td>0.024336</td>
+      <td>0.018099</td>
+      <td>0.001796</td>
+    </tr>
+    <tr>
+      <th>CATALYST PHARMACEUTICALS, INC.</th>
+      <td>0.000931</td>
+      <td>0.006436</td>
+      <td>-0.029317</td>
+      <td>0.024567</td>
+      <td>0.005256</td>
+      <td>0.004353</td>
+      <td>0.015884</td>
+      <td>0.018079</td>
+      <td>-0.001837</td>
+      <td>-0.000591</td>
+      <td>...</td>
+      <td>-0.000091</td>
+      <td>0.008460</td>
+      <td>0.021144</td>
+      <td>0.005293</td>
+      <td>0.001104</td>
+      <td>0.013191</td>
+      <td>0.002311</td>
+      <td>0.018099</td>
+      <td>0.049876</td>
+      <td>-0.006085</td>
+    </tr>
+    <tr>
+      <th>PROTHENA CORP PLC</th>
+      <td>0.000863</td>
+      <td>0.001305</td>
+      <td>0.012677</td>
+      <td>0.006549</td>
+      <td>0.016777</td>
+      <td>0.002212</td>
+      <td>0.003472</td>
+      <td>-0.005593</td>
+      <td>0.000684</td>
+      <td>0.015419</td>
+      <td>...</td>
+      <td>0.007092</td>
+      <td>0.005318</td>
+      <td>0.011297</td>
+      <td>0.000290</td>
+      <td>0.019717</td>
+      <td>0.009056</td>
+      <td>0.000702</td>
+      <td>0.001796</td>
+      <td>-0.006085</td>
+      <td>0.043454</td>
+    </tr>
+  </tbody>
+</table>
+<p>124 rows × 124 columns</p>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="efficient-frontier-pharmaceutical-preparations">
@@ -681,6 +1022,7 @@ Sharpe Ratio: -0.35
 </div>
 </div>
 </div>
+<p><img alt="min_vol_returns" src="../../_images/min_vol_returns.png" /></p>
 <div>
 <img src="images/min_vol_returns.png" width="300"/>
 </div></div>
@@ -694,7 +1036,7 @@ Sharpe Ratio: -0.35
 <h3>Prepackaged Software (mass reproduction of software)<a class="headerlink" href="#prepackaged-software-mass-reproduction-of-software" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_24_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_24_0.png" />
+<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_25_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_25_0.png" />
 </div>
 </div>
 <div class="section" id="id1">
@@ -708,8 +1050,9 @@ Sharpe Ratio: -0.57
 </div>
 </div>
 </div>
+<p><img alt="min_vol_sample_Prepackaged_Software.png" src="content/peitong/attachment:min_vol_sample_Prepackaged_Software.png" /></p>
 <div>
-<img src="images/min_vol_samplePrepackaged Software (mass reproduction of software).png" width="300"/>
+<img src="images/min_vol_sample_Prepackaged_Software.png" width="300"/>
 </div></div>
 </div>
 <div class="section" id="crude-petroleum-and-natural-gas">
@@ -720,7 +1063,7 @@ Sharpe Ratio: -0.57
 <h3>Real Estate Investment Trusts<a class="headerlink" href="#real-estate-investment-trusts" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_30_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_30_0.png" />
+<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_32_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_32_0.png" />
 </div>
 </div>
 <div class="section" id="id2">
@@ -734,15 +1077,16 @@ Sharpe Ratio: -0.80
 </div>
 </div>
 </div>
+<p><img alt="min_vol_sample_Real_Estate_Investment_Trusts.png" src="content/peitong/attachment:min_vol_sample_Real_Estate_Investment_Trusts.png" /></p>
 <div>
-<img src="images/min_vol_sampleReal Estate Investment Trusts.png" width="300"/>
+<img src="images/min_vol_sample_Real_Estate_Investment_Trusts.png" width="300"/>
 </div></div>
 </div>
 <div class="section" id="state-commercial-banks-commercial-banking">
 <h3>State Commercial Banks (commercial banking)<a class="headerlink" href="#state-commercial-banks-commercial-banking" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_35_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_35_0.png" />
+<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_38_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_38_0.png" />
 </div>
 </div>
 <div class="section" id="id3">
@@ -756,8 +1100,9 @@ Sharpe Ratio: -0.28
 </div>
 </div>
 </div>
+<p><img alt="min_vol_sample_State_Commercial_Banks.png" src="content/peitong/attachment:min_vol_sample_State_Commercial_Banks.png" /></p>
 <div>
-<img src="images/min_vol_sampleState Commercial Banks (commercial banking).png" width="300"/>
+<img src="images/min_vol_sample_State_Commercial_Banks.png" width="300"/>
 </div></div>
 </div>
 </div>
