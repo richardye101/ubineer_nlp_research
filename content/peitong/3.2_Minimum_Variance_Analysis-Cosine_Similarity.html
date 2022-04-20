@@ -1568,6 +1568,8 @@ Sharpe Ratio: -0.32
         
 <span class="n">dic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Company_Name&#39;</span><span class="p">:</span><span class="n">companies</span><span class="p">,</span><span class="s1">&#39;Weight&#39;</span><span class="p">:</span><span class="n">weights</span><span class="p">}</span>
 <span class="n">min_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+<span class="n">min_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+<span class="n">min_vol</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/min_vol_cos_sim_Pharmaceutical_Preparations.csv&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1599,38 +1601,38 @@ Sharpe Ratio: -0.32
   <tbody>
     <tr>
       <th>0</th>
-      <td>LILLY ELI &amp; CO</td>
-      <td>0.03562</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>PFIZER INC</td>
-      <td>0.20000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ZOETIS INC.</td>
-      <td>0.20000</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>ARQULE INC</td>
       <td>0.00068</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>LILLY ELI &amp; CO</td>
+      <td>0.03562</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>XENCOR INC</td>
+      <td>0.02108</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>HERON THERAPEUTICS, INC. /DE/</td>
+      <td>0.00906</td>
+    </tr>
+    <tr>
       <th>4</th>
-      <td>JOHNSON &amp; JOHNSON</td>
-      <td>0.18756</td>
+      <td>BRISTOL MYERS SQUIBB CO</td>
+      <td>0.03719</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>PACIRA PHARMACEUTICALS, INC.</td>
-      <td>0.01883</td>
+      <td>BIOMARIN PHARMACEUTICAL INC</td>
+      <td>0.04572</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>BIOMARIN PHARMACEUTICAL INC</td>
-      <td>0.04572</td>
+      <td>ZOETIS INC.</td>
+      <td>0.20000</td>
     </tr>
     <tr>
       <th>7</th>
@@ -1639,33 +1641,33 @@ Sharpe Ratio: -0.32
     </tr>
     <tr>
       <th>8</th>
-      <td>BIOSPECIFICS TECHNOLOGIES CORP</td>
-      <td>0.07394</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>PERRIGO CO PLC</td>
-      <td>0.01497</td>
-    </tr>
-    <tr>
-      <th>10</th>
       <td>MERCK &amp; CO., INC.</td>
       <td>0.13753</td>
     </tr>
     <tr>
+      <th>9</th>
+      <td>JOHNSON &amp; JOHNSON</td>
+      <td>0.18756</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>BIOSPECIFICS TECHNOLOGIES CORP</td>
+      <td>0.07394</td>
+    </tr>
+    <tr>
       <th>11</th>
-      <td>BRISTOL MYERS SQUIBB CO</td>
-      <td>0.03719</td>
+      <td>PFIZER INC</td>
+      <td>0.20000</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>XENCOR INC</td>
-      <td>0.02108</td>
+      <td>PACIRA PHARMACEUTICALS, INC.</td>
+      <td>0.01883</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>HERON THERAPEUTICS, INC. /DE/</td>
-      <td>0.00906</td>
+      <td>PERRIGO CO PLC</td>
+      <td>0.01497</td>
     </tr>
   </tbody>
 </table>
@@ -1703,6 +1705,8 @@ Sharpe Ratio: -0.30
 <div class="section" id="id3">
 <h5>Weights<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
 <div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1729,28 +1733,28 @@ Sharpe Ratio: -0.30
   <tbody>
     <tr>
       <th>0</th>
-      <td>Q2 HOLDINGS, INC.</td>
-      <td>0.06190</td>
+      <td>REALPAGE INC</td>
+      <td>0.02937</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AWARE INC /MA/</td>
-      <td>0.02316</td>
+      <td>ORACLE CORP</td>
+      <td>0.16315</td>
     </tr>
     <tr>
       <th>2</th>
+      <td>GSE SYSTEMS INC</td>
+      <td>0.04031</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>INTELLICHECK, INC.</td>
       <td>0.00938</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>ANSYS INC</td>
-      <td>0.15390</td>
-    </tr>
-    <tr>
       <th>4</th>
-      <td>GSE SYSTEMS INC</td>
-      <td>0.04031</td>
+      <td>Q2 HOLDINGS, INC.</td>
+      <td>0.06190</td>
     </tr>
     <tr>
       <th>5</th>
@@ -1759,38 +1763,38 @@ Sharpe Ratio: -0.30
     </tr>
     <tr>
       <th>6</th>
-      <td>ORACLE CORP</td>
-      <td>0.16315</td>
+      <td>ANSYS INC</td>
+      <td>0.15390</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>ULTIMATE SOFTWARE GROUP INC</td>
-      <td>0.10350</td>
+      <td>NATIONAL INSTRUMENTS CORP</td>
+      <td>0.09372</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>ZEDGE, INC.</td>
-      <td>0.00391</td>
-    </tr>
-    <tr>
-      <th>9</th>
       <td>NUANCE COMMUNICATIONS, INC.</td>
       <td>0.05947</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>9</th>
       <td>BLACK KNIGHT, INC.</td>
       <td>0.20000</td>
     </tr>
     <tr>
+      <th>10</th>
+      <td>ZEDGE, INC.</td>
+      <td>0.00391</td>
+    </tr>
+    <tr>
       <th>11</th>
-      <td>REALPAGE INC</td>
-      <td>0.02937</td>
+      <td>AWARE INC /MA/</td>
+      <td>0.02316</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>NATIONAL INSTRUMENTS CORP</td>
-      <td>0.09372</td>
+      <td>ULTIMATE SOFTWARE GROUP INC</td>
+      <td>0.10350</td>
     </tr>
     <tr>
       <th>13</th>
@@ -1812,7 +1816,7 @@ Sharpe Ratio: -0.30
 <h3>Real Estate Investment Trusts<a class="headerlink" href="#real-estate-investment-trusts" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_42_0.png" src="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_42_0.png" />
+<img alt="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_43_0.png" src="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_43_0.png" />
 </div>
 </div>
 <div class="section" id="id4">
@@ -1832,6 +1836,8 @@ Sharpe Ratio: -0.81
 <div class="section" id="id6">
 <h5>Weights<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
 <div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1858,23 +1864,23 @@ Sharpe Ratio: -0.81
   <tbody>
     <tr>
       <th>0</th>
-      <td>STARWOOD PROPERTY TRUST, INC.</td>
-      <td>0.01851</td>
+      <td>RAYONIER INC</td>
+      <td>0.00876</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>EQUITY COMMONWEALTH</td>
-      <td>0.16327</td>
+      <td>MFA FINANCIAL, INC.</td>
+      <td>0.05101</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>ANNALY CAPITAL MANAGEMENT INC</td>
-      <td>0.05094</td>
+      <td>EASTGROUP PROPERTIES INC</td>
+      <td>0.01785</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>EASTGROUP PROPERTIES INC</td>
-      <td>0.01785</td>
+      <td>GREAT AJAX CORP.</td>
+      <td>0.13806</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1883,13 +1889,13 @@ Sharpe Ratio: -0.81
     </tr>
     <tr>
       <th>5</th>
-      <td>MFA FINANCIAL, INC.</td>
-      <td>0.05101</td>
+      <td>HMG COURTLAND PROPERTIES INC</td>
+      <td>0.03187</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>DUKE REALTY CORP</td>
-      <td>0.05369</td>
+      <td>EQUINIX INC</td>
+      <td>0.07068</td>
     </tr>
     <tr>
       <th>7</th>
@@ -1898,53 +1904,53 @@ Sharpe Ratio: -0.81
     </tr>
     <tr>
       <th>8</th>
-      <td>RAYONIER INC</td>
-      <td>0.00876</td>
+      <td>STARWOOD PROPERTY TRUST, INC.</td>
+      <td>0.01851</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>HMG COURTLAND PROPERTIES INC</td>
-      <td>0.03187</td>
-    </tr>
-    <tr>
-      <th>10</th>
       <td>HEALTHCARE TRUST OF AMERICA, INC.</td>
       <td>0.02052</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>ALEXANDERS INC</td>
-      <td>0.01487</td>
-    </tr>
-    <tr>
-      <th>12</th>
+      <th>10</th>
       <td>PUBLIC STORAGE</td>
       <td>0.06339</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>11</th>
       <td>SUN COMMUNITIES INC</td>
       <td>0.14907</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>EQUINIX INC</td>
-      <td>0.07068</td>
+      <th>12</th>
+      <td>DUKE REALTY CORP</td>
+      <td>0.05369</td>
     </tr>
     <tr>
-      <th>15</th>
-      <td>GREAT AJAX CORP.</td>
-      <td>0.13806</td>
-    </tr>
-    <tr>
-      <th>16</th>
+      <th>13</th>
       <td>LTC PROPERTIES INC</td>
       <td>0.00036</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>14</th>
+      <td>ANNALY CAPITAL MANAGEMENT INC</td>
+      <td>0.05094</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ALEXANDERS INC</td>
+      <td>0.01487</td>
+    </tr>
+    <tr>
+      <th>16</th>
       <td>HIGHWOODS PROPERTIES INC</td>
       <td>0.05347</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>EQUITY COMMONWEALTH</td>
+      <td>0.16327</td>
     </tr>
   </tbody>
 </table>
@@ -1957,7 +1963,7 @@ Sharpe Ratio: -0.81
 <h3>State Commercial Banks (commercial banking)<a class="headerlink" href="#state-commercial-banks-commercial-banking" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_49_0.png" src="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_49_0.png" />
+<img alt="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_51_0.png" src="../../_images/3.2_Minimum_Variance_Analysis-Cosine_Similarity_51_0.png" />
 </div>
 </div>
 <div class="section" id="id7">
@@ -1977,6 +1983,8 @@ Sharpe Ratio: -0.38
 <div class="section" id="id9">
 <h5>Weights<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h5>
 <div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2003,63 +2011,63 @@ Sharpe Ratio: -0.38
   <tbody>
     <tr>
       <th>0</th>
-      <td>ENTERPRISE FINANCIAL SERVICES CORP</td>
-      <td>0.07078</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>EAST WEST BANCORP INC</td>
-      <td>0.08342</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>S&amp;T BANCORP INC</td>
-      <td>0.05201</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>BANK OF NEW YORK MELLON CORP</td>
-      <td>0.09816</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>BANK OF HAWAII CORP</td>
-      <td>0.04935</td>
-    </tr>
-    <tr>
-      <th>5</th>
       <td>HOWARD BANCORP INC</td>
       <td>0.02931</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>UNITY BANCORP INC /NJ/</td>
-      <td>0.01179</td>
-    </tr>
-    <tr>
-      <th>7</th>
+      <th>1</th>
       <td>CITIZENS &amp; NORTHERN CORP</td>
       <td>0.11305</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>INDEPENDENT BANK CORP /MI/</td>
-      <td>0.09540</td>
+      <th>2</th>
+      <td>EAST WEST BANCORP INC</td>
+      <td>0.08342</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>CB FINANCIAL SERVICES, INC.</td>
-      <td>0.02883</td>
+      <th>3</th>
+      <td>UNITY BANCORP INC /NJ/</td>
+      <td>0.01179</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>4</th>
+      <td>S&amp;T BANCORP INC</td>
+      <td>0.05201</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>BANK OF HAWAII CORP</td>
+      <td>0.04935</td>
+    </tr>
+    <tr>
+      <th>6</th>
       <td>BANNER CORP</td>
       <td>0.20000</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>7</th>
       <td>INVESTAR HOLDING CORP</td>
       <td>0.16789</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>BANK OF NEW YORK MELLON CORP</td>
+      <td>0.09816</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>INDEPENDENT BANK CORP /MI/</td>
+      <td>0.09540</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>CB FINANCIAL SERVICES, INC.</td>
+      <td>0.02883</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ENTERPRISE FINANCIAL SERVICES CORP</td>
+      <td>0.07078</td>
     </tr>
   </tbody>
 </table>
