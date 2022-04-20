@@ -381,7 +381,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#results-for-the-other-4-industries">
-   Results for the other 4 industries
+   Results for the Other 4 Industries
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -483,7 +483,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#results-for-the-other-4-industries">
-   Results for the other 4 industries
+   Results for the Other 4 Industries
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -542,6 +542,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="estimates-from-sample-covariance">
 <h1>Estimates from Sample Covariance<a class="headerlink" href="#estimates-from-sample-covariance" title="Permalink to this headline">¶</a></h1>
+<p>The portfolios we constructed in this notebook serve as reference to the portfolios using cosine similarity estimates and factor model estimates. Here, we simply use the sample return and sample covariance to generate portfolios for each industry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -680,172 +681,20 @@ Sharpe Ratio: -0.35
 </div>
 </div>
 </div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0420/040847.097844:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0420/040847.399831:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0420/040848.833552:INFO:headless_shell.cc(659)] Written to file /tmp/tmpth0ias8n/temp.png.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_vol</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Company_Name</th>
-      <th>Weight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ORAMED PHARMACEUTICALS INC.</td>
-      <td>0.04982</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>STEMLINE THERAPEUTICS INC</td>
-      <td>0.04273</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>MANNKIND CORP</td>
-      <td>0.02048</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>CYTOMX THERAPEUTICS, INC.</td>
-      <td>0.00520</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>RECRO PHARMA, INC.</td>
-      <td>0.02010</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>LIPOCINE INC.</td>
-      <td>0.00683</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>XENON PHARMACEUTICALS INC.</td>
-      <td>0.01350</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>BIODELIVERY SCIENCES INTERNATIONAL INC</td>
-      <td>0.03680</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>ZOETIS INC.</td>
-      <td>0.01195</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>ARATANA THERAPEUTICS, INC.</td>
-      <td>0.03678</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>ASSEMBLY BIOSCIENCES, INC.</td>
-      <td>0.05775</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>HEAT BIOLOGICS, INC.</td>
-      <td>0.00297</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>MERCK &amp; CO., INC.</td>
-      <td>0.20000</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>VTV THERAPEUTICS INC.</td>
-      <td>0.02372</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>PFENEX INC.</td>
-      <td>0.03777</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>ACHAOGEN INC</td>
-      <td>0.00515</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>BRISTOL MYERS SQUIBB CO</td>
-      <td>0.12824</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>IMPRIMIS PHARMACEUTICALS, INC.</td>
-      <td>0.04181</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>JOHNSON &amp; JOHNSON</td>
-      <td>0.17878</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>PROPHASE LABS, INC.</td>
-      <td>0.05120</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>CHEMBIO DIAGNOSTICS, INC.</td>
-      <td>0.02843</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</div>
+<div>
+<img src="images/min_vol_returns.png" width="300"/>
+</div></div>
 </div>
 </div>
 <div class="section" id="results-for-the-other-4-industries">
-<h2>Results for the other 4 industries<a class="headerlink" href="#results-for-the-other-4-industries" title="Permalink to this headline">¶</a></h2>
+<h2>Results for the Other 4 Industries<a class="headerlink" href="#results-for-the-other-4-industries" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="section" id="prepackaged-software-mass-reproduction-of-software">
 <h3>Prepackaged Software (mass reproduction of software)<a class="headerlink" href="#prepackaged-software-mass-reproduction-of-software" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_26_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_26_0.png" />
+<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_24_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_24_0.png" />
 </div>
 </div>
 <div class="section" id="id1">
@@ -859,118 +708,9 @@ Sharpe Ratio: -0.57
 </div>
 </div>
 </div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0420/040850.289848:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
-[0420/040850.331919:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
-[0420/040850.464711:INFO:headless_shell.cc(659)] Written to file /tmp/tmpuhdxxbjk/temp.png.
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Company_Name</th>
-      <th>Weight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>QUALYS, INC.</td>
-      <td>0.06668</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ROSETTA STONE INC</td>
-      <td>0.01647</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>LIVEPERSON INC</td>
-      <td>0.01519</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>AVID TECHNOLOGY, INC.</td>
-      <td>0.00129</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ZEDGE, INC.</td>
-      <td>0.01792</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>AWARE INC /MA/</td>
-      <td>0.20000</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>BLACK KNIGHT, INC.</td>
-      <td>0.20000</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>MICROSTRATEGY INC</td>
-      <td>0.02160</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>ACI WORLDWIDE, INC.</td>
-      <td>0.11314</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>COMMVAULT SYSTEMS INC</td>
-      <td>0.07381</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>MAJESCO</td>
-      <td>0.01906</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>ENDURANCE INTERNATIONAL GROUP HOLDINGS, INC.</td>
-      <td>0.02554</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>ORACLE CORP</td>
-      <td>0.09170</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>QUMU CORP</td>
-      <td>0.05153</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>NUANCE COMMUNICATIONS, INC.</td>
-      <td>0.08608</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</div>
+<div>
+<img src="images/min_vol_samplePrepackaged Software (mass reproduction of software).png" width="300"/>
+</div></div>
 </div>
 <div class="section" id="crude-petroleum-and-natural-gas">
 <h3>Crude Petroleum and Natural Gas<a class="headerlink" href="#crude-petroleum-and-natural-gas" title="Permalink to this headline">¶</a></h3>
@@ -980,7 +720,7 @@ Sharpe Ratio: -0.57
 <h3>Real Estate Investment Trusts<a class="headerlink" href="#real-estate-investment-trusts" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_33_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_33_0.png" />
+<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_30_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_30_0.png" />
 </div>
 </div>
 <div class="section" id="id2">
@@ -994,114 +734,15 @@ Sharpe Ratio: -0.80
 </div>
 </div>
 </div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0420/040852.870135:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
-[0420/040852.914027:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
-[0420/040853.067504:INFO:headless_shell.cc(659)] Written to file /tmp/tmpdsymhmtl/temp.png.
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Company_Name</th>
-      <th>Weight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ARES COMMERCIAL REAL ESTATE CORP</td>
-      <td>0.09123</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>HMG COURTLAND PROPERTIES INC</td>
-      <td>0.12520</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>IMPAC MORTGAGE HOLDINGS INC</td>
-      <td>0.05104</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>GREAT AJAX CORP.</td>
-      <td>0.20000</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>NEW YORK MORTGAGE TRUST INC</td>
-      <td>0.02065</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>CIM COMMERCIAL TRUST CORP</td>
-      <td>0.05453</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>MANHATTAN BRIDGE CAPITAL, INC</td>
-      <td>0.01480</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>EQUITY COMMONWEALTH</td>
-      <td>0.20000</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>BRT APARTMENTS CORP.</td>
-      <td>0.01720</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>CROWN CASTLE INTERNATIONAL CORP</td>
-      <td>0.04853</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>PUBLIC STORAGE</td>
-      <td>0.10950</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>LADDER CAPITAL CORP</td>
-      <td>0.04406</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>ALEXANDERS INC</td>
-      <td>0.02292</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</div>
+<div>
+<img src="images/min_vol_sampleReal Estate Investment Trusts.png" width="300"/>
+</div></div>
 </div>
 <div class="section" id="state-commercial-banks-commercial-banking">
 <h3>State Commercial Banks (commercial banking)<a class="headerlink" href="#state-commercial-banks-commercial-banking" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_39_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_39_0.png" />
+<img alt="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_35_0.png" src="../../_images/3.1_Minimum_Variance_Analysis-Sample_Estimates_35_0.png" />
 </div>
 </div>
 <div class="section" id="id3">
@@ -1115,98 +756,9 @@ Sharpe Ratio: -0.28
 </div>
 </div>
 </div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0420/040855.036725:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
-[0420/040855.080006:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
-[0420/040855.212346:INFO:headless_shell.cc(659)] Written to file /tmp/tmpnq8e0u8w/temp.png.
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Company_Name</th>
-      <th>Weight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>BANK OF THE JAMES FINANCIAL GROUP INC</td>
-      <td>0.00178</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>MACKINAC FINANCIAL CORP /MI/</td>
-      <td>0.02478</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>INVESTAR HOLDING CORP</td>
-      <td>0.19440</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>BANK OF NEW YORK MELLON CORP</td>
-      <td>0.09533</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>GUARANTY FEDERAL BANCSHARES INC</td>
-      <td>0.17724</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>RELIANT BANCORP, INC.</td>
-      <td>0.12273</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>FAUQUIER BANKSHARES, INC.</td>
-      <td>0.02143</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>FIRST COMMUNITY CORP /SC/</td>
-      <td>0.05076</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>CITIZENS &amp; NORTHERN CORP</td>
-      <td>0.05375</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>VILLAGE BANK &amp; TRUST FINANCIAL CORP.</td>
-      <td>0.13994</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>CAROLINA TRUST BANCSHARES, INC.</td>
-      <td>0.11786</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</div>
+<div>
+<img src="images/min_vol_sampleState Commercial Banks (commercial banking).png" width="300"/>
+</div></div>
 </div>
 </div>
 </div>
