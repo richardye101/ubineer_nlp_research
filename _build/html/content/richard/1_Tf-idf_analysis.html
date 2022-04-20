@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word embedding using tf-idf matrices &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="N-grams Embeddings - Cosine Similarity Analysis" href="../peitong/1_Cosine_Similarity_Distances.html" />
+    <link rel="prev" title="Document Embedding" href="../mary/Report_Embedding_Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/favicon.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Unsupervised analysis of Textual data from 10K Financial Reports</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   <center>
+    Unsupervised analysis of Textual data from 10K Financial Reports
+   </center>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0_Methods.html">
+   Our Setup: Data ETL and Methods of evaluation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0_1-Visualization.html">
+   Visualizing our work
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Document Embedding
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mary/Report_Embedding_Introduction.html">
+   Document Embedding
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Word embedding using tf-idf matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/1_Cosine_Similarity_Distances.html">
+   N-grams Embeddings - Cosine Similarity Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/2_Part_of_Speech_Tagging.html">
+   Part-of-Speech (POS) Tagging - Cosine Similarity Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Word2Vec.html">
+   Word2vec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Doc2Vec.html">
+   Doc2Vec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mary/Report_TwoTowers.html">
+   Two Towers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mary/Report_USE.html">
+   Universal Sentence Encoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mary/Report_Embedding_Results.html">
+   Document Embedding Results
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topic Modelling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mary/Report_Topic_Modelling_Introduction.html">
+   Topic Modelling Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_LDA_topic_modelling.html">
+   LDA (Latent Dirichlet Allocation)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_LSA_topic_modelling.html">
+   LSA (Latent Semantic Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic Modelling Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mary/Report_Dynamic_Modelling_Introduction.html">
+   Dynamic Modelling Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Dynamic_Embedding.html">
+   Dynamic Company Embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mary/Report_Topic_Modelling.html">
+   Dynamic Topic Modelling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/3_Minimum_Variance_Analysis.html">
+   Mean-Variance Analysis - Minimum Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/3.1_Minimum_Variance_Analysis-Sample_Estimates.html">
+   Estimates from Sample Covariance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/3.2_Minimum_Variance_Analysis-Cosine_Similarity.html">
+   Estimates from Cosine Similarity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/3.3_Minimum_Variance_Analysis-Factor_Model.html">
+   Estimates from Factor Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peitong/3.4_Minimum_Variance_Analysis_Results.html">
+   Porfolio Analysis Results
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/richard/1_Tf-idf_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/richardye101/ubineer_nlp_research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/richardye101/ubineer_nlp_research/issues/new?title=Issue%20on%20page%20%2Fcontent/richard/1_Tf-idf_analysis.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/richardye101/ubineer_nlp_research/main?urlpath=tree/../content/content/richard/1_Tf-idf_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-evaluation">
+   Performance Evaluation
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Word embedding using tf-idf matrices</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-evaluation">
+   Performance Evaluation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="word-embedding-using-tf-idf-matrices">
+<h1>Word embedding using tf-idf matrices<a class="headerlink" href="#word-embedding-using-tf-idf-matrices" title="Permalink to this headline">¶</a></h1>
+<p>This notebook explores using tf-idf matrices to create these company embeddings.</p>
+<p>Tf-Idf stands for <em>term frequency - inverse document frequency</em>. Each row in this matrix represents one document (in this case, one annaul report of a given company) and each column represents a word (or a sequence of words called an n-gram, like “University of Toronto”).</p>
+<p>A term frequency matrix has the count of occurences of a given word for each document, while a tf-idf matrix performs a transformation on that term frequency matrix. The computation for each cell is as follows:</p>
+<!-- \begin{align*}
+\text{tf-idf}(t,d) &= \text{tf}(t,d) \cdot \text{idf}(t,d)\\ \\
+\text{Where: } \quad \text{tf}(t,d) &= |t| \text{ in } d\\ \\
+\text{idf}(t,d) &= \log\frac{N}{\text{df}(t)}\\
+\end{align*} -->
+<p><img alt="math" src="../../_images/tfidf_1.png" /></p>
+<ul class="simple">
+<li><p>Where <strong>t</strong> is the current term we are process, and <strong>d</strong> is the current document we are looking in</p></li>
+<li><p>Where <strong>N</strong> is the total number of documents in the document set and <strong>df(t)</strong> is the document frequency of t;</p>
+<ul>
+<li><p>The document frequency is the number of documents in the document set that contain the term t<br />
+^ From <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html">sklearn</a></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Why do we do this?</strong></p>
+<p>The purpose of a tf-idf transformation is give more importance to words that occur less frequently among all the documents. Common terms among financial documents like these could contain “financial” or “business” but they don’t provide any extra information to help us identify what makes a given company <em>unique</em>. tf-idf augments the term counts by giving higher weights to terms that are less common within the collection of documents but mentioned frequently in one document, implying these terms make this document special.</p>
+<p>We’ll be training two models from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>’s <code class="docutils literal notranslate"><span class="pre">feature_extraction</span></code>, first using a <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> to obtain term-frequencies of terms of size 2-4 (we do this as some terms such as “cloud computing” carry more meaning than those words do separately. We also only select the top 600 words by freqeuncy as the columns.</p>
+<p>The result is then piped into a <code class="docutils literal notranslate"><span class="pre">TfidfTransformer</span></code>, augmenting the values so the values more accurately represent the <strong>importance</strong> of a given term.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+<span class="o">%</span><span class="k">aimport</span> std_func
+
+<span class="c1"># Hide warnings</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/preprocessed.csv&quot;</span><span class="p">)</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+                                           <span class="n">stop_words</span> <span class="o">=</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)),</span>
+                  <span class="p">(</span><span class="s1">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">())])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;coDescription_stopwords&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are some of the terms we are left with after passing all our documents through the <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> and <code class="docutils literal notranslate"><span class="pre">TfidfTransformer</span></code>.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pipe</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())</span>
+<span class="n">feature_names</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">feature_names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pipe</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">feature_names</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;pipe&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see below, the matrix is quite sparse since some companies don’t contain any occurrences of some terms.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The tf-idf matrix</span>
+<span class="n">tfidf</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;coDescription_stopwords&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="n">tfidf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># The tf-idf matrix</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">tfidf</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;coDescription_stopwords&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;pipe&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a 2D PCA reduction of that 600 dimensional space. We’re plotting the first two dimensions, which capture the most variance.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">pca_visualize_2d</span><span class="p">(</span><span class="n">tfidf</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;SIC_desc&quot;</span><span class="p">]])</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>And this is a 3-dimensional plot which plots the first three dimensions. You can interact with it as well.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">std_func</span><span class="o">.</span><span class="n">pca_visualize_3d</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see from the above PCA plot of the first three dimensions that there are clearly terms which certain industries are more drawn toward. Unfortunately, the Real Estate and Software industries still seem quite closely clustered.</p>
+<p>We can look at the explained variance of each dimension the PCA embedding of our tf-idf matrix produced below:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># From the explained variance ratio, we see that the top three dimensions don&#39;t actually explain that much of the variation that exists within our data/companies.</span>
+<span class="n">plot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># From the explained variance ratio, we see that the top three dimensions don&#39;t actually explain that much of the variation that exists within our data/companies.</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">plot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+
+<span class="ne">NameError</span>: name &#39;plot&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the total variance explained by the top three dimensions:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;plot&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Based on the above, the top three principle components only explain 27.9% of the total variance that exists within the data.</p>
+<p>If you’d like to analyze how much a given term contributes to each of the 10 dimensions, please see the DataFrame hidden below:</p>
+<div class="cell tag_hide-output tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">components</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">plot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">components_</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">components</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">components</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;plot&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>And finally, this DataFrame is sorted by the amount each term contributes to the <strong>first</strong> dimension, which captures the most variance in our data. This tells us that the largest variations/spread of companies along the x axis in the 2D PCA plot measures how much a company has to with with Oil &amp; Gas, or real estate.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">components</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">components</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;components&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="performance-evaluation">
+<h2>Performance Evaluation<a class="headerlink" href="#performance-evaluation" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conf_mat</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">conf_mat</span><span class="p">(</span><span class="n">tfidf</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">conf_mat</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">conf_mat</span><span class="p">(</span><span class="n">tfidf</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_product_df</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">tfidf</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">dot_product_df</span><span class="p">[</span><span class="s2">&quot;y_true&quot;</span><span class="p">],</span> <span class="n">dot_product_df</span><span class="p">[</span><span class="s2">&quot;y_pred&quot;</span><span class="p">],</span> <span class="n">target_names</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;SIC_desc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dot_product_df</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">tfidf</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">dot_product_df</span><span class="p">[</span><span class="s2">&quot;y_true&quot;</span><span class="p">],</span> <span class="n">dot_product_df</span><span class="p">[</span><span class="s2">&quot;y_pred&quot;</span><span class="p">],</span> <span class="n">target_names</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;SIC_desc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+<span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the confusion matrix and the classification report, we can conclude that the tf-idf company embedding does a good job overall at classifying the category of the companies, except for the Pharmaceutical industry. More specifically, this model is best at classifying companies in the Commerical Banking industry.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/richard"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../mary/Report_Embedding_Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Document Embedding</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../peitong/1_Cosine_Similarity_Distances.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">N-grams Embeddings - Cosine Similarity Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Peitong Lu, Mary Xu, Richard Ye<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

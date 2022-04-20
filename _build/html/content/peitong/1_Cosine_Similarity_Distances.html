@@ -241,6 +241,11 @@ const thebe_selector_output = ".output, .cell_output"
    Estimates from Factor Model
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3.4_Minimum_Variance_Analysis_Results.html">
+   Porfolio Analysis Results
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -346,14 +351,21 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#words-counting">
-   Words Counting
+  <a class="reference internal nav-link" href="#cosine-similarity-analysis">
+   Cosine Similarity Analysis
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cosine-similarity-computation">
-   Cosine Similarity Computation
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#words-counting">
+     Words Counting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cosine-similarity-computation">
+     Cosine Similarity Computation
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#performance-evaluation">
@@ -405,14 +417,21 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#words-counting">
-   Words Counting
+  <a class="reference internal nav-link" href="#cosine-similarity-analysis">
+   Cosine Similarity Analysis
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cosine-similarity-computation">
-   Cosine Similarity Computation
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#words-counting">
+     Words Counting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cosine-similarity-computation">
+     Cosine Similarity Computation
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#performance-evaluation">
@@ -540,8 +559,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="section" id="cosine-similarity-analysis">
+<h2>Cosine Similarity Analysis<a class="headerlink" href="#cosine-similarity-analysis" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="words-counting">
-<h2>Words Counting<a class="headerlink" href="#words-counting" title="Permalink to this headline">¶</a></h2>
+<h3>Words Counting<a class="headerlink" href="#words-counting" title="Permalink to this headline">¶</a></h3>
 <p>For this cosine similarity analysis, we generate sequences of 2 to 4 words as one term and only select the top 600 terms by frequency.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -570,7 +591,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Here is the n-grams embedding matrix with the 600 2-to-4 grams as columns and the 675 companies as rows.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wordsCount</span>
 </pre></div>
@@ -914,9 +935,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="cosine-similarity-computation">
-<h2>Cosine Similarity Computation<a class="headerlink" href="#cosine-similarity-computation" title="Permalink to this headline">¶</a></h2>
+<h3>Cosine Similarity Computation<a class="headerlink" href="#cosine-similarity-computation" title="Permalink to this headline">¶</a></h3>
 <p>Now we take in the 2-to-4 grams embeddings to analyze the text similarity.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute Cosine Similarity</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
@@ -1271,12 +1292,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 </div>
+</div>
 <div class="section" id="performance-evaluation">
 <h2>Performance Evaluation<a class="headerlink" href="#performance-evaluation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="predictions-based-on-the-closest-cosine-similarity-distance">
 <h3>Predictions Based on the Closest Cosine Similarity Distance<a class="headerlink" href="#predictions-based-on-the-closest-cosine-similarity-distance" title="Permalink to this headline">¶</a></h3>
 <p>We use the closest neighborhood in terms of cosine similarity distances to evaluate the accuracy of the SIC classfication generated using 2-to-4 grams embeddings and cosine similarity distances.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_accuracy</span><span class="p">(</span><span class="n">cosine_sim</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 </pre></div>

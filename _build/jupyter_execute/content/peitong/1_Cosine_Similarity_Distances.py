@@ -37,7 +37,9 @@ df = pd.read_csv('../data/preprocessed.csv',
                            'coDescription_stopwords', 'SIC', 'SIC_desc'])
 
 
-# ### Words Counting
+# ### Cosine Similarity Analysis
+
+# #### Words Counting
 # For this cosine similarity analysis, we generate sequences of 2 to 4 words as one term and only select the top 600 terms by frequency.
 
 # In[4]:
@@ -66,7 +68,7 @@ wordsCount = wordsCount.set_index(df['name'])
 wordsCount
 
 
-# ### Cosine Similarity Computation
+# #### Cosine Similarity Computation
 # Now we take in the 2-to-4 grams embeddings to analyze the text similarity. 
 
 # In[7]:

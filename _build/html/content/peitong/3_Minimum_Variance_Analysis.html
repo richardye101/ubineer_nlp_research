@@ -241,6 +241,11 @@ const thebe_selector_output = ".output, .cell_output"
    Estimates from Factor Model
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3.4_Minimum_Variance_Analysis_Results.html">
+   Porfolio Analysis Results
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -474,37 +479,14 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="mean-variance-analysis-minimum-variance">
 <h1>Mean-Variance Analysis - Minimum Variance<a class="headerlink" href="#mean-variance-analysis-minimum-variance" title="Permalink to this headline">¶</a></h1>
 <p>Mean-variance analysis is a mathematical framework that examplifies the trade-off between return and risk. It is used to create diversified portfolios based on investors’ expectation. There are one main approach used in this report. We have the minimum volatility portfolio that concentrates on minimizing the risk of the portfolio. Mimimum variance portfolio can help us compare the correlation of simple sample covariance, covariance generated using cosine similarity distances and covariance generated using factor model in Sent-LDA.</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 </div>
 <div class="section" id="monthly-returns">
 <h2>Monthly Returns<a class="headerlink" href="#monthly-returns" title="Permalink to this headline">¶</a></h2>
 <p>Since we will generate cosine similarity estimate and factor model estimate using business description of companies from 2016 to 2018, we only consider monthly returns before 2019. We group the monthly stock returns data extracted from Wharton Research Data Services’s (WRDS) CRSP/Compustat database by company name and date first. After a selection of time span, from June 2016 to December 2018, we are able to get 31-month returns for 719 companies.</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_selected</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/filtered_r.csv&quot;</span><span class="p">)</span>
-<span class="c1"># get the mean of all </span>
-<span class="n">r_selected</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="n">r_selected</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="c1"># compute the covariance matrix </span>
-<span class="n">cov</span> <span class="o">=</span> <span class="n">r_selected</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
-</pre></div>
+<div class="cell tag_remove-input docutils container">
 </div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_selected</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -843,12 +825,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="sample-mean">
 <h3>Sample Mean<a class="headerlink" href="#sample-mean" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name
 1ST SOURCE CORP                  0.009076
@@ -870,12 +847,7 @@ Length: 719, dtype: float64
 </div>
 <div class="section" id="sample-covariance">
 <h3>Sample Covariance<a class="headerlink" href="#sample-covariance" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>

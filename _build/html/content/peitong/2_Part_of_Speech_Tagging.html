@@ -241,6 +241,11 @@ const thebe_selector_output = ".output, .cell_output"
    Estimates from Factor Model
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3.4_Minimum_Variance_Analysis_Results.html">
+   Porfolio Analysis Results
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -346,14 +351,21 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#word-counts-from-pos-tagging">
-   Word Counts from POS tagging
+  <a class="reference internal nav-link" href="#cosine-similarity-analysis">
+   Cosine Similarity Analysis
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cosine-similarity-computation-on-on-1-gram-nouns">
-   Cosine Similarity Computation on on 1-Gram Nouns
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#word-counts-from-pos-tagging">
+     Word Counts from POS tagging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cosine-similarity-computation-on-on-1-gram-nouns">
+     Cosine Similarity Computation on on 1-Gram Nouns
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#performance-evaluation">
@@ -405,14 +417,21 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#word-counts-from-pos-tagging">
-   Word Counts from POS tagging
+  <a class="reference internal nav-link" href="#cosine-similarity-analysis">
+   Cosine Similarity Analysis
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cosine-similarity-computation-on-on-1-gram-nouns">
-   Cosine Similarity Computation on on 1-Gram Nouns
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#word-counts-from-pos-tagging">
+     Word Counts from POS tagging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cosine-similarity-computation-on-on-1-gram-nouns">
+     Cosine Similarity Computation on on 1-Gram Nouns
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#performance-evaluation">
@@ -532,44 +551,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="section" id="cosine-similarity-analysis">
+<h2>Cosine Similarity Analysis<a class="headerlink" href="#cosine-similarity-analysis" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="word-counts-from-pos-tagging">
-<h2>Word Counts from POS tagging<a class="headerlink" href="#word-counts-from-pos-tagging" title="Permalink to this headline">¶</a></h2>
+<h3>Word Counts from POS tagging<a class="headerlink" href="#word-counts-from-pos-tagging" title="Permalink to this headline">¶</a></h3>
 <p>We select the words with the word type <code class="docutils literal notranslate"><span class="pre">Noun</span></code> and use <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.feature_extraction.text</span></code> to count the term frequency for each 1-gram noun and select the top 600 nouns by frequency</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import pattern</span>
-<span class="c1">#import collections</span>
-<span class="c1">#from pattern.en import parsetree, singularize</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#def extract_nouns(t):</span>
-<span class="c1">#    tree = parsetree(t)</span>
-<span class="c1">#    nouns = []</span>
-<span class="c1">#    for sentence in tree:</span>
-<span class="c1">#        for word in sentence:</span>
-<span class="c1">#            if &#39;NN&#39; in word.type:</span>
-<span class="c1">#                nouns.append(singularize(word.string))</span>
-<span class="c1">#    return &quot; &quot;.join(nouns)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pos_desc = df[&#39;coDescription_lemmatized&#39;].apply(extract_nouns).apply(remove_stopwords)</span>
-<span class="c1">#df[&#39;coDescription_pos&#39;] = pos_desc</span>
-<span class="c1">#df[&#39;coDescription_pos&#39;].head()</span>
-<span class="c1">#df.to_csv(&quot;nouns_only.csv&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/nouns_only.csv&#39;</span><span class="p">,</span>
@@ -947,7 +933,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="cosine-similarity-computation-on-on-1-gram-nouns">
-<h2>Cosine Similarity Computation on on 1-Gram Nouns<a class="headerlink" href="#cosine-similarity-computation-on-on-1-gram-nouns" title="Permalink to this headline">¶</a></h2>
+<h3>Cosine Similarity Computation on on 1-Gram Nouns<a class="headerlink" href="#cosine-similarity-computation-on-on-1-gram-nouns" title="Permalink to this headline">¶</a></h3>
 <p>To determine the similarity of each company’s business description, we use cosine similarity analysis on this POS-tagging with only nouns embeddings.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -1297,6 +1283,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 </div>
+</div>
 <div class="section" id="performance-evaluation">
 <h2>Performance Evaluation<a class="headerlink" href="#performance-evaluation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="predictions-based-on-the-closest-cosine-similarity-distance">
@@ -1311,7 +1298,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">get_accuracy</span><span class="p">(</span><span class="n">cosine_sim_pos_tag</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
@@ -1329,7 +1316,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cosine_sim_pos_tag_conf</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">conf_mat_cosine</span><span class="p">(</span><span class="n">cosine_sim_pos_tag</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">cosine_sim_pos_tag_conf</span>
 
@@ -1355,7 +1342,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_cos_pos_tag</span> <span class="o">=</span> <span class="n">std_func</span><span class="o">.</span><span class="n">pca_visualize_2d</span><span class="p">(</span><span class="n">cosine_sim_pos_tag</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;SIC_desc&quot;</span><span class="p">]])</span>
 
 <span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
@@ -1373,7 +1360,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">std_func</span><span class="o">.</span><span class="n">pca_visualize_3d</span><span class="p">(</span><span class="n">plot_cos_pos_tag</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;std_func&#39; is not defined
@@ -1393,7 +1380,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_cos_pos_tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
 
 <span class="ne">NameError</span>: name &#39;plot_cos_pos_tag&#39; is not defined
@@ -1411,7 +1398,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_cos_pos_tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
 <span class="ne">NameError</span>: name &#39;plot_cos_pos_tag&#39; is not defined
@@ -1434,7 +1421,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [17],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="s2">&quot;y_true&quot;</span><span class="p">],</span> <span class="n">prediction</span><span class="p">[</span><span class="s2">&quot;y_pred&quot;</span><span class="p">],</span> <span class="n">target_names</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;SIC_desc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
 

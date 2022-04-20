@@ -30,46 +30,12 @@ import seaborn as sns
 import string
 
 
-# ### Word Counts from POS tagging
+# ### Cosine Similarity Analysis
+
+# #### Word Counts from POS tagging
 # We select the words with the word type `Noun` and use `CountVectorizer` from `sklearn.feature_extraction.text` to count the term frequency for each 1-gram noun and select the top 600 nouns by frequency
 
 # In[3]:
-
-
-#import pattern
-#import collections
-#from pattern.en import parsetree, singularize
-
-
-# In[4]:
-
-
-#df['coDescription_lemmatized'][0:3].apply(extract_nouns)
-
-
-# In[5]:
-
-
-#def extract_nouns(t):
-#    tree = parsetree(t)
-#    nouns = []
-#    for sentence in tree:
-#        for word in sentence:
-#            if 'NN' in word.type:
-#                nouns.append(singularize(word.string))
-#    return " ".join(nouns)
-
-
-# In[6]:
-
-
-#pos_desc = df['coDescription_lemmatized'].apply(extract_nouns).apply(remove_stopwords)
-#df['coDescription_pos'] = pos_desc
-#df['coDescription_pos'].head()
-#df.to_csv("nouns_only.csv")
-
-
-# In[7]:
 
 
 df = pd.read_csv('data/nouns_only.csv',
@@ -78,7 +44,7 @@ df = pd.read_csv('data/nouns_only.csv',
 df = df.set_index(df.name)
 
 
-# In[8]:
+# In[4]:
 
 
 import nltk
@@ -88,7 +54,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
 
-# In[9]:
+# In[5]:
 
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -102,10 +68,10 @@ wordsCount_pos_tag = wordsCount_pos_tag.set_index(df['name'])
 wordsCount_pos_tag
 
 
-# ### Cosine Similarity Computation on on 1-Gram Nouns
+# #### Cosine Similarity Computation on on 1-Gram Nouns
 # To determine the similarity of each company's business description, we use cosine similarity analysis on this POS-tagging with only nouns embeddings.
 
-# In[10]:
+# In[6]:
 
 
 # Compute Cosine Similarity
@@ -120,13 +86,13 @@ cosine_sim_pos_tag
 # #### Predictions Based on the Closest Cosine Similarity Distance
 # We use the closest neighborhood in terms of cosine similarity distances to evaluate the accuracy of the SIC classfication generated using POS-tagging with only 1-gram nouns embeddings and cosine similarity distances.
 
-# In[11]:
+# In[7]:
 
 
 prediction, accuracy, cm = std_func.get_accuracy(cosine_sim_pos_tag, df)
 
 
-# In[12]:
+# In[8]:
 
 
 cosine_sim_pos_tag_conf = std_func.conf_mat_cosine(cosine_sim_pos_tag, df)
@@ -139,7 +105,7 @@ cosine_sim_pos_tag_conf
 # #### Plotting on the Cosine Similarity Matrix
 # We use PCA to automatically perform dimensionality reduction. First, we have a 2-D plot on cosine similarity matrix.
 
-# In[13]:
+# In[9]:
 
 
 plot_cos_pos_tag = std_func.pca_visualize_2d(cosine_sim_pos_tag, df.loc[:,["name","SIC_desc"]])
@@ -147,7 +113,7 @@ plot_cos_pos_tag = std_func.pca_visualize_2d(cosine_sim_pos_tag, df.loc[:,["name
 
 # Here we have a 3-D plot with the first three dimensions which maximize the most variance.
 
-# In[14]:
+# In[10]:
 
 
 std_func.pca_visualize_3d(plot_cos_pos_tag)
@@ -158,7 +124,7 @@ std_func.pca_visualize_3d(plot_cos_pos_tag)
 
 # We can look at the explained variance of each dimension the PCA embedding of our cosine similatiry matrix generated from POS-tagging with only 1-gram nouns embeddings produced below:
 
-# In[15]:
+# In[11]:
 
 
 plot_cos_pos_tag[0].explained_variance_ratio_
@@ -166,7 +132,7 @@ plot_cos_pos_tag[0].explained_variance_ratio_
 
 # The total explained variance of the first three dimensions are:
 
-# In[16]:
+# In[12]:
 
 
 plot_cos_pos_tag[0].explained_variance_ratio_[0:3].sum()
@@ -176,7 +142,7 @@ plot_cos_pos_tag[0].explained_variance_ratio_[0:3].sum()
 
 # ### Conclusion Reporting
 
-# In[17]:
+# In[13]:
 
 
 from sklearn.metrics import classification_report
