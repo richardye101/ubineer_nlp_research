@@ -281,3 +281,60 @@ def get_differences(topics, series1, series2):
     df = df[["weight_diff","words"]]
     df.sort_values(by=["weight_diff"], key=abs, ascending=False, inplace=True)
     return df  
+
+## dynamic company embedding code
+
+import functools
+import operator
+from datetime import datetime
+
+def deltas(final, embedding, features):
+    ignore_words = ["revenue","fiscal","year", "operating", "december", "ended", "administrative", "month", "company", "general", "also",
+                    "statement", "asset", "result", "term", "september", "accounting", "million"]
+    changes = [[],[],[],[],[]]
+    for i in final.loc[:,"CIK"]:
+        # i = final.loc[2,"CIK"]
+        company_name = final[final["CIK"] == i].loc[:,"Name"].unique()[0]
+        # Get the all company filings
+        company_filings = embedding[embedding["CIK"] == i].reset_index(drop=True)
+        # Get the change YoY in tfidf values
+        delta = pd.DataFrame(np.array(company_filings.iloc[1:,3:]) - np.array(company_filings.iloc[:-1,3:]), columns=features)
+        # named_delta = pd.concat([company_filings.loc[1:,["filingDate","CIK", "name"]].reset_index(drop=True),delta], axis = 1)
+        # Get the top 20 changed terms in YoY filings
+        for j in np.arange(company_filings.shape[0]-1):
+            word_delta = delta.iloc[j,:].sort_values(key=abs, ascending = False).reset_index()
+            word_delta['flagCol'] = np.where(word_delta.loc[:,"index"].str.contains('|'.join(ignore_words)),1,0)
+            words = word_delta[word_delta['flagCol'] == 0].iloc[:,:2].head(20).reset_index(drop=True).rename(columns = {"index":"topic",0:"delta"})
+            # year = datetime.strptime(company_filings.loc[j,"filingDate"], '%Y-%m-%d %H:%M:%S UTC').date().year
+            info = pd.concat([pd.Series(i).repeat(20), pd.Series(company_name).repeat(20),
+                              pd.Series(str("year " + str(j) + " to year " + str(j+1))).repeat(20)], axis = 1) \
+                .reset_index(drop=True)\
+                .rename(columns = {0:"CIK",1:"years"})
+            to_append = pd.concat([info,words], axis = 1)
+            for k in np.arange(to_append.shape[1]):
+                changes[k].append(to_append.iloc[:,k].tolist())
+
+    for i in np.arange(len(changes)):
+        changes[i] = functools.reduce(operator.iconcat, changes[i], [])
+        
+    return(pd.DataFrame(list(zip(changes[0],changes[1],changes[2],changes[3], changes[4]))))
+
+def dynamic_plt(company_cosine, industries, company):
+    fig = px.line(pd.melt(company_cosine.loc[:,["filingDate"] + list(industries)],
+                               id_vars = "filingDate", value_vars = list(industries)),
+                       x = "filingDate",
+                       y = "value",
+                       color = "variable",
+                       title = company + "'s " + "distance to it's closest industries over time",
+                       width=1100,
+                       height=700,
+                       markers = True)
+    fig.update_layout(legend=dict(
+        title = "Industry",
+        orientation="h",
+        yanchor="bottom",
+        y = -.4,
+        xanchor="center",
+        x = .5),
+        yaxis_title = "Cosine Similarity",)
+    fig.show()

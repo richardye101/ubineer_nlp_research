@@ -24,7 +24,7 @@ parts:
       - file: content/mary/Report_Topic_Modelling_Introduction.ipynb
       - file: content/richard/2_LDA_topic_modelling.ipynb
       - file: content/richard/3_LSA_topic_modelling.ipynb
-  - caption: Dynamic Topic Modelling Analysis
+  - caption: Dynamic Modelling Analysis
     chapters:
       - file: content/mary/Report_Dynamic_Modelling_Introduction.ipynb
       - file: content/richard/8_Dynamic_Embedding.ipynb
