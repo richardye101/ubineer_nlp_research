@@ -33,10 +33,10 @@ def pca_visualize_2d(vectors, index):
     if(index.shape[1] ==2):
         fig = px.scatter(pca_embedding, x =0 , y = 1, hover_data={"name": pca_embedding.index.get_level_values(0),
                                                                   "industry": pca_embedding.index.get_level_values(1)},
-                         color = pca_embedding.index.get_level_values(1), width=1100, height=700)
+                         color = pca_embedding.index.get_level_values(1), width=900, height=700)
     else:
         fig = px.scatter(pca_embedding, x =0 , y = 1, hover_data={"name": pca_embedding.index.get_level_values(0)},
-                         color = pca_embedding.index, width=1100, height=700)
+                         color = pca_embedding.index, width=900, height=700)
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -57,7 +57,7 @@ def visualize_svd(vectors, index):
     
     fig = px.scatter(svd_embedding, x =0 , y = 1, hover_data={"name": svd_embedding.index.get_level_values(0),
                                                               "industry": svd_embedding.index.get_level_values(1)},
-                     color = svd_embedding.index.get_level_values(1), width=1100, height=700)
+                     color = svd_embedding.index.get_level_values(1), width=900, height=700)
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -76,7 +76,7 @@ def pca_visualize_3d(plot):
     else:
         fig = px.scatter_3d(plot[1], x =0 , y = 1, z = 2, hover_data={"name": plot[1].index.get_level_values(0),
                                                               "industry": plot[1].index.get_level_values(1)},
-                    color = plot[1].index.get_level_values(1), width=1100, height=700)
+                    color = plot[1].index.get_level_values(1), width=900, height=700)
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -326,7 +326,7 @@ def dynamic_plt(company_cosine, industries, company):
                        y = "value",
                        color = "variable",
                        title = company + "'s " + "distance to it's closest industries over time",
-                       width=1100,
+                       width=900,
                        height=700,
                        markers = True)
     fig.update_layout(legend=dict(
