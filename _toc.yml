@@ -35,3 +35,4 @@ parts:
       - file: content/peitong/3.1_Minimum_Variance_Analysis-Sample_Estimates.ipynb
       - file: content/peitong/3.2_Minimum_Variance_Analysis-Cosine_Similarity.ipynb
       - file: content/peitong/3.3_Minimum_Variance_Analysis-Factor_Model.ipynb
+      - file: content/peitong/3.4_Minimum_Variance_Analysis_Results.ipynb
