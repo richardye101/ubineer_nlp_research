@@ -10,7 +10,10 @@
 - Topic Modelling results
   - can reveal significant changes but increase in an topic does not necessarily mean the company is leaning more in the direction of the topic.
   - Increase or decrease in topic could bring investor attention to the topic at hand for more investigation
-- Portfolio selection results
+- Portfolio Selection results
+  - We compared portfolios based on three different estimates - sample covariance, cosine similarity and factor model.
+  - The results from cosine similarity estimate are better than factor model estimate, which are closer to the reference sample portfolio, in terms of portfolio performance and weights.
+  - Overall, the practicability of building portfolios similar to the reference sample portfolio using the document embedding of companies' business description is low.
 
 ## Introduction
 
