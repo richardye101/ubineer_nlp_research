@@ -73,3 +73,14 @@ Check out each page bundled within this book to see more on a given topic.
 ```{tableofcontents}
 
 ```
+
+## Discussion
+
+In this research, we first investigated the description similarity between companies using financial textual data. Several word embedding models are applied, such as TF-IDF, Part-of-Speech(POS) Tagging, Word2Vec, Universal Sentence Encoder and Doc2Vec. We fit these embedding models on the preprocessed textual data and evaluate the models with the 1-nearest-neighbor prediction results. The models give up to 94% for its accuracy of predicting similar companies in terms of SIC categories.
+
+Then, we explore topic modeling on the business description of companies to investigate the possibility of extracting topics that reveal specific industry information. In this section, we applied a variety of topic modeling techniques, for instance, Latent Dirichlet Allocation, Non-Negative Matrix Factorization, and Latent Semantic Analysis. The interpretation of the topics are manually done. We then take a deeper look into a group of companies that have changed in business direction in the past ten years. Significant changes can be revealed but the increase in one topic does not necessarily represent the change of one company’s direction change.
+
+After the investigation on description similarity and topic modeling, we want to examine the practicability of constructing similar portfolios using the document embedding of companies’ business description textual data. Mean-variance analysis is applied and we choose minimum-variance portfolios based on three estimates - sample covariance, cosine similarity, factor model. In the factor model, we use Sent-LDA for topic modeling and identify 12 topics. The results are not ideal. Cosine similarity estimated portfolios have more similar selection compared with factor model estimated portfolios for all industries. However, the overall feasibility of similar portfolio generation is low.
+
+## Directions for Future Work
+In the future, we would extend our work on topic modeling and portfolio analysis. Moreover, this research focused on business descriptions of the top 5 SIC companies, but we would plan to apply the same word embedding, topic modeling and portfolio analysis on the Risk Disclosure section in the financial filings. For topic modeling, we plan to investigate more into the increase and decrease in topic weights for companies. These changes may reveal certain hidden information beforehand. And we would apply different topic modeling techniques on risk disclosure and try to identify the informative risk factors to further construct portfolios.
