@@ -29,13 +29,13 @@ This study is exploratory and so our desired outcome is to provide insight into 
 
 ### Data
 
-We used the business description(ie. Section 1) of 10K Annual Report Filings from SEC, with support from Ubineer for extracting the necessary data. Additionally, we joined our dataset with Standard Industrial Classification (SIC) codes from the SEC's EDGAR database to obtain information regarding the SIC category of the company to better evaluate our results on company similarities and differences.
+We used the business description(ie. Section 1) of 10K Annual Report Filings from SEC, with support from Ubineer for extracting the necessary data. Additionally, we joined our dataset with Standard Industrial Classification (SIC) codes from the SEC's [EDGAR](https://www.sec.gov/edgar/searchedgar/companysearch.html) database to obtain information regarding the SIC category of the company to better evaluate our results on company similarities and differences.
 
 The 2018 filings of companies from the top 5 categories (Prepackaged Software, Pharmaceutical Preparations, Crude Petroleum and Natural Gas, Real Estate Investment Trusts, State Commercial Banks) were used to train our word embedding models. There were a total of 1127 filings before we applied preprocessing techniques and 618 filings after.
 
 The filings of companies from 2016 to 2018 were used in the dynamic topic analysis models. There were a total of 2008 filings before we applied preprocessing techniques and 1692 after.
 
-The monthly stock returns data from the top 5 SIC industries was extracted from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. After grouping the returns data in terms of company name and date, removing duplicate values, and selecting only from June 2016 to December 2018, there were a total of 719 companies with 31-month returns.
+The monthly stock returns data from the top 5 SIC industries was extracted from Wharton Research Data Services’s ([WRDS](https://wrds-www.wharton.upenn.edu/)) CRSP/Compustat database. After grouping the returns data in terms of company name and date, removing duplicate values, and selecting only from June 2016 to December 2018, there were a total of 719 companies with 31-month returns.
 
 #### Data Preprocessing
 
