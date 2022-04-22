@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Unsupervised analysis of Textual data from 10K Financial Reports
+title: Analysis of Textual data from 10K Financial Reports
 author: Peitong Lu, Mary Xu, Richard Ye
 logo: images/favicon.png
 copyright: "2022"
@@ -41,9 +41,11 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  home_page_in_navbar: false
   favicon: "images/favicon.png"
   use_issues_button: true
   use_repository_button: true
+  baseurl: https://richardye101.github.io/ubineer_nlp_research/
 
 # Plotly
 sphinx:
