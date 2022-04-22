@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analysis of Textual data from 10K Financial Reports &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
+    <title>Analysis of Textual data from 10K Financial Reports &#8212; Analysis of Textual data from 10K Financial Reports</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,10 +52,11 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://richardye101.github.io/ubineer_nlp_research/intro.html" />
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Our Setup: Data ETL and Methods of evaluation" href="content/richard/0_Methods.html" />
+    <link rel="next" title="Data ETL and Methods of evaluation" href="content/richard/0_Methods.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/favicon.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Unsupervised analysis of Textual data from 10K Financial Reports</h1>
+      <h1 class="site-logo" id="site-title">Analysis of Textual data from 10K Financial Reports</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -92,16 +93,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
-   <center>
-    Analysis of Textual data from 10K Financial Reports
-   </center>
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Methods
  </span>
@@ -109,7 +101,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="content/richard/0_Methods.html">
-   Our Setup: Data ETL and Methods of evaluation
+   Data ETL and Methods of evaluation
   </a>
  </li>
  <li class="toctree-l1">
@@ -394,8 +386,6 @@ const thebe_selector_output = ".output, .cell_output"
       <a class="reference internal nav-link" href="#text-to-financial-return-relationship">
        Text to Financial Return Relationship
       </a>
-      <ul class="nav section-nav flex-column">
-      </ul>
      </li>
     </ul>
    </li>
@@ -410,6 +400,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#directions-for-future-work">
    Directions for Future Work
   </a>
+  <ul class="visible nav section-nav flex-column">
+  </ul>
  </li>
 </ul>
 
@@ -493,8 +485,6 @@ const thebe_selector_output = ".output, .cell_output"
       <a class="reference internal nav-link" href="#text-to-financial-return-relationship">
        Text to Financial Return Relationship
       </a>
-      <ul class="nav section-nav flex-column">
-      </ul>
      </li>
     </ul>
    </li>
@@ -509,6 +499,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#directions-for-future-work">
    Directions for Future Work
   </a>
+  <ul class="visible nav section-nav flex-column">
+  </ul>
  </li>
 </ul>
 
@@ -589,58 +581,6 @@ We further cleaned up the <code class="docutils literal notranslate"><span class
 <h3>Text to Financial Return Relationship<a class="headerlink" href="#text-to-financial-return-relationship" title="Permalink to this headline">¶</a></h3>
 <p>Lastly, the relationship between companies based on the document embeddings and their financial returns was analyzed. Monte-Carlo simulations were used to analyze different portfolios of companies in a given industry and compare the returns of those simulations to the Efficient Frontier. For the data collection, we used the company’s Central Index Key (CIK) as the identifier to obtain monthly stock returns data from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. We included only the companies with filings that were used in our previous embedding work and the timespan of returns ranges for each filer, but they are all from June 2016 to December 2018. We conducted a mean-variance analysis with three covariance estimates - simple sample covariance, cosine similarity generated covariance, and factor model generated covariance, to construct minimum-variance portfolios. As for cosine similarity estimate, we use the cosine similarity distance as correlation and sample return standard deviation to calculate the covariance estimate. In terms of factor model estimates, we first conduct a Sent-LDA model on companies’ business description to build a matrix. Then, we ran linear regression on the topic model matrix with the returns matrix to get the coefficient matrix. Lastly, we calculate the factor model estimated covariance using topic model matrix, covariance of coefficient matrix and the diagonal matrix of residual variance.</p>
 <p>Check out each page bundled within this book to see more on a given topic.</p>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/0_Methods.html">Our Setup: Data ETL and Methods of evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/0_1-Visualization.html">Visualizing our work</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Document Embedding</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Embedding_Introduction.html">Document Embedding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/1_Tf-idf_analysis.html">Word embedding using tf-idf matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/1_Cosine_Similarity_Distances.html">N-grams Embeddings - Cosine Similarity Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/2_Part_of_Speech_Tagging.html">Part-of-Speech (POS) Tagging - Cosine Similarity Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/4_Word2Vec.html">Word2vec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/5_Doc2Vec.html">Doc2Vec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_TwoTowers.html">Two Towers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_TwoTowers.html#plotting">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_TwoTowers.html#results">Results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_USE.html">Universal Sentence Encoder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Embedding_Results.html">Document Embedding Results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Embedding_Results.html#conclusion">Conclusion</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topic Modelling</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Topic_Modelling_Introduction.html">Topic Modelling Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/2_LDA_topic_modelling.html">LDA (Latent Dirichlet Allocation)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/2_LDA_topic_modelling.html#lets-get-to-the-code">Lets get to the code!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/2_LDA_topic_modelling.html#plotting-the-results">Plotting the results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/3_LSA_topic_modelling.html">LSA (Latent Semantic Analysis)</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamic Modelling Analysis</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Dynamic_Modelling_Introduction.html">Dynamic Modelling Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/richard/8_Dynamic_Embedding.html">Dynamic Company Embedding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/mary/Report_Topic_Modelling.html">Dynamic Topic Modelling</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio Analysis</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/3_Minimum_Variance_Analysis.html">Mean-Variance Analysis - Minimum Variance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/3.1_Minimum_Variance_Analysis-Sample_Estimates.html">Estimates from Sample Covariance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/3.2_Minimum_Variance_Analysis-Cosine_Similarity.html">Estimates from Cosine Similarity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/3.3_Minimum_Variance_Analysis-Factor_Model.html">Estimates from Factor Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/peitong/3.4_Minimum_Variance_Analysis_Results.html">Porfolio Analysis Results</a></li>
-</ul>
-</div>
 </div>
 </div>
 </div>
@@ -653,6 +593,16 @@ We further cleaned up the <code class="docutils literal notranslate"><span class
 <div class="section" id="directions-for-future-work">
 <h1>Directions for Future Work<a class="headerlink" href="#directions-for-future-work" title="Permalink to this headline">¶</a></h1>
 <p>In the future, we would extend our work on topic modeling and portfolio analysis. Moreover, this research focused on business descriptions of the top 5 SIC companies, but we would plan to apply the same word embedding, topic modeling and portfolio analysis on the Risk Disclosure section in the financial filings. For topic modeling, we plan to investigate more into the increase and decrease in topic weights for companies. These changes may reveal certain hidden information beforehand. And we would apply different topic modeling techniques on risk disclosure and try to identify the informative risk factors to further construct portfolios.</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -683,7 +633,7 @@ We further cleaned up the <code class="docutils literal notranslate"><span class
     <a class='right-next' id="next-link" href="content/richard/0_Methods.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Our Setup: Data ETL and Methods of evaluation</p>
+        <p class="prev-next-title">Data ETL and Methods of evaluation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

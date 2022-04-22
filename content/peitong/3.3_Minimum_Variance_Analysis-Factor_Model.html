@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Estimates from Factor Model &#8212; Unsupervised analysis of Textual data from 10K Financial Reports</title>
+    <title>Estimates from Factor Model &#8212; Analysis of Textual data from 10K Financial Reports</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://richardye101.github.io/ubineer_nlp_research/content/peitong/3.3_Minimum_Variance_Analysis-Factor_Model.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -87,7 +88,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="../../_static/favicon.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Unsupervised analysis of Textual data from 10K Financial Reports</h1>
+      <h1 class="site-logo" id="site-title">Analysis of Textual data from 10K Financial Reports</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -95,16 +96,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   <center>
-    Analysis of Textual data from 10K Financial Reports
-   </center>
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Methods
  </span>
@@ -112,7 +104,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../richard/0_Methods.html">
-   Our Setup: Data ETL and Methods of evaluation
+   Data ETL and Methods of evaluation
   </a>
  </li>
  <li class="toctree-l1">
@@ -1364,34 +1356,19 @@ R_{k \times T} = &amp; B_{k \times m} \cdot coef_{m \times T} + E_{k \times T}
   </thead>
   <tbody>
     <tr>
-      <th>RIGEL PHARMACEUTICALS INC</th>
-      <td>0.018832</td>
-      <td>0.016949</td>
-      <td>0.047081</td>
-      <td>0.290019</td>
-      <td>0.011299</td>
-      <td>0.013183</td>
-      <td>0.007533</td>
-      <td>0.242938</td>
-      <td>0.013183</td>
-      <td>0.069680</td>
-      <td>0.071563</td>
-      <td>0.197740</td>
-    </tr>
-    <tr>
-      <th>MANNKIND CORP</th>
-      <td>0.062500</td>
-      <td>0.015000</td>
-      <td>0.092500</td>
-      <td>0.370000</td>
-      <td>0.015000</td>
-      <td>0.025000</td>
-      <td>0.047500</td>
-      <td>0.125000</td>
-      <td>0.032500</td>
-      <td>0.105000</td>
-      <td>0.030000</td>
-      <td>0.080000</td>
+      <th>XENCOR INC</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.593103</td>
+      <td>0.158621</td>
+      <td>0.006897</td>
+      <td>0.062069</td>
+      <td>0.013793</td>
+      <td>0.055172</td>
+      <td>0.013793</td>
+      <td>0.020690</td>
+      <td>0.034483</td>
+      <td>0.041379</td>
     </tr>
     <tr>
       <th>FLEXION THERAPEUTICS INC</th>
@@ -1409,34 +1386,49 @@ R_{k \times T} = &amp; B_{k \times m} \cdot coef_{m \times T} + E_{k \times T}
       <td>0.062500</td>
     </tr>
     <tr>
-      <th>PULMATRIX, INC.</th>
-      <td>0.030303</td>
-      <td>0.006061</td>
-      <td>0.009091</td>
-      <td>0.439394</td>
-      <td>0.009091</td>
-      <td>0.006061</td>
-      <td>0.021212</td>
-      <td>0.336364</td>
-      <td>0.009091</td>
-      <td>0.042424</td>
-      <td>0.015152</td>
-      <td>0.075758</td>
+      <th>ATHERSYS, INC / NEW</th>
+      <td>0.035897</td>
+      <td>0.003419</td>
+      <td>0.042735</td>
+      <td>0.196581</td>
+      <td>0.011966</td>
+      <td>0.008547</td>
+      <td>0.017094</td>
+      <td>0.290598</td>
+      <td>0.008547</td>
+      <td>0.042735</td>
+      <td>0.030769</td>
+      <td>0.311111</td>
     </tr>
     <tr>
-      <th>ZOETIS INC.</th>
-      <td>0.036519</td>
-      <td>0.018868</td>
-      <td>0.074254</td>
-      <td>0.033475</td>
-      <td>0.034084</td>
-      <td>0.013999</td>
-      <td>0.035301</td>
-      <td>0.018868</td>
-      <td>0.020694</td>
-      <td>0.053561</td>
-      <td>0.644553</td>
-      <td>0.015825</td>
+      <th>PACIRA PHARMACEUTICALS, INC.</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.080000</td>
+      <td>0.240000</td>
+      <td>0.040000</td>
+      <td>0.040000</td>
+      <td>0.160000</td>
+      <td>0.120000</td>
+      <td>0.080000</td>
+      <td>0.160000</td>
+      <td>0.040000</td>
+      <td>0.040000</td>
+    </tr>
+    <tr>
+      <th>HERON THERAPEUTICS, INC. /DE/</th>
+      <td>0.000000</td>
+      <td>0.027778</td>
+      <td>0.055556</td>
+      <td>0.166667</td>
+      <td>0.013889</td>
+      <td>0.027778</td>
+      <td>0.000000</td>
+      <td>0.472222</td>
+      <td>0.027778</td>
+      <td>0.055556</td>
+      <td>0.027778</td>
+      <td>0.125000</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1454,79 +1446,79 @@ R_{k \times T} = &amp; B_{k \times m} \cdot coef_{m \times T} + E_{k \times T}
       <td>...</td>
     </tr>
     <tr>
-      <th>ACHAOGEN INC</th>
-      <td>0.034591</td>
-      <td>0.011006</td>
-      <td>0.048742</td>
-      <td>0.496855</td>
-      <td>0.022013</td>
-      <td>0.004717</td>
-      <td>0.023585</td>
-      <td>0.139937</td>
-      <td>0.026730</td>
-      <td>0.064465</td>
-      <td>0.062893</td>
-      <td>0.064465</td>
-    </tr>
-    <tr>
-      <th>INTRA-CELLULAR THERAPIES, INC.</th>
-      <td>0.060484</td>
-      <td>0.004032</td>
-      <td>0.016129</td>
-      <td>0.048387</td>
-      <td>0.004032</td>
-      <td>0.004032</td>
-      <td>0.020161</td>
-      <td>0.677419</td>
-      <td>0.024194</td>
-      <td>0.060484</td>
-      <td>0.024194</td>
-      <td>0.056452</td>
-    </tr>
-    <tr>
-      <th>IMPRIMIS PHARMACEUTICALS, INC.</th>
+      <th>TREVENA INC</th>
+      <td>0.043478</td>
+      <td>0.000000</td>
+      <td>0.014493</td>
+      <td>0.086957</td>
+      <td>0.014493</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.106509</td>
-      <td>0.349112</td>
-      <td>0.011834</td>
-      <td>0.017751</td>
-      <td>0.029586</td>
-      <td>0.142012</td>
-      <td>0.017751</td>
-      <td>0.106509</td>
-      <td>0.088757</td>
-      <td>0.130178</td>
+      <td>0.739130</td>
+      <td>0.000000</td>
+      <td>0.028986</td>
+      <td>0.014493</td>
+      <td>0.057971</td>
     </tr>
     <tr>
-      <th>ACELRX PHARMACEUTICALS INC</th>
-      <td>0.011628</td>
-      <td>0.034884</td>
-      <td>0.023256</td>
-      <td>0.267442</td>
-      <td>0.000000</td>
-      <td>0.023256</td>
-      <td>0.046512</td>
-      <td>0.302326</td>
-      <td>0.000000</td>
-      <td>0.151163</td>
-      <td>0.034884</td>
-      <td>0.104651</td>
+      <th>CORCEPT THERAPEUTICS INC</th>
+      <td>0.036184</td>
+      <td>0.003289</td>
+      <td>0.026316</td>
+      <td>0.391447</td>
+      <td>0.019737</td>
+      <td>0.009868</td>
+      <td>0.003289</td>
+      <td>0.296053</td>
+      <td>0.019737</td>
+      <td>0.052632</td>
+      <td>0.023026</td>
+      <td>0.118421</td>
     </tr>
     <tr>
-      <th>ORAGENICS INC</th>
-      <td>0.019432</td>
-      <td>0.004484</td>
-      <td>0.068759</td>
-      <td>0.535127</td>
-      <td>0.007474</td>
-      <td>0.008969</td>
-      <td>0.011958</td>
-      <td>0.159940</td>
-      <td>0.008969</td>
-      <td>0.037369</td>
-      <td>0.014948</td>
-      <td>0.122571</td>
+      <th>CHIASMA, INC</th>
+      <td>0.021739</td>
+      <td>0.000000</td>
+      <td>0.013043</td>
+      <td>0.230435</td>
+      <td>0.004348</td>
+      <td>0.017391</td>
+      <td>0.021739</td>
+      <td>0.617391</td>
+      <td>0.000000</td>
+      <td>0.021739</td>
+      <td>0.008696</td>
+      <td>0.043478</td>
+    </tr>
+    <tr>
+      <th>ADVAXIS, INC.</th>
+      <td>0.004367</td>
+      <td>0.017467</td>
+      <td>0.039301</td>
+      <td>0.052402</td>
+      <td>0.008734</td>
+      <td>0.004367</td>
+      <td>0.013100</td>
+      <td>0.480349</td>
+      <td>0.000000</td>
+      <td>0.034934</td>
+      <td>0.017467</td>
+      <td>0.327511</td>
+    </tr>
+    <tr>
+      <th>VTV THERAPEUTICS INC.</th>
+      <td>0.055556</td>
+      <td>0.022222</td>
+      <td>0.000000</td>
+      <td>0.077778</td>
+      <td>0.011111</td>
+      <td>0.011111</td>
+      <td>0.000000</td>
+      <td>0.577778</td>
+      <td>0.000000</td>
+      <td>0.066667</td>
+      <td>0.000000</td>
+      <td>0.177778</td>
     </tr>
   </tbody>
 </table>
@@ -2146,52 +2138,28 @@ R_{k \times T} = &amp; B_{k \times m} \cdot coef_{m \times T} + E_{k \times T}
   </thead>
   <tbody>
     <tr>
-      <th>RIGEL PHARMACEUTICALS INC</th>
-      <td>0.196890</td>
-      <td>0.083178</td>
-      <td>0.254775</td>
-      <td>0.006443</td>
-      <td>-0.101194</td>
-      <td>-0.065924</td>
-      <td>0.173420</td>
-      <td>-0.390079</td>
-      <td>0.100915</td>
-      <td>0.397049</td>
+      <th>XENCOR INC</th>
+      <td>0.307900</td>
+      <td>0.042384</td>
+      <td>-0.111821</td>
+      <td>0.006392</td>
+      <td>0.013485</td>
+      <td>0.128755</td>
+      <td>0.117859</td>
+      <td>-0.382391</td>
+      <td>0.005959</td>
+      <td>0.011386</td>
       <td>...</td>
-      <td>0.120304</td>
-      <td>0.018212</td>
-      <td>-0.355162</td>
-      <td>-0.005518</td>
-      <td>0.059101</td>
-      <td>-0.110906</td>
-      <td>-0.291213</td>
-      <td>0.204859</td>
-      <td>0.105055</td>
-      <td>0.122484</td>
-    </tr>
-    <tr>
-      <th>MANNKIND CORP</th>
-      <td>0.456006</td>
-      <td>-0.058118</td>
-      <td>-0.369472</td>
-      <td>-0.230926</td>
-      <td>-0.171823</td>
-      <td>0.191022</td>
-      <td>0.489506</td>
-      <td>-0.123330</td>
-      <td>-0.364644</td>
-      <td>-0.337926</td>
-      <td>...</td>
-      <td>-0.048994</td>
-      <td>-0.237040</td>
-      <td>-0.063584</td>
-      <td>0.086175</td>
-      <td>-0.138489</td>
-      <td>-0.531817</td>
-      <td>0.353167</td>
-      <td>0.263774</td>
-      <td>0.020654</td>
-      <td>-0.129442</td>
+      <td>0.165416</td>
+      <td>-0.050836</td>
+      <td>-0.026480</td>
+      <td>0.100947</td>
+      <td>0.079937</td>
+      <td>-0.203453</td>
+      <td>-0.435705</td>
+      <td>0.277916</td>
+      <td>0.070029</td>
+      <td>0.118975</td>
     </tr>
     <tr>
       <th>FLEXION THERAPEUTICS INC</th>
@@ -2218,52 +2186,76 @@ R_{k \times T} = &amp; B_{k \times m} \cdot coef_{m \times T} + E_{k \times T}
       <td>-0.077718</td>
     </tr>
     <tr>
-      <th>PULMATRIX, INC.</th>
-      <td>0.170737</td>
-      <td>0.150913</td>
-      <td>-0.451489</td>
-      <td>0.032823</td>
-      <td>-0.028021</td>
-      <td>-0.489517</td>
-      <td>0.176836</td>
-      <td>2.342886</td>
-      <td>0.811992</td>
-      <td>-0.070448</td>
+      <th>ATHERSYS, INC / NEW</th>
+      <td>0.183334</td>
+      <td>0.130890</td>
+      <td>-0.377573</td>
+      <td>0.074760</td>
+      <td>0.042660</td>
+      <td>-0.112761</td>
+      <td>0.192444</td>
+      <td>-0.550386</td>
+      <td>0.041895</td>
+      <td>0.489637</td>
       <td>...</td>
-      <td>-0.398212</td>
-      <td>-0.102640</td>
-      <td>-0.151729</td>
-      <td>0.100987</td>
-      <td>0.080103</td>
-      <td>-0.358161</td>
-      <td>-0.498207</td>
-      <td>0.326749</td>
-      <td>0.102522</td>
-      <td>-0.045197</td>
+      <td>0.451951</td>
+      <td>0.129346</td>
+      <td>-0.109320</td>
+      <td>-0.043198</td>
+      <td>0.112938</td>
+      <td>-0.278444</td>
+      <td>-0.205633</td>
+      <td>0.258611</td>
+      <td>0.143855</td>
+      <td>0.052475</td>
     </tr>
     <tr>
-      <th>ZOETIS INC.</th>
-      <td>0.224444</td>
-      <td>0.001572</td>
-      <td>-0.127044</td>
-      <td>-0.034749</td>
-      <td>0.055625</td>
-      <td>-0.104432</td>
-      <td>0.221198</td>
-      <td>-0.097595</td>
-      <td>-0.083571</td>
-      <td>0.172889</td>
+      <th>PACIRA PHARMACEUTICALS, INC.</th>
+      <td>-0.105291</td>
+      <td>0.197115</td>
+      <td>-0.090853</td>
+      <td>0.127302</td>
+      <td>-0.046324</td>
+      <td>0.139359</td>
+      <td>0.029021</td>
+      <td>-0.012790</td>
+      <td>0.102456</td>
+      <td>0.098491</td>
       <td>...</td>
-      <td>0.211903</td>
-      <td>0.038494</td>
-      <td>-0.120328</td>
-      <td>0.124320</td>
-      <td>0.083795</td>
-      <td>-0.158387</td>
-      <td>-0.156817</td>
-      <td>0.352950</td>
-      <td>0.037174</td>
-      <td>0.224244</td>
+      <td>0.137191</td>
+      <td>0.120636</td>
+      <td>-0.162623</td>
+      <td>0.039763</td>
+      <td>0.165191</td>
+      <td>-0.186780</td>
+      <td>-0.231474</td>
+      <td>0.332810</td>
+      <td>0.018749</td>
+      <td>0.251001</td>
+    </tr>
+    <tr>
+      <th>HERON THERAPEUTICS, INC. /DE/</th>
+      <td>0.257803</td>
+      <td>-0.046687</td>
+      <td>-0.098365</td>
+      <td>-0.148683</td>
+      <td>0.029242</td>
+      <td>-0.074454</td>
+      <td>0.058704</td>
+      <td>-0.302112</td>
+      <td>-0.049902</td>
+      <td>-0.020975</td>
+      <td>...</td>
+      <td>0.593856</td>
+      <td>0.065254</td>
+      <td>-0.144295</td>
+      <td>0.329139</td>
+      <td>0.009427</td>
+      <td>-0.289594</td>
+      <td>-0.356855</td>
+      <td>0.165425</td>
+      <td>0.124701</td>
+      <td>0.212000</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2290,124 +2282,124 @@ R_{k \times T} = &amp; B_{k \times m} \cdot coef_{m \times T} + E_{k \times T}
       <td>...</td>
     </tr>
     <tr>
-      <th>ACHAOGEN INC</th>
-      <td>0.504481</td>
-      <td>0.095034</td>
-      <td>-0.233910</td>
-      <td>0.196890</td>
-      <td>0.131270</td>
-      <td>0.241172</td>
-      <td>1.458790</td>
-      <td>-0.041756</td>
-      <td>0.372147</td>
-      <td>0.127169</td>
+      <th>TREVENA INC</th>
+      <td>0.237695</td>
+      <td>0.073141</td>
+      <td>-0.152537</td>
+      <td>0.001374</td>
+      <td>-0.071636</td>
+      <td>0.142636</td>
+      <td>0.253074</td>
+      <td>-0.135897</td>
+      <td>-0.585125</td>
+      <td>-0.059757</td>
       <td>...</td>
-      <td>0.422389</td>
-      <td>0.096134</td>
-      <td>-0.270544</td>
-      <td>-0.071477</td>
-      <td>-0.148716</td>
-      <td>-0.574215</td>
-      <td>-0.553092</td>
-      <td>0.306263</td>
-      <td>-0.502079</td>
-      <td>0.037460</td>
+      <td>0.210275</td>
+      <td>0.136420</td>
+      <td>-0.184929</td>
+      <td>-0.065331</td>
+      <td>0.196798</td>
+      <td>-0.146391</td>
+      <td>-0.100315</td>
+      <td>-0.232569</td>
+      <td>-0.185685</td>
+      <td>-0.031248</td>
     </tr>
     <tr>
-      <th>INTRA-CELLULAR THERAPIES, INC.</th>
-      <td>0.391099</td>
-      <td>0.161375</td>
-      <td>-0.259105</td>
-      <td>-0.553751</td>
-      <td>-0.022881</td>
-      <td>0.159754</td>
-      <td>0.213214</td>
-      <td>-0.379450</td>
-      <td>-0.374011</td>
-      <td>0.243934</td>
+      <th>CORCEPT THERAPEUTICS INC</th>
+      <td>0.265162</td>
+      <td>0.154738</td>
+      <td>-0.315953</td>
+      <td>0.149241</td>
+      <td>0.224471</td>
+      <td>0.205098</td>
+      <td>0.060941</td>
+      <td>-0.276238</td>
+      <td>0.209820</td>
+      <td>0.267897</td>
       <td>...</td>
-      <td>0.368041</td>
-      <td>-0.161102</td>
-      <td>0.134435</td>
-      <td>-0.013295</td>
-      <td>0.237180</td>
-      <td>-0.169879</td>
-      <td>-0.280385</td>
-      <td>0.090059</td>
-      <td>-0.066730</td>
-      <td>0.085022</td>
+      <td>0.275998</td>
+      <td>-0.008171</td>
+      <td>-0.101346</td>
+      <td>0.049670</td>
+      <td>-0.095391</td>
+      <td>-0.187579</td>
+      <td>-0.340300</td>
+      <td>0.193435</td>
+      <td>0.258511</td>
+      <td>0.230468</td>
     </tr>
     <tr>
-      <th>IMPRIMIS PHARMACEUTICALS, INC.</th>
-      <td>0.248464</td>
-      <td>0.114470</td>
-      <td>-0.170438</td>
-      <td>-0.108541</td>
-      <td>-0.162678</td>
-      <td>-0.005414</td>
-      <td>0.139754</td>
-      <td>-0.337944</td>
-      <td>0.090436</td>
-      <td>0.812665</td>
+      <th>CHIASMA, INC</th>
+      <td>0.246003</td>
+      <td>-0.008955</td>
+      <td>-0.244587</td>
+      <td>0.208747</td>
+      <td>-0.049651</td>
+      <td>-0.069338</td>
+      <td>0.162285</td>
+      <td>-0.270802</td>
+      <td>-0.312447</td>
+      <td>0.142753</td>
       <td>...</td>
-      <td>0.172954</td>
-      <td>0.288501</td>
-      <td>-0.301488</td>
-      <td>0.085804</td>
-      <td>0.098330</td>
-      <td>-0.097924</td>
-      <td>-0.381156</td>
-      <td>0.884198</td>
-      <td>0.179173</td>
-      <td>0.537175</td>
+      <td>0.277882</td>
+      <td>-0.017701</td>
+      <td>-0.223102</td>
+      <td>0.072804</td>
+      <td>0.023282</td>
+      <td>0.365140</td>
+      <td>0.200864</td>
+      <td>0.335350</td>
+      <td>0.198473</td>
+      <td>0.095848</td>
     </tr>
     <tr>
-      <th>ACELRX PHARMACEUTICALS INC</th>
-      <td>0.114892</td>
-      <td>0.360326</td>
-      <td>-0.265763</td>
-      <td>0.241055</td>
-      <td>-0.039447</td>
-      <td>0.124195</td>
-      <td>0.106028</td>
-      <td>-0.236819</td>
-      <td>0.033187</td>
-      <td>0.172309</td>
+      <th>ADVAXIS, INC.</th>
+      <td>0.187093</td>
+      <td>0.084947</td>
+      <td>0.159482</td>
+      <td>-0.117430</td>
+      <td>0.002544</td>
+      <td>-0.066217</td>
+      <td>0.174934</td>
+      <td>-0.083916</td>
+      <td>-0.140965</td>
+      <td>-0.079558</td>
       <td>...</td>
-      <td>0.446496</td>
-      <td>0.178238</td>
-      <td>0.146469</td>
-      <td>-0.124131</td>
-      <td>-0.127082</td>
-      <td>-0.194044</td>
-      <td>-0.054558</td>
-      <td>0.200503</td>
-      <td>0.046275</td>
-      <td>0.059177</td>
+      <td>0.065702</td>
+      <td>-0.016583</td>
+      <td>-0.153603</td>
+      <td>-0.092312</td>
+      <td>0.094936</td>
+      <td>-0.338526</td>
+      <td>-0.532819</td>
+      <td>-0.066313</td>
+      <td>-0.076665</td>
+      <td>-0.196285</td>
     </tr>
     <tr>
-      <th>ORAGENICS INC</th>
-      <td>0.219214</td>
-      <td>0.483380</td>
-      <td>-0.232103</td>
-      <td>-0.434095</td>
-      <td>0.103577</td>
-      <td>0.527807</td>
-      <td>0.064860</td>
-      <td>0.000963</td>
-      <td>-0.157053</td>
-      <td>-0.213261</td>
+      <th>VTV THERAPEUTICS INC.</th>
+      <td>0.310885</td>
+      <td>0.035539</td>
+      <td>-0.204920</td>
+      <td>0.235257</td>
+      <td>-0.010461</td>
+      <td>-0.045616</td>
+      <td>0.171162</td>
+      <td>-0.088571</td>
+      <td>-0.120438</td>
+      <td>0.139353</td>
       <td>...</td>
-      <td>0.201954</td>
-      <td>-0.255842</td>
-      <td>-0.080317</td>
-      <td>0.097385</td>
-      <td>-0.533646</td>
-      <td>-0.596402</td>
-      <td>1.328250</td>
-      <td>0.219759</td>
-      <td>0.441181</td>
-      <td>-0.071089</td>
+      <td>-0.050401</td>
+      <td>-0.544590</td>
+      <td>-0.261266</td>
+      <td>-0.067605</td>
+      <td>-0.048236</td>
+      <td>-0.391113</td>
+      <td>-0.510656</td>
+      <td>2.640059</td>
+      <td>-0.186139</td>
+      <td>0.861538</td>
     </tr>
   </tbody>
 </table>
@@ -2444,17 +2436,17 @@ R_{k \times T} = &amp; B_{k \times m} \cdot coef_{m \times T} + E_{k \times T}
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name
-RIGEL PHARMACEUTICALS INC         0.011020
-MANNKIND CORP                    -0.002810
-FLEXION THERAPEUTICS INC         -0.001757
-PULMATRIX, INC.                   0.009480
-ZOETIS INC.                       0.020733
-                                    ...   
-ACHAOGEN INC                      0.007742
-INTRA-CELLULAR THERAPIES, INC.   -0.012532
-IMPRIMIS PHARMACEUTICALS, INC.    0.031240
-ACELRX PHARMACEUTICALS INC        0.020838
-ORAGENICS INC                    -0.001155
+XENCOR INC                       0.040986
+FLEXION THERAPEUTICS INC        -0.001757
+ATHERSYS, INC / NEW             -0.002721
+PACIRA PHARMACEUTICALS, INC.     0.006951
+HERON THERAPEUTICS, INC. /DE/    0.013116
+                                   ...   
+TREVENA INC                     -0.062825
+CORCEPT THERAPEUTICS INC         0.038624
+CHIASMA, INC                     0.018143
+ADVAXIS, INC.                   -0.096069
+VTV THERAPEUTICS INC.            0.043676
 Length: 124, dtype: float64
 </pre></div>
 </div>
@@ -2494,27 +2486,27 @@ Length: 124, dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th>name</th>
-      <th>RIGEL PHARMACEUTICALS INC</th>
-      <th>MANNKIND CORP</th>
+      <th>XENCOR INC</th>
       <th>FLEXION THERAPEUTICS INC</th>
-      <th>PULMATRIX, INC.</th>
-      <th>ZOETIS INC.</th>
-      <th>CYTOMX THERAPEUTICS, INC.</th>
-      <th>PFIZER INC</th>
+      <th>ATHERSYS, INC / NEW</th>
       <th>PACIRA PHARMACEUTICALS, INC.</th>
-      <th>AKORN INC</th>
-      <th>ACTINIUM PHARMACEUTICALS, INC.</th>
-      <th>...</th>
-      <th>CELGENE CORP /DE/</th>
+      <th>HERON THERAPEUTICS, INC. /DE/</th>
+      <th>BLUEPRINT MEDICINES CORP</th>
+      <th>CONCERT PHARMACEUTICALS, INC.</th>
       <th>FIBROGEN INC</th>
-      <th>ZOSANO PHARMA CORP</th>
-      <th>PRESTIGE BRANDS HOLDINGS, INC.</th>
-      <th>STRONGBRIDGE BIOPHARMA PLC</th>
-      <th>ACHAOGEN INC</th>
-      <th>INTRA-CELLULAR THERAPIES, INC.</th>
-      <th>IMPRIMIS PHARMACEUTICALS, INC.</th>
-      <th>ACELRX PHARMACEUTICALS INC</th>
-      <th>ORAGENICS INC</th>
+      <th>PROPHASE LABS, INC.</th>
+      <th>GLOBAL BLOOD THERAPEUTICS, INC.</th>
+      <th>...</th>
+      <th>AXOVANT SCIENCES LTD.</th>
+      <th>CATALYST BIOSCIENCES, INC.</th>
+      <th>ONCOMED PHARMACEUTICALS INC</th>
+      <th>INTERCEPT PHARMACEUTICALS INC</th>
+      <th>HEAT BIOLOGICS, INC.</th>
+      <th>TREVENA INC</th>
+      <th>CORCEPT THERAPEUTICS INC</th>
+      <th>CHIASMA, INC</th>
+      <th>ADVAXIS, INC.</th>
+      <th>VTV THERAPEUTICS INC.</th>
     </tr>
     <tr>
       <th>name</th>
@@ -2543,124 +2535,124 @@ Length: 124, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>RIGEL PHARMACEUTICALS INC</th>
-      <td>0.072990</td>
-      <td>0.019494</td>
-      <td>0.017071</td>
-      <td>0.024321</td>
-      <td>0.015843</td>
-      <td>0.024631</td>
-      <td>0.020346</td>
-      <td>0.017285</td>
-      <td>0.020208</td>
-      <td>0.026508</td>
-      <td>...</td>
-      <td>0.025418</td>
-      <td>0.021113</td>
-      <td>0.025531</td>
-      <td>0.020738</td>
-      <td>0.024231</td>
-      <td>0.023675</td>
-      <td>0.024557</td>
-      <td>0.024748</td>
-      <td>0.021286</td>
-      <td>0.024980</td>
-    </tr>
-    <tr>
-      <th>MANNKIND CORP</th>
-      <td>0.019494</td>
-      <td>0.128645</td>
-      <td>0.014528</td>
-      <td>0.021561</td>
-      <td>0.013205</td>
+      <th>XENCOR INC</th>
+      <td>0.061052</td>
+      <td>0.019314</td>
       <td>0.021330</td>
-      <td>0.019321</td>
-      <td>0.018400</td>
-      <td>0.019766</td>
-      <td>0.022366</td>
+      <td>0.019636</td>
+      <td>0.017833</td>
+      <td>0.021733</td>
+      <td>0.015916</td>
+      <td>0.020641</td>
+      <td>0.016972</td>
+      <td>0.018745</td>
       <td>...</td>
-      <td>0.022208</td>
-      <td>0.018239</td>
-      <td>0.020006</td>
-      <td>0.019892</td>
-      <td>0.021507</td>
-      <td>0.020677</td>
-      <td>0.022157</td>
-      <td>0.021865</td>
-      <td>0.018493</td>
-      <td>0.021859</td>
+      <td>0.019011</td>
+      <td>0.021278</td>
+      <td>0.022306</td>
+      <td>0.020682</td>
+      <td>0.023055</td>
+      <td>0.021143</td>
+      <td>0.021714</td>
+      <td>0.021137</td>
+      <td>0.019484</td>
+      <td>0.016293</td>
     </tr>
     <tr>
       <th>FLEXION THERAPEUTICS INC</th>
-      <td>0.017071</td>
-      <td>0.014528</td>
+      <td>0.019314</td>
       <td>0.058679</td>
-      <td>0.017698</td>
-      <td>0.012692</td>
-      <td>0.018892</td>
-      <td>0.016814</td>
+      <td>0.017374</td>
       <td>0.017897</td>
-      <td>0.013270</td>
-      <td>0.019066</td>
-      <td>...</td>
-      <td>0.021632</td>
+      <td>0.017614</td>
+      <td>0.019544</td>
+      <td>0.012955</td>
       <td>0.018547</td>
-      <td>0.014557</td>
-      <td>0.016308</td>
-      <td>0.018513</td>
-      <td>0.018408</td>
-      <td>0.018217</td>
-      <td>0.020405</td>
-      <td>0.010560</td>
-      <td>0.019089</td>
+      <td>0.015109</td>
+      <td>0.014311</td>
+      <td>...</td>
+      <td>0.015804</td>
+      <td>0.019098</td>
+      <td>0.017426</td>
+      <td>0.017207</td>
+      <td>0.020371</td>
+      <td>0.018459</td>
+      <td>0.019837</td>
+      <td>0.017500</td>
+      <td>0.016103</td>
+      <td>0.013258</td>
     </tr>
     <tr>
-      <th>PULMATRIX, INC.</th>
-      <td>0.024321</td>
-      <td>0.021561</td>
-      <td>0.017698</td>
-      <td>0.275105</td>
-      <td>0.016907</td>
-      <td>0.025555</td>
-      <td>0.023309</td>
-      <td>0.020008</td>
-      <td>0.022549</td>
-      <td>0.027576</td>
+      <th>ATHERSYS, INC / NEW</th>
+      <td>0.021330</td>
+      <td>0.017374</td>
+      <td>0.072960</td>
+      <td>0.018782</td>
+      <td>0.021295</td>
+      <td>0.025036</td>
+      <td>0.017464</td>
+      <td>0.021056</td>
+      <td>0.020813</td>
+      <td>0.022605</td>
       <td>...</td>
-      <td>0.027325</td>
-      <td>0.022498</td>
-      <td>0.027150</td>
-      <td>0.021502</td>
-      <td>0.026766</td>
-      <td>0.025857</td>
-      <td>0.027019</td>
-      <td>0.026166</td>
-      <td>0.022851</td>
-      <td>0.027044</td>
+      <td>0.018619</td>
+      <td>0.023686</td>
+      <td>0.023828</td>
+      <td>0.022111</td>
+      <td>0.028136</td>
+      <td>0.024350</td>
+      <td>0.023846</td>
+      <td>0.022942</td>
+      <td>0.023951</td>
+      <td>0.021112</td>
     </tr>
     <tr>
-      <th>ZOETIS INC.</th>
-      <td>0.015843</td>
-      <td>0.013205</td>
-      <td>0.012692</td>
-      <td>0.016907</td>
-      <td>0.038633</td>
-      <td>0.016394</td>
-      <td>0.016359</td>
-      <td>0.012539</td>
-      <td>0.014044</td>
-      <td>0.017225</td>
+      <th>PACIRA PHARMACEUTICALS, INC.</th>
+      <td>0.019636</td>
+      <td>0.017897</td>
+      <td>0.018782</td>
+      <td>0.053872</td>
+      <td>0.015723</td>
+      <td>0.019738</td>
+      <td>0.013757</td>
+      <td>0.019301</td>
+      <td>0.018690</td>
+      <td>0.016928</td>
       <td>...</td>
-      <td>0.017773</td>
-      <td>0.015092</td>
-      <td>0.016325</td>
-      <td>0.012456</td>
-      <td>0.016646</td>
-      <td>0.016923</td>
-      <td>0.015973</td>
-      <td>0.017637</td>
-      <td>0.013398</td>
-      <td>0.017671</td>
+      <td>0.020044</td>
+      <td>0.019162</td>
+      <td>0.018605</td>
+      <td>0.019231</td>
+      <td>0.020672</td>
+      <td>0.019471</td>
+      <td>0.019279</td>
+      <td>0.021110</td>
+      <td>0.017084</td>
+      <td>0.014846</td>
+    </tr>
+    <tr>
+      <th>HERON THERAPEUTICS, INC. /DE/</th>
+      <td>0.017833</td>
+      <td>0.017614</td>
+      <td>0.021295</td>
+      <td>0.015723</td>
+      <td>0.066886</td>
+      <td>0.025395</td>
+      <td>0.016622</td>
+      <td>0.020302</td>
+      <td>0.020390</td>
+      <td>0.024420</td>
+      <td>...</td>
+      <td>0.015869</td>
+      <td>0.024624</td>
+      <td>0.021795</td>
+      <td>0.020337</td>
+      <td>0.025653</td>
+      <td>0.025296</td>
+      <td>0.023501</td>
+      <td>0.022881</td>
+      <td>0.023821</td>
+      <td>0.021436</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2687,124 +2679,124 @@ Length: 124, dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>ACHAOGEN INC</th>
-      <td>0.023675</td>
-      <td>0.020677</td>
-      <td>0.018408</td>
-      <td>0.025857</td>
-      <td>0.016923</td>
-      <td>0.025184</td>
-      <td>0.022506</td>
-      <td>0.018724</td>
-      <td>0.020767</td>
-      <td>0.026255</td>
+      <th>TREVENA INC</th>
+      <td>0.021143</td>
+      <td>0.018459</td>
+      <td>0.024350</td>
+      <td>0.019471</td>
+      <td>0.025296</td>
+      <td>0.028119</td>
+      <td>0.019042</td>
+      <td>0.022958</td>
+      <td>0.023679</td>
+      <td>0.028673</td>
       <td>...</td>
-      <td>0.027520</td>
-      <td>0.020867</td>
-      <td>0.026109</td>
-      <td>0.018981</td>
-      <td>0.026296</td>
-      <td>0.169572</td>
-      <td>0.026368</td>
-      <td>0.025221</td>
-      <td>0.019935</td>
-      <td>0.026471</td>
+      <td>0.018209</td>
+      <td>0.028035</td>
+      <td>0.025315</td>
+      <td>0.023682</td>
+      <td>0.027508</td>
+      <td>0.071353</td>
+      <td>0.026662</td>
+      <td>0.026866</td>
+      <td>0.026079</td>
+      <td>0.024424</td>
     </tr>
     <tr>
-      <th>INTRA-CELLULAR THERAPIES, INC.</th>
-      <td>0.024557</td>
-      <td>0.022157</td>
-      <td>0.018217</td>
-      <td>0.027019</td>
-      <td>0.015973</td>
-      <td>0.026175</td>
-      <td>0.022452</td>
-      <td>0.020094</td>
-      <td>0.021691</td>
-      <td>0.028619</td>
+      <th>CORCEPT THERAPEUTICS INC</th>
+      <td>0.021714</td>
+      <td>0.019837</td>
+      <td>0.023846</td>
+      <td>0.019279</td>
+      <td>0.023501</td>
+      <td>0.026210</td>
+      <td>0.017796</td>
+      <td>0.021963</td>
+      <td>0.022703</td>
+      <td>0.024841</td>
       <td>...</td>
-      <td>0.028394</td>
-      <td>0.021614</td>
-      <td>0.030134</td>
-      <td>0.021038</td>
-      <td>0.028713</td>
-      <td>0.026368</td>
-      <td>0.105156</td>
-      <td>0.025355</td>
-      <td>0.021709</td>
-      <td>0.026519</td>
+      <td>0.017547</td>
+      <td>0.026660</td>
+      <td>0.024867</td>
+      <td>0.022774</td>
+      <td>0.027090</td>
+      <td>0.026662</td>
+      <td>0.065605</td>
+      <td>0.024619</td>
+      <td>0.024199</td>
+      <td>0.022010</td>
     </tr>
     <tr>
-      <th>IMPRIMIS PHARMACEUTICALS, INC.</th>
-      <td>0.024748</td>
-      <td>0.021865</td>
-      <td>0.020405</td>
-      <td>0.026166</td>
-      <td>0.017637</td>
-      <td>0.026447</td>
-      <td>0.024498</td>
-      <td>0.022895</td>
-      <td>0.023484</td>
-      <td>0.028285</td>
+      <th>CHIASMA, INC</th>
+      <td>0.021137</td>
+      <td>0.017500</td>
+      <td>0.022942</td>
+      <td>0.021110</td>
+      <td>0.022881</td>
+      <td>0.025773</td>
+      <td>0.019008</td>
+      <td>0.023278</td>
+      <td>0.022211</td>
+      <td>0.025835</td>
       <td>...</td>
-      <td>0.027305</td>
-      <td>0.024115</td>
-      <td>0.024465</td>
-      <td>0.025487</td>
-      <td>0.025511</td>
-      <td>0.025221</td>
-      <td>0.025355</td>
-      <td>0.116258</td>
-      <td>0.023157</td>
-      <td>0.027111</td>
+      <td>0.020918</td>
+      <td>0.025353</td>
+      <td>0.023794</td>
+      <td>0.023593</td>
+      <td>0.025562</td>
+      <td>0.026866</td>
+      <td>0.024619</td>
+      <td>0.072737</td>
+      <td>0.023989</td>
+      <td>0.022568</td>
     </tr>
     <tr>
-      <th>ACELRX PHARMACEUTICALS INC</th>
-      <td>0.021286</td>
-      <td>0.018493</td>
-      <td>0.010560</td>
-      <td>0.022851</td>
-      <td>0.013398</td>
-      <td>0.020917</td>
-      <td>0.019747</td>
-      <td>0.017620</td>
-      <td>0.022427</td>
-      <td>0.025249</td>
+      <th>ADVAXIS, INC.</th>
+      <td>0.019484</td>
+      <td>0.016103</td>
+      <td>0.023951</td>
+      <td>0.017084</td>
+      <td>0.023821</td>
+      <td>0.026804</td>
+      <td>0.018200</td>
+      <td>0.021539</td>
+      <td>0.020361</td>
+      <td>0.025183</td>
       <td>...</td>
-      <td>0.020489</td>
-      <td>0.020745</td>
-      <td>0.024796</td>
-      <td>0.025524</td>
-      <td>0.021204</td>
-      <td>0.019935</td>
-      <td>0.021709</td>
-      <td>0.023157</td>
-      <td>0.088535</td>
-      <td>0.022245</td>
+      <td>0.018029</td>
+      <td>0.024519</td>
+      <td>0.024103</td>
+      <td>0.021987</td>
+      <td>0.029389</td>
+      <td>0.026079</td>
+      <td>0.024199</td>
+      <td>0.023989</td>
+      <td>0.065779</td>
+      <td>0.023071</td>
     </tr>
     <tr>
-      <th>ORAGENICS INC</th>
-      <td>0.024980</td>
-      <td>0.021859</td>
-      <td>0.019089</td>
-      <td>0.027044</td>
-      <td>0.017671</td>
-      <td>0.026591</td>
-      <td>0.023500</td>
-      <td>0.020119</td>
-      <td>0.022550</td>
-      <td>0.027908</td>
+      <th>VTV THERAPEUTICS INC.</th>
+      <td>0.016293</td>
+      <td>0.013258</td>
+      <td>0.021112</td>
+      <td>0.014846</td>
+      <td>0.021436</td>
+      <td>0.023809</td>
+      <td>0.016879</td>
+      <td>0.019409</td>
+      <td>0.020746</td>
+      <td>0.024146</td>
       <td>...</td>
-      <td>0.028169</td>
-      <td>0.023025</td>
-      <td>0.026374</td>
-      <td>0.021338</td>
-      <td>0.026830</td>
-      <td>0.026471</td>
-      <td>0.026519</td>
-      <td>0.027111</td>
-      <td>0.022245</td>
-      <td>0.165768</td>
+      <td>0.016555</td>
+      <td>0.022725</td>
+      <td>0.021344</td>
+      <td>0.020653</td>
+      <td>0.024988</td>
+      <td>0.024424</td>
+      <td>0.022010</td>
+      <td>0.022568</td>
+      <td>0.023071</td>
+      <td>0.330972</td>
     </tr>
   </tbody>
 </table>
@@ -2905,93 +2897,93 @@ Sharpe Ratio: -0.13
   <tbody>
     <tr>
       <th>0</th>
-      <td>MANNKIND CORP</td>
-      <td>0.00222</td>
-    </tr>
-    <tr>
-      <th>1</th>
       <td>FLEXION THERAPEUTICS INC</td>
       <td>0.07107</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>ZOETIS INC.</td>
-      <td>0.11746</td>
-    </tr>
-    <tr>
-      <th>3</th>
+      <th>1</th>
       <td>PACIRA PHARMACEUTICALS, INC.</td>
       <td>0.03613</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>NATURES SUNSHINE PRODUCTS INC</td>
-      <td>0.13263</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>BIOSPECIFICS TECHNOLOGIES CORP</td>
-      <td>0.01702</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>AXOVANT SCIENCES LTD.</td>
-      <td>0.02372</td>
-    </tr>
-    <tr>
-      <th>7</th>
+      <th>2</th>
       <td>CONCERT PHARMACEUTICALS, INC.</td>
       <td>0.02974</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>JOHNSON &amp; JOHNSON</td>
-      <td>0.08628</td>
-    </tr>
-    <tr>
-      <th>9</th>
+      <th>3</th>
       <td>PROGENICS PHARMACEUTICALS INC</td>
       <td>0.08582</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>4</th>
+      <td>LIPOCINE INC.</td>
+      <td>0.00027</td>
+    </tr>
+    <tr>
+      <th>5</th>
       <td>ANI PHARMACEUTICALS INC</td>
       <td>0.06101</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>ACLARIS THERAPEUTICS, INC.</td>
-      <td>0.05895</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>XOMA CORP</td>
-      <td>0.05504</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>ARENA PHARMACEUTICALS INC</td>
-      <td>0.08524</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>FORTRESS BIOTECH, INC.</td>
-      <td>0.00586</td>
-    </tr>
-    <tr>
-      <th>15</th>
+      <th>6</th>
       <td>TELIGENT, INC.</td>
       <td>0.08129</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>7</th>
+      <td>XOMA CORP</td>
+      <td>0.05504</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ARENA PHARMACEUTICALS INC</td>
+      <td>0.08524</td>
+    </tr>
+    <tr>
+      <th>9</th>
       <td>LEXICON PHARMACEUTICALS, INC.</td>
       <td>0.05025</td>
     </tr>
     <tr>
+      <th>10</th>
+      <td>JOHNSON &amp; JOHNSON</td>
+      <td>0.08628</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>NATURES SUNSHINE PRODUCTS INC</td>
+      <td>0.13263</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>MANNKIND CORP</td>
+      <td>0.00222</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>BIOSPECIFICS TECHNOLOGIES CORP</td>
+      <td>0.01702</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ACLARIS THERAPEUTICS, INC.</td>
+      <td>0.05895</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>FORTRESS BIOTECH, INC.</td>
+      <td>0.00586</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ZOETIS INC.</td>
+      <td>0.11746</td>
+    </tr>
+    <tr>
       <th>17</th>
-      <td>LIPOCINE INC.</td>
-      <td>0.00027</td>
+      <td>AXOVANT SCIENCES LTD.</td>
+      <td>0.02372</td>
     </tr>
   </tbody>
 </table>
@@ -3057,88 +3049,88 @@ Sharpe Ratio: 0.00
   <tbody>
     <tr>
       <th>0</th>
-      <td>3D SYSTEMS CORP</td>
-      <td>0.02694</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>SPS COMMERCE INC</td>
-      <td>0.01852</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>QUMU CORP</td>
-      <td>0.04424</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ELLIE MAE INC</td>
-      <td>0.00437</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>TABLEAU SOFTWARE INC</td>
-      <td>0.05865</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>ENDURANCE INTERNATIONAL GROUP HOLDINGS, INC.</td>
-      <td>0.11290</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>ANSYS INC</td>
-      <td>0.06834</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>APPFOLIO INC</td>
-      <td>0.01773</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>NATIONAL INSTRUMENTS CORP</td>
-      <td>0.02466</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2U, INC.</td>
-      <td>0.19685</td>
-    </tr>
-    <tr>
-      <th>10</th>
       <td>INTELLIGENT SYSTEMS CORP</td>
       <td>0.01948</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>POLARITYTE, INC.</td>
-      <td>0.20000</td>
+      <th>1</th>
+      <td>TABLEAU SOFTWARE INC</td>
+      <td>0.05865</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>BRIDGELINE DIGITAL, INC.</td>
-      <td>0.03550</td>
+      <th>2</th>
+      <td>SPS COMMERCE INC</td>
+      <td>0.01852</td>
     </tr>
     <tr>
-      <th>13</th>
-      <td>REALPAGE INC</td>
-      <td>0.02096</td>
+      <th>3</th>
+      <td>3D SYSTEMS CORP</td>
+      <td>0.02694</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>4</th>
       <td>GSE SYSTEMS INC</td>
       <td>0.00779</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>5</th>
+      <td>BRIDGELINE DIGITAL, INC.</td>
+      <td>0.03550</td>
+    </tr>
+    <tr>
+      <th>6</th>
       <td>MICROSTRATEGY INC</td>
       <td>0.13768</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>7</th>
+      <td>ENDURANCE INTERNATIONAL GROUP HOLDINGS, INC.</td>
+      <td>0.11290</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ELLIE MAE INC</td>
+      <td>0.00437</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>POLARITYTE, INC.</td>
+      <td>0.20000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>REALPAGE INC</td>
+      <td>0.02096</td>
+    </tr>
+    <tr>
+      <th>11</th>
       <td>BLACK KNIGHT, INC.</td>
       <td>0.00538</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2U, INC.</td>
+      <td>0.19685</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>QUMU CORP</td>
+      <td>0.04424</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>NATIONAL INSTRUMENTS CORP</td>
+      <td>0.02466</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>APPFOLIO INC</td>
+      <td>0.01773</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ANSYS INC</td>
+      <td>0.06834</td>
     </tr>
   </tbody>
 </table>
@@ -3205,13 +3197,13 @@ Sharpe Ratio: -0.04
     </tr>
     <tr>
       <th>1</th>
-      <td>SRC ENERGY INC.</td>
-      <td>0.00429</td>
+      <td>CALIFORNIA RESOURCES CORP</td>
+      <td>0.16181</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>KOSMOS ENERGY LTD.</td>
-      <td>0.14627</td>
+      <td>ISRAMCO INC</td>
+      <td>0.03757</td>
     </tr>
     <tr>
       <th>3</th>
@@ -3220,13 +3212,13 @@ Sharpe Ratio: -0.04
     </tr>
     <tr>
       <th>4</th>
-      <td>ISRAMCO INC</td>
-      <td>0.03757</td>
+      <td>ANTERO RESOURCES CORP</td>
+      <td>0.08452</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>DORCHESTER MINERALS, L.P.</td>
-      <td>0.02716</td>
+      <td>PANHANDLE OIL &amp; GAS INC</td>
+      <td>0.05922</td>
     </tr>
     <tr>
       <th>6</th>
@@ -3235,63 +3227,63 @@ Sharpe Ratio: -0.04
     </tr>
     <tr>
       <th>7</th>
-      <td>ABRAXAS PETROLEUM CORP</td>
-      <td>0.02884</td>
+      <td>DORCHESTER MINERALS, L.P.</td>
+      <td>0.02716</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>CONCHO RESOURCES INC</td>
-      <td>0.03770</td>
+      <td>GULFPORT ENERGY CORP</td>
+      <td>0.00625</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>ANTERO RESOURCES CORP</td>
-      <td>0.08452</td>
-    </tr>
-    <tr>
-      <th>10</th>
       <td>DIAMONDBACK ENERGY, INC.</td>
       <td>0.03588</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>10</th>
       <td>CARRIZO OIL &amp; GAS INC</td>
       <td>0.02877</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>11</th>
       <td>CALLON PETROLEUM CO</td>
       <td>0.07632</td>
     </tr>
     <tr>
-      <th>13</th>
-      <td>WHITING PETROLEUM CORP</td>
-      <td>0.05870</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>SM ENERGY CO</td>
-      <td>0.07055</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>CALIFORNIA RESOURCES CORP</td>
-      <td>0.16181</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>PANHANDLE OIL &amp; GAS INC</td>
-      <td>0.05922</td>
-    </tr>
-    <tr>
-      <th>17</th>
+      <th>12</th>
       <td>SANCHEZ ENERGY CORP</td>
       <td>0.00736</td>
     </tr>
     <tr>
+      <th>13</th>
+      <td>SRC ENERGY INC.</td>
+      <td>0.00429</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ABRAXAS PETROLEUM CORP</td>
+      <td>0.02884</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>CONCHO RESOURCES INC</td>
+      <td>0.03770</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>WHITING PETROLEUM CORP</td>
+      <td>0.05870</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>SM ENERGY CO</td>
+      <td>0.07055</td>
+    </tr>
+    <tr>
       <th>18</th>
-      <td>GULFPORT ENERGY CORP</td>
-      <td>0.00625</td>
+      <td>KOSMOS ENERGY LTD.</td>
+      <td>0.14627</td>
     </tr>
   </tbody>
 </table>
@@ -3314,7 +3306,7 @@ Sharpe Ratio: -0.04
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected annual return: 0.3%
-Annual volatility: 1375345550976747.0%
+Annual volatility: 2275366448953276.0%
 Sharpe Ratio: -0.00
 </pre></div>
 </div>
@@ -3352,27 +3344,27 @@ Sharpe Ratio: -0.00
   <tbody>
     <tr>
       <th>0</th>
-      <td>EQUITY COMMONWEALTH</td>
+      <td>MID AMERICA APARTMENT COMMUNITIES INC</td>
       <td>0.00781</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>ALEXANDERS INC</td>
+      <td>IMPAC MORTGAGE HOLDINGS INC</td>
       <td>0.00781</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>WASHINGTON PRIME GROUP INC.</td>
+      <td>AMERICAN CAMPUS COMMUNITIES INC</td>
       <td>0.00781</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>REALTY INCOME CORP</td>
+      <td>PROLOGIS, INC.</td>
       <td>0.00781</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>PS BUSINESS PARKS INC/CA</td>
+      <td>LEXINGTON REALTY TRUST</td>
       <td>0.00781</td>
     </tr>
     <tr>
@@ -3382,27 +3374,27 @@ Sharpe Ratio: -0.00
     </tr>
     <tr>
       <th>123</th>
-      <td>PROLOGIS, INC.</td>
+      <td>TANGER FACTORY OUTLET CENTERS INC</td>
       <td>0.00781</td>
     </tr>
     <tr>
       <th>124</th>
-      <td>AMERICAN ASSETS TRUST, INC.</td>
+      <td>JERNIGAN CAPITAL, INC.</td>
       <td>0.00781</td>
     </tr>
     <tr>
       <th>125</th>
-      <td>FIVE OAKS INVESTMENT CORP.</td>
+      <td>DIGITAL REALTY TRUST, INC.</td>
       <td>0.00781</td>
     </tr>
     <tr>
       <th>126</th>
-      <td>HOST HOTELS &amp; RESORTS, INC.</td>
+      <td>CHESAPEAKE LODGING TRUST</td>
       <td>0.00781</td>
     </tr>
     <tr>
       <th>127</th>
-      <td>GLOBAL NET LEASE, INC.</td>
+      <td>ACADIA REALTY TRUST</td>
       <td>0.00781</td>
     </tr>
   </tbody>
@@ -3465,13 +3457,13 @@ Sharpe Ratio: -0.05
   <tbody>
     <tr>
       <th>0</th>
-      <td>FIRST FINANCIAL NORTHWEST, INC.</td>
-      <td>0.00071</td>
+      <td>WESTERN ALLIANCE BANCORPORATION</td>
+      <td>0.01266</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>COMMERCE BANCSHARES INC /MO/</td>
-      <td>0.04133</td>
+      <td>TRISTATE CAPITAL HOLDINGS, INC.</td>
+      <td>0.01571</td>
     </tr>
     <tr>
       <th>2</th>
@@ -3485,23 +3477,23 @@ Sharpe Ratio: -0.05
     </tr>
     <tr>
       <th>4</th>
-      <td>TWO RIVER BANCORP</td>
-      <td>0.03501</td>
+      <td>INDEPENDENT BANK GROUP, INC.</td>
+      <td>0.04721</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>TEXAS CAPITAL BANCSHARES INC/TX</td>
-      <td>0.04227</td>
+      <td>HEARTLAND FINANCIAL USA INC</td>
+      <td>0.02923</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>CAROLINA FINANCIAL CORP</td>
-      <td>0.00851</td>
+      <td>OLD LINE BANCSHARES INC</td>
+      <td>0.00366</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>TRIUMPH BANCORP, INC.</td>
-      <td>0.01979</td>
+      <td>SOUTH STATE CORP</td>
+      <td>0.02391</td>
     </tr>
     <tr>
       <th>8</th>
@@ -3510,168 +3502,168 @@ Sharpe Ratio: -0.05
     </tr>
     <tr>
       <th>9</th>
-      <td>INDEPENDENT BANK GROUP, INC.</td>
-      <td>0.04721</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>BANK OF NEW YORK MELLON CORP</td>
-      <td>0.01833</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>REPUBLIC BANCORP INC /KY/</td>
-      <td>0.01015</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>FIRST FINANCIAL CORP /IN/</td>
-      <td>0.01382</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>FIRST FINANCIAL BANKSHARES INC</td>
-      <td>0.00021</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>SERVISFIRST BANCSHARES, INC.</td>
-      <td>0.03409</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>LIVE OAK BANCSHARES, INC.</td>
-      <td>0.03550</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>OHIO VALLEY BANC CORP</td>
-      <td>0.03739</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>HOWARD BANCORP INC</td>
-      <td>0.04462</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>BANKWELL FINANCIAL GROUP, INC.</td>
-      <td>0.00512</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>ENTERPRISE FINANCIAL SERVICES CORP</td>
-      <td>0.01804</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>BANK OF THE JAMES FINANCIAL GROUP INC</td>
-      <td>0.02588</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>EAGLE BANCORP MONTANA, INC.</td>
-      <td>0.01243</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>TRISTATE CAPITAL HOLDINGS, INC.</td>
-      <td>0.01571</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>SOUTH STATE CORP</td>
-      <td>0.02391</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>SOUTHSIDE BANCSHARES INC</td>
-      <td>0.03256</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>WESTERN ALLIANCE BANCORPORATION</td>
-      <td>0.01266</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>RELIANT BANCORP, INC.</td>
-      <td>0.00788</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>EAST WEST BANCORP INC</td>
-      <td>0.03504</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>SUMMIT FINANCIAL GROUP INC</td>
-      <td>0.05359</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>OLD LINE BANCSHARES INC</td>
-      <td>0.00366</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>HEARTLAND FINANCIAL USA INC</td>
-      <td>0.02923</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>CITIZENS FINANCIAL GROUP INC/RI</td>
-      <td>0.00020</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>UNITED BANKSHARES INC/WV</td>
-      <td>0.04209</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>M&amp;T BANK CORP</td>
-      <td>0.02407</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>WEST BANCORPORATION INC</td>
-      <td>0.02431</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>BAR HARBOR BANKSHARES</td>
-      <td>0.00764</td>
-    </tr>
-    <tr>
-      <th>36</th>
       <td>VILLAGE BANK &amp; TRUST FINANCIAL CORP.</td>
       <td>0.01322</td>
     </tr>
     <tr>
-      <th>37</th>
-      <td>HILLTOP HOLDINGS INC.</td>
-      <td>0.01095</td>
+      <th>10</th>
+      <td>FIRST FINANCIAL NORTHWEST, INC.</td>
+      <td>0.00071</td>
     </tr>
     <tr>
-      <th>38</th>
-      <td>FIRST COMMUNITY CORP /SC/</td>
-      <td>0.01420</td>
+      <th>11</th>
+      <td>EAGLE BANCORP MONTANA, INC.</td>
+      <td>0.01243</td>
     </tr>
     <tr>
-      <th>39</th>
+      <th>12</th>
+      <td>OHIO VALLEY BANC CORP</td>
+      <td>0.03739</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>TRIUMPH BANCORP, INC.</td>
+      <td>0.01979</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>SUMMIT FINANCIAL GROUP INC</td>
+      <td>0.05359</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>HOWARD BANCORP INC</td>
+      <td>0.04462</td>
+    </tr>
+    <tr>
+      <th>16</th>
       <td>ATLANTIC CAPITAL BANCSHARES, INC.</td>
       <td>0.04742</td>
     </tr>
     <tr>
-      <th>40</th>
+      <th>17</th>
+      <td>TWO RIVER BANCORP</td>
+      <td>0.03501</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>RELIANT BANCORP, INC.</td>
+      <td>0.00788</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>FIRST FINANCIAL BANKSHARES INC</td>
+      <td>0.00021</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>WEST BANCORPORATION INC</td>
+      <td>0.02431</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>REPUBLIC BANCORP INC /KY/</td>
+      <td>0.01015</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>LIVE OAK BANCSHARES, INC.</td>
+      <td>0.03550</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>ENTERPRISE FINANCIAL SERVICES CORP</td>
+      <td>0.01804</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>HILLTOP HOLDINGS INC.</td>
+      <td>0.01095</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>EAST WEST BANCORP INC</td>
+      <td>0.03504</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>SERVISFIRST BANCSHARES, INC.</td>
+      <td>0.03409</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>CAROLINA FINANCIAL CORP</td>
+      <td>0.00851</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>SOUTHSIDE BANCSHARES INC</td>
+      <td>0.03256</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>FIRST COMMUNITY CORP /SC/</td>
+      <td>0.01420</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>UNITED BANKSHARES INC/WV</td>
+      <td>0.04209</td>
+    </tr>
+    <tr>
+      <th>31</th>
       <td>CB FINANCIAL SERVICES, INC.</td>
       <td>0.01001</td>
     </tr>
     <tr>
-      <th>41</th>
+      <th>32</th>
+      <td>COMMERCE BANCSHARES INC /MO/</td>
+      <td>0.04133</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>FIRST FINANCIAL CORP /IN/</td>
+      <td>0.01382</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>BANK OF THE JAMES FINANCIAL GROUP INC</td>
+      <td>0.02588</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>TEXAS CAPITAL BANCSHARES INC/TX</td>
+      <td>0.04227</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>M&amp;T BANK CORP</td>
+      <td>0.02407</td>
+    </tr>
+    <tr>
+      <th>37</th>
       <td>COMMUNITY WEST BANCSHARES /</td>
       <td>0.03439</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>BAR HARBOR BANKSHARES</td>
+      <td>0.00764</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>BANKWELL FINANCIAL GROUP, INC.</td>
+      <td>0.00512</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>CITIZENS FINANCIAL GROUP INC/RI</td>
+      <td>0.00020</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>BANK OF NEW YORK MELLON CORP</td>
+      <td>0.01833</td>
     </tr>
   </tbody>
 </table>

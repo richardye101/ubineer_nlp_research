@@ -66,13 +66,7 @@ To extend the previous idea, multiple annual reports per company were analyzed t
 
 Lastly, the relationship between companies based on the document embeddings and their financial returns was analyzed. Monte-Carlo simulations were used to analyze different portfolios of companies in a given industry and compare the returns of those simulations to the Efficient Frontier. For the data collection, we used the company's Central Index Key (CIK) as the identifier to obtain monthly stock returns data from Wharton Research Data Services’s (WRDS) CRSP/Compustat database. We included only the companies with filings that were used in our previous embedding work and the timespan of returns ranges for each filer, but they are all from June 2016 to December 2018. We conducted a mean-variance analysis with three covariance estimates - simple sample covariance, cosine similarity generated covariance, and factor model generated covariance, to construct minimum-variance portfolios. As for cosine similarity estimate, we use the cosine similarity distance as correlation and sample return standard deviation to calculate the covariance estimate. In terms of factor model estimates, we first conduct a Sent-LDA model on companies' business description to build a matrix. Then, we ran linear regression on the topic model matrix with the returns matrix to get the coefficient matrix. Lastly, we calculate the factor model estimated covariance using topic model matrix, covariance of coefficient matrix and the diagonal matrix of residual variance.
 
-
-
 Check out each page bundled within this book to see more on a given topic.
-
-```{tableofcontents}
-
-```
 
 ## Discussion
 
