@@ -409,7 +409,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="mean-variance-analysis-minimum-variance">
 <h1>Mean-Variance Analysis - Minimum Variance<a class="headerlink" href="#mean-variance-analysis-minimum-variance" title="Permalink to this headline">¶</a></h1>
-<p>Mean-variance analysis is a mathematical framework that examplifies the trade-off between return and risk. It is used to create diversified portfolios based on investors’ expectation. There are one main approach used in this report. We have the minimum volatility portfolio that concentrates on minimizing the risk of the portfolio. Mimimum variance portfolio can help us compare the correlation of simple sample covariance, covariance generated using cosine similarity distances and covariance generated using factor model in Sent-LDA.</p>
+<p>Mean-variance analysis is a mathematical framework that examplifies the trade-off between return and risk. It is used to create diversified portfolios based on investors’ expectation. There are one main approach used in this report. We have the minimum volatility portfolio that concentrates on minimizing the risk of the portfolio. Mimimum variance portfolios constructed can help us investigate if document embedding can reveal information on returns.</p>
+<p>Mimimum variance portfolio are constructed based on three estimates of covariance:</p>
+<p>a) the sample covariance of returns</p>
+<p>b) the cosine similarity of the business descriptions</p>
+<p>c) factor model based on business descriptions and return data</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="section" id="monthly-returns">
